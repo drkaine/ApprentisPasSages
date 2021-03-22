@@ -1,0 +1,224 @@
+#home-page {
+  background-color: lemonchiffon;
+  max-height: 30vh;
+}
+
+.contact-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #41046f;
+  max-width: 90%;
+  height: auto;
+  margin: 30px auto 50px;
+}
+
+#title-h {
+  padding-top: 30px;
+  color: #41046f;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+#send-message {
+  padding-left: 30px;
+  text-align: center;
+}
+
+.ctc-zone {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+  margin: 20px;
+}
+@media (max-width: 1100px) {
+  .ctc-zone {
+    display: block;
+  }
+}
+
+/* formulaire a remplir */
+.contact-form {
+  min-width: 50%;
+  background: #fbc638;
+  border-radius: 5px;
+  height: auto;
+  padding: 10px;
+  margin: 10px;
+}
+
+#formulaire {
+  line-height: 10px;
+  font-weight: 700;
+}
+
+input[type="text"],
+[type="email"],
+[type="tel"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  margin: 5px;
+  background-color: #41046f;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 45%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+input[type="reset"] {
+  background-color: #41046f;
+  color: white;
+  margin: 5px;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+  min-width: 45%;
+}
+
+input[type="reset"]:hover {
+  background-color: #45a049;
+}
+
+.btn-form-contact {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/*  fin formulaire a remplir */
+
+/* formulaire info generale */
+.contact-info {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 13px;
+  border-radius: 5px;
+  min-width: 45%;
+  height: auto;
+  background: #fbc638;
+}
+
+@media (max-width: 600px) {
+  .contact-info {
+    align-items: center;
+  }
+}
+
+.adresse {
+  margin: 5px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+@media (max-width: 600px) {
+  .adresse {
+    display: block;
+    margin: 0;
+  }
+  #info-adress {
+    text-align: center;
+    margin: 5px;
+  }
+}
+
+.email-adresse {
+  margin: 5px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+#mail-adress {
+  margin: 20px;
+}
+
+@media (max-width: 600px) {
+  .email-adresse {
+    margin: 0;
+    display: block;
+    flex-wrap: wrap;
+  }
+  #icon,
+  #mail-adress {
+    text-align: center;
+    margin: 5px;
+    font-size: 80%;
+  }
+}
+
+.info-general {
+  margin: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+  line-height: 25px;
+}
+
+@media (max-width: 600px) {
+  .info-general {
+    display: block;
+    margin: 0;
+    font-size: 80%;
+  }
+}
+.inf-gen-pers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+/* @media (max-width: 1100px){
+    .info-general {
+      
+      align-self: center;
+    }
+     
+} */
+
+#info-pers {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#info-pers div {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-weight: 600;
+}
+
+@media (max-width: 430px) {
+  #info-pers div {
+    display: block;
+  }
+}

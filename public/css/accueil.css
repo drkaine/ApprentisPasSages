@@ -1,0 +1,398 @@
+/* =================================
+------------------------------------
+ ApprentiPasSage -Accueil Template
+  Version: 1.0
+ ------------------------------------
+ ====================================*/
+
+
+/*----------------------------------------*/
+/* Template default CSS
+/*----------------------------------------*/
+body{
+	background-color:whitesmoke;
+}
+
+nav{
+	background-color:#41046f;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+.navbar-brand{
+	width:200px;
+}
+.navbar-toggler,.navbar-toggler-icon{
+	border-color:whitesmoke !important;
+}
+#contactNav{
+	color:#F9F910 !important;
+}
+
+#logo{
+  max-width: 50%;
+  height: auto;
+}
+#titrePrestation
+{
+	box-sizing: border-box;
+	padding-top: 128px !important;
+	color: white;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 5rem;
+}
+.titre{
+	color:whitesmoke;
+	background-color:#41046f;
+	width: 15%;
+	box-shadow:0 11px 10px 0 rgba(0, 0, 0, 0.2);
+}
+#nosPrestations, #association{
+	font-size: 2rem !important;
+
+}
+
+.block{
+	background-color:#d5bafc;
+}
+
+#blockAssociation{
+	background-color:white;
+	margin: 1.5rem;
+
+
+}
+
+ .prestationCard {
+	width: 15rem !important;
+	height: 20rem !important;
+	box-shadow :7px 6px 2px 1px rgba(104, 104, 104, 0.2);
+	background-color: rgba(248, 244, 1, 0.295) !important;
+}
+
+h1 .card-text{
+	font-family: 'Rubik', sans-serif !important;
+
+}
+footer{
+	background-color:#41046f;
+}
+footer a{
+		color:whitesmoke !important;
+}
+
+.blockC{
+ background-color:#41046f;
+}
+
+#interlineA{
+  background: -moz-linear-gradient(#d5bafc, white);
+  background: -webkit-linear-gradient(#d5bafc, white);
+  background: -ms-linear-gradient(#d5bafc, white);
+  background: -o-linear-gradient(#d5bafc, white);
+  background: linear-gradient(to #d5bafc, white);
+}
+
+#blockAssociation .card-header{
+	background-color: white;
+}
+#interlineB{
+  background: -moz-linear-gradient(white,#d5bafc);
+  background: -webkit-linear-gradient(white,#d5bafc);
+
+  background: -ms-linear-gradient(white,#d5bafc);
+
+  background: -o-linear-gradient(white,#d5bafc);
+
+  background: linear-gradient(to white,#d5bafc);
+}
+
+.ban {
+	width:100%;
+	height:390px;
+	box-sizing:border-box !important;
+	background-image: url('../img/ban.png');
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+.ban2 {
+	width:100%;
+	height:310px;
+	box-sizing:border-box !important;
+	background-image: url('../img/ban4.png');
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+
+.ban2 h1{
+box-sizing: border-box;
+padding-top: 76px !important;
+color: #41046f;
+font-family: 'Caveat Brush', cursive;
+font-size: 5rem;
+margin-right:30px;
+}
+.ban h1{
+box-sizing: border-box;
+padding-top: 166px !important;
+color: #fffb00e0;
+font-family: 'Caveat Brush', cursive;
+font-size: 5rem;
+}
+#keywords{
+	background-color: #41046f;
+
+}
+
+#coupDeCoeur{
+	background-color: #41046f;
+}
+#banTeam{
+	width:100%;
+	height:390px;
+	box-sizing:border-box !important;
+	background-image: url('../img/ban2.png');
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+#titreTeam{
+box-sizing: border-box;
+padding-top: 160px  !important;
+color: #41046f;
+font-family: 'Caveat Brush', cursive;
+font-size: 5rem;
+}
+
+#banTeamScience{
+	width:100%;
+	height:305px;
+	box-sizing:border-box !important;
+	background-image: url('../img/ban3.png');
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+#titreTeamScience{
+box-sizing: border-box;
+padding-top: 110px !important;
+color: #1e1c1c;
+font-family: 'Caveat Brush', cursive;
+font-size: 3.4rem;
+}
+.carre{
+	width:150px;
+	height:300px;
+	background:blue;
+}
+
+
+
+.contenuThrombi{
+  position: relative;
+  width: 50%;
+}
+
+.imageThrombi {
+  display: block;
+  width: 160px;
+  height: auto;
+  border-radius:50%;
+  border:1.5px solid #ede484;
+  box-shadow: 8px 0px 15px whitesmoke;
+}
+
+.imageThrombi:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.dropdown-menu{
+	background-color:#41046f !important;
+	margin-top: 1.125rem !important;
+}
+.buttonTeam:hover, .buttonTeam:selected{
+	background-color:#41046f;
+	color:whitesmoke !important;
+}
+.select{
+	border:10px solid #41046f;
+}
+.displayNone{
+	display:none;
+}
+.textDecoration{
+	text-decoration: underline;
+	color:#41046f;
+}
+.titlePrestation{
+	font-size: 1.3rem;
+}
+
+
+.shineText{
+	font-weight:bold !important;
+}
+
+.quote{
+	color:#41046f;
+	font-family: 'Caveat Brush', cursive!important;
+}
+
+.listeAssociation ul{
+list-style: none !important;
+}
+.text-center ul{
+	text-align:left!important;
+}
+
+.clearText{
+		padding:3rem !important;
+		margin:auto;
+	}
+
+.cardTrombi{
+	margin:auto;
+}
+.hello{
+	width:90%!important;
+}
+
+.textThrombi {
+    font-family: 'Give You Glory', cursive;
+    font-size:1.4rem;
+}
+
+#keywords{
+	width:100%;
+	height:500px;
+}
+
+/*----------------------------------------*/
+/* Template default CSS PRESTA
+/*----------------------------------------*/
+.titreH2prestation{
+	color: #1e1c1c;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 1.5rem;
+}
+.titreH3prestation{
+	color: #1e1c1c;
+	font-size: 1rem;
+}
+.titreH1prestation{
+	color: #41046f;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 2.5rem;
+}
+
+#banPresta{
+	background-image: url("../img/banPresta.png") !important;
+	background-repeat: no-repeat;
+	background-size:cover;
+	height: 325px;
+}
+
+.imgPresta{
+	width:150px !important;
+	border-bottom: 3px solid #41046f;
+}
+
+.textPartPrestation{
+	font-size: 0.9rem;
+}
+.textObjPrestation{
+	font-size: 0.8rem;
+}
+
+.cardPresta{
+	box-shadow: 5px 5px 4px #b5aac4;
+}
+#prix{
+	border: 1px solid #41046f;
+	border-radius:5px;
+	padding:10px;
+}
+
+#titreEnCours{
+	color: #1e1c1c;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 3rem;
+}
+/*----------------------------------------*/
+/* Template default CSS team
+/*----------------------------------------*/
+#banOneTeam{
+	width:100%;
+	background-image: url('../img/banTeam.png');
+	background-repeat: no-repeat;
+	background-size:cover;
+	height: 250px;
+}
+
+.imageOneTeam{
+  width:200px !important;
+  height: auto;
+  border-radius:50%;
+  border:5px solid #ede484;
+  box-shadow: 8px 0px 15px whitesmoke;
+}
+
+/*----------------------------------------*/
+/* Template default CSS event
+/*----------------------------------------*/
+#banEvent{
+	width:100%;
+	background-image: url('../img/banEvent.png');
+	background-repeat: no-repeat;
+	background-size:cover;
+
+}
+#sectionEvent{
+	background-color: rgba(234, 230, 242,0.9);
+	border-radius:10px;
+}
+/*----------------------------------------*/
+/* Style Avant Dernière version*/
+/*----------------------------------------*/
+
+/*Header*/
+.container{
+    width:100% !important;
+    background-color: whitesmoke !important;
+}
+
+/*----------------------------------------*/
+/* Style Dernière version*/
+/*----------------------------------------*/
+.foo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.partenaires{
+    display: flex;
+    flex-flow: wrap;
+
+
+align-content: space-around;
+}
+
+.img-3{
+    background-color: rgba(255, 255, 255, 0.6);
+
+}
+#sectionAssociation{
+    max-width: 100% !important;
+}
+
+h1{
+    text-align: left !important;
+}
+
+.lien-mort
+{
+    color: #ede484;
+    background-color:#41046f;
+}

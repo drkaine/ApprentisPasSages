@@ -1,0 +1,192 @@
+	/* =================================
+------------------------------------
+  Divisima | ApprentiPasSage -Accueil Template
+  Version: 1.0
+ ------------------------------------
+ ====================================*/
+
+
+/*----------------------------------------*/
+/* Template responsive CSS Accueil
+/*----------------------------------------*/
+
+/*---------------Large Screen-------------*/
+@media only screen and (max-width: 1690px) {
+	.ban{
+		height:391px;
+	}
+
+	#banTeam{
+		height:384px;
+	}
+
+	#titreTeam{
+		padding-top: 174px !important;
+	}
+	
+	#banTeamScience{
+		height: 358px;
+	}
+
+	#titreTeamScience{
+		padding-top: 144px !important;
+		font-size: 3.1rem;
+	}
+
+}
+
+
+/*---------------Medium Screen-------------*/
+@media only screen and (max-width: 1300px) {
+
+#nosPrestations, #association{
+	font-size: 2rem !important;
+}
+
+.ban {
+	width:100%;
+	height:310px;
+}
+
+.ban h1{
+padding-top: 166px !important;
+font-size: 5rem;
+}
+
+#banTeam{
+	width:100%;
+	height:305px;
+}
+
+#titreTeam{
+padding-top: 128px !important;
+font-size: 5rem;
+}
+
+#banTeamScience{
+	width:100%;
+	height:305px;
+}
+#titreTeamScience{
+padding-top: 110px !important;
+font-size: 3.4rem;
+}
+
+
+}
+/*---------------Ipad Screen-------------*/
+@media only screen and (max-width: 768px) {
+	.ban{
+		height:320px;
+	}
+	#nosPrestations, #association {
+    	font-size: 1.4rem !important;
+    	text-align: left !important;
+	}
+	
+	#banTeam{
+		height:177px;
+	}
+
+	#titreTeam{
+		padding-top: 84px !important;
+		font-size:2.5rem;
+	}
+	
+    #banTeamScience{
+		height: 173px;
+	}
+
+	#titreTeamScience{
+		padding-top: 150px !important;
+		padding-top: 64px !important;
+		font-size:2.1rem;
+	}
+
+	.card{
+		margin-left: 1.5rem;
+		margin-top: 1.5rem;
+	}
+
+	#titreAssociation{
+	font-size: 3.4rem;
+}
+
+	.ban2{
+		height:153px;
+	}
+	#titreCdc{
+		padding-top: 30px !important;
+		padding-right: 5px;
+		font-size: 3.4rem;
+	}
+
+}
+
+
+/*--------------phone screen-------------*/
+@media only screen and (max-width: 375px) {
+	.ban {
+    	height: 139px;
+	}
+	.ban h1{
+		font-size: 4rem;
+		padding-top: 45px !important;
+	}
+	
+	.card{
+    	margin: auto;
+    	margin-top:1.5rem;
+	}
+	.prestationCard{
+	
+}
+	#banTeam {
+    	height: 87px;
+    }
+
+    #titreTeam {
+    	padding-top: 34px !important;
+    	font-size: 1.5rem;
+    }
+
+    #banTeamScience {
+    	height: 78px;
+	}
+
+	#titreTeamScience {
+    padding-top: 29px !important;
+    font-size: 1rem;
+}
+	.clearText{
+		padding:0rem !important;
+		margin:auto;
+	}
+	#blockAssociation{
+		margin: auto;
+	}
+	#titreAssociation{
+	font-size: 2.4rem;
+	padding-top: 91px !important
+}
+	
+}
+
+/*----------------------------------------*/
+/* Template responsive CSS Prestation
+/*----------------------------------------*/
+
+/*---------------Medium Screen-------------*/
+@media only screen and (max-width: 768px) {
+#banPresta{
+height: 148px;
+}
+
+
+}
+
+@media only screen and (max-width: 375px) {
+	#banPresta{	
+	height: 72px;
+}
+}
