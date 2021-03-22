@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Module extends Model
 {
     use HasFactory;
+    protected $table = "modules";
+
+	public $timestamps = true;
+
+    protected $fillable = [
+        'id', 'img', 'temps','nom','description',"materiel","projetPeda","lieu","format",
+    ];
 }

@@ -67,7 +67,7 @@
             </li>
             <li class="btn"><span class="fas fa-bars"></span></li>
             <div class="items">
-              <li><a href="accueil" >Accueil</a></li>
+              <li><a href="/" >Accueil</a></li>
               <li><a href="association">Qui sommes Nous?</a></li>
               <li><a href="galerie">Galerie photo</a></li>
               <li><a href="coup-coeur">Coups de coeur</a></li>

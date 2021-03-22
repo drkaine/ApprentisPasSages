@@ -38,6 +38,13 @@ class TemplateController extends Controller
             return Album::get();
         }
 
+        public function getOneTeam($teamId)
+        {
+            $oneTeam = Membre::where('id','=',$teamId)->with('getMembre')->get();
+
+           return view('pages.team', compact('oneTeam'));
+        }
+
         function accueil(){
             return view('accueil',['Photo'=> $this->affichePartenaires(), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::with('getMembre')->inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue()]);
         }

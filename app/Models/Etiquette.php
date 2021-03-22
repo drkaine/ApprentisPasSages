@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Etiquette extends Model
 {
     use HasFactory;
+    protected $table = "etiquettes";
+
+	public $timestamps = true;
+
+    protected $fillable = [
+        'nom', 'couleur',
+    ];
 }

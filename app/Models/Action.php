@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Action extends Model
 {
     use HasFactory;
+    protected $table = "actions";
+	protected $primaryKey = "id";
+	public $timestamps = true;
+
+    protected $fillable = [
+        'nom', 'description','img',
+    ];
 }

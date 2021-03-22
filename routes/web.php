@@ -36,3 +36,5 @@ Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
 Route::get('/Animations', 'App\Http\Controllers\TemplateController@animations');
 
 Route::get('/Soutien-scolaire', 'App\Http\Controllers\TemplateController@soutienScolaire');
+
+Route::get('/team-accueil/{teamId}','TemplateController@getOneteam')->name('TemplateController.getOneteam');
