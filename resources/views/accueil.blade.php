@@ -14,7 +14,7 @@
 
 <div class="formation">
   <div class="wrapper">
-    <a class="cta" href="formation.html">
+    <a class="cta" href="Formations">
       <span>Formations</span>
       <span>
         <svg
@@ -55,7 +55,7 @@
 </div>
 <div class="soutien">
   <div class="wrapper">
-    <a class="cta" href="soutien-scolaire.html">
+    <a class="cta" href="Soutien-scolaire">
       <span>Soutien Scolaire</span>
       <span>
         <svg
@@ -97,7 +97,7 @@
 
 <div class="animation">
   <div class="wrapper">
-    <a class="cta" href="animation.html">
+    <a class="cta" href="Animations">
       <span>Animation</span>
       <span>
         <svg
