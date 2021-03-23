@@ -10,7 +10,7 @@ class Statut extends Model
     use HasFactory;
     use HasFactory;
     protected $table = "statuts";
-	protected $primaryKey = "id";
+
 	public $timestamps = true;
 
     protected $fillable = [

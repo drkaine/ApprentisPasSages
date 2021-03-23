@@ -9,7 +9,7 @@ class Membrestatut extends Model
 {
     use HasFactory;
     protected $table = "membrestatuts";
-	protected $primaryKey = ["membre_id","statut_id"];
+
 	public $timestamps = false;
     protected $fillable = [
         'statut_id', 'membre_id',

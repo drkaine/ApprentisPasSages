@@ -17,7 +17,7 @@ class Tagalbum extends Model
         'module_id','nom_album',"photo_id"
     ];
 
-    function getCCdc(){
-    	return $this->belongsTo('App\models\Album', 'nom_album', 'nom');
+    function getTagAlbum($nom){
+    	return $this->belongsTo('App\models\Album', 'nom_album', $nom);
     }
 }

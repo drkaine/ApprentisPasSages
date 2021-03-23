@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Album;
+use App\Models\Photo;
 use App\Models\Membre;
 use App\Models\Catalogue;
 use App\Models\Coupsdecoeur;
@@ -38,11 +39,14 @@ class TemplateController extends Controller
             return Album::get();
         }
 
-        public function getOneTeam($teamId)
+        public function getPhoto()
         {
-            $oneTeam = Membre::where('id','=',$teamId)->with('getMembre')->get();
+            return Photo::with("getTagAlbum(partenaires)")->get();
+        }
 
-           return view('pages.team', compact('oneTeam'));
+        public function getOneTeam( $teamId)
+        {
+           return view('team', ['Photo'=> $this->affichePartenaires(),"team"=>Membre::where('id','=',$teamId)->with('getMembre')->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         function accueil(){
@@ -84,5 +88,9 @@ class TemplateController extends Controller
             return view("admin", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
+        public function album($nom)
+        {
+            return view("album/partenaires", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->getPhoto()]);
+        }
 
 }

@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Album;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\TemplateController;
 ;
 
 /*
@@ -37,4 +39,13 @@ Route::get('/Animations', 'App\Http\Controllers\TemplateController@animations');
 
 Route::get('/Soutien-scolaire', 'App\Http\Controllers\TemplateController@soutienScolaire');
 
-Route::get('/team-accueil/{teamId}','TemplateController@getOneteam')->name('TemplateController.getOneteam');
+
+
+Route::get('/Oneteam','App\Http\Controllers\TemplateController@getOneteam')->name('TemplateController.getOneteam');
+
+// foreach(Album::get() as $album)
+// {
+//     Route::get("/album\/" . $album->nom, "App\Http\Controllers\TemplateController@getPhoto");
+// }
+
+Route::get("/album/partenaires" , "App\Http\Controllers\TemplateController@getPhoto");
