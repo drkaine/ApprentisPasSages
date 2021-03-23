@@ -41,7 +41,7 @@ class TemplateController extends Controller
 
         public function getPhoto()
         {
-            return Photo::with("getTagAlbum(partenaires)")->get();
+            return Photo::get();
         }
 
         public function getOneTeam( $teamId)
@@ -90,7 +90,7 @@ class TemplateController extends Controller
 
         public function album($nom)
         {
-            return view("album/partenaires", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->getPhoto()]);
+            return view("album/$nom", ['Photo'=> $this->affichePartenaires(),"photos"=>$this->getPhoto()]);
         }
 
 }

@@ -34,6 +34,7 @@ Route::get('/coup-coeur', 'App\Http\Controllers\TemplateController@coups_de_coeu
 Route::get('/Formations', 'App\Http\Controllers\TemplateController@formations');
 
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
+// ->middleware('auth.basic')
 
 Route::get('/Animations', 'App\Http\Controllers\TemplateController@animations');
 
@@ -43,9 +44,8 @@ Route::get('/Soutien-scolaire', 'App\Http\Controllers\TemplateController@soutien
 
 Route::get('/Oneteam','App\Http\Controllers\TemplateController@getOneteam')->name('TemplateController.getOneteam');
 
-// foreach(Album::get() as $album)
-// {
-//     Route::get("/album\/" . $album->nom, "App\Http\Controllers\TemplateController@getPhoto");
-// }
 
-Route::get("/album/partenaires" , "App\Http\Controllers\TemplateController@getPhoto");
+
+Route::get("/album" , "App\Http\Controllers\TemplateController@getPhoto")->name("nom_album");
+
+// Route::resource('admin');

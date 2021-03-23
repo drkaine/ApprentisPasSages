@@ -33,13 +33,14 @@
 <div class='co_admin'>
     <h2>Connectez-vous</h2>
 
-    <form action="accueil">
+    <form method="POST" action="{{ route('accueil') }}">
         <label for="Mail">Votre mail:</label><br>
-        <input type="email" id="mail" name="mail" placeholder="Mail" rerquired><br>
+        <input type="email" id="mail" name="mail" placeholder="Mail" required autofocus ><br>
         <label for="Password">Votre mot de passe:</label><br>
         <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required><br><br>
-        <input type="submit" value="Envoyer">
+        <button> Se connecter</button>
       </form>
+      <a href="#">Mot de passe oublié ?</a>
 </div>
 </body>
 <section id="coupDeCoeur" class ="cdc">
