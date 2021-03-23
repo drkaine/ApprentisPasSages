@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,12 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/accueil.css" />
-    <title>WEB-Apprentis</title>
+    <title>Apprentis Pas Sages</title>
+  </head>
 
-
-
-
-    <nav>
+<header>
+        <nav class="nav_co">
         <ul>
           <li class="logo">
               <img
@@ -29,20 +25,23 @@
           </li>
         </ul>
     </nav>
-
+</header>
+<body>
 <div id="ban" class="container-fluid m-t-1 ban">
     <h1 id="titreAssociation" style="box-sizing:border-box;">Pannel d'administration</h1>
 </div>
-<div>
+<div class='co_admin'>
     <h2>Connectez-vous</h2>
-    <form method="post">
-        <label name="email">Votre email</label>
-        <label name='password'>Votre mot de passe</label>
-        <button type="submit">Envoyer</button>
-        <a href="mot_de_passe_oublie">Mot de passe oublié ?</a>
-    </form>
-</div>
 
+    <form action="accueil">
+        <label for="Mail">Votre mail:</label><br>
+        <input type="email" id="mail" name="mail" placeholder="Mail" rerquired><br>
+        <label for="Password">Votre mot de passe:</label><br>
+        <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required><br><br>
+        <input type="submit" value="Envoyer">
+      </form>
+</div>
+</body>
 <section id="coupDeCoeur" class ="cdc">
     <div class="m-t-1 ban2">
     </div>
