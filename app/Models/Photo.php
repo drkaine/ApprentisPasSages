@@ -11,7 +11,7 @@ class Photo extends Model
     use HasFactory;
     // use SoftDeletes;
     protected $table = "photos";
-	protected $primaryKey = "id";
+
 	public $timestamps = true;
 
     protected $fillable = [

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Membre;
+use App\Models\Tagalbum;
 use App\Models\Catalogue;
 use App\Models\Coupsdecoeur;
 use Illuminate\Http\Request;
@@ -39,9 +40,15 @@ class TemplateController extends Controller
             return Album::get();
         }
 
-        public function getPhoto()
+        public function getPhoto(Request $request)
         {
-            return Photo::get();
+            return view('album', ['Photo'=> $this->affichePartenaires(),"photos"=>Tagalbum::where("nom_album","=",$request->nom)->with("getTagAlbum")->get() ,"nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue()]);
+
+        }
+
+        function getPhotoAl()
+        {
+            return Tagalbum::get("getTagAlbum");
         }
 
         public function getOneTeam( Request $request)
@@ -88,9 +95,9 @@ class TemplateController extends Controller
             return view("admin", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
-        public function album($nom)
+        public function album(Request $request)
         {
-            return view("album/$nom", ['Photo'=> $this->affichePartenaires(),"photos"=>$this->getPhoto()]);
+            return view("album", ['Photo'=> $this->affichePartenaires(),"photos"=>$this->getPhoto($request)]);
         }
 
 }

@@ -10,14 +10,14 @@ class Tagalbum extends Model
 
     use HasFactory;
     protected $table = "tagalbums";
-	protected $primaryKey = "id";
+
 	public $timestamps = true;
 
     protected $fillable = [
         'module_id','nom_album',"photo_id"
     ];
 
-    function getTagAlbum($nom){
-    	return $this->belongsTo('App\models\Album', 'nom_album', $nom);
+    function getTagAlbum(){
+    	return $this->belongsTo('App\models\Album', 'nom_album', "nom");
     }
 }

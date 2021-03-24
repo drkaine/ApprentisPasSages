@@ -13,7 +13,8 @@
       <section class="galerie">
           @foreach ($albums as $album)
           <div class="item">
-            <a href="" class="elem"><img src="images/connaissance-du-hibou.jpg" ></a>
+            <a href="{{route('TemplateController.getPhoto', ['nom'=>$album->nom])}}" class="elem">
+                <img src="images/{{ $album->nom }}/1-region-sud.jpg" ></a>
             <div class="galerie-title">{{ $album->nom }}</div>
           </div>
 
@@ -29,5 +30,5 @@
 
       @endsection
 
-{{-- {{route('TemplateController.getPhoto', ['nom_album'=>$album->nom])}}< --}}
+
 
