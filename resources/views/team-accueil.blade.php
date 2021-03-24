@@ -3,12 +3,12 @@
 	<div style="width: 18rem; height: 18rem;">
         <a href="{{route('TemplateController.getOneteam', ['id'=>$membre->id])}}">
 			<div class="d-flex flex-column">
+                @foreach($membre->getMembre as $statut)
+				<img class="imageThrombi m-auto {{$statut->description}}"
 
-				<img class="imageThrombi m-auto
-				@foreach($membre->getMembre as $statut)
-				  {{$statut->decription}}
+
 				@endforeach
-				"
+
 				@if($membre->photo == null)
 					src="img/team/apprentispassages_logo_renard.png" alt="photo d'avatar">
 				@else

@@ -19,6 +19,6 @@ class Photo extends Model
     ];
 
     function getTagAlbum($nom){
-    	return $this->belongsToMany('App\models\Tagalbum', 'photo_id', $id);
+    	return $this->belongsToMany('App\models\Tagalbum', 'photo_id', "id");
     }
 }
