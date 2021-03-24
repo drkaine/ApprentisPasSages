@@ -23,7 +23,7 @@ class liensMorts extends Mailable
 
     public function build()
     {
-        return $this->from('duretkevin@live.fr')->subject('')->view('mail.liensMort')->with('data', $this->data);
+        return $this->from('mongeneral05@gmail.com')->subject('')->view('mail.liensMort')->with('data', $this->data);
     }
 }
 

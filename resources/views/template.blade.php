@@ -99,23 +99,23 @@
                    @csrf
                    <label for="fname">Nom *</label>
 
-                   <input type="text" id="fname" name="name" placeholder="Votre nom *">
+                   <input type="text" id="fname" name="name" placeholder="Votre nom *" required>
 
                    <label for="email">Email *</label>
 
-                   <input type="email" id="email" name="email" placeholder="Votre email *">
+                   <input type="email" id="email" name="email" placeholder="Votre email *" required>
 
                    <label for="phone">Numérot de téléphone</label>
 
-                   <input type="tel" name="phone" id="phone" placeholder="Votre téléphone">
+                   <input type="tel" name="phone" id="phone" placeholder="Votre téléphone" >
 
                    <label for="message">Sujet du message *</label>
 
-                   <input type="text" name="subject" id="message" placeholder="Sujet du message *">
+                   <input type="text" name="subject" id="message" placeholder="Sujet du message *" required>
 
                    <label for="ctc-message">Votre message *</label>
 
-                   <textarea id="subject" name="message" placeholder="Votre message.." style="height:100%; width:100%"></textarea>
+                   <textarea id="subject" name="message" placeholder="Votre message.." style="height:100%; width:100%" required></textarea>
                    <br>
                    <div class="btn-form-contact">
                      <input type="submit" value="Envoyer votre message">
@@ -259,8 +259,8 @@
 
         <div class="contact">
             <img class="img-logo" src="images/apprentis_pas_sages_banniere.png"  alt="">
-            <form class="btn-contact">
-                <button type="submit" formaction="contact.blade.php" class="btn-contact-us">Contactez-nous</button>
+            <form class="btn-contact" method="headers">
+                <button  action="" class="btn-contact-us"       data-toggle="modal" data-target="#ContactModal">Contactez-nous</button>
                 </form>
 
           <ul  class="social-media-links">
