@@ -16,7 +16,17 @@ html
 
 /*  */
 
+/*Contact Modal*/
+.modal-dialog{
+    min-width: 300px !important;
+    max-width: 60% !important;
+    width: 60% !important;
 
+}
+.modal-body section div{
+    width: 100% !important;
+
+}
 /* nav-bar menu */
 
 

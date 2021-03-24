@@ -4,11 +4,15 @@
 namespace App\Http\Controllers;
 use App\Models\Album;
 use App\Models\Photo;
+use App\Models\Action;
 use App\Models\Membre;
+use App\Models\Module;
 use App\Models\Tagalbum;
 use App\Models\Catalogue;
+use App\Models\Etiquette;
 use App\Models\Coupsdecoeur;
 use Illuminate\Http\Request;
+use App\Models\Actioncatalogue;
 use App\Models\Categoriecoupsdecoeur;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,9 +50,29 @@ class TemplateController extends Controller
 
         }
 
-        function getPhotoAl()
+        function getPartenaires()
         {
-            return Tagalbum::get("getTagAlbum");
+            return Tagalbum::where("nom_album","=","partenaires")->with("getTagAlbum")->get();
+        }
+
+        function getAction()
+        {
+            return Action::get();
+        }
+
+        function getEtiquette()
+        {
+            return Etiquette::get();
+        }
+
+        function getModule()
+        {
+            return Module::get();
+        }
+
+        function getActionCatalogue($catalogue)
+        {
+            return Actioncatalogue::where("catalogue_id", "=" ,$catalogue)->with("getCatalogue")->get();
         }
 
         public function getOneTeam( Request $request)
@@ -77,17 +101,17 @@ class TemplateController extends Controller
 
         public function formations()
         {
-            return view("Formations", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("Formations", ['Photo'=> $this->affichePartenaires(),"catalogue"=>$this->getActionCatalogue(2),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         public function animations()
         {
-            return view("Animations", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("Animations", ['Photo'=> $this->affichePartenaires(),"catalogue"=>$this->getActionCatalogue(1),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         public function soutienScolaire()
         {
-            return view("Soutien-scolaire", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("Soutien-scolaire", ['Photo'=> $this->affichePartenaires(),"catalogue"=>$this->getActionCatalogue(3),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         public function admin()

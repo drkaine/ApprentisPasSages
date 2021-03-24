@@ -15,4 +15,9 @@ class Etiquette extends Model
     protected $fillable = [
         'nom', 'couleur',
     ];
+
+    function getEtiquette()
+    {
+        return $this->belongsToMany('App\models\EtiquetteModule', 'id', 'etiquette_id');
+    }
 }

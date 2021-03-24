@@ -15,4 +15,14 @@ class Action extends Model
     protected $fillable = [
         'nom', 'description','img',
     ];
+
+    function getAction()
+    {
+        return $this->belongsToMany('App\models\Moduleaction', 'id', 'action_id');
+    }
+
+    function getActionCatalogue()
+    {
+        return $this->belongsToMany('App\models\Actioncatalogue', 'id', 'action_id');
+    }
 }

@@ -15,4 +15,9 @@ class Moduleaction extends Model
     protected $fillable = [
         'module_id', 'action_id',
     ];
+
+    function getModuleAction()
+    {
+        return $this->belongsToMany('App\models\Module', 'module_id', 'id');
+    }
 }

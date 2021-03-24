@@ -15,4 +15,9 @@ class Module extends Model
     protected $fillable = [
         'id', 'img', 'temps','nom','description',"materiel","projetPeda","lieu","format",
     ];
+
+    function getModule()
+    {
+        return $this->belongsToMany('App\models\Moduleaction', 'id', 'module_id');
+    }
 }
