@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-    <link rel="stylesheet" href="css/style.css" />
+
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -39,12 +39,13 @@
 <link rel="stylesheet" href="/js/jQCloud/dist/jqcloud.min.css">
 
     <!--Base-->
-    <link href="css/app.css" rel="stylesheet">
-<link href="css/accueil.css" rel="stylesheet">
-    <link href="css/about.css" rel="stylesheet">
-<link href="css/contact.css" rel="stylesheet">
-    <link href="css/formation.css" rel="stylesheet">
-<link href="css/galerie.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css')}}" rel="stylesheet">
+<link href="{{ asset('css/accueil.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/about.css')}}" rel="stylesheet">
+<link href="{{ asset('css/contact.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/formation.css')}}" rel="stylesheet">
+<link href="{{ asset('css/galerie.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/style.css')}}" />
   </head>
 
 

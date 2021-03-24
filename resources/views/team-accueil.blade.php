@@ -1,12 +1,12 @@
 
 <div class="col-12 col-sm-6 col-lg-3">
 	<div style="width: 18rem; height: 18rem;">
-        <a href="{{route('TemplateController.getOneteam', ['teamId'=>$membre->id])}}">
+        <a href="{{route('TemplateController.getOneteam', ['id'=>$membre->id])}}">
 			<div class="d-flex flex-column">
 
 				<img class="imageThrombi m-auto
 				@foreach($membre->getMembre as $statut)
-				  {{$status->status_desc}}
+				  {{$statut->decription}}
 				@endforeach
 				"
 				@if($membre->photo == null)

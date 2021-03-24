@@ -44,9 +44,9 @@ class TemplateController extends Controller
             return Photo::get();
         }
 
-        public function getOneTeam( $teamId)
+        public function getOneTeam( Request $request)
         {
-           return view('team', ['Photo'=> $this->affichePartenaires(),"team"=>Membre::where('id','=',$teamId)->with('getMembre')->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
+           return view('team', ['Photo'=> $this->affichePartenaires(),"team"=>Membre::where('id','=',$request->id)->with('getMembre')->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         function accueil(){

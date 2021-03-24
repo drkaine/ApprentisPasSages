@@ -40,9 +40,9 @@ Route::get('/Animations', 'App\Http\Controllers\TemplateController@animations');
 
 Route::get('/Soutien-scolaire', 'App\Http\Controllers\TemplateController@soutienScolaire');
 
+Route::post('/accueil', 'App\Http\Controllers\TemplateController@accueil');
 
-
-Route::get('/Oneteam','App\Http\Controllers\TemplateController@getOneteam')->name('TemplateController.getOneteam');
+Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')->name('TemplateController.getOneteam');
 
 
 

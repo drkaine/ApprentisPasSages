@@ -1,5 +1,10 @@
 
+@extends('template')
 
+@section("content")
+<div id="ban" class="container-fluid m-t-1 ban">
+    <h1 id="titreAssociation" style="box-sizing:border-box;">{{$membre->prenom}} {{ $membre->nom}}</h1>
+</div>
 <div class="row">
     <div class="col-3 p-auto">
       @if($membre->photo == null)
@@ -9,7 +14,7 @@
       @endif
     </div>
     <div class="col-5">
-         <h1 class="titreH1prestation pt-5">{{$membre->prenom}} {{$membre->nom}}</h1>
+         {{-- <h1 class="titreH1prestation pt-5">{{}} {{}}</h1> --}}
     </div>
       <div class="col-4 m-auto">
       <h2 class="titreH2prestation pt-5">Rôle dans l'association</h2>
@@ -30,3 +35,8 @@
       <h3 class="titreH3prestation">{{$membre->email}}</h3>
     </div>
   </div>
+  <section id="coupDeCoeur" class ="cdc">
+    <div class="m-t-1 ban2">
+    </div>
+</section>
+@endsection
