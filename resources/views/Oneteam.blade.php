@@ -18,7 +18,7 @@
     </div>
       <div class="col-4 m-auto">
       <h2 class="titreH2prestation pt-5">Rôle dans l'association</h2>
-      @foreach($membre->getMembre as $statut)
+      @foreach($membre->getStatus()->get() as $statut)
       <h3 class="titreH3prestation">{{$statut->nom}}<br></h3>
       @endforeach
     </div>

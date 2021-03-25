@@ -16,8 +16,11 @@ class Membre extends Model
         'id', 'nom', 'prenom','telephone','email','photo','description',
     ];
 
-    public function getMembre(){
+    // public function getMembre(){
+    // 	return $this->belongsToMany('App\models\Statut', 'membrestatuts', 'membre_id','statut_id');
+    // }
+
+    public function getStatus(){
     	return $this->belongsToMany('App\models\Statut', 'membrestatuts', 'membre_id','statut_id');
     }
-
 }

@@ -2,8 +2,9 @@
 function borderGroup(){
 
 	$('#TeamBureau').on("click",function(){
-		$('.1').addClass('select');
+
 		$('.2,.3,.4,.5').removeClass('select');
+        $('.1').addClass('select');
 	});
 
 	$('#teamCoordonnateur').on("click",function(){

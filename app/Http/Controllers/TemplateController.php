@@ -77,11 +77,11 @@ class TemplateController extends Controller
 
         public function getOneTeam( Request $request)
         {
-           return view('team', ['Photo'=> $this->affichePartenaires(),"team"=>Membre::where('id','=',$request->id)->with('getMembre')->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
+           return view('team', ['Photo'=> $this->affichePartenaires(),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         function accueil(){
-            return view('accueil',['Photo'=> $this->affichePartenaires(), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::with('getMembre')->inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue()]);
+            return view('accueil',['Photo'=> $this->affichePartenaires(), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue()]);
         }
 
         public function association()

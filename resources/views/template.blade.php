@@ -59,12 +59,12 @@
             <li class="logo">
                 <img
                   class="logo-fox"
-                  src="images/fox_logo.png"  alt="logo"/>
+                  src="{{asset("images/fox_logo.png")}}"  alt="logo"/>
               </li>
             <li class="logo">
               <img
                 class="logo-apprentis"
-                src="images/apprentis_pas_sages_banniere.png"  alt="logo"/>
+                src="{{asset("images/apprentis_pas_sages_banniere.png")}}"  alt="logo"/>
             </li>
             <li class="btn"><span class="fas fa-bars"></span></li>
             <div class="items">
@@ -258,7 +258,7 @@
 
 
         <div class="contact">
-            <img class="img-logo" src="images/apprentis_pas_sages_banniere.png"  alt="">
+            <img class="img-logo" src="{{asset("images/apprentis_pas_sages_banniere.png")}}"  alt="">
             <form class="btn-contact" method="headers">
                 <button  action="" class="btn-contact-us"       data-toggle="modal" data-target="#ContactModal">Contactez-nous</button>
                 </form>
@@ -322,7 +322,7 @@
           </ul>
             <ul class="partenaires">
                 @foreach ($Photo as $photo)
-                    <li><img  src="images/{{$photo}}"  width = "100" height="100" class="{{ substr($photo, 3,7) }}">
+                    <li><img  src="{{asset("images/$photo")}}"  width = "100" height="100" class="{{ substr($photo, 3,7) }}">
 
                     </li>
                 @endforeach
