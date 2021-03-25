@@ -17,7 +17,7 @@ class Statut extends Model
         'id', 'nom', 'description',
     ];
 
-    function getStatut(){
-    	return $this->belongsToMany('App\models\Membre', 'membrestatuts', 'membre_id','id');
+    function getMembre(){
+    	return $this->belongsToMany('App\models\Membre', 'membrestatuts','statut_id', 'membre_id');
     }
 }

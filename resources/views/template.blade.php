@@ -321,10 +321,12 @@
         </div>
           </ul>
             <ul class="partenaires">
-                @foreach ($Photo as $photo)
-                    <li><img  src="{{asset("images/$photo")}}"  width = "100" height="100" class="{{ substr($photo, 3,7) }}">
+                @foreach ($partenaires as $photo)
+                    @foreach ($photo as $p)
+                        <li><img  src="{{asset("images/$p->chemin")}}"  width = "100" height="100" class="part">
 
                     </li>
+                    @endforeach
                 @endforeach
                 </ul>
                 <ul  class="copyright">

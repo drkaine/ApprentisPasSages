@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\Actioncatalogue;
 use App\Models\Categoriecoupsdecoeur;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class TemplateController extends Controller
 {
@@ -44,16 +45,18 @@ class TemplateController extends Controller
             return Album::get();
         }
 
-        public function getPhoto(Request $request)
+        function getPhotoByAlbum($nom)
         {
-            return view('album', ['Photo'=> $this->affichePartenaires(),"photos"=>Album::where("nom","=",$request->nom)->with("getAlbum")->inRandomOrder()->get() ,"nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue()]);
+            $photo =  [];
+            $partenaires = DB::select('select photo_id from tagalbums JOIN albums ON (albums.nom = tagalbums.nom_album) where albums.nom = ?', [$nom]);
 
+           foreach ($partenaires as $partenaire) {
+              $photo[] = DB::select(' select chemin from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where photos.id = ?', [$partenaire->photo_id]) ;
+           }
+           return $photo;
         }
 
-        function getPartenaires()
-        {
-            return Album::where("nom","=","partenaires")->with("getAlbum")->get();
-        }
+       
 
         function getAction()
         {
@@ -70,58 +73,59 @@ class TemplateController extends Controller
             return Module::get();
         }
 
-        function getActionCatalogue($catalogue)
+        function getActionC(Request $request)
         {
-            return Actioncatalogue::where("catalogue_id", "=" ,$catalogue)->with("getCatalogue")->get();
+            return Action::where("catalogue_id", "=" ,$request->catalogue)->with("getCatalogue")->get();
         }
 
         public function getOneTeam( Request $request)
         {
-           return view('team', ['Photo'=> $this->affichePartenaires(),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
+           return view('team', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         function accueil(){
-            return view('accueil',['Photo'=> $this->affichePartenaires(), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue()]);
+            return view('accueil',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue()]);
         }
 
         public function association()
         {
-            return view("association",['Photo'=> $this->affichePartenaires(), "catalogues"=>$this->afficheCatalogue()]);
+            return view("association",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue()]);
         }
 
         public function galerie()
         {
-            return view("galerie",['Photo'=> $this->affichePartenaires(),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("galerie",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
         public function coups_de_coeur()
         {
-            return view("coup-coeur",['Photo'=> $this->affichePartenaires(), "ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("coup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
-        public function formations()
-        {
-            return view("Formations", ['Photo'=> $this->affichePartenaires(),"catalogue"=>$this->getActionCatalogue(2),"catalogues"=>$this->afficheCatalogue()]);
-        }
+        // public function formations()
+        // {
+        //     return view("Formations", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogue"=>$this->getAction(),"catalogues"=>$this->afficheCatalogue()]);
+        // }
 
-        public function animations()
-        {
-            return view("Animations", ['Photo'=> $this->affichePartenaires(),"catalogue"=>$this->getActionCatalogue(1),"catalogues"=>$this->afficheCatalogue()]);
-        }
+        // public function animations()
+        // {
+        //     return view("Animations", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogue"=>$this->getAction(),"catalogues"=>$this->afficheCatalogue()]);
+        // }
 
-        public function soutienScolaire()
-        {
-            return view("Soutien-scolaire", ['Photo'=> $this->affichePartenaires(),"catalogue"=>$this->getActionCatalogue(3),"catalogues"=>$this->afficheCatalogue()]);
-        }
+        // public function soutienScolaire()
+        // {
+        //     return view("Soutien-scolaire", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogue"=>$this->getAction(),"catalogues"=>$this->afficheCatalogue()]);
+        // }
 
         public function admin()
         {
-            return view("admin", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue()]);
         }
 
-        public function album()
+        public function album(Request $request)
         {
-            return view("album", ['Photo'=> $this->affichePartenaires(),"photos"=>$this->getPartenaires()]);
+            return view("album", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"photos"=>$this->getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue()]);
         }
 
+        
 }

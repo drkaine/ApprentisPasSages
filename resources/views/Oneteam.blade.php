@@ -5,6 +5,7 @@
 <div id="ban" class="container-fluid m-t-1 ban">
     <h1 id="titreAssociation" style="box-sizing:border-box;">{{$membre->prenom}} {{ $membre->nom}}</h1>
 </div>
+<section class="membre">
 <div class="row">
     <div class="col-3 p-auto">
       @if($membre->photo == null)
@@ -23,7 +24,7 @@
       @endforeach
     </div>
   </div>
-
+</section>
   <div class="row">
     <div class="col-12 col-sm-8 mt-3 mb-3">
       <h2 class="titreH2prestation pl-3">&Agrave; A propos de moi:</h2>

@@ -15,10 +15,10 @@ class Photo extends Model
 	public $timestamps = true;
 
     protected $fillable = [
-        "chemin"
+        "chemin","id",
     ];
 
     function getAlbum(){
-    	return $this->belongsToMany('App\models\Album', "tagalbums",'nom_album', "photo_id");
+    	return $this->belongsToMany(Album::class, "tagalbums", "photo_id",'nom_album');
     }
 }

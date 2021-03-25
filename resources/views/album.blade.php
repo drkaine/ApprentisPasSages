@@ -10,7 +10,10 @@
             <div class="row">
                 <div class="column">
                 @foreach ($photos as $photo)
-                    <img src="images/{{ $photo->chemin }}">
+                @foreach ($photo as $p)
+                    <img src="{{asset("images/$p->chemin ")}}">
+                @endforeach
+                    
 
                 @endforeach
                 </div>

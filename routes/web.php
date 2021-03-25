@@ -50,5 +50,5 @@ Route::post('/', 'App\Http\Controllers\TemplateController@accueil');
 Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')->name('TemplateController.getOneteam');
 
 
-Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@getPhoto")->name("TemplateController.getPhoto");
+Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
 

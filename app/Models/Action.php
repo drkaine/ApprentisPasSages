@@ -16,13 +16,8 @@ class Action extends Model
         'nom', 'description','img',
     ];
 
-    function getAction()
+    function getCatalogue()
     {
-        return $this->belongsToMany('App\models\Moduleaction', 'id', 'action_id');
-    }
-
-    function getActionCatalogue()
-    {
-        return $this->belongsToMany('App\models\Actioncatalogue', 'id', 'action_id');
+        return $this->belongsToMany('App\models\Catalogue',"actioncatalogues" ,'catalogue_id', 'action_id');
     }
 }
