@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 22 mars 2021 à 10:13
+-- Généré le : jeu. 25 mars 2021 à 09:44
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.16
 
@@ -84,7 +84,15 @@ CREATE TABLE `albums` (
 --
 
 INSERT INTO `albums` (`nom`, `created_at`, `updated_at`) VALUES
-('partenaires', NULL, NULL);
+('partenaires', NULL, NULL),
+('t', NULL, NULL),
+('test', NULL, NULL),
+('test2', NULL, NULL),
+('tt', NULL, NULL),
+('ttt', NULL, NULL),
+('tttt', NULL, NULL),
+('tttttt', NULL, NULL),
+('tttttttt', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -502,6 +510,19 @@ CREATE TABLE `statuts` (
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `statuts`
+--
+
+INSERT INTO `statuts` (`id`, `created_at`, `updated_at`, `nom`, `description`) VALUES
+(1, NULL, NULL, 'Présidente', '1'),
+(3, NULL, NULL, 'participant', '4'),
+(4, NULL, NULL, 'Intervenant/Animateur', '3'),
+(5, NULL, NULL, 'Coordinateur/trice', '2'),
+(6, NULL, NULL, 'Trésorier', '1'),
+(7, NULL, NULL, 'Secrétaire', '1'),
+(9, NULL, NULL, 'Conseil scientifique', '5');
+
 -- --------------------------------------------------------
 
 --
@@ -521,7 +542,10 @@ CREATE TABLE `tagalbums` (
 --
 
 INSERT INTO `tagalbums` (`module_id`, `photo_id`, `nom_album`, `created_at`, `updated_at`) VALUES
-(7, 4, 'partenaires', NULL, NULL);
+(7, 1, 'partenaires', NULL, NULL),
+(7, 3, 'partenaires', NULL, NULL),
+(7, 4, 'partenaires', NULL, NULL),
+(7, 5, 'partenaires', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -767,7 +791,7 @@ ALTER TABLE `programmations`
 -- AUTO_INCREMENT pour la table `statuts`
 --
 ALTER TABLE `statuts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `users`

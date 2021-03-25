@@ -20,7 +20,7 @@ class CreateMembresTable extends Migration
             $table->string("prenom");
             $table->string("telephone");
             $table->string('email');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->text("description");
         });
     }

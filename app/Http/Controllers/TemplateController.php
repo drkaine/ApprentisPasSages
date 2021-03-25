@@ -46,13 +46,13 @@ class TemplateController extends Controller
 
         public function getPhoto(Request $request)
         {
-            return view('album', ['Photo'=> $this->affichePartenaires(),"photos"=>Tagalbum::where("nom_album","=",$request->nom)->with("getTagAlbum")->get() ,"nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue()]);
+            return view('album', ['Photo'=> $this->affichePartenaires(),"photos"=>Album::where("nom","=",$request->nom)->with("getAlbum")->inRandomOrder()->get() ,"nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue()]);
 
         }
 
         function getPartenaires()
         {
-            return Tagalbum::where("nom_album","=","partenaires")->with("getTagAlbum")->get();
+            return Album::where("nom","=","partenaires")->with("getAlbum")->get();
         }
 
         function getAction()
@@ -119,9 +119,9 @@ class TemplateController extends Controller
             return view("admin", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
-        public function album(Request $request)
+        public function album()
         {
-            return view("album", ['Photo'=> $this->affichePartenaires(),"photos"=>$this->getPhoto($request)]);
+            return view("album", ['Photo'=> $this->affichePartenaires(),"photos"=>$this->getPartenaires()]);
         }
 
 }

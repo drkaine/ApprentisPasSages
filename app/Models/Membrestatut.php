@@ -14,7 +14,5 @@ class Membrestatut extends Model
     protected $fillable = [
         'statut_id', 'membre_id',
     ];
-    function getMembreStatut(){
-    	return $this->belongsTo('Membre', 'statut_id', 'membre_id');
-    }
+
 }

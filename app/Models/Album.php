@@ -16,6 +16,6 @@ class Album extends Model
     ];
 
     function getAlbum(){
-    	return $this->belongsToMany('App\models\Tagalbum', 'nom', 'nom_album');
+    	return $this->belongsToMany('App\models\Photo',"tagalbums", 'photo_id', 'nom_album');
     }
 }

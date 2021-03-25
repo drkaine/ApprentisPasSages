@@ -14,7 +14,7 @@ class CreateCoupsdecoeursTable extends Migration
     public function up()
     {
         Schema::create('coupsdecoeurs', function (Blueprint $table) {
-            $table->id("id");
+            $table->id();
             $table->unsignedBigInteger("categoriecoupsdecoeur_id");
             $table->timestamps();
             $table->text("lien");

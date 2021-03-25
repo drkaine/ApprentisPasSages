@@ -26,7 +26,7 @@ Route::get('/', 'App\Http\Controllers\TemplateController@accueil');
 Route::post('/', 'App\Http\Controllers\mailController@send')->name('envoiMail');
 // liens morts
 
-// Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
+Route::post('/accueil', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
 
 Route::get('/association', "App\Http\Controllers\TemplateController@association");
 

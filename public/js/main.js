@@ -11,7 +11,7 @@ function borderGroup(){
 		$('.2').addClass('select');
 	});
 
-	$('#teamAnimation').on("click",function(){
+	$('#TeamAnimation').on("click",function(){
 		$('.1,.2,.4,.5').removeClass('select');
 		$('.3').addClass('select');
 	});
