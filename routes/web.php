@@ -41,7 +41,7 @@ Route::get('/galerie', 'App\Http\Controllers\TemplateController@galerie');
 
 Route::get('/coup-coeur', 'App\Http\Controllers\TemplateController@coups_de_coeur');
 
-Route::get('/prestation', 'App\Http\Controllers\TemplateController@prestations');
+Route::get('/prestation/{prestation}', 'App\Http\Controllers\TemplateController@prestations')->name('TemplateController.prestations');
 
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
 // ->middleware('auth.basic')

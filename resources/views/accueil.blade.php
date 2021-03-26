@@ -14,7 +14,7 @@
     @foreach ($catalogues as $catalogue)
     <div class="formation">
         <div class="wrapper">
-          <a class="cta" href="prestation">
+          <a class="cta" href="{{route('TemplateController.prestations', ['prestation'=>$catalogue->nom])}}">
             <span>{{ $catalogue->nom}}</span>
             <span>
               <svg
