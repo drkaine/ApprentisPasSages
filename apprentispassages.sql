@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 25 mars 2021 à 09:44
+-- Généré le : ven. 26 mars 2021 à 09:57
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.16
 
@@ -155,6 +155,14 @@ CREATE TABLE `contentprogs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `contentprogs`
+--
+
+INSERT INTO `contentprogs` (`programmation_id`, `module_id`, `action_id`, `created_at`, `updated_at`) VALUES
+(1, 4, 2, NULL, NULL),
+(1, 2, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -468,9 +476,9 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `created_at`, `updated_at`, `chemin`) VALUES
-(1, NULL, NULL, '/partenaires/region-sud.jpg'),
-(2, NULL, NULL, 'partenaires/terra-numerica.png'),
-(3, NULL, NULL, '/partenaires/culture-science.jpg'),
+(1, NULL, NULL, '/partenaires/1-region-sud.jpg'),
+(2, NULL, NULL, 'partenaires/2-terra-numerica.png'),
+(3, NULL, NULL, '/partenaires/3-culture-science.png'),
 (4, NULL, NULL, '/partenaires/academie-nice.jpg'),
 (5, NULL, NULL, '/partenaires/belveder-06.jpg');
 
@@ -494,7 +502,7 @@ CREATE TABLE `programmations` (
 --
 
 INSERT INTO `programmations` (`id`, `created_at`, `updated_at`, `dateDebut`, `dateFin`, `nbPersonnesPrevues`) VALUES
-(1, '2020-08-29 06:06:03', '2020-08-29 06:06:03', '2021-03-18 09:00:00', '2021-03-20 17:00:00', 20);
+(1, '2020-08-29 04:06:03', '2020-08-29 04:06:03', '2021-03-18 09:00:00', '2021-03-20 17:00:00', 20);
 
 -- --------------------------------------------------------
 
@@ -530,7 +538,7 @@ INSERT INTO `statuts` (`id`, `created_at`, `updated_at`, `nom`, `description`) V
 --
 
 CREATE TABLE `tagalbums` (
-  `module_id` bigint(20) UNSIGNED NOT NULL,
+  `module_id` bigint(20) UNSIGNED DEFAULT NULL,
   `photo_id` bigint(20) UNSIGNED NOT NULL,
   `nom_album` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -542,8 +550,9 @@ CREATE TABLE `tagalbums` (
 --
 
 INSERT INTO `tagalbums` (`module_id`, `photo_id`, `nom_album`, `created_at`, `updated_at`) VALUES
-(7, 1, 'partenaires', NULL, NULL),
-(7, 3, 'partenaires', NULL, NULL),
+(NULL, 1, 'partenaires', NULL, NULL),
+(NULL, 2, 'partenaires', NULL, NULL),
+(NULL, 3, 'partenaires', NULL, NULL),
 (7, 4, 'partenaires', NULL, NULL),
 (7, 5, 'partenaires', NULL, NULL);
 
@@ -700,8 +709,8 @@ ALTER TABLE `statuts`
 -- Index pour la table `tagalbums`
 --
 ALTER TABLE `tagalbums`
-  ADD PRIMARY KEY (`module_id`,`nom_album`,`photo_id`),
-  ADD KEY `tagalbums_nom_album_foreign` (`nom_album`),
+  ADD PRIMARY KEY (`nom_album`,`photo_id`),
+  ADD KEY `tagalbums_module_id_foreign` (`module_id`),
   ADD KEY `tagalbums_photo_id_foreign` (`photo_id`);
 
 --

@@ -8,10 +8,10 @@
 
 <div class="action">
     <ul>
-        {{ var_dump($actions) }}
+        {{-- {{ var_dump($actions) }} --}}
     @foreach ($actions as $action)
-        {{-- <li>{{ $action->nom }}</li> --}}
-        {{ var_dump($action) }}
+        <li>{{ $action->nom }}</li></br>
+        {{-- {{ var_dump($action) }} --}}
     @endforeach
     </ul>
 </div>

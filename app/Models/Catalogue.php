@@ -12,7 +12,7 @@ class Catalogue extends Model
 	public $timestamps = true;
 
     protected $fillable = [
-        'nom', "description", "img",
+       "id", 'nom', "description", "img",
     ];
 
     function getAction()
