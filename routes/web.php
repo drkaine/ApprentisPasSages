@@ -23,10 +23,15 @@ use App\Http\Controllers\TemplateController;
 
 Route::get('/', 'App\Http\Controllers\TemplateController@accueil');
 
-Route::post('/', 'App\Http\Controllers\mailController@send')->name('envoiMail');
-// liens morts
+if(isset($_POST['contactCacher'])){
+    Route::post('/', 'App\Http\Controllers\mailController@send')->name('envoiMail');
+     }
 
-Route::post('/accueil', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
+    // liens morts
+    if(isset($_POST['liensCacher'])){
+    Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
+    }
+
 
 Route::get('/association', "App\Http\Controllers\TemplateController@association");
 
@@ -36,14 +41,10 @@ Route::get('/galerie', 'App\Http\Controllers\TemplateController@galerie');
 
 Route::get('/coup-coeur', 'App\Http\Controllers\TemplateController@coups_de_coeur');
 
-Route::get('/Formations', 'App\Http\Controllers\TemplateController@formations');
+Route::get('/prestation', 'App\Http\Controllers\TemplateController@prestations');
 
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
 // ->middleware('auth.basic')
-
-Route::get('/Animations', 'App\Http\Controllers\TemplateController@animations');
-
-Route::get('/Soutien-scolaire', 'App\Http\Controllers\TemplateController@soutienScolaire');
 
 Route::post('/', 'App\Http\Controllers\TemplateController@accueil');
 

@@ -20,4 +20,8 @@ class Module extends Model
     {
         return $this->belongsToMany('App\models\Moduleaction', 'id', 'module_id');
     }
+
+    function getProgs(){
+    	return $this->belongsToMany('App\models\Programmation', 'contentprogs','programmation_id','programmation_id' );
+    }
 }

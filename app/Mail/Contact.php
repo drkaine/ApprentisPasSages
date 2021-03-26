@@ -26,7 +26,5 @@ class Contact extends Mailable
         return $this->from('mongeneral05@gmail.com')->subject($this->data['subject'])->view('mail.contact')->with('data', $this->data);
     }
 }
-
-
 ?>
 

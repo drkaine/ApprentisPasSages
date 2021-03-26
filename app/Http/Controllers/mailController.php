@@ -13,12 +13,13 @@ class mailController extends Controller
 
     function send(Request $request)
     {
-     $this->validate($request, [
-      'name'     =>  'required',
-      'email'  =>  'required',
-      'message' =>  'required',
-      'subject' =>  'required'
-     ]);
+        
+//     $this->validate($request, [
+//      'name'     =>  'required',
+//      'email'  =>  'required',
+//      'message' =>  'required',
+//      'subject' =>  'required'
+//     ]);
 
         $data = array(
             'name'      =>  $request->name,
@@ -30,13 +31,15 @@ class mailController extends Controller
      Mail::to('mongeneral05@gmail.com')->send(new Contact($data));
         return back();
         
+       
+        
     }  
-    
     function liensMortsSend(Request $request)
     {
-     $this->validate($request, [
-      'lienMort'     =>  'required'
-     ]);
+        
+//     $this->validate($request, [
+//      'lienMort'     =>  'required'
+//     ]);
 
         $data = array(
           'lienMort'   =>   $request->lienMort,
@@ -46,9 +49,12 @@ class mailController extends Controller
 
      Mail::to('mongeneral05@gmail.com')->send(new liensMorts($data));
         return back();
-        
-    }  
+        }
     
 }
+        
+          
+    
+
 
 ?>

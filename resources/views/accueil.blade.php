@@ -141,13 +141,22 @@
 
 <!--Evenement-->
 <div id="ban" class="container-fluid m-t-1 ban">
-    <h1 id="titreAssociation" style="box-sizing:border-box;">Nos événements</h1>
+    <h1 id="titreAssociation" style="box-sizing:border-box;">L'association</h1>
 </div>
 
 
 <section id="sectionAssociation" class="container">
 <h1>Insérer calendrier</h1>
+<div class="zoneProg">
+{{--@foreach($contentProgs as $cProg)
+       <div>
+        @include('programmation', compact($cProg))
+        </div>
+    @endforeach--}}
+</div>
+
 </section>
+
 
 
 <!--Equipe-->

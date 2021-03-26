@@ -12,10 +12,11 @@ use App\Models\Catalogue;
 use App\Models\Etiquette;
 use App\Models\Coupsdecoeur;
 use Illuminate\Http\Request;
+use App\Models\Programmation;
 use App\Models\Actioncatalogue;
+use Illuminate\Support\Facades\DB;
 use App\Models\Categoriecoupsdecoeur;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 
 class TemplateController extends Controller
 {
@@ -53,10 +54,12 @@ class TemplateController extends Controller
            foreach ($partenaires as $partenaire) {
               $photo[] = DB::select(' select chemin from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where photos.id = ?', [$partenaire->photo_id]) ;
            }
+
+        //    $photo = DB::select(' select chemin from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where tagalbums.nom_album = ?', [$nom]) ;
            return $photo;
         }
 
-       
+
 
         function getAction()
         {
@@ -87,6 +90,12 @@ class TemplateController extends Controller
             return view('accueil',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue()]);
         }
 
+        public function evenement()
+        {
+            return view("evenements", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue(),'Event'=> $this->Programmation::with('getProg')->get(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get()/*,'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()*/]);
+        }
+
+
         public function association()
         {
             return view("association",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue()]);
@@ -102,20 +111,10 @@ class TemplateController extends Controller
             return view("coup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
-        // public function formations()
-        // {
-        //     return view("Formations", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogue"=>$this->getAction(),"catalogues"=>$this->afficheCatalogue()]);
-        // }
-
-        // public function animations()
-        // {
-        //     return view("Animations", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogue"=>$this->getAction(),"catalogues"=>$this->afficheCatalogue()]);
-        // }
-
-        // public function soutienScolaire()
-        // {
-        //     return view("Soutien-scolaire", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogue"=>$this->getAction(),"catalogues"=>$this->afficheCatalogue()]);
-        // }
+        function prestations()
+        {
+            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue()]);
+        }
 
         public function admin()
         {
@@ -127,5 +126,5 @@ class TemplateController extends Controller
             return view("album", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"photos"=>$this->getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue()]);
         }
 
-        
+
 }

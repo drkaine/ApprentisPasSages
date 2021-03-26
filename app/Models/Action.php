@@ -13,11 +13,13 @@ class Action extends Model
 	public $timestamps = true;
 
     protected $fillable = [
-        'nom', 'description','img',
+        'id', 'nom', 'description','img'
     ];
 
-    function getCatalogue()
-    {
-        return $this->belongsToMany('App\models\Catalogue',"actioncatalogues" ,'catalogue_id', 'action_id');
+    function getModules(){
+    	return $this->belongsToMany('App\models\Module', 'contentprogs', 'module_id','module_id' );
+    }
+    function getProgs(){
+    	return $this->belongsToMany('App\models\Programmation', 'contentprogs','programmation_id','programmation_id' );
     }
 }

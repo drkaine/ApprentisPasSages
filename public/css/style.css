@@ -497,3 +497,27 @@ li
     margin-right: -10px;
 }
 
+/*Contact Modal*/
+.modal-dialog{
+    min-width: 300px !important;
+    max-width: 60% !important;
+    width: 60% !important;
+
+}
+.modal-body section div{
+    width: 100% !important;
+
+}
+
+
+/*Programmation et calendrier*/
+.zoneProg{
+    display: flex;
+    border: magenta 5px solid;
+    border-radius: 5px;
+
+}
+.Programme{
+    border: red 5px solid;
+    border-radius: 5px;
+}

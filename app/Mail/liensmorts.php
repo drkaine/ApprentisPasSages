@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class liensMorts extends Mailable
 {
         use Queueable, SerializesModels;
-
+ 
     /**
      * Elements de contact
      * @var array
@@ -20,7 +20,7 @@ class liensMorts extends Mailable
     {
         $this->data = $data;
     }
-
+ 
     public function build()
     {
         return $this->from('mongeneral05@gmail.com')->subject('')->view('mail.liensMort')->with('data', $this->data);
