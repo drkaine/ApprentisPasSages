@@ -16,12 +16,19 @@ class Module extends Model
         'id', 'img', 'temps','nom','description',"materiel","projetPeda","lieu","format",
     ];
 
-    function getModule()
-    {
-        return $this->belongsToMany('App\models\Moduleaction', 'id', 'module_id');
+    function getProgs(){
+    	return $this->belongsToMany('App\models\Programmation', 'contentprogs','module_id','programmation_id' );
     }
 
-    function getProgs(){
-    	return $this->belongsToMany('App\models\Programmation', 'contentprogs','programmation_id','programmation_id' );
+    function getEtiquettes(){
+    	return $this->belongsTo('App\models\Etiquette', 'etiquettes','module_id','etiquette_id' );
+    }
+
+    function getActions(){
+    	return $this->belongsTo('App\models\Action', 'actions','module_id','action_id' );
+    }
+
+    function getAlbum(){
+    	return $this->belongsToMany('App\models\Album', 'albums','module_id','nom_album' );
     }
 }

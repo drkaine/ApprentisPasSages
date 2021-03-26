@@ -73,7 +73,7 @@
               <li><a href="/galerie">Galerie photo</a></li>
               <li><a href="/coup-coeur">Coups de coeur</a></li>
 
-            
+
 
 
               <li><a data-toggle="modal" data-target="#ContactModal" href="">Contact</a></li>
@@ -230,23 +230,10 @@
                 </div>
                            </div>
 
-
-
-
-
-
-
-
-
-
               <li><a href="prestations" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>
             <ul class="dropdown-menu">
                 @foreach ($catalogues as $catalogue)
-                    @if($catalogue->nom == "Soutien scolaire")
-                        <li><a href="Soutien-scolaire">{{ $catalogue->nom}}</a></li>
-                    @else
-                        <li><a href="{{$catalogue->nom}}">{{ $catalogue->nom}}</a></li>
-                    @endif
+                        <li><a href="prestation">{{ $catalogue->nom}}</a></li>
                 @endforeach
             </ul>
             </li>

@@ -17,9 +17,12 @@ class Action extends Model
     ];
 
     function getModules(){
-    	return $this->belongsToMany('App\models\Module', 'contentprogs', 'module_id','module_id' );
+    	return $this->belongsTo('App\models\Module', 'contentprogs', 'module_id','module_id' );
     }
     function getProgs(){
     	return $this->belongsToMany('App\models\Programmation', 'contentprogs','programmation_id','programmation_id' );
+    }
+    function getCatalogues(){
+    	return $this->belongsTo('App\models\Catalogue', 'catalogues','action_id','catalogue_id' );
     }
 }

@@ -17,6 +17,6 @@ class Catalogue extends Model
 
     function getAction()
     {
-        return $this->belongsToMany('App\models\Action',"actioncatalogues" ,'catatalogue_id', 'action_id');
+        return $this->belongsTo('App\models\Action',"actioncatalogues" ,'catatalogue_id', 'action_id');
     }
 }
