@@ -33,7 +33,7 @@
 <div class='co_admin'>
     <h2>Connectez-vous</h2>
 
-    <form method="POST" action="accueil">
+    <form method="POST" action="accueil-admin">
         <label for="Mail">Votre mail:</label><br>
         <input type="email" id="mail" name="mail" placeholder="Mail" required autofocus ><br>
         <label for="Password">Votre mot de passe:</label><br>

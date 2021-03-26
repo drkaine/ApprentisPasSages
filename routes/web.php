@@ -32,10 +32,7 @@ if(isset($_POST['contactCacher'])){
     Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
     }
 
-
 Route::get('/association', "App\Http\Controllers\TemplateController@association");
-
-Route::get('/accueil', 'App\Http\Controllers\TemplateController@accueil');
 
 Route::get('/galerie', 'App\Http\Controllers\TemplateController@galerie');
 
@@ -43,13 +40,24 @@ Route::get('/coup-coeur', 'App\Http\Controllers\TemplateController@coups_de_coeu
 
 Route::get('/prestation/{prestation}', 'App\Http\Controllers\TemplateController@prestations')->name('TemplateController.prestations');
 
-Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
-// ->middleware('auth.basic')
-
-Route::post('/', 'App\Http\Controllers\TemplateController@accueil');
-
 Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')->name('TemplateController.getOneteam');
-
 
 Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
 
+// ->middleware('auth.basic')
+
+Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
+
+Route::get("/accueil-admin", 'App\Http\Controllers\TemplateController@accueilAdmin');
+
+Route::get('/association-admin', "App\Http\Controllers\TemplateController@associationAdmin");
+
+Route::get('/galerie-admin', 'App\Http\Controllers\TemplateController@galerieAdmin');
+
+Route::get('/coup-coeur-admin', 'App\Http\Controllers\TemplateController@coups_de_coeurAdmin');
+
+Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
+
+Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOneteamAdmin')->name('TemplateController.getOneteamAdmin');
+
+Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
