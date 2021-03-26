@@ -67,7 +67,6 @@ class TemplateController extends Controller
 
         function getCatalogueByNom($catalogues)
         {
-            // return Catalogue::where("nom",$catalogues)->get();
             return DB::select(' select id from catalogues where nom = ?', [$catalogues]);
         }
 
@@ -83,8 +82,19 @@ class TemplateController extends Controller
 
         function getActionC($catalogues)
         {
-            // return Action::where("catalogue_id" ,$this->getCatalogueByNom($catalogues))->with("getCatalogue")->get();
-            return DB::select(' select * from catalogs JOIN actioncatalogues ON (catalogues.id = actioncatalogues.catalogue_id) where actioncatalogues.catalogue_id = ?', [$catalogues]) ;
+            $catalogue =  DB::select(' select * from actions JOIN actioncatalogues ON (actions.id = actioncatalogues.action_id) where actioncatalogues.catalogue_id = ?',[$this->getCatalogueByNom($catalogues)[0]->id]);
+            return $catalogue;
+        }
+
+        function getModuleByIdAction($id)
+        {
+            $id_action = [];
+            foreach($id as $pid)
+            {
+                $id_action[] = Action::where('id',$pid->id)->with("getModules")->get();
+            }
+            
+            return $id_action;
         }
 
         public function getOneTeam( Request $request)
@@ -119,7 +129,7 @@ class TemplateController extends Controller
 
         function prestations(Request $request)
         {
-            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getAction()]);
+            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>$this->getModuleByIdAction($this->getActionC($request->prestation))]);
         }
 
         public function admin()
