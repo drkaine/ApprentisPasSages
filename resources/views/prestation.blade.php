@@ -6,6 +6,16 @@
     <h1 id="titreAssociation" >{{ $prestation }}</h1>
 </div>
 
+<div class="action">
+    <ul>
+        {{ var_dump($actions) }}
+    @foreach ($actions as $action)
+        {{-- <li>{{ $action->nom }}</li> --}}
+        {{ var_dump($action) }}
+    @endforeach
+    </ul>
+</div>
+
 <div class="m-t-1 ban2">
 
 </div>

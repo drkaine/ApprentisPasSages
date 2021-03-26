@@ -59,8 +59,6 @@ class TemplateController extends Controller
            return $photo;
         }
 
-
-
         function getAction()
         {
             return Action::get();
@@ -76,9 +74,9 @@ class TemplateController extends Controller
             return Module::get();
         }
 
-        function getActionC(Request $request)
+        function getActionC($catalogues)
         {
-            return Action::where("catalogue_id", "=" ,$request->catalogue)->with("getCatalogue")->get();
+            return Catalogue::where("id" ,$catalogues)->with("getAction")->get();
         }
 
         public function getOneTeam( Request $request)
@@ -113,7 +111,7 @@ class TemplateController extends Controller
 
         function prestations(Request $request)
         {
-            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation]);
+            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation)]);
         }
 
         public function admin()

@@ -265,7 +265,7 @@
 
 
         <div class="contact">
-            <img class="img-logo" src="images/apprentis_pas_sages_banniere.png"  alt="">
+            <img class="img-logo" src="{{ asset("images/apprentis_pas_sages_banniere.png") }}"  alt="">
  <!--<form class="btn-contact" action="">
             <button class="btn-contact-us" data-toggle="modal" data-target="#ContactModal">est</button>
         </form>-->
