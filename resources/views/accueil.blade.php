@@ -66,13 +66,13 @@
 
 
 <section id="sectionAssociation" class="container">
-<h1>Insérer calendrier</h1>
+<h1>Evénement de l'association</h1>
 <div class="zoneProg">
-{{--@foreach($contentProgs as $cProg)
-       <div>
+@foreach($contentProgs as $cProg)
+       <div clas="programme">
         @include('programmation', compact($cProg))
         </div>
-    @endforeach--}}
+    @endforeach
 </div>
 
 </section>
@@ -124,11 +124,9 @@
 <script src="{{ asset('js/jQCloud/dist/jqcloud.min.js') }}"></script>
 <script>
     var words = [
-
       @foreach($cdc as $c)
       @php $rand = rand(1,7) @endphp
       {text: "{!!$c->nom!!}",weight:{{$rand}},link:"{{$c->lien}}"},
-
       @endforeach
 ];
 </script>

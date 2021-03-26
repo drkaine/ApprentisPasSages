@@ -512,12 +512,28 @@ li
 
 /*Programmation et calendrier*/
 .zoneProg{
-    display: flex;
     border: magenta 5px solid;
     border-radius: 5px;
 
 }
-.Programme{
+.zoneProg>div{
     border: red 5px solid;
     border-radius: 5px;
+}
+
+.zoneProg>div, .zoneProg>div>div, .zoneProg>div>div>div,.zoneProg{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.zoneProg > div > div > div,.zoneProg > div{
+    flex-direction: column;
+}
+.zoneProg > div > div{
+    flex-direction: row;
+}
+.zoneProg h4{
+color: #41046f;
+font-family: "Concert One", cursive;
+font-weight: 900;
 }

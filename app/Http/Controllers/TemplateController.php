@@ -10,6 +10,7 @@ use App\Models\Module;
 use App\Models\Tagalbum;
 use App\Models\Catalogue;
 use App\Models\Etiquette;
+use App\Models\ContentProg;
 use App\Models\Coupsdecoeur;
 use Illuminate\Http\Request;
 use App\Models\Programmation;
@@ -77,6 +78,7 @@ class TemplateController extends Controller
         function getActionC($catalogues)
         {
             return Catalogue::where("id" ,$catalogues)->with("getAction")->get();
+            // return DB::select(' select * from actions JOIN actioncatalogues ON (catalogues.id = actioncatalogues.catalogue_id) where actioncatalogues.catalogue_id = ?', [$catalogues]) ;
         }
 
         public function getOneTeam( Request $request)
@@ -85,12 +87,12 @@ class TemplateController extends Controller
         }
 
         function accueil(){
-            return view('accueil',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue()]);
+            return view('accueil',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
         }
 
         public function evenement()
         {
-            return view("evenements", ['Photo'=> $this->affichePartenaires(),"catalogues"=>$this->afficheCatalogue(),'Event'=> $this->Programmation::with('getProg')->get(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get()/*,'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()*/]);
+            return view("evenements", ['Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'Event'=> $this->Programmation::with('getProg')->get()]);
         }
 
 

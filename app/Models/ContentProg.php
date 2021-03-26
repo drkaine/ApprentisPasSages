@@ -19,12 +19,12 @@ class ContentProg extends Model
 
     
     function getModules(){
-    	return $this->belongsToMany('App\models\Module');
+    	return $this->hasMany('App\models\Module','id','module_id');
     }
     function getActions(){
-    	return $this->belongsToMany('App\models\Action');
+    	return $this->hasMany('App\models\Action','id','action_id');
     }
     function getProgs(){
-    	return $this->hasbelongsToMany('App\models\Programmation');
+    	return $this->hasMany('App\models\Programmation','id','programmation_id');
     }
 }
