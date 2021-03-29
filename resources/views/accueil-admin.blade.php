@@ -1,4 +1,4 @@
-@extends("template-admin")
+@extends("barre-admin")
 
 @section("content")
 
@@ -11,14 +11,26 @@
 
 <!--Prestations-->
 <section class="prestation">
-    {{-- <i class="fas fa-plus-circle"></i> --}}
-    {{-- <i class="fas fa-minus-circle"></i> --}}
-    {{-- <i class="fas fa-edit"></i> --}}
+    <a href="" class="fas fa-plus-circle"></a>
     @foreach ($catalogues as $catalogue)
     <div class="formation">
         <div class="wrapper">
-            <i class="fas fa-edit"></i>
-            <i class="fas fa-minus-circle"></i>
+            {{-- <a href="" class="fas fa-edit"></a> --}}
+            <form action="{{ url('update/'.$catalogue->id) }}" method="GET">
+                <button class="btn btn-danger">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </form>
+            {{-- <a href="" class="fas fa-minus-circle"></a> --}}
+
+            <form action="{{ url('accueil/'.$catalogue->id) }}" method="post">
+                {{ csrf_field() }}
+                {!! method_field('DELETE') !!}
+                <button class="btn btn-danger">
+                    <i class="fas fa-minus-circle"></i>
+                </button>
+            </form>
+
           <a class="cta" href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
             <span>{{ $catalogue->nom}}</span>
 
@@ -61,7 +73,7 @@
       </div>
 
 @endforeach
-<i class="fas fa-plus-circle"></i>
+
 </section>
 
 
@@ -108,7 +120,7 @@
             <button type="button" class="btn border rounded buttonTeam" id="teamCs">Conseil scientifique</button>
         </li>
     </ul>
-    <i class="fas fa-plus-circle"></i>
+    <a href="" class="fas fa-plus-circle"></a>
 </div>
 
 <section class = "team">
