@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Photo extends Model
 {
     use HasFactory;
-    // use SoftDeletes;
+    use SoftDeletes;
     protected $table = "photos";
 
 	public $timestamps = true;

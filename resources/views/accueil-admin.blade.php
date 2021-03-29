@@ -11,6 +11,9 @@
 
 <!--Prestations-->
 <section class="prestation">
+    {{-- <i class="fas fa-plus-circle"></i> --}}
+    {{-- <i class="fas fa-minus-circle"></i> --}}
+    {{-- <i class="fas fa-edit"></i> --}}
     @foreach ($catalogues as $catalogue)
     <div class="formation">
         <div class="wrapper">

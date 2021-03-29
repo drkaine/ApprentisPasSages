@@ -8,7 +8,7 @@
 <section class="mr-5 ml-5">
   <div class="ml-2 mr-2">
       @foreach ($team as $membre)
-          @include('OneTeam-admimn', compact('team'))
+          @include('OneTeam-admin', compact('team'))
       @endforeach
   </div>
 </section>

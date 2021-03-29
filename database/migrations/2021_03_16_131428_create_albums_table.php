@@ -18,7 +18,7 @@ class CreateAlbumsTable extends Migration
             $table->string("nom");
             $table->timestamps();
             $table->primary(["nom"]);
-
+            $table->softDeletes();
         });
     }
 

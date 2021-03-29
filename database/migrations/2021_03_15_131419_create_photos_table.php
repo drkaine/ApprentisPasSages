@@ -17,6 +17,7 @@ class CreatePhotosTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string("chemin");
+            $table->softDeletes();
         });
     }
 

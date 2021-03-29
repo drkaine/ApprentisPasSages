@@ -22,6 +22,7 @@ class CreateMembresTable extends Migration
             $table->string('email');
             $table->string('photo')->nullable();
             $table->text("description");
+            $table->softDeletes();
         });
     }
 
