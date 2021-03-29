@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+use App\Models\Page;
 use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Action;
@@ -60,6 +61,11 @@ class TemplateController extends Controller
            return $photo;
         }
 
+        function getPageByNom($page)
+        {
+            return Page::where("nom",$page)->get();
+        }
+
         function getAction()
         {
             return Action::get();
@@ -114,7 +120,7 @@ class TemplateController extends Controller
 
         public function association()
         {
-            return view("association",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue()]);
+            return view("association",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(),'asso'=>$this->getPageByNom("association"),"info"=>$this->getPageByNom("Information")]);
         }
 
         public function galerie()
@@ -160,7 +166,7 @@ class TemplateController extends Controller
 
         public function associationAdmin()
         {
-            return view("association-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue()]);
+            return view("association-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(),'asso'=>$this->getPageByNom("association"),"info"=>$this->getPageByNom("Information")]);
         }
 
         public function galerieAdmin()
