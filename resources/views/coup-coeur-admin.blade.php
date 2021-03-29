@@ -7,16 +7,16 @@
     <h1 id="titreAssociation" style="box-sizing:border-box;">Coups de cœur</h1>
 </div>
 <section>
-    <i class="fas fa-plus-circle"></i>
+    <a href="ajout" class="fas fa-plus-circle"></a>
 
          @foreach ($ccdc as $cc)
         <ul class="CategorieCoupDeCoeur">
             <li>
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-minus-circle"></i>
+                <a href="{{ url('update/'.$cc->id) }}" class="fas fa-edit"></a>
+            <a href="{{ url('delete/'.$cc->id) }}" class="fas fa-minus-circle"></a>
                 <h2>{{$cc->nom}} :</h2>
 
-            <i class="fas fa-plus-circle"></i>
+                <a href="ajout" class="fas fa-plus-circle"></a>
 
 
 
@@ -24,8 +24,8 @@
                     @if($c->categoriecoupsdecoeur_id==$cc->id)
                 <ul>
                     <li>
-                        <i class="fas fa-edit"></i>
-                <i class="fas fa-minus-circle"></i>
+                        <a href="{{ url('update/'.$c->categoriecoupsdecoeur_id->id) }}" class="fas fa-edit"></a>
+                        <a href="{{ url('delete/'.$c->categoriecoupsdecoeur_id->id) }}" class="fas fa-minus-circle"></a>
                        <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"> {{$c->nom}}</a>
                     </li>
                 </ul>

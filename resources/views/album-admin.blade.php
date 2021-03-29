@@ -6,12 +6,13 @@
     <h1 id="titreAssociation" style="box-sizing:border-box;">{{$nom}} </h1>
 </div>
       <!-- galerie -->
-      <i class="fas fa-plus-circle"></i>
+      <a href="ajout" class="fas fa-plus-circle"></a>
         <section class="album">
             <div class="row">
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p)
-                <i class="fas fa-minus-circle"></i>
+                {{-- <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a> --}}
+                <a href="{{ url('delete/'.$p->id) }}" class="fas fa-minus-circle"></a>
                     <img src="{{asset("images/$p->chemin ")}}">
                 @endforeach
                 @endforeach

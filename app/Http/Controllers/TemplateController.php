@@ -104,9 +104,9 @@ class TemplateController extends Controller
             return $id_action;
         }
 
-        function deleteCatalogue(Catalogue $catalogue)
+        function deleteCatalogue(Request $request)
         {
-            $catalogue->delete();
+            DB::delete('delete from catalogues where id = ?',[$request->catalogue_id]);
             return redirect('/accueil-admin');
         }
 

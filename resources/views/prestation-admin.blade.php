@@ -9,19 +9,19 @@
 <div class="action">
     <ul>
      </br>
-     <i class="fas fa-plus-circle"></i>
+     <a href="ajout" class="fas fa-plus-circle"></a>
     @foreach ($actions as $action)
         <li><h4>{{ $action->nom }}
-            <i class="fas fa-edit"></i>
-            <i class="fas fa-minus-circle"></i></h4></li>
+            <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a>
+            <a href="{{ url('delete/'.$catalogue->id) }}" class="fas fa-minus-circle"></a>
         <ul>
-            <i class="fas fa-plus-circle"></i></br>
+            <a href="ajout" class="fas fa-plus-circle"></a>
         @foreach ($modules as $module)
         @foreach ($module as $m)
 
              <li>{{ $m->nom }}</li>
-             <i class="fas fa-edit"></i>
-             <i class="fas fa-minus-circle"></i></br>
+             <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a>
+             <a href="{{ url('delete/'.$catalogue->id) }}" class="fas fa-minus-circle"></a>
             <ul>
        </ul></br>
         @endforeach

@@ -11,25 +11,26 @@
 
 <!--Prestations-->
 <section class="prestation">
-    <a href="" class="fas fa-plus-circle"></a>
+    <a href="ajout" class="fas fa-plus-circle"></a>
     @foreach ($catalogues as $catalogue)
     <div class="formation">
         <div class="wrapper">
-            {{-- <a href="" class="fas fa-edit"></a> --}}
-            <form action="{{ url('update/'.$catalogue->id) }}" method="GET">
+
+            {{-- <form action="{{ url('update/'.$catalogue->id) }}" method="GET">
                 <button class="btn btn-danger">
                     <i class="fas fa-edit"></i>
                 </button>
-            </form>
-            {{-- <a href="" class="fas fa-minus-circle"></a> --}}
+            </form> --}}
+            <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a>
+            <a href="{{ url('delete/'.$catalogue->id) }}" class="fas fa-minus-circle"></a>
 
-            <form action="{{ url('accueil/'.$catalogue->id) }}" method="post">
+            {{-- <form action="{{ url('accueil/'.$catalogue->id) }}" method="post">
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
                 <button class="btn btn-danger">
                     <i class="fas fa-minus-circle"></i>
                 </button>
-            </form>
+            </form> --}}
 
           <a class="cta" href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
             <span>{{ $catalogue->nom}}</span>
@@ -79,12 +80,12 @@
 
 <!--Evenement-->
 <div id="ban" class="container-fluid m-t-1 ban">
-    <h1 id="titreAssociation" style="box-sizing:border-box;">L'association</h1>
+    <h1 id="titreAssociation" style="box-sizing:border-box;">Evénement de l'association</h1>
 </div>
 
 
 <section id="sectionAssociation" class="container">
-<h1>Evénement de l'association</h1>
+    <a href="ajout" class="fas fa-plus-circle"></a>
 <div class="zoneProg">
 @foreach($contentProgs as $cProg)
        <div clas="programme">
@@ -120,7 +121,7 @@
             <button type="button" class="btn border rounded buttonTeam" id="teamCs">Conseil scientifique</button>
         </li>
     </ul>
-    <a href="" class="fas fa-plus-circle"></a>
+    <a href="ajout" class="fas fa-plus-circle"></a>
 </div>
 
 <section class = "team">

@@ -62,4 +62,4 @@ Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOne
 
 Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
 
-Route::delete('/accueil/{id}', [TemplateController::class, 'deleteCatalogue']);
+Route::delete('/accueil/{id}', "App\Http\Controllers\TemplateController@deleteCatalogue")->name("TemplateController.deleteCatalogue");
