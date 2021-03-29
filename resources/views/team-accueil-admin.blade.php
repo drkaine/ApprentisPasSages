@@ -2,7 +2,8 @@
 <div class="col-12 col-sm-6 col-lg-3">
 	<div style="width: 18rem; height: 18rem;">
         <div class="d-flex flex-column">
-        <a href="{{route('TemplateController.getOneteamAdmin', ['id'=>$membre->id])}}">    
+            <i class="fas fa-minus-circle"></i>
+        <a href="{{route('TemplateController.getOneteamAdmin', ['id'=>$membre->id])}}">
                 @foreach($membre->getStatus()->get() as $statut)
                     @php
                         $statuts[] = $statut->description;

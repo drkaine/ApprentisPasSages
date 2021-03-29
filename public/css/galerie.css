@@ -23,7 +23,7 @@ h1 {
   max-width: 90%;
   height: 100%;
   margin: 30px auto 50px;
-  background: bisque;
+
 }
 
 .item {
@@ -31,12 +31,12 @@ h1 {
   padding: 20px;
   height: 220px;
   width: 220px;
-  background: floralwhite;
-  color: black;
+  background: #41046f;
+  color: #fbc638;
   overflow: hidden;
   flex-shrink: 0;
   transition: 1s;
-  
+
 }
 .item:hover, :visited {
   cursor: pointer;
@@ -68,7 +68,7 @@ h1 {
 }
 
 .galerie-title {
-  color: black;
+  color: #fbc638;
   text-align: center;
   font-weight: 600;
   font-size: 15px;

@@ -17,8 +17,11 @@
     @foreach ($catalogues as $catalogue)
     <div class="formation">
         <div class="wrapper">
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-minus-circle"></i>
           <a class="cta" href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
             <span>{{ $catalogue->nom}}</span>
+
             <span>
               <svg
                 width="66px"
@@ -58,7 +61,7 @@
       </div>
 
 @endforeach
-
+<i class="fas fa-plus-circle"></i>
 </section>
 
 
@@ -105,7 +108,9 @@
             <button type="button" class="btn border rounded buttonTeam" id="teamCs">Conseil scientifique</button>
         </li>
     </ul>
+    <i class="fas fa-plus-circle"></i>
 </div>
+
 <section class = "team">
 <div class="row">
     @foreach($team as $membre)
