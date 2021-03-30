@@ -62,4 +62,24 @@ Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOne
 
 Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
 
-Route::delete('/accueil/{id}', "App\Http\Controllers\TemplateController@deleteCatalogue")->name("TemplateController.deleteCatalogue");
+
+Route::delete('/accueil-admin', "App\Http\Controllers\TemplateController@deleteCatalogue")->name("TemplateController.deleteCatalogue");
+
+Route::delete('/accueil-admin', "App\Http\Controllers\TemplateController@deleteMembre")->name("TemplateController.deleteMembre");
+
+Route::delete('/galerie-admin', "App\Http\Controllers\TemplateController@deleteAlbum")->name("TemplateController.deleteAlbum");
+
+Route::delete('/album-admin', "App\Http\Controllers\TemplateController@deletePhoto")->name("TemplateController.deletePhoto");
+
+Route::delete('/prestation-admin/{prestation}', "App\Http\Controllers\TemplateController@deleteModule")->name("TemplateController.deleteModule");
+
+Route::delete('/prestation-admin/{prestation}', "App\Http\Controllers\TemplateController@deleteAction")->name("TemplateController.deleteAction");
+
+Route::delete('/coup-coeur-admin', "App\Http\Controllers\TemplateController@deleteCategorieCoupCoeur")->name("TemplateController.deleteCategorieCoupCoeur");
+
+Route::delete('/coup-coeur-admin', "App\Http\Controllers\TemplateController@deleteCoupCoeur")->name("TemplateController.deleteCoupCoeur");
+
+Route::delete('/prestation-admin/{prestation}', "App\Http\Controllers\TemplateController@deleteEtiquette")->name("TemplateController.deleteEtiquette");
+
+
+// Route::put('/accueil', ["", '']);

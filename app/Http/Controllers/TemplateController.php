@@ -106,8 +106,55 @@ class TemplateController extends Controller
 
         function deleteCatalogue(Request $request)
         {
-            DB::delete('delete from catalogues where id = ?',[$request->catalogue_id]);
+            DB::delete('delete from catalogues where id = ?',[$request->del_id]);
             return redirect('/accueil-admin');
+        }
+
+        function deleteMembre(Request $request)
+        {
+            DB::delete('delete from membres where id = ?',[$request->del_id]);
+            return redirect('/accueil-admin');
+        }
+
+        function deleteAlbum(Request $request)
+        {
+            DB::delete('delete from albums where nom = ?',[$request->del_id]);
+            return redirect('/galerie-admin');
+        }
+
+        function deletePhoto(Request $request)
+        {
+            DB::delete('delete from photos where id = ?',[$request->del_id]);
+            return redirect('/Album-admin/$request->id');
+        }
+
+        function deleteModule(Request $request)
+        {
+            DB::delete('delete from modules where id = ?',[$request->del_id]);
+            return redirect('/prestation-admin/$request->id');
+        }
+
+        function deleteAction(Request $request)
+        {
+            DB::delete('delete from actions where id = ?',[$request->del_id]);
+            return redirect('/prestation-admin/$request->id');
+        }
+        function deleteCategorieCoupCoeur(Request $request)
+        {
+            DB::delete('delete from categoriecoupsdecoeurs where id = ?',[$request->del_id]);
+            return redirect('/coup-coeur-admin');
+        }
+
+        function deleteCoupCoeur(Request $request)
+        {
+            DB::delete('delete from coupsdecoeurs where id = ?',[$request->del_id]);
+            return redirect('/coup-coeur-admin');
+        }
+
+        function deleteEtiquette(Request $request)
+        {
+            DB::delete('delete from etiquettes where id = ?',[$request->del_id]);
+            return redirect('/prestation-admin/$request->id');
         }
 
 
