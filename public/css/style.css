@@ -212,32 +212,31 @@ nav ul li.btn span.show:before {
     justify-content: space-between;
   }
 }
-/* fin nav bar menu */
-/*CategorieCoupDeCoeur*/
-.CategorieCoupDeCoeur{
-    border-bottom: 5px solid black;
 
+/*CategorieCoupDeCoeur*/
+.cdc
+{
+    display: flex;
+    flex-flow:wrap;
+    justify-content: space-around;
 }
-.CategorieCoupDeCoeur li{
+.CategorieCoupDeCoeur li
+{
     display: flex !important;
-    flex-flow: wrap;
+    flex-flow: column;
     width: inherit;
     height: auto;
 }
-.CategorieCoupDeCoeur h2{
+.CategorieCoupDeCoeur h2
+{
     color: #41046f;
     font-family: 'Rubik', sans-serif !important;
-    font-size: 3.5rem;
-}
-.CategorieCoupDeCoeur li ul{
-    border: 2px #fbc638;
-    border-style:dashed;
-    border-radius: 5px;
 }
 
 
   /* section 2 prestation */
-  .prestation {
+  .prestation
+  {
     background: whitesmoke;
     display: flex;
     flex-direction: row;
@@ -511,15 +510,7 @@ li
 
 
 /*Programmation et calendrier*/
-.zoneProg{
-    border: magenta 5px solid;
-    border-radius: 5px;
 
-}
-.zoneProg>div{
-    border: red 5px solid;
-    border-radius: 5px;
-}
 
 .zoneProg>div, .zoneProg>div>div, .zoneProg>div>div>div,.zoneProg{
     display: flex;

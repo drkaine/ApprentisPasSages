@@ -6,7 +6,7 @@
 <div id="ban" class="container-fluid m-t-1 ban">
     <h1 id="titreAssociation" style="box-sizing:border-box;">Coups de cœur</h1>
 </div>
-<section>
+<section class="cdc">
 
          @foreach ($ccdc as $cc)
         <ul class="CategorieCoupDeCoeur">
