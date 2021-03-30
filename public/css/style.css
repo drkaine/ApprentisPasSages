@@ -219,6 +219,7 @@ nav ul li.btn span.show:before {
     display: flex;
     flex-flow:wrap;
     justify-content: space-around;
+
 }
 .CategorieCoupDeCoeur li
 {
@@ -232,7 +233,10 @@ nav ul li.btn span.show:before {
     color: #41046f;
     font-family: 'Rubik', sans-serif !important;
 }
-
+.CategorieCoupDeCoeur li a
+{
+    color:black;
+}
 
   /* section 2 prestation */
   .prestation
