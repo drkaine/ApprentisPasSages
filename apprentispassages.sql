@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 29 mars 2021 à 07:32
+-- Généré le : mar. 30 mars 2021 à 07:30
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.16
 
@@ -76,23 +76,24 @@ INSERT INTO `actions` (`id`, `created_at`, `updated_at`, `nom`, `description`, `
 CREATE TABLE `albums` (
   `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `albums`
 --
 
-INSERT INTO `albums` (`nom`, `created_at`, `updated_at`) VALUES
-('partenaires', NULL, NULL),
-('t', NULL, NULL),
-('test', NULL, NULL),
-('test2', NULL, NULL),
-('tt', NULL, NULL),
-('ttt', NULL, NULL),
-('tttt', NULL, NULL),
-('tttttt', NULL, NULL),
-('tttttttt', NULL, NULL);
+INSERT INTO `albums` (`nom`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('partenaires', NULL, NULL, NULL),
+('t', NULL, NULL, NULL),
+('test', NULL, NULL, NULL),
+('test2', NULL, NULL, NULL),
+('tt', NULL, NULL, NULL),
+('ttt', NULL, NULL, NULL),
+('tttt', NULL, NULL, NULL),
+('tttttt', NULL, NULL, NULL),
+('tttttttt', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,8 @@ CREATE TABLE `catalogues` (
 INSERT INTO `catalogues` (`id`, `created_at`, `updated_at`, `nom`, `description`, `img`) VALUES
 (1, NULL, NULL, 'Animations', 'Animations', 'Animation.jpg'),
 (2, NULL, NULL, 'Formations', 'Formations', 'Formation.jpg'),
-(3, NULL, NULL, 'Soutien scolaire', 'Soutien scolaire', 'Soutien.jpg');
+(3, NULL, NULL, 'Soutien scolaire', 'Soutien scolaire', 'Soutien.jpg'),
+(4, NULL, NULL, 'test', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -230,6 +232,21 @@ CREATE TABLE `etiquettemodules` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `etiquettemodules`
+--
+
+INSERT INTO `etiquettemodules` (`module_id`, `etiquette_id`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL),
+(2, 1, NULL, NULL),
+(3, 1, NULL, NULL),
+(4, 1, NULL, NULL),
+(4, 2, NULL, NULL),
+(5, 1, NULL, NULL),
+(5, 2, NULL, NULL),
+(6, 1, NULL, NULL),
+(6, 2, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -284,29 +301,30 @@ CREATE TABLE `membres` (
   `telephone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `membres`
 --
 
-INSERT INTO `membres` (`id`, `created_at`, `updated_at`, `nom`, `prenom`, `telephone`, `email`, `photo`, `description`) VALUES
-(1, NULL, NULL, 'DICKA DICKA', 'Laetitia', '06.59.88.45.45', 'tormentito13@hotmail.fr', 'laeti-dicka.png', 'Presidente'),
-(2, NULL, NULL, 'LANNEY RICCI', 'Rémi', '06.20.82.70.88', 'contact@remi-lanney.com', 'LANNEY-remi.png', '<p>Tr&eacute;sorier &amp; webmaster</p>\r\n'),
-(3, NULL, NULL, 'LANNEY RICCI', 'Samantha', '06.52.25.17.66', 'chen.ricci@gmail.com', 'Sam-RICCI.png', '<p>Coordinatrice</p>\r\n'),
-(7, NULL, NULL, 'Estival', 'Laetitia', '0771067549', 'estiticia@hotmail.fr', 'laeti-estival.png', '<p>Cr&eacute;atrice de bijoux sur mesure et d&#39;objets usuels d&eacute;coratifs, &agrave; l&#39;aide de mat&eacute;riel recycl&eacute; ou de mat&eacute;riaux divers.</p>\r\n<p><a href=\"http://creaticia.fr\"  target=\"_blank\"> http://creaticia.fr</a></p>'),
-(8, NULL, NULL, 'Gatineau', 'Jean-Sebastien', '0652251766', 'apprentispassages@gmail.com', NULL, '<p>Centres d&#39;int&eacute;r&ecirc;ts pour l&#39;art des costumes de sc&egrave;ne, broderie, maquillage, d&eacute;cors latex, ma&ccedil;onnerie, bricolage</p>\r\n'),
-(9, NULL, NULL, 'Guigo', 'René Pierre', '0614538641', 'elvraenir@yahoo.fr', NULL, '<p>Jeu de r&ocirc;le, bricolage</p>\r\n\r\n<p>En poste actuellement.</p>\r\n'),
-(10, NULL, NULL, 'Chelbi Rallion', 'Meryem', '0652251766', 'apprentispassages@gmail.com', NULL, '<p>Assistante de vie actuellement.</p>\r\n\r\n<p>Graphiste, designer et communication visuelle.</p>\r\n\r\n<p>Illustratrice</p>\r\n\r\n<p>Infographiste</p>\r\n\r\n<p>Animatrice</p>\r\n'),
-(11, NULL, NULL, 'Dattero', 'Sébastien', '0652251766', 'apprentispassages@gmail.com', NULL, '<p>Agent de s&eacute;curit&eacute; &agrave; la fondation Lenval de Nice, passionn&eacute; d&#39;informatique et de musique, je suis batteur.</p>\r\n'),
-(12, NULL, NULL, 'Todesco', 'Stéphane', '0652251766', 'todescostephane@hotmail.com', 'steph.png', '<p>Eb&eacute;niste d&#39;art, sculpteur sur boi</p>\r\n\r\n<p>Fabricant de diadem, colliers, parures, bracelets de force, d&eacute;coration, fioritures en fil d&#39;aluminium</p>\r\n\r\n<p>Connaissance et utilisation de machines outils</p>\r\n'),
-(13, NULL, NULL, 'Michelet', 'Claire', '0622343385', 'michelet.claire@hotmail.com', 'Michelet-Claire.jpg', '<p>Docteur en bioinformatique sp&eacute;cialis&eacute;e en interaction mol&eacute;culaire et cellulaire.</p>\r\n'),
-(14, NULL, NULL, 'Enrici', 'Cyril', '06 27 20 01 62', 'enrici.cyril@gmail.com', NULL, '<p>C&#39;est le Cyril</p>\r\n'),
-(15, NULL, NULL, 'Gharoual', 'Bouzidi', '06 28 33 58 56', 'bouzidi.gharoual@gmail.com', NULL, '<p>Appelez moi Boubou</p>\r\n<p>Bisous</p>\r\n'),
-(16, NULL, NULL, 'Heudier', 'Jean-Louis ', '0608545676', 'jean-louis@heudier.eu', 'Heudier-Jean-Louis.jpg', '<p><strong>Jean-Louis Heudier</strong>, est <a href=\"https://fr.wikipedia.org/wiki/Astronome\" title=\"Astronome\">astronome. Il</a> a exerc&eacute; &agrave; l&#39;<a href=\"https://fr.wikipedia.org/wiki/Observatoire_de_la_C%C3%B4te_d%27Azur\" title=\"Observatoire de la Côte d\'Azur\">observatoire de la C&ocirc;te d&#39;Azur</a> de 1967 &agrave; 2009.</p>\r\n\r\n<p>De 1974 &agrave; 1989, il dirige le <a href=\"https://fr.wikipedia.org/wiki/Chambre_de_Schmidt\" title=\"Chambre de Schmidt\">t&eacute;lescope de Schmidt</a> du <a href=\"https://fr.wikipedia.org/wiki/Centre_de_recherches_en_g%C3%A9odynamique_et_astrom%C3%A9trie\" title=\"Centre de recherches en géodynamique et astrométrie\">CERGA</a> au plateau de Calern, le plus gros appareil photographique d&#39;Europe. &Agrave; partir de 2006, il dirige <em><a href=\"https://fr.wikipedia.org/wiki/Observatoire_de_la_C%C3%B4te_d%27Azur\" title=\"Observatoire de la Côte d\'Azur\">Observatorium</a></em>, p&ocirc;le de diffusion de culture scientifique implant&eacute; &agrave; l&#39;<a href=\"https://fr.wikipedia.org/wiki/Observatoire_de_Nice\" title=\"Observatoire de Nice\">observatoire de Nice</a>. Il prend sa retraite en septembre 2009.</p>\r\n\r\n<p>En tant qu&#39;astronome professionnel, il a pr&eacute;sid&eacute;, de 1979 &agrave; 1982 et de 1988 &agrave; 1991, le groupe de travail &quot;Photographie&quot; de l&#39;<a href=\"https://fr.wikipedia.org/wiki/Union_astronomique_internationale\" title=\"Union astronomique internationale\">Union astronomique internationale</a>.</p>\r\n'),
-(17, NULL, NULL, 'Carassou', 'Sebastien', '06 52 25 17 66', 'sebastiencarassou974@gmail.com', 'Carassou-Sebastien.jpg', '<p style=\"text-align:justify\">S&eacute;bastien Carassou est Docteur en astrophysique et sp&eacute;cialiste de l&rsquo;&eacute;volution des galaxies.</p>\r\n\r\n<p style=\"text-align:justify\">En parall&egrave;le de ses fonctions acad&eacute;miques, il a lanc&eacute; sa cha&icirc;ne YouTube de vulgarisation scientifique sur la science de l&rsquo;univers qu&rsquo;il pr&eacute;sente et qu&rsquo;il r&eacute;alise.</p>\r\n'),
-(19, NULL, NULL, 'Ricci', 'Louis', '0652251766', 'louis.ricci@free.fr', 'Ricci-Louis.jpg', '<h3>Ing&eacute;nieur en m&eacute;canique &eacute;nerg&eacute;tique diplom&eacute; des Arts et M&eacute;tiers</h3>\r\n');
+INSERT INTO `membres` (`id`, `created_at`, `updated_at`, `nom`, `prenom`, `telephone`, `email`, `photo`, `description`, `deleted_at`) VALUES
+(1, NULL, NULL, 'DICKA DICKA', 'Laetitia', '06.59.88.45.45', 'tormentito13@hotmail.fr', 'laeti-dicka.png', 'Presidente', NULL),
+(2, NULL, NULL, 'LANNEY RICCI', 'Rémi', '06.20.82.70.88', 'contact@remi-lanney.com', 'LANNEY-remi.png', '<p>Tr&eacute;sorier &amp; webmaster</p>\r\n', NULL),
+(3, NULL, NULL, 'LANNEY RICCI', 'Samantha', '06.52.25.17.66', 'chen.ricci@gmail.com', 'Sam-RICCI.png', '<p>Coordinatrice</p>\r\n', NULL),
+(7, NULL, NULL, 'Estival', 'Laetitia', '0771067549', 'estiticia@hotmail.fr', 'laeti-estival.png', '<p>Cr&eacute;atrice de bijoux sur mesure et d&#39;objets usuels d&eacute;coratifs, &agrave; l&#39;aide de mat&eacute;riel recycl&eacute; ou de mat&eacute;riaux divers.</p>\r\n<p><a href=\"http://creaticia.fr\"  target=\"_blank\"> http://creaticia.fr</a></p>', NULL),
+(8, NULL, NULL, 'Gatineau', 'Jean-Sebastien', '0652251766', 'apprentispassages@gmail.com', NULL, '<p>Centres d&#39;int&eacute;r&ecirc;ts pour l&#39;art des costumes de sc&egrave;ne, broderie, maquillage, d&eacute;cors latex, ma&ccedil;onnerie, bricolage</p>\r\n', NULL),
+(9, NULL, NULL, 'Guigo', 'René Pierre', '0614538641', 'elvraenir@yahoo.fr', NULL, '<p>Jeu de r&ocirc;le, bricolage</p>\r\n\r\n<p>En poste actuellement.</p>\r\n', NULL),
+(10, NULL, NULL, 'Chelbi Rallion', 'Meryem', '0652251766', 'apprentispassages@gmail.com', NULL, '<p>Assistante de vie actuellement.</p>\r\n\r\n<p>Graphiste, designer et communication visuelle.</p>\r\n\r\n<p>Illustratrice</p>\r\n\r\n<p>Infographiste</p>\r\n\r\n<p>Animatrice</p>\r\n', NULL),
+(11, NULL, NULL, 'Dattero', 'Sébastien', '0652251766', 'apprentispassages@gmail.com', NULL, '<p>Agent de s&eacute;curit&eacute; &agrave; la fondation Lenval de Nice, passionn&eacute; d&#39;informatique et de musique, je suis batteur.</p>\r\n', NULL),
+(12, NULL, NULL, 'Todesco', 'Stéphane', '0652251766', 'todescostephane@hotmail.com', 'steph.png', '<p>Eb&eacute;niste d&#39;art, sculpteur sur boi</p>\r\n\r\n<p>Fabricant de diadem, colliers, parures, bracelets de force, d&eacute;coration, fioritures en fil d&#39;aluminium</p>\r\n\r\n<p>Connaissance et utilisation de machines outils</p>\r\n', NULL),
+(13, NULL, NULL, 'Michelet', 'Claire', '0622343385', 'michelet.claire@hotmail.com', 'Michelet-Claire.jpg', '<p>Docteur en bioinformatique sp&eacute;cialis&eacute;e en interaction mol&eacute;culaire et cellulaire.</p>\r\n', NULL),
+(14, NULL, NULL, 'Enrici', 'Cyril', '06 27 20 01 62', 'enrici.cyril@gmail.com', NULL, '<p>C&#39;est le Cyril</p>\r\n', NULL),
+(15, NULL, NULL, 'Gharoual', 'Bouzidi', '06 28 33 58 56', 'bouzidi.gharoual@gmail.com', NULL, '<p>Appelez moi Boubou</p>\r\n<p>Bisous</p>\r\n', NULL),
+(16, NULL, NULL, 'Heudier', 'Jean-Louis ', '0608545676', 'jean-louis@heudier.eu', 'Heudier-Jean-Louis.jpg', '<p><strong>Jean-Louis Heudier</strong>, est <a href=\"https://fr.wikipedia.org/wiki/Astronome\" title=\"Astronome\">astronome. Il</a> a exerc&eacute; &agrave; l&#39;<a href=\"https://fr.wikipedia.org/wiki/Observatoire_de_la_C%C3%B4te_d%27Azur\" title=\"Observatoire de la Côte d\'Azur\">observatoire de la C&ocirc;te d&#39;Azur</a> de 1967 &agrave; 2009.</p>\r\n\r\n<p>De 1974 &agrave; 1989, il dirige le <a href=\"https://fr.wikipedia.org/wiki/Chambre_de_Schmidt\" title=\"Chambre de Schmidt\">t&eacute;lescope de Schmidt</a> du <a href=\"https://fr.wikipedia.org/wiki/Centre_de_recherches_en_g%C3%A9odynamique_et_astrom%C3%A9trie\" title=\"Centre de recherches en géodynamique et astrométrie\">CERGA</a> au plateau de Calern, le plus gros appareil photographique d&#39;Europe. &Agrave; partir de 2006, il dirige <em><a href=\"https://fr.wikipedia.org/wiki/Observatoire_de_la_C%C3%B4te_d%27Azur\" title=\"Observatoire de la Côte d\'Azur\">Observatorium</a></em>, p&ocirc;le de diffusion de culture scientifique implant&eacute; &agrave; l&#39;<a href=\"https://fr.wikipedia.org/wiki/Observatoire_de_Nice\" title=\"Observatoire de Nice\">observatoire de Nice</a>. Il prend sa retraite en septembre 2009.</p>\r\n\r\n<p>En tant qu&#39;astronome professionnel, il a pr&eacute;sid&eacute;, de 1979 &agrave; 1982 et de 1988 &agrave; 1991, le groupe de travail &quot;Photographie&quot; de l&#39;<a href=\"https://fr.wikipedia.org/wiki/Union_astronomique_internationale\" title=\"Union astronomique internationale\">Union astronomique internationale</a>.</p>\r\n', NULL),
+(17, NULL, NULL, 'Carassou', 'Sebastien', '06 52 25 17 66', 'sebastiencarassou974@gmail.com', 'Carassou-Sebastien.jpg', '<p style=\"text-align:justify\">S&eacute;bastien Carassou est Docteur en astrophysique et sp&eacute;cialiste de l&rsquo;&eacute;volution des galaxies.</p>\r\n\r\n<p style=\"text-align:justify\">En parall&egrave;le de ses fonctions acad&eacute;miques, il a lanc&eacute; sa cha&icirc;ne YouTube de vulgarisation scientifique sur la science de l&rsquo;univers qu&rsquo;il pr&eacute;sente et qu&rsquo;il r&eacute;alise.</p>\r\n', NULL),
+(19, NULL, NULL, 'Ricci', 'Louis', '0652251766', 'louis.ricci@free.fr', 'Ricci-Louis.jpg', '<h3>Ing&eacute;nieur en m&eacute;canique &eacute;nerg&eacute;tique diplom&eacute; des Arts et M&eacute;tiers</h3>\r\n', NULL);
 
 -- --------------------------------------------------------
 
@@ -399,6 +417,18 @@ CREATE TABLE `moduleactions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `moduleactions`
+--
+
+INSERT INTO `moduleactions` (`module_id`, `action_id`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL),
+(2, 1, NULL, NULL),
+(3, 1, NULL, NULL),
+(4, 2, NULL, NULL),
+(5, 2, NULL, NULL),
+(6, 3, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -446,6 +476,14 @@ CREATE TABLE `pages` (
   `contenu` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `pages`
+--
+
+INSERT INTO `pages` (`id`, `created_at`, `updated_at`, `nom`, `contenu`) VALUES
+(1, NULL, NULL, 'association', '<div>\r\n            <p>Notre association, fondée en 2013, oeuvre pour la diffusion de la culture, notamment la culture scientifique dans la vallée de la Vésubie et ailleurs.</p>\r\n            <p>Nous nous efforçons de présenter des sujets scientifiques de manière ludique, chacune de nos activités et de nos animations sont relues et validée par notre conseil scientifique avant d\'être proposé à notre public.</p>\r\n            <p>Professionnels ou amateurs, tous nos intervenants sont animés d\'une même passion de transmettre.</p>\r\n            <p><strong>Notre but</strong> : remettre du plaisir dans l\'apprentissage.</p>\r\n            <p><strong><em>Edito</em></strong></p>\r\n            <p>Certains peuvent prétendre qu\'enseigner, former, ne s\'invente pas. Nous répondons que si, justement, cela s\'invente et se réinvente, chaque jour, au contact du public, au gré des nouvelles découvertes, des avancées de la science.</p>\r\n            <p>Nos formations sont donc toutes animées de ce désir de rester en accord avec notre public et les dernières découvertes.</p>\r\n            <p><em><strong>Action « Talents oubliés » </strong></em></p>\r\n            <p>Nos apprentis pas sages, intervenants, sont pour la plupart des « talents oubliés ». Des personnes dotées d\'une soif de découvertes, souvent autodidactes, toujours très cultivées dans divers domaines, en permanence en démarche d\'amélioration de leurs connaissances et compétences, elles ont rejoints notre association pour donner corps à&nbsp; leur envie de savoir et de partager. Notre association souhaite leur donner une chance de se faire valoir pour leur réelles compétences, pas toujours reconnues à leur juste valeur.</p>\r\n            </div>'),
+(2, NULL, NULL, 'Information', ' <p><em><strong>Association loi 1901</strong>, parution au JO:&nbsp;le 10 Octobre 2013, </em></p>\r\n            <p><em><strong>siège social</strong> : quartier les blancons - 06450 Belvédère&nbsp;</em></p>\r\n            <p><em>Agrément éducation nationale, académie de Nice le 9/02/2019</em></p>\r\n            <p><em>Code APE : 9499Z Autre organisation fonctionnant par adhésion volontaire</em></p>\r\n            <p><em><strong>N°RNA</strong> : W062007381 - <strong>N° Siret</strong> : 80960587600014 - <strong>N° sociétaire</strong> 3916720P (MAIF) </em></p>\r\n            <p><em>Déclaration d\'activité d\'organisme de formation : 93060847206</em></p>\r\n\r\n        </div>');
+
 -- --------------------------------------------------------
 
 --
@@ -468,19 +506,20 @@ CREATE TABLE `photos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `chemin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `chemin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `photos`
 --
 
-INSERT INTO `photos` (`id`, `created_at`, `updated_at`, `chemin`) VALUES
-(1, NULL, NULL, '/partenaires/1-region-sud.jpg'),
-(2, NULL, NULL, 'partenaires/2-terra-numerica.png'),
-(3, NULL, NULL, '/partenaires/3-culture-science.png'),
-(4, NULL, NULL, '/partenaires/academie-nice.jpg'),
-(5, NULL, NULL, '/partenaires/belveder-06.jpg');
+INSERT INTO `photos` (`id`, `created_at`, `updated_at`, `chemin`, `deleted_at`) VALUES
+(1, NULL, NULL, '/partenaires/1-region-sud.jpg', NULL),
+(2, NULL, NULL, 'partenaires/2-terra-numerica.png', NULL),
+(3, NULL, NULL, '/partenaires/3-culture-science.png', NULL),
+(4, NULL, NULL, '/partenaires/academie-nice.jpg', NULL),
+(5, NULL, NULL, '/partenaires/belveder-06.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -570,7 +609,8 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -734,7 +774,7 @@ ALTER TABLE `actions`
 -- AUTO_INCREMENT pour la table `catalogues`
 --
 ALTER TABLE `catalogues`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `categoriecoupsdecoeurs`
@@ -782,7 +822,7 @@ ALTER TABLE `modules`
 -- AUTO_INCREMENT pour la table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `photos`
