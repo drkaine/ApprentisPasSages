@@ -10,18 +10,18 @@
     <ul>
      </br>
     @foreach ($actions as $action)
-    
+
         <li><h4>{{ $action->nom }}</h4></li></br>
         <ul>
-       
-        @foreach ($modules as $module)
+
+        {{-- @foreach ($modules as $module)
         @foreach ($module as $m)
              <li>{{ $m->nom }}</li></br>
             <ul>
        </ul></br>
         @endforeach
-            
-        @endforeach
+
+        @endforeach--}}
        </ul>
     @endforeach
     </ul>

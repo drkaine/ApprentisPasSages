@@ -71,11 +71,10 @@ Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@album
 
 // Route::get("/suppression-catalogues/{id}","App\Http\Controllers\TemplateController@confirmationSuppression")->name("TemplateController.confirmationSuppression");
 
-// Route::delete("/action-admin","App\Http\Controllers\TemplateController@deleteCatalogue");
 
 Route::delete('/catalogueDelete{id}', "App\Http\Controllers\TemplateController@deleteCatalogue")->name("TemplateController.deleteCatalogue");
 
-// Route::delete('/accueil-admin', "App\Http\Controllers\TemplateController@deleteMembre")->name("TemplateController.deleteMembre");
+Route::delete('/deleteMembre{id}', "App\Http\Controllers\TemplateController@deleteMembre")->name("TemplateController.deleteMembre");
 
 // Route::delete('/galerie-admin', "App\Http\Controllers\TemplateController@deleteAlbum")->name("TemplateController.deleteAlbum");
 
@@ -83,7 +82,7 @@ Route::delete('/catalogueDelete{id}', "App\Http\Controllers\TemplateController@d
 
 Route::delete('/moduleDelete{id}', "App\Http\Controllers\TemplateController@deleteModule")->name("TemplateController.deleteModule");
 
-Route::delete('/actionDelete{id}', "App\Http\Controllers\TemplateController@deleteActionM")->name("TemplateController.deleteAction");
+Route::delete('/actionDelete{id}', "App\Http\Controllers\TemplateController@deleteActionM")->name("TemplateController.deleteActionM");
 
 Route::delete('/catcdcDelete{id}', "App\Http\Controllers\TemplateController@deleteCategorieCoupCoeur")->name("TemplateController.deleteCategorieCoupCoeur");
 

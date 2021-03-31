@@ -13,7 +13,7 @@
     @foreach ($actions as $action)
         <li><h4>{{ $action->nom }}</h4>
             {{-- <a href="{{ url('update/') }}" class="fas fa-edit"></a> --}}
-            <form action="{{ url('/actionDelete'.$action->id) }}" method="post">
+            <form action="{{ url('/actionDelete'.$prestation) }}" method="post">
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
                 <button class="btn btn-danger">
@@ -23,23 +23,23 @@
             </li>
         <ul>
             <a href="ajout" class="fas fa-plus-circle"></a><br>
-        @foreach ($modules as $module)
+        {{-- @foreach ($modules as $module)
         @foreach ($module as $m)
 
              <li>{{ $m->nom }}</li>
-             {{-- <a href="{{ url('update/') }}" class="fas fa-edit"></a> --}}
-             {{-- <form action="{{ url('/moduleDelete'.$module->id) }}" method="post">
+             <a href="{{ url('update/') }}" class="fas fa-edit"></a>
+             <form action="{{ url('/moduleDelete'.$module->id) }}" method="post">
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
                 <button class="btn btn-danger">
                     <i class="fas fa-minus-circle"></i>
                 </button>
-            </form> --}}
+            </form>
             <ul>
        </ul></br>
         @endforeach
 
-        @endforeach
+        @endforeach --}}
        </ul>
     @endforeach
     </ul>

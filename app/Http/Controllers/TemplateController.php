@@ -111,11 +111,11 @@ class TemplateController extends Controller
             return redirect('/accueil-admin');
         }
 
-        // function deleteMembre(Request $request)
-        // {
-        //     DB::delete('delete from membres where id = ?',[$request->id]);
-        //     return redirect('/accueil-admin');
-        // }
+        function deleteMembre(Membre $membre)
+        {
+            $membre->trashed();
+            return redirect('/accueil-admin');
+        }
 
         // function deleteAlbum(Request $request)
         // {
@@ -131,7 +131,7 @@ class TemplateController extends Controller
 
         function deleteModule(Request $request)
         {
-            DB::delete('delete from moduleactions where module_id = ?',[$request->id]);
+            DB::delete('delete from moduleactions  where module_id = ?',[$request->id]);
             // DB::delete('delete from modules where id = ?',[$request->id]);
             return back();
         }
@@ -145,7 +145,7 @@ class TemplateController extends Controller
 
         function deleteActionM(Request $request)
         {
-            DB::delete('delete from moduleactions where action_id = ?',[$request->id]);
+            DB::delete('delete from actioncatalogues where action_id = ?',[$request->id]);
             // DB::delete('delete from actions where id = ?',[$request->id]);
             return back();
         }
