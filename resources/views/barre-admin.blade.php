@@ -8,7 +8,9 @@
     <title>Apprentis Pas Sages</title>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
+    <!--    CKEDITOR !-->
+     <script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
+     <script> import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';</script>
 
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -59,20 +61,19 @@
             <li class="logo">
                 <img
                   class="logo-fox"
-                  src="{{asset("images/fox_logo.png")}}"  alt="logo"/>
+                  src="{{asset('images/fox_logo.png')}}"  alt="logo"/>
               </li>
             <li class="logo">
               <img
                 class="logo-apprentis"
-                src="{{asset("images/apprentis_pas_sages_banniere.png")}}"  alt="logo"/>
+                src="{{asset('images/apprentis_pas_sages_banniere.png')}}"  alt="logo"/>
             </li>
             <li class="btn"><span class="fas fa-bars"></span></li>
             <div class="items">
-              <li><a href="/accueil-admin" >Accueil</a></li>
-              <li><a href="/association-admin">Qui sommes Nous?</a></li>
-              <li><a href="/galerie-admin">Galerie photo</a></li>
-              <li><a href="/coup-coeur-admin">Coups de coeur</a></li>
-
+              <li><a href="{{route('Accueil-Admin')}}" >Accueil</a></li>
+              <li><a href="{{route('Association-Admin')}}">Qui sommes Nous?</a></li>
+              <li><a href="{{route('Galerie-Admin')}}">Galerie photo</a></li>
+              <li><a href="{{route('coupDeCoeur-Admin')}}">Coups de coeur</a></li>
 
 
 
@@ -230,10 +231,10 @@
                 </div>
                            </div>
 
-              <li><a href="prestations-admin" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>
+              <li><a href="prestations" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>
             <ul class="dropdown-menu">
                 @foreach ($catalogues as $catalogue)
-                        <li><a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a></li></br>
+                        <li><a href="{{route('TemplateController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a></li></br>
                 @endforeach
             </ul>
             </li>
@@ -261,6 +262,15 @@
 
     <!-- footer -->
       <footer class="footer">
+
+
+
+        <div class="contact">
+            <img class="img-logo" src="{{ asset("images/apprentis_pas_sages_banniere.png") }}"  alt="">
+ <!--<form class="btn-contact" action="">
+            <button class="btn-contact-us" data-toggle="modal" data-target="#ContactModal">est</button>
+        </form>-->
+                <a class="btn-contact-us"       data-toggle="modal" data-target="#ContactModal">Contactez-nous</a>
 
           <ul  class="social-media-links">
             <li>

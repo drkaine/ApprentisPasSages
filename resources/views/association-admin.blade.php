@@ -1,25 +1,71 @@
 @extends("barre-admin")
 
 @section("content")
-<body>
-<div id="ban" class="container-fluid m-t-1 ban">
-    <h1 id="titreAssociation" style="box-sizing:border-box;">Qui sommes nous ?</h1>
+@foreach($asso as $assos)
 
-<h1 ></h1>
-</div>
-      <!-- galerie -->
-      <section class="about-us">
-          @foreach ($asso as $assoc)
-            {{print($assoc->contenu)}}
-          @endforeach
+    <form action="" method="post">
+    {{ csrf_field() }}
+    {!! method_field('PUT') !!}
 
-          <div id="asociation">
-            @foreach ($info as $infos)
-                {{print($infos->contenu)}}
-            @endforeach
-      </section>
-      <section id="coupDeCoeur" class ="cdc">
-        <div class="m-t-1 ban2">
-        </div>
-    </section>
+    <input type="hidden" name="id" value="{{ $assos->id }}">
+  <h1>{{ $assos->nom }}</h1>
+<textarea id="assoEdit" name ="contenu" value="{{ $assos->contenu }}">
+    {{ $assos->contenu }}
+</textarea>
+<input type="submit" value="Editer" name ="edito" >
+</form>
+
+@endforeach
+
+@foreach($info as $infos)
+    <form action="" method="post">
+    {{ csrf_field() }}
+    {!! method_field('PUT') !!}
+
+    <input type="hidden" name="id" value="{{ $infos->id }}">
+  <h1>{{ $infos->nom }}</h1>
+<textarea id="infoEdit" name ="contenu" value="{{ $infos->contenu }}">
+    {{ $infos->contenu }}
+</textarea>
+<input type="submit" value="Editer" name ="edito" >
+</form>
+@endforeach
+
+
+
+<script>
+ClassicEditor
+    .create( document.querySelector( '#infoEdit' ) )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+
+</script>
+
+<script>
+//    import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';
+
+ClassicEditor
+    .create( document.querySelector( '#assoEdit' ) )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+//    .create( document.querySelector( '#assoEdit' ), {
+//        plugins: [ HtmlEmbed],
+//        toolbar: [ 'htmlEmbed']
+//    } )
+//    .then( editor => {
+//        console.log( editor );
+//    } )
+//    .catch( error => {
+//        console.error( error );
+//    } );
+</script>
+
 @endsection

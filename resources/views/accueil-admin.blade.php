@@ -21,16 +21,17 @@
                     <i class="fas fa-edit"></i>
                 </button>
             </form> --}}
-            <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a>
-            <a href="{{ url('delete/'.$catalogue->id) }}" class="fas fa-minus-circle"></a>
 
-            {{-- <form action="{{ url('accueil/'.$catalogue->id) }}" method="post">
+            {{-- <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a> --}}
+            {{-- <a href="{{route('TemplateController.confirmationSuppression', ['id'=>$catalogue->id])}}" class="fas fa-minus-circle"></a> --}}
+
+            <form action="{{ url('/'.$catalogue->id) }}" method="post">
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
                 <button class="btn btn-danger">
                     <i class="fas fa-minus-circle"></i>
                 </button>
-            </form> --}}
+            </form>
 
           <a class="cta" href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
             <span>{{ $catalogue->nom}}</span>

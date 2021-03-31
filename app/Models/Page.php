@@ -9,6 +9,8 @@ class Page extends Model
 {
     use HasFactory;
 
+    use HasFactory;
+
     protected $table = "pages";
 	protected $primaryKey = "id";
 	public $timestamps = true;

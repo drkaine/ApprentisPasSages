@@ -61,12 +61,11 @@
 
 <!--Evenement-->
 <div id="ban" class="container-fluid m-t-1 ban">
-    <h1 id="titreAssociation" style="box-sizing:border-box;">L'association</h1>
+    <h1 id="titreAssociation" style="box-sizing:border-box;">Evénement de l'association</h1>
 </div>
 
 
 <section id="sectionAssociation" class="container">
-<h1>Evénement de l'association</h1>
 <div class="zoneProg">
 @foreach($contentProgs as $cProg)
        <div clas="programme">
