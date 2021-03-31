@@ -9,9 +9,9 @@
 <div class="row">
     <div class="col-3 p-auto">
       @if($membre->photo == null)
-        <img class="imageOneTeam" src="/images/team/apprentispassages_logo_renard.png" alt="photo de l'avatar de l'association ApprentiPasSage">
+        <img class="imageOneTeam" src=" {{ asset("images/team/apprentispassages_logo_renard.png") }} " alt="photo de l'avatar de l'association ApprentiPasSage">
       @else
-           <img class="imageOneTeam" src="/images/team/{{$membre->photo}}" alt="photo de {{$membre->nom}} {{$membre->prenom}} de l'association ApprentiPasSage">
+           <img class="imageOneTeam" src="{{  asset("/images/team/$membre->photo") }} " alt="photo de {{$membre->nom}} {{$membre->prenom}} de l'association ApprentiPasSage">
       @endif
     </div>
     <div class="col-5">
