@@ -234,7 +234,7 @@
               <li><a href="prestations" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>
             <ul class="dropdown-menu">
                 @foreach ($catalogues as $catalogue)
-                        <li><a href="{{route('TemplateController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a></li></br>
+                        <li><a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a></li></br>
                 @endforeach
             </ul>
             </li>

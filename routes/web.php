@@ -69,11 +69,11 @@ Route::put('/Oneteam-admin/{id}', 'App\Http\Controllers\MembreController@saveEdi
 Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
 
 
-Route::get("/suppression-catalogues/{id}","App\Http\Controllers\TemplateController@confirmationSuppression")->name("TemplateController.confirmationSuppression");
+// Route::get("/suppression-catalogues/{id}","App\Http\Controllers\TemplateController@confirmationSuppression")->name("TemplateController.confirmationSuppression");
 
 // Route::delete("/action-admin","App\Http\Controllers\TemplateController@deleteCatalogue");
 
-Route::delete('/{id}', "App\Http\Controllers\TemplateController@deleteCatalogue")->name("TemplateController.deleteCatalogue");
+Route::delete('/catalogueDelete{id}', "App\Http\Controllers\TemplateController@deleteCatalogue")->name("TemplateController.deleteCatalogue");
 
 // Route::delete('/accueil-admin', "App\Http\Controllers\TemplateController@deleteMembre")->name("TemplateController.deleteMembre");
 
@@ -81,13 +81,13 @@ Route::delete('/{id}', "App\Http\Controllers\TemplateController@deleteCatalogue"
 
 // Route::delete('/album-admin', "App\Http\Controllers\TemplateController@deletePhoto")->name("TemplateController.deletePhoto");
 
-// Route::delete('/prestation-admin/{prestation}', "App\Http\Controllers\TemplateController@deleteModule")->name("TemplateController.deleteModule");
+Route::delete('/moduleDelete{id}', "App\Http\Controllers\TemplateController@deleteModule")->name("TemplateController.deleteModule");
 
-// Route::delete('/prestation-admin/{prestation}', "App\Http\Controllers\TemplateController@deleteAction")->name("TemplateController.deleteAction");
+Route::delete('/actionDelete{id}', "App\Http\Controllers\TemplateController@deleteActionM")->name("TemplateController.deleteAction");
 
-// Route::delete('/coup-coeur-admin', "App\Http\Controllers\TemplateController@deleteCategorieCoupCoeur")->name("TemplateController.deleteCategorieCoupCoeur");
+Route::delete('/catcdcDelete{id}', "App\Http\Controllers\TemplateController@deleteCategorieCoupCoeur")->name("TemplateController.deleteCategorieCoupCoeur");
 
-// Route::delete('/coup-coeur-admin', "App\Http\Controllers\TemplateController@deleteCoupCoeur")->name("TemplateController.deleteCoupCoeur");
+Route::delete('/cdcDelete{id}', "App\Http\Controllers\TemplateController@deleteCoupCoeur")->name("TemplateController.deleteCoupCoeur");
 
 // Route::delete('/prestation-admin/{prestation}', "App\Http\Controllers\TemplateController@deleteEtiquette")->name("TemplateController.deleteEtiquette");
 

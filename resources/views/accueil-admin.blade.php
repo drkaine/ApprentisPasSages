@@ -25,7 +25,7 @@
             {{-- <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a> --}}
             {{-- <a href="{{route('TemplateController.confirmationSuppression', ['id'=>$catalogue->id])}}" class="fas fa-minus-circle"></a> --}}
 
-            <form action="{{ url('/'.$catalogue->id) }}" method="post">
+            <form action="{{ url('/catalogueDelete'.$catalogue->id) }}" method="post">
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
                 <button class="btn btn-danger">

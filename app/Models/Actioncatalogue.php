@@ -16,13 +16,5 @@ class Actioncatalogue extends Model
         'action_id', 'catalogue_id',
     ];
 
-    function getAction()
-    {
-        return $this->belongsToMany('App\models\Action', 'action_id', 'id');
-    }
 
-    function getCatalogue()
-    {
-        return $this->belongsToMany('App\models\Catalogue', 'catalogue_id', 'id');
-    }
 }

@@ -11,17 +11,30 @@
      </br>
      <a href="ajout" class="fas fa-plus-circle"></a>
     @foreach ($actions as $action)
-        <li><h4>{{ $action->nom }}
-            <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a>
-            <a href="{{ url('delete/'.$catalogue->id) }}" class="fas fa-minus-circle"></a>
+        <li><h4>{{ $action->nom }}</h4>
+            {{-- <a href="{{ url('update/') }}" class="fas fa-edit"></a> --}}
+            <form action="{{ url('/actionDelete'.$action->id) }}" method="post">
+                {{ csrf_field() }}
+                {!! method_field('DELETE') !!}
+                <button class="btn btn-danger">
+                    <i class="fas fa-minus-circle"></i>
+                </button>
+            </form><br>
+            </li>
         <ul>
-            <a href="ajout" class="fas fa-plus-circle"></a>
+            <a href="ajout" class="fas fa-plus-circle"></a><br>
         @foreach ($modules as $module)
         @foreach ($module as $m)
 
              <li>{{ $m->nom }}</li>
-             <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a>
-             <a href="{{ url('delete/'.$catalogue->id) }}" class="fas fa-minus-circle"></a>
+             {{-- <a href="{{ url('update/') }}" class="fas fa-edit"></a> --}}
+             {{-- <form action="{{ url('/moduleDelete'.$module->id) }}" method="post">
+                {{ csrf_field() }}
+                {!! method_field('DELETE') !!}
+                <button class="btn btn-danger">
+                    <i class="fas fa-minus-circle"></i>
+                </button>
+            </form> --}}
             <ul>
        </ul></br>
         @endforeach

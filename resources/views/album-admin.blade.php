@@ -12,7 +12,7 @@
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p)
                 {{-- <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a> --}}
-                <a href="{{ url('delete/'.$p->id) }}" class="fas fa-minus-circle"></a>
+                <a href="{{ url('delete/') }}" class="fas fa-minus-circle"></a>
                     <img src="{{asset("images/$p->chemin ")}}">
                 @endforeach
                 @endforeach
