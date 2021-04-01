@@ -81,7 +81,7 @@ Route::delete('/deleteMembre{id}', "App\Http\Controllers\TemplateController@dele
 
 // Route::delete('/album-admin', "App\Http\Controllers\TemplateController@deletePhoto")->name("TemplateController.deletePhoto");
 
-Route::delete('/moduleDelete{id}', "App\Http\Controllers\TemplateController@deleteModule")->name("TemplateController.deleteModule");
+Route::delete('/moduleDelete{idm}', "App\Http\Controllers\TemplateController@deleteModule")->name("TemplateController.deleteModule");
 
 Route::delete('/actionDelete{id}', "App\Http\Controllers\TemplateController@deleteActionM")->name("TemplateController.deleteActionM");
 

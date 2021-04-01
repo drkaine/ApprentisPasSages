@@ -33,7 +33,7 @@
                 @if($moduleac->module_id == $module->id)
                 <li>{{ $module->nom }}</li>
                 <a href="{{ url('update/') }}" class="fas fa-edit"></a>
-                <form action="{{ url('/moduleDelete'.$module->id) }}" method="post">
+                <form action="{{ Route('TemplateController.deleteModule', ['idm'=>$module->id,"ida"=>$action->id]) }}" method="post">
                  {{ csrf_field() }}
                     {!! method_field('DELETE') !!}
                     <button class="btn btn-danger">

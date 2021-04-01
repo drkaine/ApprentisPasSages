@@ -132,7 +132,7 @@ class TemplateController extends Controller
 
         function deleteModule(Request $request)
         {
-            DB::delete('delete from moduleactions  where module_id = ?',[$request->id]);
+            DB::delete('delete from moduleactions  where module_id = ? and action_id = ?',[$request->idm,$request->ida]);
             // DB::delete('delete from modules where id = ?',[$request->id]);
             return back();
         }
