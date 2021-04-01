@@ -17,6 +17,7 @@ use App\Models\Moduleaction;
 use Illuminate\Http\Request;
 use App\Models\Programmation;
 use App\Models\Actioncatalogue;
+use App\Models\Etiquettemodule;
 use Illuminate\Support\Facades\DB;
 use App\Models\Categoriecoupsdecoeur;
 use Illuminate\Support\Facades\Storage;
@@ -86,6 +87,11 @@ class TemplateController extends Controller
         function getModule()
         {
             return Module::get();
+        }
+
+        function getEtiquetteModule()
+        {
+            return Etiquettemodule::get();
         }
 
         function getActionC($catalogues)
@@ -198,7 +204,7 @@ class TemplateController extends Controller
 
         function prestations(Request $request)
         {
-            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get()]);
+            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule()]);
         }
 
         function album(Request $request)
