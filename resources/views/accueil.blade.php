@@ -133,7 +133,7 @@
 
 
 <div id="keywords" class="m-auto"></div>
-{{-- <a href="lien-mort" class="lien-mort">Signaler un lien mort !</a> --}}
+
 <button type="button" class="lien-mort" data-toggle="modal" data-target="#myModal">Signaler lien mort !</button>
 
 <!-- Modal -->

@@ -12,8 +12,9 @@
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p)
                     <img src="{{asset("images/$p->chemin ")}}">
+
                 @endforeach
-                    
+
 
                 @endforeach
                 </div>

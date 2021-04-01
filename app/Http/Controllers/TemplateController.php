@@ -100,6 +100,11 @@ class TemplateController extends Controller
             return $module;
         }
 
+        function getCouv()
+        {
+
+        }
+
         function deleteCatalogue(Request $request)
         {
             DB::delete('delete from actioncatalogues where catalogue_id = ?',[$request->id]);
@@ -189,7 +194,7 @@ class TemplateController extends Controller
 
         function galerie()
         {
-            return view("galerie",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("galerie",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(), "couv"]);
         }
 
         function coups_de_coeur()
