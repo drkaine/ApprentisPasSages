@@ -40,11 +40,11 @@ Route::get('/coup-coeur', 'App\Http\Controllers\TemplateController@coups_de_coeu
 
 Route::get('/prestation/{prestation}', 'App\Http\Controllers\TemplateController@prestations')->name('TemplateController.prestations');
 
+Route::get('/module/{id}', 'App\Http\Controllers\TemplateController@module')->name('TemplateController.module');
+
 Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')->name('TemplateController.getOneteam');
 
 Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
-
-// ->middleware('auth.basic')
 
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
 
@@ -54,12 +54,13 @@ Route::any('/association-admin', "App\Http\Controllers\TemplateController@associ
 
 Route::put('/association-admin', 'App\Http\Controllers\PagesController@saveEdit');
 
-
 Route::get('/galerie-admin', 'App\Http\Controllers\TemplateController@galerieAdmin')->name('Galerie-Admin');
 
 Route::get('/coup-coeur-admin', 'App\Http\Controllers\TemplateController@coups_de_coeurAdmin')->name('coupDeCoeur-Admin');
 
 Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
+
+Route::get('/module-admin/{id}', 'App\Http\Controllers\TemplateController@moduleAdmin')->name('TemplateController.moduleAdmin');
 
 Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOneteamAdmin')->name('TemplateController.getOneteamAdmin');
 

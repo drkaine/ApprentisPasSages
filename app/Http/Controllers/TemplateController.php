@@ -13,6 +13,7 @@ use App\Models\Catalogue;
 use App\Models\Etiquette;
 use App\Models\ContentProg;
 use App\Models\Coupsdecoeur;
+use App\Models\Moduleaction;
 use Illuminate\Http\Request;
 use App\Models\Programmation;
 use App\Models\Actioncatalogue;
@@ -95,13 +96,8 @@ class TemplateController extends Controller
 
         function getModuleByIdAction($id)
         {
-            $id_action = [];
-            foreach($id as $pid)
-            {
-                $id_action[] = Action::where('id',$pid->id)->with("getModules")->get();
-            }
-
-            return $id_action;
+            $module = DB::select("select * from modules JOIN moduleactions ON (modules.id = moduleactions.module_id) where action_id = ?",[$id]);
+            return $module;
         }
 
         function deleteCatalogue(Request $request)
@@ -203,7 +199,7 @@ class TemplateController extends Controller
 
         function prestations(Request $request)
         {
-            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>$this->getModuleByIdAction($this->getActionC($request->prestation))]);
+            return view("prestation",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get()]);
         }
 
         function album(Request $request)
@@ -249,7 +245,7 @@ class TemplateController extends Controller
 
         function prestationsAdmin(Request $request)
         {
-            return view("prestation-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>$this->getModuleByIdAction($this->getActionC($request->prestation))]);
+            return view("prestation-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get()]);
         }
 
         function albumAdmin(Request $request)

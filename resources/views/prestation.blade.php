@@ -14,15 +14,19 @@
         <li><h4>{{ $action->nom }}</h4></li></br>
         <ul>
 
-        {{-- @foreach ($modules as $module)
-        @foreach ($module as $m)
-             <li>{{ $m->nom }}</li></br>
-            <ul>
-       </ul></br>
-        @endforeach
+            @foreach ($modulesac as $moduleac)
+            @foreach ($modules as $module)
 
-        @endforeach--}}
-       </ul>
+
+                @if($moduleac->action_id == $action->id)
+                    @if($moduleac->module_id == $module->id)
+                    <li>{{ $module->nom }}</li>
+                    <ul>
+                    </ul></br>
+                @endif
+                @endif
+                @endforeach
+                @endforeach
     @endforeach
     </ul>
 </div>
