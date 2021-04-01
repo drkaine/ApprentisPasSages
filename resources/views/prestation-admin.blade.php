@@ -3,7 +3,11 @@
 @section("content")
 
 <div id="ban" class="container-fluid m-t-1 ban">
-    <h1 id="titreAssociation" >{{ $prestation }}</h1>
+    @foreach ($prestation as $p)
+    @php $id = $p->id; @endphp
+    <h1 id="titreAssociation" >{{ $p->nom }}</h1>
+    @endforeach
+
 </div>
 
 
@@ -14,7 +18,7 @@
     @foreach ($actions as $action)
         <li><h4>{{ $action->nom }}</h4>
             {{-- <a href="{{ url('update/') }}" class="fas fa-edit"></a> --}}
-            <form action="{{ url('/actionDelete'.$prestation) }}" method="post">
+            <form action="{{ Route('TemplateController.deleteAction', ['idc'=>$id,"ida"=>$action->id]) }}" method="post">
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
                 <button class="btn btn-danger">

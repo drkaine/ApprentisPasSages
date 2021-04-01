@@ -139,17 +139,11 @@ class TemplateController extends Controller
 
         function deleteAction(Request $request)
         {
-            DB::delete('delete from actioncatalogues where catalogue_id = ?',[$request->id]);
+            DB::delete('delete from actioncatalogues where catalogue_id = ? and action_id = ?',[$request->idc, $request->ida,]);
             // DB::delete('delete from actions where id = ?',[$request->id]);
             return back();
         }
 
-        function deleteActionM(Request $request)
-        {
-            DB::delete('delete from actioncatalogues where action_id = ?',[$request->id]);
-            // DB::delete('delete from actions where id = ?',[$request->id]);
-            return back();
-        }
 
         function deleteCategorieCoupCoeur(Request $request)
         {
@@ -250,7 +244,7 @@ class TemplateController extends Controller
 
         function prestationsAdmin(Request $request)
         {
-            return view("prestation-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>$request->prestation,"actions"=>$this->getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get()]);
+            return view("prestation-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>$this->getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get()]);
         }
 
         function albumAdmin(Request $request)

@@ -46,6 +46,7 @@ Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')
 
 Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
 
+
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
 
 Route::get("/accueil-admin", 'App\Http\Controllers\TemplateController@accueilAdmin')->name('Accueil-Admin');
@@ -83,7 +84,7 @@ Route::delete('/deleteMembre{id}', "App\Http\Controllers\TemplateController@dele
 
 Route::delete('/moduleDelete{idm}', "App\Http\Controllers\TemplateController@deleteModule")->name("TemplateController.deleteModule");
 
-Route::delete('/actionDelete{id}', "App\Http\Controllers\TemplateController@deleteActionM")->name("TemplateController.deleteActionM");
+Route::delete('/deleteAction{idc}', "App\Http\Controllers\TemplateController@deleteAction")->name("TemplateController.deleteAction");
 
 Route::delete('/catcdcDelete{id}', "App\Http\Controllers\TemplateController@deleteCategorieCoupCoeur")->name("TemplateController.deleteCategorieCoupCoeur");
 
