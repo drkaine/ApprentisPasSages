@@ -1,9 +1,17 @@
 
 
+<div>
+    @foreach($action as $act)
 
+        @if($act->id==$cProg->action_id)
+        <h4>{{$act->nom}}</h4>
+
+       @endif
+   @endforeach
+</div>
    <div>
        <div>
-           <h4>
+
                 @foreach($module as $mod)
                      @if($mod->id==$cProg->module_id)
 
@@ -72,13 +80,5 @@
         @endforeach
     </div>
  </div>
-     <div>
-         @foreach($action as $act)
 
-             @if($act->id==$cProg->action_id)
-                 {{$act->nom}}
-
-            @endif
-        @endforeach
-    </div>
 
