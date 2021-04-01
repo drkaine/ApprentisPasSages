@@ -115,13 +115,11 @@ class TemplateController extends Controller
         {
             DB::delete('delete from actioncatalogues where catalogue_id = ?',[$request->id]);
             DB::delete('delete from catalogues where id = ?',[$request->id]);
-            return redirect('/accueil-admin');
         }
 
         function deleteMembre(Membre $membre)
         {
             $membre->trashed();
-            return redirect('/accueil-admin');
         }
 
         // function deleteAlbum(Request $request)
@@ -140,34 +138,28 @@ class TemplateController extends Controller
         {
             DB::delete('delete from moduleactions  where module_id = ? and action_id = ?',[$request->idm,$request->ida]);
             // DB::delete('delete from modules where id = ?',[$request->id]);
-            return back();
         }
 
         function deleteAction(Request $request)
         {
             DB::delete('delete from actioncatalogues where catalogue_id = ? and action_id = ?',[$request->idc, $request->ida,]);
             // DB::delete('delete from actions where id = ?',[$request->id]);
-            return back();
         }
-
 
         function deleteCategorieCoupCoeur(Request $request)
         {
             DB::delete('delete from coupsdecoeurs where categoriecoupsdecoeur_id = ?',[$request->id]);
             DB::delete('delete from categoriecoupsdecoeurs where id = ?',[$request->id]);
-            return redirect('/coup-coeur-admin');
         }
 
         function deleteCoupCoeur(Request $request)
         {
             DB::delete('delete from coupsdecoeurs where id = ?',[$request->id]);
-            return redirect('/coup-coeur-admin');
         }
 
         function deleteEtiquette(Request $request)
         {
             DB::delete('delete from etiquettes where id = ?',[$request->id]);
-            return back();
         }
 
 
@@ -258,9 +250,40 @@ class TemplateController extends Controller
             return view("album-admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"photos"=>$this->getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
 
+        function demandeSuppression(Request $request)
+        {
+            return view("suppression-catalogues", ['partenaires'=> $this->getPhotoByAlbum("partenaires"), "id"=>$request->id,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"), "request"=>$request->id]);
+        }
+
         function confirmationSuppression(Request $request)
         {
-            return view("suppression-catalogues", ['partenaires'=> $this->getPhotoByAlbum("partenaires"), "id"=>$request->id,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+            switch ($request->choix)
+            {
+                case 'catalogue':
+                    $this->deleteCatalogue($request);
+                    return back();
+                case 'membre':
+                    $this->deleteMembre($request->membre);
+                    return back();
+                case 'action':
+                    $this->deleteAction($request);
+                    return back();
+                case "module":
+                    $this->deleteModule($request);
+                    return back();
+                case 'evenement':
+                    return back();
+                case 'album':
+                    return back();
+                case 'photo':
+                    return back();
+                case 'catcdc':
+                    $this->deleteCategorieCoupCoeur($request);
+                    return back();
+                case "cdc":
+                    $this->deleteCoupCoeur($request);
+                    return back();
+            }
         }
 
 }
