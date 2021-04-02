@@ -12,7 +12,12 @@
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p)
                 {{-- <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a> --}}
-                <a href="{{ url('delete/') }}" class="fas fa-minus-circle"></a>
+                <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"photo" ,'id1'=>$p->id,"id2"=>""]) }}" method="post">
+                    {{ csrf_field() }}
+                    <button class="btn btn-danger">
+                        <i class="fas fa-minus-circle"></i>
+                    </button>
+                </form>
                     <img src="{{asset("images/$p->chemin ")}}">
                 @endforeach
                 @endforeach

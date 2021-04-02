@@ -4,24 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Membre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MembreController extends Controller
 {
-    public function getOneTeam($teamId)
-    {
-    	$oneTeam = Membre::where('id','=',$teamId)->with('getMembre')->get();
 
-       return view('pages.team', compact('oneTeam'));
-    }
-    
-    
-    
+
     public function saveEdit(Request $request){
 
         $validator = Validator::make($request->all(), [
             'id' => 'required'
-            
-            
+
+
         ]);
 
         if($validator->fails()){

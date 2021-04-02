@@ -164,22 +164,25 @@ class TemplateController extends Controller
             DB::delete('delete from catalogues where id = ?',[$request->id1]);
         }
 
-        function deleteMembre(Membre $membre)
+        function deleteMembre(Request $request)
         {
-            $membre->trashed();
+            Membre::where('id', $request->id1)->delete();
         }
 
-        // function deleteAlbum(Request $request)
-        // {
-        //     DB::delete('delete from albums where nom = ?',[$request->id]);
-        //     return redirect('/galerie-admin');
-        // }
+        function deleteEvenement(Request $request)
+        {
+            Programmation::where('id', $request->id1)->delete();
+        }
 
-        // function deletePhoto(Request $request)
-        // {
-        //     DB::delete('delete from photos where id = ?',[$request->id]);
-        //     return redirect('/Album-admin/$request->id');
-        // }
+        function deleteAlbum(Request $request)
+        {
+            Album::where('nom', $request->id1)->delete();
+        }
+
+        function deletePhoto(Request $request)
+        {
+            Photo::where('id', $request->id1)->delete();
+        }
 
         function deleteModule(Request $request)
         {
@@ -310,8 +313,8 @@ class TemplateController extends Controller
                     $this->deleteCatalogue($request);
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
                 case 'membre':
-                    $this->deleteMembre($request->membre);
-                    return back();
+                    $this->deleteMembre($request);
+                    return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
                 case 'action':
                     $this->deleteAction($request);
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
@@ -325,10 +328,13 @@ class TemplateController extends Controller
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
 
                 case 'evenement':
+                    $this->deleteEvenement($request);
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
                 case 'album':
+                    $this->deleteAlbum($request);
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
                 case 'photo':
+                    $this->deletephoto($request);
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
                 case 'catcdc':
                     $this->deleteCategorieCoupCoeur($request);

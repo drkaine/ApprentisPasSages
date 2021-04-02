@@ -19,6 +19,7 @@ class CreateProgrammationsTable extends Migration
             $table->datetime("dateDebut");
             $table->datetime("dateFin")->nullable();
             $table->integer("nbPersonnesPrevues")->size(11)->nullable();
+            $table->softDeletes();
         });
     }
 
