@@ -79,7 +79,7 @@
               <li><a data-toggle="modal" data-target="#ContactModal" href="">Contact</a></li>
 
               @foreach ($page as $contact)
-              {{ print($contact->contenu) }}
+              {{ print(str_replace("<!-- csrf_field()-->", csrf_field(),$contact->contenu )) }}
               @endforeach
 
               <li><a href="prestations" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>

@@ -27,7 +27,7 @@
 </section>
   <div class="row">
     <div class="col-12 col-sm-8 mt-3 mb-3">
-      <h2 class="titreH2prestation pl-3">&Agrave; A propos de moi:</h2>
+      <h2 class="titreH2prestation pl-3">&Agrave;  propos de moi:</h2>
         <div class="pl-5">{!!$membre->description!!}</div>
     </div>
     <div class="col-12 col-sm-4 border-left border-warning m-auto">
