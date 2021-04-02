@@ -13,9 +13,8 @@
         <ul class="CategorieCoupDeCoeur">
             <li>
                 {{-- <a href="{{ url('update/'.$cc->id) }}" class="fas fa-edit"></a> --}}
-                <form action="{{ url('/catcdcDelete'.$cc->id) }}" method="post">
+                <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catcdc" ,'id1'=>$cc->id,"id2"=>""]) }}" method="post">
                     {{ csrf_field() }}
-                    {!! method_field('DELETE') !!}
                     <button class="btn btn-danger">
                         <i class="fas fa-minus-circle"></i>
                     </button>
@@ -31,9 +30,8 @@
                 <ul>
                     <li>
                         {{-- <a href="{{ url('update/'.$c->categoriecoupsdecoeur_id) }}" class="fas fa-edit"></a> --}}
-                        <form action="{{ url('/cdcDelete'.$c->id) }}" method="post">
+                        <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"cdc" ,'id1'=>$c->id,"id2"=>""]) }}" method="post">
                             {{ csrf_field() }}
-                            {!! method_field('DELETE') !!}
                             <button class="btn btn-danger">
                                 <i class="fas fa-minus-circle"></i>
                             </button>
