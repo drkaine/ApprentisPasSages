@@ -9,8 +9,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <!--    CKEDITOR !-->
-     <script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
-     <script> import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';</script>
 
 
     <link rel="preconnect" href="https://fonts.gstatic.com">

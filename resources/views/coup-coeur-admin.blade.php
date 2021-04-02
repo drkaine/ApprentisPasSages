@@ -7,12 +7,14 @@
     <h1 id="titreAssociation" style="box-sizing:border-box;">Coups de cœur</h1>
 </div>
 <section class="cdc">
-    <a href="ajout" class="fas fa-plus-circle"></a>
+    <a href="{{route('TemplateController.ajoutCategorieCoup-Coeur')}}" class="fas fa-plus-circle"></a>
 
          @foreach ($ccdc as $cc)
         <ul class="CategorieCoupDeCoeur">
             <li>
-                {{-- <a href="{{ url('update/'.$cc->id) }}" class="fas fa-edit"></a> --}}
+                <a href="{{route('TemplateController.editCategorieCoup-Coeur', ['idCC'=>$cc->id])}}" class="fas fa-edit"></a>
+
+            <a href="{{ url('delete/'.$cc->id) }}" class="fas fa-minus-circle"></a>
                 <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catcdc" ,'id1'=>$cc->id,"id2"=>""]) }}" method="post">
                     {{ csrf_field() }}
                     <button class="btn btn-danger">
@@ -21,8 +23,7 @@
                 </form>
                 <h2>{{$cc->nom}} :</h2>
 
-                <a href="ajout" class="fas fa-plus-circle"></a>
-
+                <a href="{{route('TemplateController.ajoutCoup-Coeur', ['id'=>$cc->id])}}" class="fas fa-plus-circle"></a>
 
 
                     @foreach ($cdc as $c)
@@ -36,6 +37,7 @@
                                 <i class="fas fa-minus-circle"></i>
                             </button>
                         </form>
+                        <a href="{{route('TemplateController.editCoup-Coeur', ['idCC'=>$cc->id,'idC'=>$c->id])}}" class="fas fa-edit"></a>
                        <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"> {{$c->nom}}</a>
                     </li>
                 </ul>

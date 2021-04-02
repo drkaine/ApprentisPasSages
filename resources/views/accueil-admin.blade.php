@@ -85,10 +85,11 @@
 
 
 <section id="sectionAssociation" class="container">
-    <a href="ajout" class="fas fa-plus-circle"></a>
+    <a href="{{route('TemplateController.ajoutEvenement')}}" class="fas fa-plus-circle"></a>
 <div class="zoneProg">
 @foreach($contentProgs as $cProg)
        <div clas="programme">
+        <a href="{{route('TemplateController.editEvenement', ['pid'=>$cProg->programmation_id,'aid'=>$cProg->action_id,'mid'=>$cProg->module_id])}}" class="fas fa-edit"></a>
         @include('programmation-admin', compact($cProg))
         </div>
     @endforeach
@@ -121,7 +122,7 @@
             <button type="button" class="btn border rounded buttonTeam" id="teamCs">Conseil scientifique</button>
         </li>
     </ul>
-    <a href="ajout" class="fas fa-plus-circle"></a>
+    <a href="{{route('TemplateController.ajoutOneteamAdmin')}}" class="fas fa-plus-circle"></a>
 </div>
 
 <section class = "team">

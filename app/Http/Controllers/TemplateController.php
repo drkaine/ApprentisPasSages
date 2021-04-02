@@ -8,11 +8,13 @@ use App\Models\Photo;
 use App\Models\Action;
 use App\Models\Membre;
 use App\Models\Module;
+use App\Models\Statut;
 use App\Models\Tagalbum;
 use App\Models\Catalogue;
 use App\Models\Etiquette;
 use App\Models\ContentProg;
 use App\Models\Coupsdecoeur;
+use App\Models\Membrestatut;
 use App\Models\Moduleaction;
 use Illuminate\Http\Request;
 use App\Models\Programmation;
@@ -110,6 +112,51 @@ class TemplateController extends Controller
         {
 
         }
+
+        //ajout
+        public function coups_de_coeurAjout(Request $request)
+        {
+            return view("ajout/ajoutCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->id)->get(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+        }
+        public function categorie_coups_de_coeurAjout(Request $request)
+        {
+            return view("ajout/ajoutCategorieCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+        }
+
+
+
+         function ajoutOneTeamAdmin( Request $request)
+        {
+           return view('ajout/ajoutOneteam', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::with('getStatut')->get(),'page'=>$this->getPageByNom("contact")]);
+        }
+
+
+        function EvenementAjout()
+        {
+            return view("ajout/ajoutEvenement", ['Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"module"=>$this->getModule(),"action"=>$this->getAction()]);
+        }
+    //edit
+    public function coups_de_coeurEdit(Request $request)
+        {
+            return view("edit/editCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>$this->afficheCatalogue(),"cdc"=>Coupsdecoeur::where('id','=',$request->idC)->get(),'page'=>$this->getPageByNom("contact")]);
+        }
+
+    public function categorie_coups_de_coeurEdit(Request $request)
+        {
+            return view("edit/editCategorieCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+        }
+
+    public function getOneTeamAdmin( Request $request)
+        {
+           return view('team-admin', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::get(),"membreStatut"=>Membrestatut::get(),'page'=>$this->getPageByNom("contact")]);
+        }
+
+
+    function EvenementEdit(Request $request)
+        {
+            return view("edit/editEvenement", ['Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"module"=>$this->getModule(),"action"=>$this->getAction(),"programmationId"=>Programmation::where('id','=',$request->pid)->get(),"actionId"=>Action::where('id','=',$request->aid)->get(),"moduleId"=>Module::where('id','=',$request->mid)->get()]);
+        }
+
 
         function deleteCatalogue(Request $request)
         {
@@ -210,11 +257,6 @@ class TemplateController extends Controller
             return view("admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue()]);
         }
 
-        function getOneTeamAdmin( Request $request)
-        {
-           return view('team-admin', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
-        }
-
         function accueilAdmin(){
             return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
         }
@@ -296,5 +338,5 @@ class TemplateController extends Controller
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
             }
         }
-
 }
+

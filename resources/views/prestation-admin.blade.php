@@ -15,6 +15,7 @@
     <ul>
      </br>
      <a href="ajout" class="fas fa-plus-circle"></a>
+
     @foreach ($actions as $action)
         <li><h4>{{ $action->nom }}</h4>
             {{-- <a href="{{ url('update/') }}" class="fas fa-edit"></a> --}}
