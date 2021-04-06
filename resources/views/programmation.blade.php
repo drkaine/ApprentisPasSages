@@ -4,7 +4,7 @@
     @foreach($action as $act)
 
         @if($act->id==$cProg->action_id)
-        <h4>{{$act->nom}}</h4>
+        <h4>{{$act->nom}}</h4><br>
 
        @endif
    @endforeach
@@ -15,7 +15,7 @@
                 @foreach($module as $mod)
                      @if($mod->id==$cProg->module_id)
 
-                        <button type="button"  data-toggle="modal" data-target="#myModal">{{ $mod->nom }}</button>
+                        <button type="button"  data-toggle="modal" data-target="#myModal">{{ $mod->nom }}</button><br>
 
 
 <!-- Modal -->
@@ -30,9 +30,9 @@
       </div>
       <div class="modal-body">
           @if ($mod->img == null)
-              <img src="{{asset("images/apprentispassages_logo_renard.png ")}}">
+              <img src="{{asset("storage/images/apprentispassages_logo_renard.png ")}}">
         @else
-        <img src="{{asset("images/module/$mod->nom.png")}}">
+        <img src="{{asset("storage/images/module/$mod->nom.png")}}">
           @endif
           @foreach ($etiquettes as $etiquette)
         @foreach ($etiquettemodules as $etiquettemodule )

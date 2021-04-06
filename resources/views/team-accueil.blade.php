@@ -10,9 +10,9 @@
 				@endforeach
                 <img class="imageThrombi m-auto {{  implode(" ", $statuts) }}"
 				@if($membre->photo == null)
-					src="{{ asset("images/team/apprentispassages_logo_renard.png") }}" alt="photo d'avatar">
+					src="{{ asset("storage/images/team/apprentispassages_logo_renard.png") }}" alt="photo d'avatar">
 				@else
-					src="{{  asset("images/team/$membre->photo")}} " alt="photo de {{$membre->nom}}">
+					src="{{  asset("storage/images/team/$membre->photo")}} " alt="photo de {{$membre->nom}}">
 				@endif
 			</a>
 			<h3 class="mt-3 textThrombi text-center">{{$membre->prenom}} {{$membre->nom}}</h3>

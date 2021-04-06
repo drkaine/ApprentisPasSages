@@ -22,7 +22,7 @@
                 </button>
             </form>
             <a href="{{route('TemplateController.albumAdmin', ['nom'=>$album->nom])}}" class="elem">
-                <img src="images/{{ $album->nom }}/1-region-sud.jpg" ></a>
+                <img src={{ asset("storage/images/$album->nom/1-region-sud.jpg") }} ></a>
             <div class="galerie-title">{{ $album->nom }}</div>
           </div>
 

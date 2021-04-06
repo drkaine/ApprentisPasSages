@@ -35,9 +35,9 @@
       </div>
       <div class="modal-body">
           @if ($module->img == null)
-              <img src="{{asset("images/apprentispassages_logo_renard.png ")}}">
+              <img src="{{asset("storage/images/apprentispassages_logo_renard.png ")}}">
         @else
-        <img src="{{asset("images/module/$module->nom.png")}}">
+        <img src="{{asset("storage/images/module/$module->nom.png")}}">
           @endif
           @foreach ($etiquettes as $etiquette)
         @foreach ($etiquettemodules as $etiquettemodule )

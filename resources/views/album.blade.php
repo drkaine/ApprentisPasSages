@@ -11,7 +11,7 @@
                 <div class="column">
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p)
-                    <img src="{{asset("images/$p->chemin ")}}">
+                    <img src="{{asset("storage/images/$p->chemin ")}}">
 
                 @endforeach
 

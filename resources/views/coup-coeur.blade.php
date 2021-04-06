@@ -11,14 +11,14 @@
          @foreach ($ccdc as $cc)
         <ul class="CategorieCoupDeCoeur">
             <li>
-                <h2>{{$cc->nom}} :</h2>
+                <h2>{!! $cc->nom !!} :</h2>
 
 
                     @foreach ($cdc as $c)
                     @if($c->categoriecoupsdecoeur_id==$cc->id)
                 <ul>
                     <li>
-                       <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"> {{$c->nom}}</a>
+                       <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"> {!! $c->nom !!}</a>
                     </li>
                 </ul>
                     @endif
@@ -49,7 +49,7 @@
                         <select  size=1 >
                             <option selected disabled>Veuillez choisir le lien mort !</option>
                             @foreach ($cdc as $c)
-                                <option value="{{ $c->id }}" >{{ $c->nom }}</option>
+                                <option value="{{ $c->id }}" >{{ print($c->nom) }}</option>
                             @endforeach
 
                         </select><br />

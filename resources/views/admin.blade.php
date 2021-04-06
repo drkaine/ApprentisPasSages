@@ -16,12 +16,12 @@
           <li class="logo">
               <img
                 class="logo-fox"
-                src="images/fox_logo.png"  alt="logo"/>
+                src={{ asset("storage/images/fox_logo.png") }}  alt="logo"/>
             </li>
           <li class="logo">
             <img
               class="logo-apprentis"
-              src="images/apprentis_pas_sages_banniere.png"  alt="logo"/>
+              src={{ asset("storage/images/apprentis_pas_sages_banniere.png") }}  alt="logo"/>
           </li>
         </ul>
     </nav>

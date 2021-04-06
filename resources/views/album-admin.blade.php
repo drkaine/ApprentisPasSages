@@ -18,7 +18,7 @@
                         <i class="fas fa-minus-circle"></i>
                     </button>
                 </form>
-                    <img src="{{asset("images/$p->chemin ")}}">
+                    <img src="{{asset("storage/images/$p->chemin ")}}">
                 @endforeach
                 @endforeach
         </section>

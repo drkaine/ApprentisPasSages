@@ -10,7 +10,7 @@
       <!-- galerie -->
       <section class="about-us">
           @foreach ($asso as $assoc)
-            {{print($assoc->contenu)}}
+            {!! $assoc->contenu!!}
           @endforeach
 
           <div id="asociation">

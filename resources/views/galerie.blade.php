@@ -15,7 +15,7 @@
           @if ($album->nom != "partenaires")
           <div class="item">
             <a href="{{route('TemplateController.album', ['nom'=>$album->nom])}}" class="elem">
-                <img src="images/{{ $album->nom }}" ></a>
+                <img src={{ asset("storage/images/$album->nom")}} ></a>
             <div class="galerie-title">{{ $album->nom }}</div>
           </div>
           @endif
