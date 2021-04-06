@@ -475,6 +475,22 @@ footer .social-media-links a:hover svg circle {
   max-height: 100px;
 }
 
+.photo
+{
+
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+    background-color:white;
+    flex-wrap: wrap;
+}
+
+.image
+{
+    max-width: 300px;
+    max-height: 300px;
+}
+
 .img-logo {
     width : 300px;
     height : 79px;
