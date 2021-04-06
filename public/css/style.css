@@ -459,10 +459,20 @@ footer .social-media-links a:hover svg circle {
 
 }
 
+.partenaires li{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:white;
+}
+
 
 .part {
-  background: #f2f2f2;
-  float: inline-end;
+
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .img-logo {
