@@ -15,11 +15,11 @@
                 @foreach($module as $mod)
                      @if($mod->id==$cProg->module_id)
 
-                        <button type="button"  data-toggle="modal" data-target="#myModal">{{ $mod->nom }}</button><br>
+                        <button type="button"  data-toggle="modal" data-target="#modul">{{ $mod->nom }}</button><br>
 
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="modul" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
