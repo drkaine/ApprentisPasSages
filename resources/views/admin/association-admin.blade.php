@@ -33,39 +33,19 @@
 
 
 
-<script>
-ClassicEditor
-    .create( document.querySelector( '#infoEdit' ) )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
+<script>
+CKEDITOR.replace( 'infoEdit', {
+    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+    filebrowserUploadMethod: 'form'
+});
 </script>
-
 <script>
-//    import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';
-
-ClassicEditor
-    .create( document.querySelector( '#assoEdit' ) )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
-//    .create( document.querySelector( '#assoEdit' ), {
-//        plugins: [ HtmlEmbed],
-//        toolbar: [ 'htmlEmbed']
-//    } )
-//    .then( editor => {
-//        console.log( editor );
-//    } )
-//    .catch( error => {
-//        console.error( error );
-//    } );
+CKEDITOR.replace( 'assoEdit', {
+    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+    filebrowserUploadMethod: 'form'
+});
 </script>
 
 @endsection

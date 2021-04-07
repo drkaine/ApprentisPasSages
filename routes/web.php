@@ -114,6 +114,18 @@ if(isset($_POST['ajoutEV'])){
 Route::post('/ajoutEvenement', 'App\Http\Controllers\ProgrammationController@add');
 }
 
+Route::get('/ajoutAction/{prestation}', 'App\Http\Controllers\TemplateController@ActionAjout')->name("TemplateController.ajoutAction");
+
+if(isset($_POST['ajoutAction'])){
+Route::post('/ajoutAction/{prestation}', 'App\Http\Controllers\ActionController@add');
+}
+
+Route::get('/ajoutModule/{prestation}', 'App\Http\Controllers\TemplateController@ModuleAjout')->name("TemplateController.ajoutModule");
+
+if(isset($_POST['ajoutModule'])){
+Route::post('/ajoutModule/{prestation}', 'App\Http\Controllers\ModuleController@add');
+}
+
 
 
 

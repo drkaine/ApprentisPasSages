@@ -123,6 +123,17 @@ class TemplateController extends Controller
             return view("ajout/ajoutCategorieCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
 
+        function actionAjout(Request $request)
+        {
+            return view("ajout/ajoutAction",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation]);
+        }
+
+
+    function moduleAjout(Request $request)
+        {
+            return view("ajout/ajoutModule",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation,"etiquette"=>$this->getEtiquette(),"action"=>$this->getAction()]);
+        }
+
 
 
          function ajoutOneTeamAdmin( Request $request)
@@ -181,7 +192,7 @@ class TemplateController extends Controller
 
         function deletePhoto(Request $request)
         {
-            Photo::where('id', $request->id1)->delete();
+            Photo::where('chemin', $request->id1)->delete();
         }
 
         function deleteModule(Request $request)
@@ -338,7 +349,7 @@ class TemplateController extends Controller
 
                 case 'photo':
                     $this->deletephoto($request);
-                    view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+                    return view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
 
                 case 'catcdc':
                     $this->deleteCategorieCoupCoeur($request);

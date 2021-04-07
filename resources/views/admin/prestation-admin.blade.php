@@ -14,7 +14,8 @@
 <div class="action">
     <ul>
      </br>
-     <a href="ajout" class="fas fa-plus-circle"></a>
+     <a href="{{route('TemplateController.ajoutAction',['prestation'=>$p->nom])}}" class="fas fa-plus-circle">
+     </a>
 
     @foreach ($actions as $action)
         <li><h4>{{ $action->nom }}</h4>
@@ -27,7 +28,7 @@
             </form><br>
             </li>
         <ul>
-            <a href="ajout" class="fas fa-plus-circle"></a><br>
+            <a href="{{route('TemplateController.ajoutModule',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a><br>
 
         @foreach ($modulesac as $moduleac)
         @foreach ($modules as $module)
