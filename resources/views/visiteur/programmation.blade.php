@@ -12,50 +12,17 @@
    <div>
        <div>
 
-                @foreach($module as $mod)
-                     @if($mod->id==$cProg->module_id)
+                @foreach($modules as $module)
+                     @if($module->id==$cProg->module_id)
 
-                        <button type="button"  data-toggle="modal" data-target="#modul">{{ $mod->nom }}</button><br>
+                        <button type="button"  data-toggle="modal" data-target="#modul">{{ $module->nom }}</button><br>
 
 
 <!-- Modal -->
 <div id="modul" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">{{ $mod->nom }}</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-          @if ($mod->img == null)
-              <img src="{{asset("storage/images/apprentispassages_logo_renard.png ")}}">
-        @else
-        <img src="{{asset("storage/images/module/$mod->nom.png")}}">
-          @endif
-          @foreach ($etiquettes as $etiquette)
-        @foreach ($etiquettemodules as $etiquettemodule )
-            @if ($etiquette->id == $etiquettemodule->etiquette_id and $etiquettemodule->module_id == $mod->id)
-            <p style="background-color:{{ $etiquette->couleur }}" >{{ $etiquette->nom }} </p>
-            @endif
-        @endforeach
-        @endforeach
-      </div>
-      <div>
-            {{ $mod->description }}
-        </div>
-        <div>
-            {{ $mod->temps }}<br>
-            {{ $mod->materiel }}<br>
-            {{ $mod->projetPeda }}<br>
-            {{ $mod->lieu }}<br>
-            {{ $mod->format }}<br>
-        </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+    @include("modal/modules-v");
 
   </div>
 </div>

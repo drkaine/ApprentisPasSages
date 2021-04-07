@@ -1,22 +1,36 @@
 
 
 
+
+<div>
+    @foreach($action as $act)
+
+        @if($act->id==$cProg->action_id)
+        <h4>{{$act->nom}}</h4><br>
+
+       @endif
+   @endforeach
+</div>
    <div>
        <div>
-           <h4>
-                @foreach($module as $mod)
+            @foreach($modules as $module)
+            @if($module->id==$cProg->module_id)
 
-                     @if($mod->id==$cProg->module_id)
-                         {{$mod->nom}}
+               <button type="button"  data-toggle="modal" data-target="#modul">{{ $module->nom }}</button><br>
 
-            </h4>
-                       <h5>Insérer photo du module</h5>
-                        {{$mod->description}}
 
-                     @endif
-                @endforeach
-        </div>
-     <div>
+<!-- Modal -->
+<div id="modul" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+@include("modal/modules");
+
+</div>
+</div>
+            @endif
+       @endforeach
+</div>
+<div>
          @foreach($programmation as $prog)
 
              @if($prog->id==$cProg->programmation_id)
