@@ -348,5 +348,10 @@ class TemplateController extends Controller
                     return view('accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'page'=>$this->getPageByNom("contact"),'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'module'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get()]);
             }
         }
+
+        function catalogueAjout(Request $request)
+        {
+            return view("ajout/ajoutCatalogue",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+        }
 }
 

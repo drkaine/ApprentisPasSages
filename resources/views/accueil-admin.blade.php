@@ -11,19 +11,15 @@
 
 <!--Prestations-->
 <section class="prestation">
-    <a href="ajout" class="fas fa-plus-circle"></a>
+    <a href="{{route('TemplateController.ajoutCatalogue')}}"-  class="fas fa-plus-circle"></a>
     @foreach ($catalogues as $catalogue)
     <div class="formation">
         <div class="wrapper">
 
-            {{-- <form action="{{ url('update/'.$catalogue->id) }}" method="GET">
-                <button class="btn btn-danger">
-                    <i class="fas fa-edit"></i>
-                </button>
-            </form> --}}
+
 
             {{-- <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a> --}}
-            {{-- <a href="{{route('TemplateController.confirmationSuppression', ['id'=>$catalogue->id])}}" class="fas fa-minus-circle"></a> --}}
+
 
             <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catalogue" ,'id1'=>$catalogue->id,"id2"=>""]) }}" method="post">
                 {{ csrf_field() }}

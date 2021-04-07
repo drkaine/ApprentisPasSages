@@ -81,6 +81,12 @@ Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@album
 
 //AJOUT
 
+Route::get('/ajoutCatalogue', 'App\Http\Controllers\TemplateController@CatalogueAjout')->name("TemplateController.ajoutCatalogue");
+
+if(isset($_POST['ajoutCatalogue'])){
+Route::post('/ajoutCatalogue', 'App\Http\Controllers\CatalogueController@add');
+}
+
 Route::get('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\TemplateController@coups_de_coeurAjout')->name("TemplateController.ajoutCoup-Coeur");
 
 if(isset($_POST['ajoutCC'])){
