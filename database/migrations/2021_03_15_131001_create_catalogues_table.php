@@ -17,6 +17,7 @@ class CreateCataloguesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nom');
+            $table->softDeletes();
         });
     }
 

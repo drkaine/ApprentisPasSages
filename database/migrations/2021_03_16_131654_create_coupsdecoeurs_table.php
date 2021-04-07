@@ -21,6 +21,7 @@ class CreateCoupsdecoeursTable extends Migration
             $table->string("nom");
             $table->text("description");
             $table->foreign('categoriecoupsdecoeur_id')->references('id')->on('categoriecoupsdecoeurs');
+            $table->softDeletes();
         });
     }
 

@@ -24,6 +24,7 @@ class CreateModulesTable extends Migration
             $table->text("projetPeda")->nullable();
             $table->string("lieu")->nullable();
             $table->string("format")->nullable();
+            $table->softDeletes();
         });
     }
 

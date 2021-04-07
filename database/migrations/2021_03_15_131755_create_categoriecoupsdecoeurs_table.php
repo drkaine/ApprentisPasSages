@@ -17,6 +17,7 @@ class CreateCategoriecoupsdecoeursTable extends Migration
             $table->id();
             $table->string("nom");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

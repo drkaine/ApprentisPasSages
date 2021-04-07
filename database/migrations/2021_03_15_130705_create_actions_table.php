@@ -19,6 +19,7 @@ class CreateActionsTable extends Migration
             $table->string("nom");
             $table->string("description")->nullable();
             $table->string("img")->nullable();
+            $table->softDeletes();
         });
     }
 

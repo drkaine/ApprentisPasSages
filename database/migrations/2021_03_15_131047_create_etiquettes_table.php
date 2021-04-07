@@ -18,6 +18,7 @@ class CreateEtiquettesTable extends Migration
             $table->timestamps();
             $table->string("nom");
             $table->string("couleur")->size(7)->nullable();
+            $table->softDeletes();
         });
     }
 
