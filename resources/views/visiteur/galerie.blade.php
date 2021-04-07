@@ -12,12 +12,12 @@
 
       <section class="galerie">
           @foreach ($albums as $album)
-          @if ($album->nom != "partenaires")
+          @if ($album->nom != "partenaires" and $album->nom != "team")
           <div class="item">
             <a href="{{route('TemplateController.album', ['nom'=>$album->nom])}}" class="elem">
                 <img src={{ asset("storage/images/$album->nom")}} ></a>
             <div class="galerie-title">{{ $album->nom }}</div>
-          </div>
+          </div>s
           @endif
 
 
