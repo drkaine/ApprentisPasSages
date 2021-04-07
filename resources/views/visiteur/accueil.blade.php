@@ -1,4 +1,4 @@
-@extends("template")
+@extends("templates/template")
 
 @section("content")
 
@@ -69,7 +69,7 @@
 <div class="zoneProg">
 @foreach($contentProgs as $cProg)
        <div clas="programme">
-        @include('programmation', compact($cProg))
+        @include('visiteur/programmation', compact($cProg))
         </div>
     @endforeach
 </div>
@@ -105,7 +105,7 @@
 <section class = "team">
 <div class="row">
     @foreach($team as $membre)
-        @include('team-accueil', compact($membre))
+        @include('visiteur/team-accueil', compact($membre))
     @endforeach
 </div>
 </section>

@@ -1,6 +1,6 @@
 
 
-@extends("template")
+@extends("templates/barre-admin")
 
 @section("content")
 <div id="ban" class="container-fluid m-t-1 ban">

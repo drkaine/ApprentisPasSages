@@ -1,5 +1,5 @@
 
-@extends("template")
+@extends("templates/template")
 
 @section("content")
 <div id="ban" class="container-fluid m-t-1 ban">

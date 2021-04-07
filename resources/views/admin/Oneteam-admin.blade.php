@@ -1,5 +1,5 @@
 
-@extends('barre-admin')
+@extends('templates/barre-admin')
 
 @section("content")
  <form action="" method="post">

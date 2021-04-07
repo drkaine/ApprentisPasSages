@@ -1,4 +1,4 @@
-@extends("barre-admin")
+@extends("templates/barre-admin")
 
 @section("content")
 
@@ -87,7 +87,7 @@
 
        <div clas="programme">
         <a href="{{route('TemplateController.editEvenement', ['pid'=>$cProg->programmation_id,'aid'=>$cProg->action_id,'mid'=>$cProg->module_id])}}" class="fas fa-edit"></a>
-        @include('programmation-admin', compact($cProg))
+        @include('admin/programmation-admin', compact($cProg))
         </div>
     @endforeach
 </div>
@@ -125,7 +125,7 @@
 <section class = "team">
 <div class="row">
     @foreach($team as $membre)
-        @include('team-accueil-admin', compact($membre))
+        @include('admin/team-accueil-admin', compact($membre))
     @endforeach
 </div>
 </section>

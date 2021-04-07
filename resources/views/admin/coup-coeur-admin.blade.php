@@ -1,4 +1,4 @@
-@extends("barre-admin")
+@extends("templates/barre-admin")
 
 @section("content")
 <!-- coup de coeur -->

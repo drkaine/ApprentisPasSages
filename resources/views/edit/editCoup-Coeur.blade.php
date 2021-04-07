@@ -1,5 +1,5 @@
 
-@extends('barre-admin')
+@extends('templates/barre-admin')
 
 @section("content")
 
@@ -11,9 +11,9 @@
 <input type="hidden" name="categorieId" value="{{$cc->id}}">
 <h1>Categorie : {{$cc->nom}}</h1>
  @endforeach
- 
+
  <input type="hidden" name="id" value="{{$c->id}}">
- 
+
   <label for="lienEdit">Lien</label>
    <textarea id="lienEdit" name ="lien">
    {{$c->lien}}
@@ -24,7 +24,7 @@
       {{$c->nom}}
     </textarea>
 
-<label for="descriptionEdit">description</label>   
+<label for="descriptionEdit">description</label>
 <textarea id="descriptionEdit" name ="description">
     {{$c->description}}
 </textarea>

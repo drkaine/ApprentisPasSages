@@ -48,4 +48,4 @@
     </div>
 </section>
 
-@extends("footer")
+@extends("templates/footer")

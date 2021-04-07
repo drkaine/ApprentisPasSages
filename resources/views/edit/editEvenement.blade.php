@@ -1,12 +1,12 @@
 
-@extends('barre-admin')
+@extends('templates/barre-admin')
 
 @section("content")
  <form action="" method="post">
     {{ csrf_field() }}
-    
+
     <input type="hidden" name="editEV" value="Yes">
-    
+
     @foreach($programmationId as $p)
     <input type="hidden" name="progid" value="{{$p->id}}">
   <label for="dateDebutEdit">date de debut</label>
@@ -26,7 +26,7 @@
                     @if($mod->id==$m->id)
                         selected="selected"
                     @endif
-                     
+
                        >{{ $mod->nom }}</option>
                 @endforeach
             </select>
@@ -36,15 +36,15 @@
 <select name="Action"  size=1 >
                 <option disabled>Veuillez choisir un module</option>
                 @foreach ($action as $act)
-                    <option value="{{ $act->id }}" 
+                    <option value="{{ $act->id }}"
                     @if($act->id==$a->id)
                         selected="selected"
                     @endif>{{ $act->nom }}</option>
                 @endforeach
             </select>
 @endforeach
-        
-    
+
+
     <input type="submit" value="éditer" name ="edito" >
 </form>
 

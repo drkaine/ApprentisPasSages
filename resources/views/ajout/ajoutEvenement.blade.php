@@ -1,12 +1,12 @@
 
-@extends('barre-admin')
+@extends('templates/barre-admin')
 
 @section("content")
  <form action="" method="post">
     {{ csrf_field() }}
-    
+
     <input type="hidden" name="ajoutEV" value="Yes">
-    
+
   <label for="dateDebutEdit">date de debut</label>
 <input id="dateDebutEdit" type="datetime-local" step="1" value="YYYY-MM-DD hh:mm:ss" name="dateDebut">
 
@@ -28,7 +28,7 @@
                     <option value="{{ $act->id }}" >{{ $act->nom }}</option>
                 @endforeach
             </select>
-    
+
     <input type="submit" value="Ajouter" name ="ajouter" >
 </form>
 
