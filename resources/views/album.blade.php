@@ -7,11 +7,11 @@
 </div>
       <!-- galerie -->
         <section class="album">
-            <div class="row">
-                <div class="column">
+            <div class="photo">
+
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p)
-                <div class = "photo">
+                <div class="image">
                     <img src="{{asset("storage/images/$p->chemin ")}}" alt="{{$p->chemin}}" class = "image">
                 </div>
                 @endforeach

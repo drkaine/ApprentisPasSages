@@ -480,8 +480,8 @@ footer .social-media-links a:hover svg circle {
 
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
-    background-color:white;
+
+    background-color:whitesmoke;
     flex-wrap: wrap;
 }
 
@@ -489,6 +489,7 @@ footer .social-media-links a:hover svg circle {
 {
     max-width: 300px;
     max-height: 300px;
+
 }
 
 .img-logo {
