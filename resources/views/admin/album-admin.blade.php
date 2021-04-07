@@ -13,7 +13,7 @@
 
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p) 
-                @if ($p->deleted_at != null)
+                @if ($p->deleted_at == null)
                      {{-- <a href="{{ url('update/'.$catalogue->id) }}" class="fas fa-edit"></a> --}}
                  <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"photo" ,'id1'=>$p->id,"id2"=>"$nom"]) }}" method="post">
                     {{ csrf_field() }}

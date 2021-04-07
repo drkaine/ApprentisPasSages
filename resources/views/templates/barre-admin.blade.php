@@ -182,9 +182,11 @@
           <ul class="partenaires">
             @foreach ($partenaires as $photo)
                 @foreach ($photo as $p)
+                @if ($p->deleted_at == null)
                     <li><img  src="{{ asset("storage/images/$p->chemin") }}" class="part">
 
                 </li>
+                @endif
                 @endforeach
             @endforeach
             </ul>

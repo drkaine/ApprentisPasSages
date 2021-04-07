@@ -11,9 +11,11 @@
 
                 @foreach ($photos as $photo)
                 @foreach ($photo as $p)
+                @if ($p->deleted_at == null)
                 <div class="image">
                     <img src="{{asset("storage/images/$p->chemin ")}}" alt="{{$p->chemin}}" class = "image">
                 </div>
+                @endif
                 @endforeach
 
 
