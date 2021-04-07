@@ -1,5 +1,5 @@
 
-@extends('barre-admin')
+@extends('templates/barre-admin')
 
 @section("content")
  <form action="" method="post">
@@ -17,7 +17,7 @@
     <textarea id="nomEdit" name ="nom">
     </textarea>
 
-    <label for="descriptionEdit">description</label>   
+    <label for="descriptionEdit">description</label>
     <textarea id="descriptionEdit" name ="description">
     </textarea>
 
