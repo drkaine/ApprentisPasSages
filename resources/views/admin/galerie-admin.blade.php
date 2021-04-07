@@ -15,7 +15,7 @@
           @foreach ($albums as $album)
           <div class="item">
             <a href="{{ url('update/') }}" class="fas fa-edit"></a>
-            <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->id,"id2"=>""]) }}" method="post">
+            <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}" method="post">
                 {{ csrf_field() }}
                 <button class="btn btn-danger">
                     <i class="fas fa-minus-circle"></i>
