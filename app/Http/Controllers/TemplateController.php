@@ -146,9 +146,13 @@ class TemplateController extends Controller
 
         function albumAjout(Request $request)
         {
-            return view("ajout/ajoutAlbum",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation]);
+            return view("ajout/ajoutAlbum",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
 
+        function photoAjout(Request $request)
+        {
+            return view("ajout/ajoutPhoto",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"nom"=>$request->nom]);
+        }
 
     function moduleAjout(Request $request)
         {

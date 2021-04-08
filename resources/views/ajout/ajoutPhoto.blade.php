@@ -2,24 +2,20 @@
 @extends('templates/barre-admin')
 
 @section("content")
-
+<input type="hidden" name="nom_album" value="{{$nom}}">
 
  <form action="" method="post">
     {{ csrf_field() }}
 
-    <input type="hidden" name="ajoutPhoto" value="Yes">
+    <input type="file" name="ajoutPhoto" >
 
 
- <label for="nomEdit">Nom</label>
-  <textarea id="nomEdit" name ="nom" >
-
-</textarea>
 
 
     <input type="submit" value="Ajouter" name ="ajouter" >
 </form>
 
-<a href="{{route('Galerie-Admin')}}"><h1>Revenir à la galerie</h1></a>
+<a href="{{route('TemplateController.albumAdmin', ['nom'=>$nom])}}"><h1>Revenir à l'album {{$nom}}</h1></a>
 
 <section id="coupDeCoeur" class ="cdc">
     <div class="m-t-1 ban2">

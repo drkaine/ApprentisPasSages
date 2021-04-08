@@ -7,8 +7,8 @@
     <h1 id="titreAssociation" style="box-sizing:border-box;">{{$nom}} </h1>
 </div>
       <!-- galerie -->
-      <a href="ajout" class="fas fa-plus-circle"></a>
-        <section class="album">
+      <a href="{{route('TemplateController.ajoutPhoto', ["nom"=>$nom])}}" class="fas fa-plus-circle"></a>
+      <section class="album">
             <div class="photo">
 
                 @foreach ($photos as $photo)
@@ -22,7 +22,7 @@
                     </button>
                 </form>
                 <div class="image">
-                    <img src="{{asset("storage/images/$p->chemin ")}}" alt="{{$p->chemin}}" class = "image">
+                    <img src="{{asset("storage/images/$p->chemin ")}}" alt="{{ $nom }}" class = "image">
                 </div>
                 @endif
                 
