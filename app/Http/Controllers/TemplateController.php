@@ -193,21 +193,25 @@ class TemplateController extends Controller
 
         function deleteMembre(Request $request)
         {
+            Membrestatut::where("membre_id", $request->id1)->delete();
             Membre::where('id', $request->id1)->delete();
         }
 
         function deleteEvenement(Request $request)
         {
+            ContentProg::where("programmation_id", $request->id1)->delete();
             Programmation::where('id', $request->id1)->delete();
         }
 
         function deleteAlbum(Request $request)
         {
+            Tagalbum::where("nom_album", $request->id1)->delete();
             Album::where('nom', $request->id1)->delete();
         }
 
         function deletePhoto(Request $request)
         {
+            Tagalbum::where("photo_id", $request->id1)->delete();
             Photo::where('id', $request->id1)->delete();
         }
 
@@ -363,11 +367,11 @@ class TemplateController extends Controller
 
                 case 'album':
                     $this->deleteAlbum($request);
-                    return view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+                    return view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"), "couv"=>$this->getcouv()]);
 
                 case 'photo':
                     $this->deletephoto($request);
-                    return view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+                    return view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"), "couv"=>$this->getcouv()]);
 
                 case 'catcdc':
                     $this->deleteCategorieCoupCoeur($request);

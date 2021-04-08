@@ -15,7 +15,7 @@
 
           <div id="asociation">
             @foreach ($info as $infos)
-                {{print($infos->contenu)}}
+                {!! $infos->contenu!!}
             @endforeach
       </section>
       <section id="coupDeCoeur" class ="cdc">
