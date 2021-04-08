@@ -182,7 +182,7 @@
             <ul class="partenaires">
                 @foreach ($partenaires as $photo)
                     @foreach ($photo as $p)
-                        <li><img  src="{{asset("storage/images/$p->chemin")}}"  width = "100" height="100" class="part">
+                        <li><img  src="{{asset("storage/images/$p->chemin")}}" class="part">
 
                     </li>
                     @endforeach

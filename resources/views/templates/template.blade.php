@@ -118,10 +118,10 @@
 
         <div class="contact">
             <img class="img-logo" src="{{ asset("storage/images/apprentis_pas_sages_banniere.png") }}"  alt="">
- <!--<form class="btn-contact" action="">
-            <button class="btn-contact-us" data-toggle="modal" data-target="#ContactModal">est</button>
-        </form>-->
-                <a class="btn-contact-us"       data-toggle="modal" data-target="#ContactModal">Contactez-nous</a>
+ 
+            <button  data-toggle="modal" data-target="#ContactModal">Contactez-nous</button>
+      
+                {{-- <a class="btn-contact-us"       data-toggle="modal" data-target="#ContactModal">Contactez-nous</a> --}}
 
           <ul  class="social-media-links">
             <li>
@@ -183,7 +183,7 @@
             <ul class="partenaires">
                 @foreach ($partenaires as $photo)
                     @foreach ($photo as $p)
-                        <li><img  src="{{asset("storage/images/$p->chemin")}}"  width = "100" height="100" class="part">
+                        <li><img  src="{{asset("storage/images/$p->chemin")}}"   class="part">
 
                     </li>
                     @endforeach

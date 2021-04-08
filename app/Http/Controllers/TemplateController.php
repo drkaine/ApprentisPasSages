@@ -184,7 +184,7 @@ class TemplateController extends Controller
 
     public function getOneTeamAdmin( Request $request)
         {
-           return view('team-admin', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::get(),"membreStatut"=>Membrestatut::get(),'page'=>$this->getPageByNom("contact")]);
+           return view('admin/team-admin', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::get(),"membreStatut"=>Membrestatut::get(),'page'=>$this->getPageByNom("contact")]);
         }
 
 
@@ -259,6 +259,7 @@ class TemplateController extends Controller
         }
 
 
+        // affichage view visiteur
 
         function getOneTeam( Request $request)
         {
@@ -301,6 +302,8 @@ class TemplateController extends Controller
         }
 
 
+        // affichage view admin
+
         function admin()
         {
             return view("admin/admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue()]);
@@ -341,6 +344,8 @@ class TemplateController extends Controller
         {
             return view("admin/album-admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"photos"=>$this->getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
+
+
 
         function retour()
         {

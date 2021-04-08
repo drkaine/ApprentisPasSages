@@ -12,6 +12,8 @@
                     <i class="fas fa-minus-circle"></i>
                 </button>
             </form>
+            <a href="{{route('TemplateController.getOneteamAdmin', ['id'=>$membre->id])}}">
+
                 @foreach($membre->getStatus()->get() as $statut)
                     @php
                         $statuts[] = $statut->description;
