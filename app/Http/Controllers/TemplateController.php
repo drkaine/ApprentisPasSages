@@ -144,6 +144,11 @@ class TemplateController extends Controller
             return view("ajout/ajoutAction",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation]);
         }
 
+        function albumAjout(Request $request)
+        {
+            return view("ajout/ajoutAlbum",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation]);
+        }
+
 
     function moduleAjout(Request $request)
         {
@@ -367,7 +372,7 @@ class TemplateController extends Controller
 
                 case 'album':
                     $this->deleteAlbum($request);
-                    return redirect("album-admin");
+                    return redirect("galerie-admin");
 
                 case 'photo':
                     $this->deletephoto($request);

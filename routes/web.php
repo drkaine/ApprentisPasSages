@@ -93,6 +93,12 @@ if(isset($_POST['ajoutCC'])){
 Route::post('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\CoupDeCoeurController@add');
 }
 
+Route::get('/ajoutAlbum', 'App\Http\Controllers\TemplateController@albumAjout')->name("TemplateController.ajoutAlbum");
+
+if(isset($_POST['ajoutAlbum'])){
+Route::post('/ajoutAlbum', 'App\Http\Controllers\AlbumController@add');
+}
+
 Route::get('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\TemplateController@categorie_coups_de_coeurAjout')->name("TemplateController.ajoutCategorieCoup-Coeur");
 
 if(isset($_POST['ajoutCategorieCC'])){
