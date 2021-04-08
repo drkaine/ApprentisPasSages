@@ -79,7 +79,7 @@
               <li><a data-toggle="modal" data-target="#ContactModal" href="">Contact</a></li>
 
               @foreach ($page as $contact)
-              {!! str_replace("<!-- csrf_field()-->", csrf_field(),$contact->contenu ) !!}
+              {!!(str_replace("<!-- csrf_field()-->", csrf_field(),$contact->contenu )) !!}
               @endforeach
 
               <li><a href="prestations" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>
@@ -117,7 +117,7 @@
 
 
         <div class="contact">
-            <img class="img-logo" src="{{asset("storage/images/apprentis_pas_sages_banniere.png")}}"  alt="">
+            <img class="img-logo" src="{{ asset("storage/images/apprentis_pas_sages_banniere.png") }}"  alt="">
  <!--<form class="btn-contact" action="">
             <button class="btn-contact-us" data-toggle="modal" data-target="#ContactModal">est</button>
         </form>-->
@@ -183,11 +183,9 @@
             <ul class="partenaires">
                 @foreach ($partenaires as $photo)
                     @foreach ($photo as $p)
-                    @if ($p->deleted_at == null)
-                        <li><img  src="{{ asset("storage/images/$p->chemin") }}" class="part">
+                        <li><img  src="{{asset("storage/images/$p->chemin")}}"  width = "100" height="100" class="part">
 
                     </li>
-                    @endif
                     @endforeach
                 @endforeach
                 </ul>

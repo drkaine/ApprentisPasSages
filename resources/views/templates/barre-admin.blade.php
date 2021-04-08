@@ -59,12 +59,12 @@
             <li class="logo">
                 <img
                   class="logo-fox"
-                  src="{{asset("storage/images/fox_logo.png")}}"  alt="logo"/>
+                  src="{{asset('storage/images/fox_logo.png')}}"  alt="logo"/>
               </li>
             <li class="logo">
               <img
                 class="logo-apprentis"
-                src="{{asset("storage/images/apprentis_pas_sages_banniere.png")}}"  alt="logo"/>
+                src="{{asset('storage/images/apprentis_pas_sages_banniere.png')}}"  alt="logo"/>
             </li>
             <li class="btn"><span class="fas fa-bars"></span></li>
             <div class="items">
@@ -78,7 +78,7 @@
               <li><a data-toggle="modal" data-target="#ContactModal" href="">Contact</a></li>
 
               @foreach ($page as $contact)
-              {{ print($contact->contenu) }}
+              {!!($contact->contenu) !!}
               @endforeach
 
               <li><a href="prestations" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>
@@ -116,7 +116,7 @@
 
 
         <div class="contact">
-            <img class="img-logo" src="{{asset("storage/images/apprentis_pas_sages_banniere.png") }}"  alt="">
+            <img class="img-logo" src="{{ asset("storage/images/apprentis_pas_sages_banniere.png") }}"  alt="">
  <!--<form class="btn-contact" action="">
             <button class="btn-contact-us" data-toggle="modal" data-target="#ContactModal">est</button>
         </form>-->
@@ -179,17 +179,15 @@
             </li>
         </div>
           </ul>
-          <ul class="partenaires">
-            @foreach ($partenaires as $photo)
-                @foreach ($photo as $p)
-                @if ($p->deleted_at == null)
-                    <li><img  src="{{ asset("storage/images/$p->chemin") }}" class="part">
+            <ul class="partenaires">
+                @foreach ($partenaires as $photo)
+                    @foreach ($photo as $p)
+                        <li><img  src="{{asset("storage/images/$p->chemin")}}"  width = "100" height="100" class="part">
 
-                </li>
-                @endif
+                    </li>
+                    @endforeach
                 @endforeach
-            @endforeach
-            </ul>
+                </ul>
                 <ul  class="copyright">
                     <li>Tous droits réservés : Les Apprentis Pas Sages © 2021  </li>
                     <li><a href="accueil" class="plan">   Plan du site</a></li>
