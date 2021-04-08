@@ -13,17 +13,18 @@
       <section class="galerie">
         <a href="ajout" class="fas fa-plus-circle"></a>
           @foreach ($albums as $album)
+          @php $nom = $album->nom;@endphp
+          <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}" method="post">
+            {{ csrf_field() }}
+            <button class="btn btn-danger">
+                <i class="fas fa-minus-circle"></i>
+            </button>
+        </form>
           <div class="item">
-            <a href="{{ url('update/') }}" class="fas fa-edit"></a>
-            <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}" method="post">
-                {{ csrf_field() }}
-                <button class="btn btn-danger">
-                    <i class="fas fa-minus-circle"></i>
-                </button>
-            </form>
+            <div class="galerie-title">{{ $album->nom }}</div>            
             <a href="{{route('TemplateController.albumAdmin', ['nom'=>$album->nom])}}" class="elem">
-                <img src={{ asset("storage/images/$album->nom/1-region-sud.jpg") }} ></a>
-            <div class="galerie-title">{{ $album->nom }}</div>
+                <img src={{ asset("storage/images/$couv[$nom]") }} ></a>
+            
           </div>
 
           @endforeach

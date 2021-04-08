@@ -110,7 +110,23 @@ class TemplateController extends Controller
 
         function getCouv()
         {
-
+            $couv = [];
+            $albums = Album::get();
+            foreach ( $albums as $album)
+            {
+                $couv[$album->nom] = "";
+                $id = Tagalbum::where("nom_album", $album->nom)->inRandomOrder()->get("photo_id");
+                   foreach($id as $i)
+                    {
+                        $photo = Photo::where("id",$i->photo_id)->get();
+                        foreach($photo as $p)
+                        {
+                            $couv[$album->nom] = $p->chemin;
+                        } 
+                    }
+            }
+            return $couv;
+            
         }
 
         //ajout
@@ -247,7 +263,7 @@ class TemplateController extends Controller
 
         function galerie()
         {
-            return view("visiteur/galerie",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(), "couv",'page'=>$this->getPageByNom("contact")]);
+            return view("visiteur/galerie",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(), "couv"=>$this->getcouv(),'page'=>$this->getPageByNom("contact")]);
         }
 
         function coups_de_coeur()
@@ -289,7 +305,7 @@ class TemplateController extends Controller
 
         function galerieAdmin()
         {
-            return view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+            return view("admin/galerie-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"), "couv"=>$this->getcouv()]);
         }
 
         function coups_de_coeurAdmin()
