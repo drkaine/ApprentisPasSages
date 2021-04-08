@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 //Controllers
+use App\Models\Action;
+use App\Models\Module;
+//Models
+use Illuminate\Http\Request;
+//Illuminate
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ModuleActionController;
 use App\Http\Controllers\ModuleEtiquetteController;
-//Models
-use App\Models\Module;
-//Illuminate
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class ModuleController extends Controller
 {

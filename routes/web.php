@@ -25,8 +25,13 @@ Route::get('/', 'App\Http\Controllers\TemplateController@accueil')->name('Accuei
 
 //contact
 if(isset($_POST['contactCacher'])){
-    Route::post('/', 'App\Http\Controllers\mailController@send')->name('envoiMail');
+    Route::post('{catchall}', 'App\Http\Controllers\mailController@send')->name('envoiMail')->where('catchall', '.*');
      }
+
+
+Route::get('/', 'App\Http\Controllers\TemplateController@accueil')->name('Accueil');
+
+
 
  // liens morts
 if(isset($_POST['liensCacher'])){
@@ -171,6 +176,12 @@ Route::get('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\TemplateCon
 
 if(isset($_POST['editEV'])){
 Route::post('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\ProgrammationController@saveEdit');
+}
+
+Route::get('/editModule/{prestation}/{moduleId}', 'App\Http\Controllers\TemplateController@ModuleEdit')->name("TemplateController.editModule");
+
+if(isset($_POST['editModule'])){
+Route::post('/editModule/{prestation}/{moduleId}', 'App\Http\Controllers\ModuleController@saveEdit');
 }
 
 

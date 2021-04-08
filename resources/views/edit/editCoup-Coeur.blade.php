@@ -11,20 +11,18 @@
 <input type="hidden" name="categorieId" value="{{$cc->id}}">
 <h1>Categorie : {{$cc->nom}}</h1>
  @endforeach
-
+ 
  <input type="hidden" name="id" value="{{$c->id}}">
-
+ 
   <label for="lienEdit">Lien</label>
-   <textarea id="lienEdit" name ="lien">
-   {{$c->lien}}
-</textarea>
+   <input type="text" id="lienEdit" name ="lien" value="{{$c->lien}}" required>
+
 
  <label for="nomEdit">Nom</label>
-  <textarea id="nomEdit" name ="nom">
-      {{$c->nom}}
-    </textarea>
+  <input type="text" id="nomEdit" name ="nom" value="{{$c->nom}}" requied>
 
-<label for="descriptionEdit">description</label>
+
+<label for="descriptionEdit">description</label>   
 <textarea id="descriptionEdit" name ="description">
     {{$c->description}}
 </textarea>
@@ -42,18 +40,6 @@ CKEDITOR.replace( 'descriptionEdit', {
     filebrowserUploadMethod: 'form'
 });
 </script>
-<script>
-CKEDITOR.replace( 'nomEdit', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});
-</script>
 
- <script>
-CKEDITOR.replace( 'lienEdit', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});
-</script>
 @endforeach
 @endsection

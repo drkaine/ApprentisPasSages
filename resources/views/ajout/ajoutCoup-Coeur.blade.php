@@ -9,15 +9,14 @@
         <input type="hidden" name="categorieId" value="{{$cc->id}}">
         <h1>Categorie : {{$cc->nom}}</h1>
      @endforeach
+     
     <label for="lienEdit">Lien</label>
-   <textarea id="lienEdit" name ="lien">
-    </textarea>
+   <input type="text" id="lienEdit" name ="lien" required>
 
     <label for="nomEdit">Nom</label>
-    <textarea id="nomEdit" name ="nom">
-    </textarea>
+    <input type="text" id="nomEdit" name ="nom" required>
 
-    <label for="descriptionEdit">description</label>
+    <label for="descriptionEdit">description</label>   
     <textarea id="descriptionEdit" name ="description">
     </textarea>
 
@@ -29,19 +28,6 @@
 
 <script>
 CKEDITOR.replace( 'descriptionEdit', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});
-</script>
-<script>
-CKEDITOR.replace( 'nomEdit', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});
-</script>
-
- <script>
-CKEDITOR.replace( 'lienEdit', {
     filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
     filebrowserUploadMethod: 'form'
 });
