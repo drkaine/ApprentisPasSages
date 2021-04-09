@@ -64,20 +64,15 @@ Route::get('/association-admin', "App\Http\Controllers\TemplateController@associ
 
 Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
 
+Route::get('/all-prestation-admin', 'App\Http\Controllers\TemplateController@allPrestationsAdmin')->name('TemplateController.allPrestationsAdmin');
+
 Route::get('/galerie-admin', 'App\Http\Controllers\TemplateController@galerieAdmin')->name('Galerie-Admin');
 
 Route::get('/coup-coeur-admin', 'App\Http\Controllers\TemplateController@coups_de_coeurAdmin')->name('coupDeCoeur-Admin');
 
 Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
 
-
-
-
-
 Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
-
-
-
 
 
 //AJOUT
