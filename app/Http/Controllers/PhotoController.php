@@ -23,8 +23,9 @@ class PhotoController extends Controller
         $photo->chemin = $request->nom;
         $photo->save();
         $tag = new Tagalbum();
-        // $tag->photo_id = $id;
+        $tag->photo_id = $photo->id;
         $tag->nom_album = $request->nom;
+        $tag->save();
         return redirect("galerie-admin");
     }
 }
