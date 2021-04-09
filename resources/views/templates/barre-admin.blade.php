@@ -75,7 +75,7 @@
           </li>
 
           <li>
-            <a data-toggle="modal" data-target="#ContactModal" href="">Contact</a>
+            <a data-toggle="modal" data-target="#ContactModal">Contact</a>
           </li>
 
           @foreach ($page as $contact)
