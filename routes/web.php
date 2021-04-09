@@ -57,6 +57,8 @@ Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload'
 
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
 
+Route::get('/mdp-oublie', 'App\Http\Controllers\TemplateController@mdpOublie');
+
 Route::get("/accueil-admin", 'App\Http\Controllers\TemplateController@accueilAdmin')->name('Accueil-Admin');
 
 Route::get('/association-admin', "App\Http\Controllers\TemplateController@associationAdmin")->name('Association-Admin');
@@ -141,7 +143,6 @@ Route::post('/ajoutEtiquette', 'App\Http\Controllers\EtiquetteController@add');
 }
 
 
-
 //EDIT
 
 
@@ -171,7 +172,6 @@ Route::get('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\TemplateCont
 if(isset($_POST['editCategorieCC'])){
 Route::post('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\CategorieCoupDeCoeurController@saveEdit');
 }
-
 
 
 Route::get('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\TemplateController@EvenementEdit')->name("TemplateController.editEvenement");
