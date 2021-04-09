@@ -348,7 +348,7 @@ class TemplateController extends Controller
 
         function allPrestationsAdmin(Request $request)
         {
-            return view("all-prestation-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>Action::get(),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(),'page'=>$this->getPageByNom("contact"), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("admin/all-prestation-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>Action::get(),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(),'page'=>$this->getPageByNom("contact"), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),"catalogues"=>$this->afficheCatalogue()]);
         }
 
 

@@ -86,6 +86,7 @@
                 @foreach ($catalogues as $catalogue)
                         <li><a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a></li></br>
                 @endforeach
+                <li><a href="{{route('TemplateController.allPrestationsAdmin')}}">Tout les catalogues</a></li>
             </ul>
             </li>
             </div>
