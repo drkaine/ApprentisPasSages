@@ -199,6 +199,16 @@ class TemplateController extends Controller
             return view("edit/editModule",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation,"etiquette"=>$this->getEtiquette(),"action"=>$this->getAction(),"module"=>Module::where('id','=',$request->moduleId)->get(),"etiquetteModule"=>$this->getEtiquetteModule(),"moduleAction"=>Moduleaction::get()]);
         }
 
+        function etiquetteEdit(Request $request)
+        {
+            return view("edit/editEtiquette",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"etiquette"=>Etiquette::where('id','=',$request->eid)->get()]);
+        }
+        
+        function actionEdit(Request $request)
+        {
+            return view("edit/editAction",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation,"action"=>Action::where('id','=',$request->aid)->get(),"actionCatalogue"=>Actioncatalogue::get(),]);
+        }
+
         // Delete
 
         function deleteCatalogue(Request $request)

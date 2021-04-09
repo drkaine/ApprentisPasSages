@@ -371,6 +371,7 @@ nav ul li.btn span.show:before {
     justify-content: space-around;
     flex-flow: wrap;
     width : 100%;
+    align-items: center;
 }
 
 footer .social-media-links {
@@ -468,6 +469,27 @@ footer .social-media-links a:hover svg circle {
     background-color:white;
 }
 
+.contact-m
+{
+  color: #41046f;
+  background-color:#ede484;
+  width: 170px;
+  height: 50px;
+  padding: 1px;
+  font-weight:bold
+}
+
+.lien-mort
+{
+  margin-bottom: 10px;
+  color: #41046f;
+  background-color:#ede484;
+  width: 200px;
+  height: 30px;
+  padding: 1px;
+  font-weight:bold;
+  margin-right: 30px;
+}
 
 .part {
 

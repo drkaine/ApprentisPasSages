@@ -1,4 +1,4 @@
-@extends("templates/barre-admin")
+@extends("barre-admin")
 
 @section("content")
 
@@ -18,7 +18,7 @@
     @foreach ($actions as $action)
     
         <li><h4>{{ $action->nom }}</h4>
-             <a href="/edit" class="fas fa-edit"></a> 
+             <a href="{{route('TemplateController.editAction',['prestation'=>'tout','aid'=>$action->id])}}" class="fas fa-edit"></a> 
             <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"action" ,"id2"=>$action->id]) }}" method="post">
                 {{ csrf_field() }}
                 <button class="btn btn-danger">
@@ -102,10 +102,11 @@
     
 </div>
         <h2>Etiquettes</h2>
-<a href="/ajout" class="fas fa-plus-circle"></a><br>
+<a href="{{Route('TemplateController.ajoutEtiquette')}}" class="fas fa-plus-circle"></a>
+        <br>
 
 @foreach ($etiquettes as $etiquette)
-    <a href="/edit" class="fas fa-edit"></a>
+    <a href="{{Route('TemplateController.editEtiquette',['eid'=>$etiquette->id])}}" class="fas fa-edit"></a>
     <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}" method="post">
                 {{ csrf_field() }}
                 <button class="btn btn-danger">

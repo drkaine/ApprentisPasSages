@@ -30,14 +30,16 @@ class etiquetteController extends Controller
     
         $etiquette->save();
         
-        return redirect('TemplateController.allPrestationsAdmin');
+        return redirect('all-prestation-admin');
     }
 
 
     public function saveEdit(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'id' => 'required'
+            'id' => 'required',
+            'nom' => 'required',
+            'couleur' => 'required'
 
 
         ]);
@@ -46,11 +48,11 @@ class etiquetteController extends Controller
             return back()->withInput($request->except('key'))
             ->withErrors($validator);
         }
-        $action = Action::find($request->id);
-        $action->nom = $request->nom;
-        $action->img=$request->img;
-        $action->description=$request->description;
-        $action->save();
+        $etiquette = Etiquette::find($request->id);
+        $etiquette->nom = $request->nom;
+        $etiquette->couleur=$request->couleur;
+    
+        $etiquette->save();
         return back();
     }
 

@@ -45,14 +45,19 @@ class actionController extends Controller
         $acc=new ActioncatalogueController();
         $acc->add($array);
         
-        return redirect('/prestation-admin/'.$request->prestationId);
+        if($request->prestationId=="tout")
+            return redirect('all-prestation-admin');
+        else
+            return redirect('/prestation-admin/'.$request->prestationId);
     }
 
 
     public function saveEdit(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'id' => 'required'
+            'id' => 'required',
+            'nom' => 'required',
+            'description' => 'required'
 
 
         ]);
@@ -66,6 +71,23 @@ class actionController extends Controller
         $action->img=$request->img;
         $action->description=$request->description;
         $action->save();
+        
+        $array=array();
+        for($i=1; $i<$request->compte+1; $i++)
+        {
+            $s="catt".$i;
+            if($request->$s!=null){
+                
+                
+                $caId="catalogueId".$i;
+               array_push($array,$request->$caId);
+            }
+        }
+        $acc=new ActioncatalogueController();
+        $acc->saveEdit($array,$request->id);
+        
+        
+        
         return back();
     }
 

@@ -31,18 +31,23 @@ class ActioncatalogueController extends Controller
     
     }
     
-    public function saveEdit($statutId){
+    public function saveEdit($catalogue,$actionId){
         
         
         
-        DB::table('actioncatalogues')->where('action_id', '=', $action)->delete();
+        DB::table('actioncatalogues')->where('action_id', '=', $actionId)->delete();
         
         
         
-        $memStat = new Membrestatut();
-        $memStat->membre_id = $membreId[0]->id;
-        $memStat->statut_id =$statutId;
-        $memStat->save();
+        foreach($catalogue as $cata)
+        {
+            
+            $actCat= new actioncatalogue();
+            $actCat->action_id = $actionId;
+            $actCat->catalogue_id =$cata;
+            $actCat->save();
+        }
+        
            
     }
 }

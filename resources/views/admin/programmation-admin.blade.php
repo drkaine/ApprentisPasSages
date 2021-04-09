@@ -54,13 +54,5 @@
         @endforeach
     </div>
  </div>
-     <div>
-         @foreach($action as $act)
 
-             @if($act->id==$cProg->action_id)
-                 {{$act->nom}}
-
-            @endif
-        @endforeach
-    </div>
 

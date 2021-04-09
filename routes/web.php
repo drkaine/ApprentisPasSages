@@ -134,6 +134,11 @@ if(isset($_POST['ajoutModule'])){
 Route::post('/ajoutModule/{prestation}', 'App\Http\Controllers\ModuleController@add');
 }
 
+Route::get('/ajoutEtiquette', 'App\Http\Controllers\TemplateController@EtiquetteAjout')->name("TemplateController.ajoutEtiquette");
+
+if(isset($_POST['ajoutEtiquette'])){
+Route::post('/ajoutEtiquette', 'App\Http\Controllers\EtiquetteController@add');
+}
 
 
 
@@ -181,7 +186,20 @@ if(isset($_POST['editModule'])){
 Route::post('/editModule/{prestation}/{moduleId}', 'App\Http\Controllers\ModuleController@saveEdit');
 }
 
+Route::get('/editEtiquette/{eid}', 'App\Http\Controllers\TemplateController@EtiquetteEdit')->name("TemplateController.editEtiquette");
 
+if(isset($_POST['editEtiquette'])){
+Route::post('/editEtiquette/{eid}', 'App\Http\Controllers\EtiquetteController@saveEdit');
+}
+
+Route::get('/editAction/{prestation}/{aid}', 'App\Http\Controllers\TemplateController@ActionEdit')->name("TemplateController.editAction");
+
+if(isset($_POST['editAction'])){
+Route::post('/editAction/{prestation}/{aid}', 'App\Http\Controllers\ActionController@saveEdit');
+}
+
+
+// supression
 
 Route::post("/retour", "App\Http\Controllers\TemplateController@retour");
 
