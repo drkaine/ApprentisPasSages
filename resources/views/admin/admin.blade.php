@@ -40,9 +40,6 @@
         <a href="mdp-oublie">Mot de passe oublié ?</a>
     </div>
   </body>
-
-  <section id="coupDeCoeur" class ="cdc">
-      <div class="m-t-1 ban2"></div>
-  </section>
+  <div class="m-t-1 ban2"></div>
 
 @extends("templates/footer")
