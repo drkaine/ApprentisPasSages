@@ -1,32 +1,31 @@
 <?php
 
+    namespace App\Http\Controllers;
+    use App\Models\Page;
+    use App\Models\Album;
+    use App\Models\Photo;
+    use App\Models\Action;
+    use App\Models\Membre;
+    use App\Models\Module;
+    use App\Models\Statut;
+    use App\Models\Tagalbum;
+    use App\Models\Catalogue;
+    use App\Models\Etiquette;
+    use App\Models\ContentProg;
+    use App\Models\Coupsdecoeur;
+    use App\Models\Membrestatut;
+    use App\Models\Moduleaction;
+    use Illuminate\Http\Request;
+    use App\Models\Programmation;
+    use App\Models\Actioncatalogue;
+    use App\Models\Etiquettemodule;
+    use Illuminate\Support\Facades\DB;
+    use App\Models\Categoriecoupsdecoeur;
+    use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Facades\Validator;
 
-namespace App\Http\Controllers;
-use App\Models\Page;
-use App\Models\Album;
-use App\Models\Photo;
-use App\Models\Action;
-use App\Models\Membre;
-use App\Models\Module;
-use App\Models\Statut;
-use App\Models\Tagalbum;
-use App\Models\Catalogue;
-use App\Models\Etiquette;
-use App\Models\ContentProg;
-use App\Models\Coupsdecoeur;
-use App\Models\Membrestatut;
-use App\Models\Moduleaction;
-use Illuminate\Http\Request;
-use App\Models\Programmation;
-use App\Models\Actioncatalogue;
-use App\Models\Etiquettemodule;
-use Illuminate\Support\Facades\DB;
-use App\Models\Categoriecoupsdecoeur;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-
-class TemplateController extends Controller
-{
+    class TemplateController extends Controller
+    {
 
         function affichePartenaires()
         {
@@ -58,12 +57,12 @@ class TemplateController extends Controller
             $photo =  [];
             $partenaires = DB::select('select photo_id from tagalbums JOIN albums ON (albums.nom = tagalbums.nom_album) where albums.nom = ?', [$nom]);
 
-           foreach ($partenaires as $partenaire) {
-              $photo[] = DB::select(' select * from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where photos.id = ?', [$partenaire->photo_id]) ;
-           }
+        foreach ($partenaires as $partenaire) {
+            $photo[] = DB::select(' select * from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where photos.id = ?', [$partenaire->photo_id]) ;
+        }
 
         //    $photo = DB::select(' select chemin from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where tagalbums.nom_album = ?', [$nom]) ;
-           return $photo;
+        return $photo;
         }
 
         function getPageByNom($page)
@@ -116,7 +115,7 @@ class TemplateController extends Controller
             {
                 $couv[$album->nom] = "";
                 $id = Tagalbum::where("nom_album", $album->nom)->inRandomOrder()->get("photo_id");
-                   foreach($id as $i)
+                foreach($id as $i)
                     {
                         $photo = Photo::where("id",$i->photo_id)->get();
                         foreach($photo as $p)
@@ -155,41 +154,46 @@ class TemplateController extends Controller
             return view("ajout/ajoutPhoto",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"nom"=>$request->nom]);
         }
 
-    function moduleAjout(Request $request)
+        function moduleAjout(Request $request)
         {
             return view("ajout/ajoutModule",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation,"etiquette"=>$this->getEtiquette(),"action"=>$this->getAction()]);
         }
 
         
 
-         function ajoutOneTeamAdmin( Request $request)
+        function ajoutOneTeamAdmin( Request $request)
         {
-           return view('ajout/ajoutOneteam', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::with('getStatut')->get(),'page'=>$this->getPageByNom("contact")]);
+        return view('ajout/ajoutOneteam', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::with('getStatut')->get(),'page'=>$this->getPageByNom("contact")]);
         }
 
+        function etiquetteAjout(Request $request)
+        {
+            return view("ajout/ajoutEtiquette",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+        }
 
         function EvenementAjout()
         {
             return view("ajout/ajoutEvenement", ['Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"module"=>$this->getModule(),"action"=>$this->getAction()]);
         }
-    //edit
-    public function coups_de_coeurEdit(Request $request)
-        {
-            return view("edit/editCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>$this->afficheCatalogue(),"cdc"=>Coupsdecoeur::where('id','=',$request->idC)->get(),'page'=>$this->getPageByNom("contact")]);
-        }
 
-    public function categorie_coups_de_coeurEdit(Request $request)
-        {
-            return view("edit/editCategorieCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
-        }
+        //edit
+        public function coups_de_coeurEdit(Request $request)
+            {
+                return view("edit/editCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>$this->afficheCatalogue(),"cdc"=>Coupsdecoeur::where('id','=',$request->idC)->get(),'page'=>$this->getPageByNom("contact")]);
+            }
 
-    public function getOneTeamAdmin( Request $request)
-        {
-           return view('admin/team-admin', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::get(),"membreStatut"=>Membrestatut::get(),'page'=>$this->getPageByNom("contact")]);
-        }
+        public function categorie_coups_de_coeurEdit(Request $request)
+            {
+                return view("edit/editCategorieCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+            }
+
+        public function getOneTeamAdmin( Request $request)
+            {
+            return view('admin/team-admin', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),"statut"=>Statut::get(),"membreStatut"=>Membrestatut::get(),'page'=>$this->getPageByNom("contact")]);
+            }
 
 
-    function EvenementEdit(Request $request)
+        function EvenementEdit(Request $request)
         {
             return view("edit/editEvenement", ['Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"module"=>$this->getModule(),"action"=>$this->getAction(),"programmationId"=>Programmation::where('id','=',$request->pid)->get(),"actionId"=>Action::where('id','=',$request->aid)->get(),"moduleId"=>Module::where('id','=',$request->mid)->get()]);
         }
@@ -203,7 +207,7 @@ class TemplateController extends Controller
         {
             return view("edit/editEtiquette",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"etiquette"=>Etiquette::where('id','=',$request->eid)->get()]);
         }
-        
+
         function actionEdit(Request $request)
         {
             return view("edit/editAction",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation,"action"=>Action::where('id','=',$request->aid)->get(),"actionCatalogue"=>Actioncatalogue::get(),]);
@@ -274,7 +278,7 @@ class TemplateController extends Controller
 
         function getOneTeam( Request $request)
         {
-           return view('visiteur/team', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+        return view('visiteur/team', ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
 
         function accueil(){
@@ -417,5 +421,5 @@ class TemplateController extends Controller
             }
         }
 
-}
+    }
 
