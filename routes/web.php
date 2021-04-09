@@ -21,6 +21,7 @@ use App\Http\Controllers\TemplateController;
 //     return view('template');
 // });
 
+// accueil
 Route::get('/', 'App\Http\Controllers\TemplateController@accueil')->name('Accueil');
 
 //contact
@@ -29,17 +30,12 @@ if(isset($_POST['contactCacher'])){
      }
 
 
-Route::get('/', 'App\Http\Controllers\TemplateController@accueil')->name('Accueil');
-
-
-
  // liens morts
-if(isset($_POST['liensCacher'])){
-Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
-}
-
-Route::get('/association', "App\Http\Controllers\TemplateController@association")->name('Association');
-
+ if(isset($_POST['liensCacher'])){
+    Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
+    }
+    
+    Route::get('/association', "App\Http\Controllers\TemplateController@association")->name('Association');
 
 
 Route::get('/galerie', 'App\Http\Controllers\TemplateController@galerie')->name('Galerie');

@@ -134,6 +134,7 @@ class TemplateController extends Controller
         {
             return view("ajout/ajoutCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->id)->get(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
+
         public function categorie_coups_de_coeurAjout(Request $request)
         {
             return view("ajout/ajoutCategorieCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
@@ -159,7 +160,7 @@ class TemplateController extends Controller
             return view("ajout/ajoutModule",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"prestation"=>$request->prestation,"etiquette"=>$this->getEtiquette(),"action"=>$this->getAction()]);
         }
 
-
+        
 
          function ajoutOneTeamAdmin( Request $request)
         {
@@ -345,6 +346,10 @@ class TemplateController extends Controller
             return view("admin/album-admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"photos"=>$this->getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
 
+        function allPrestationsAdmin(Request $request)
+        {
+            return view("all-prestation-admin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>Action::get(),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(),'page'=>$this->getPageByNom("contact"), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),"catalogues"=>$this->afficheCatalogue()]);
+        }
 
 
         function retour()
@@ -402,9 +407,5 @@ class TemplateController extends Controller
             }
         }
 
-        function catalogueAjout(Request $request)
-        {
-            return view("ajout/ajoutCatalogue",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
-        }
 }
 

@@ -1,5 +1,5 @@
 
-@extends('templates/barre-admin')
+@extends('barre-admin')
 
 @section("content")
  <form action="" method="post">
@@ -87,7 +87,12 @@
 
   <input type="submit" value="Ajouter" name ="ajouter" >
 </form>
+
+@if($prestation=='tout')
+<a href="{{route('TemplateController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>
+@else
 <a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$prestation])}}"><h1>Revenir à {{$prestation}}</h1></a>
+@endif
 
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
