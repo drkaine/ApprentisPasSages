@@ -12,7 +12,7 @@
         <button> Valider</button>
     </form>
 
-    <form action="/retour"  method="post">
+    <form action="{{ Route('TemplateController.retour', ["choix"=>$choix, "id1"=>$id1, "id2"=>$id2]) }}"  method="post">
         {{ csrf_field() }}
         <button> Annuler</button>
     </form>

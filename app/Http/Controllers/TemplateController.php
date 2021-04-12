@@ -375,9 +375,39 @@
         }
 
 
-        function retour()
+        function retour(Request $request)
         {
-            return view('admin/accueil-admin',['partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),'page'=>$this->getPageByNom("contact")]);
+            switch ($request->choix)
+            {
+                case 'catalogue':
+                    return redirect("accueil-admin");
+
+                case 'membre':
+                    return redirect("accueil-admin");
+                    
+                case 'action':
+                    return redirect("all-prestation-admin");
+
+                case "module":
+                    return redirect("all-prestation-admin");
+
+                case "etiquette":
+                    return redirect("all-prestation-admin");
+
+                case 'evenement':
+                    return redirect("accueil-admin");
+
+                case 'album':
+                    return redirect("galerie-admin");
+
+                case 'photo':
+                    return redirect("album-admin/$request->id2");
+                case 'catcdc':
+                    return redirect("coup-coeur-admin");
+
+                case "cdc":
+                    return redirect("coup-coeur-admin");
+            }
         }
 
         function demandeSuppression(Request $request)
@@ -399,15 +429,15 @@
                     
                 case 'action':
                     $this->deleteAction($request);
-                    return redirect("accueil-admin");
+                    return redirect("all-prestation-admin");
 
                 case "module":
                     $this->deleteModule($request);
-                    return redirect("accueil-admin");
+                    return redirect("all-prestation-admin");
 
                 case "etiquette":
                     $this->deleteEtiquette($request);
-                    return redirect("accueil-admin");
+                    return redirect("all-prestation-admin");
 
                 case 'evenement':
                     $this->deleteEvenement($request);

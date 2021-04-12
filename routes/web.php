@@ -3,6 +3,8 @@
 use App\Models\Album;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\TemplateController;
 ;
 
@@ -49,13 +51,17 @@ Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')
 Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
 
 
-Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+// Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
 // ->middleware('auth.basic')
 
 //ADMIN
 
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
+
+// Route::resource('User', UserController::class);
+
+Route::post('/admin',  "App\Http\Controllers\UserController@edit");
 
 Route::get('/mdp-oublie', 'App\Http\Controllers\TemplateController@mdpOublie');
 
@@ -201,7 +207,7 @@ Route::post('/editAction/{prestation}/{aid}', 'App\Http\Controllers\ActionContro
 
 // supression
 
-Route::post("/retour", "App\Http\Controllers\TemplateController@retour");
+Route::post("/retour/{choix}", "App\Http\Controllers\TemplateController@retour")->name("TemplateController.retour");
 
 Route::post("/demande-suppression/{choix}","App\Http\Controllers\TemplateController@demandeSuppression")->name("TemplateController.demandeSuppression");
 

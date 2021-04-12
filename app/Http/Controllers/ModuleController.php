@@ -76,9 +76,6 @@ class ModuleController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'description' => 'required',
-            
-
-
         ]);
 
         if($validator->fails()){
