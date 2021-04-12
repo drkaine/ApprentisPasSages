@@ -30,13 +30,15 @@
     </div>
     <div class='co_admin'>
       <h2>Identifiez-vous</h2>
-      <input type="hidden" name="mdp" value="mdp">
-        <form method="POST" action="/admin">
+        <form method="POST" action="">
+          {{ csrf_field() }}
+          <input type="hidden" name="mdp" value="Yes">
           <label for="Mail">Votre mail :</label><br>
           <input type="email" id="mail" name="mail" placeholder="Mail" required autofocus ><br>
           <label for="Mail">Vérification mail :</label><br>
-          <input type="email" id="mail" name="mail2" placeholder="Mail" required><br><br>
-          <button>Envoi</button>
+          <input type="email" id="mail2" name="mail2" placeholder="Mail" required><br><br>
+          <input type="submit" value="Envoyer" name ="edito" >
+          
         </form>
     </div>
   </body>

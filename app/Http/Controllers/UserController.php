@@ -72,6 +72,7 @@ class UserController extends Controller
     {
         if($request->mdp)
         {
+            $mdp = $this->generationMDP();
             $validator = Validator::make($request->all(), [
                 'mail' => 'required',
                 'mail2' => 'required',
@@ -81,11 +82,11 @@ class UserController extends Controller
                 return back()->withInput($request->except('key'))
                 ->withErrors($validator);
             }
-            $user = User::find($request->mail);
-            $user->password = $this->generationMDP();
+            $user = User::where('email', $request->mail)->first();
+            $user->password = $mdp;
             $user->expiration = date("Y-m-d", strtotime("+3 days"));
             $user->save();
-            return view("admin/admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue()]);
+            return redirect("admin");
         }
     }
 

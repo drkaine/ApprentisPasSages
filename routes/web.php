@@ -61,7 +61,7 @@ Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
 
 // Route::resource('User', UserController::class);
 
-Route::post('/admin',  "App\Http\Controllers\UserController@edit");
+Route::post('/mdp-oublie', "App\Http\Controllers\UserController@edit")->name('UserController.edit');
 
 Route::get('/mdp-oublie', 'App\Http\Controllers\TemplateController@mdpOublie');
 
@@ -150,7 +150,6 @@ Route::post('/ajoutEtiquette', 'App\Http\Controllers\EtiquetteController@add');
 
 
 //EDIT
-
 
 Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOneteamAdmin')->name('TemplateController.getOneteamAdmin');
 
