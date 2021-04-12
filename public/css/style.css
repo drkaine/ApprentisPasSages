@@ -129,6 +129,7 @@ nav
     padding: 1px;
     font-weight:bold;
     margin-right: 30px;
+    margin-left: 10px;
   }
 
   /* modal lien-mort */
@@ -136,6 +137,8 @@ nav
   {
     display : flex;
     align-items: center;
+    justify-content: space-between;
+    flex-flow: column;
   }
   
 .modal-module
@@ -160,6 +163,7 @@ nav
     max-width:350px;
     display: flex;
     justify-content: center;
+    align-items: flex-end;
 }
 
 .et

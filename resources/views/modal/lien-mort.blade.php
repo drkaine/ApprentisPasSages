@@ -5,8 +5,8 @@
   </div>
 
   <div class="modal-body">
-    <form action="">
-      <select class="modal-lien" size=1 >
+    <form action="" class="modal-lien">
+      <select size=1 >
         <option selected disabled>Veuillez choisir le lien mort !</option>
         @foreach ($cdc as $c)
           <option value="{{ $c->id }}" >{{ $c->nom }}</option>
