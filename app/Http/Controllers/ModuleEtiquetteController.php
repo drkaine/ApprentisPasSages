@@ -31,18 +31,21 @@ class ModuleetiquetteController extends Controller
     
     }
     
-    public function saveEdit($statutId){
+    public function saveEdit($etiquette,$moduleId){
         
         
         
-        DB::table('actioncatalogues')->where('action_id', '=', $action)->delete();
+        DB::table('etiquettemodules')->where('module_id', '=', $moduleId)->delete();
         
         
-        
-        $memStat = new Membrestatut();
-        $memStat->membre_id = $membreId[0]->id;
-        $memStat->statut_id =$statutId;
-        $memStat->save();
+        foreach($etiquette as $etiq)
+        {
+            
+            $modEti= new Etiquettemodule();
+            $modEti->module_id = $moduleId;
+            $modEti->etiquette_id =$etiq;
+            $modEti->save();
+        }
            
     }
 }

@@ -1,15 +1,14 @@
 @extends('templates/barre-admin')
 
 @section("content")
-
-  <form action="" method="post">
+ <form action="" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="ajoutCC" value="Yes">
     @foreach($ccdc as $cc)
       <input type="hidden" name="categorieId" value="{{$cc->id}}">
       <h1>Categorie : {{$cc->nom}}</h1>
     @endforeach
-      
+     
     <label for="lienEdit">Lien</label>
     <input type="text" id="lienEdit" name ="lien" required>
 

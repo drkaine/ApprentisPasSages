@@ -1,7 +1,6 @@
 @extends('templates/barre-admin')
 
 @section("content")
-
     <form action="" method="post">
         {{ csrf_field() }}
         
@@ -22,19 +21,16 @@
                 <option value="{{ $mod->id }}" >{{ $mod->nom }}</option>
             @endforeach
         </select>
-
         <select name="Action"  size=1 >
-                <option disabled>Veuillez choisir un module</option>
-                @foreach ($action as $act)
-                    <option value="{{ $act->id }}" >{{ $act->nom }}</option>
-                @endforeach
+            <option disabled>Veuillez choisir un module</option>
+            @foreach ($action as $act)
+                <option value="{{ $act->id }}" >{{ $act->nom }}</option>
+            @endforeach
         </select>
+        
         <input type="submit" value="Ajouter" name ="ajouter" >
     </form>
 
     <a href="{{route('Accueil-Admin')}}"><h1>Revenir à Accueil</h1></a>
-
-    <section id="coupDeCoeur" class ="cdc">
-        <div class="m-t-1 ban2"></div>
-    </section>
+    <div class="m-t-1 ban2"></div>
 @endsection

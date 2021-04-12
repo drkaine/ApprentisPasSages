@@ -31,18 +31,21 @@ class ModuleactionController extends Controller
     
     }
     
-    public function saveEdit($statutId){
+    public function saveEdit($action,$moduleId){
         
         
         
-        DB::table('actioncatalogues')->where('action_id', '=', $action)->delete();
+        DB::table('moduleactions')->where('module_id', '=', $moduleId)->delete();
         
         
-        
-        $memStat = new Membrestatut();
-        $memStat->membre_id = $membreId[0]->id;
-        $memStat->statut_id =$statutId;
-        $memStat->save();
+        foreach($action as $acti)
+        {
+            
+            $modAct= new Moduleaction();
+            $modAct->module_id = $moduleId;
+            $modAct->action_id =$acti;
+            $modAct->save();
+        }
            
     }
 }

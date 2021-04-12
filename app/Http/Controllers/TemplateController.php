@@ -129,6 +129,10 @@
         }
 
         //ajout
+         function catalogueAjout(Request $request)
+        {
+            return view("ajout/ajoutCatalogue",['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
+        }
         public function coups_de_coeurAjout(Request $request)
         {
             return view("ajout/ajoutCoup-coeur",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->id)->get(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);

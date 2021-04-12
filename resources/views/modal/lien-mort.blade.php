@@ -5,7 +5,7 @@
   </div>
 
   <div class="modal-body">
-    <form   action="accueil-admin">
+    <form   action="">
       <select  size=1 >
         <option selected disabled>Veuillez choisir le lien mort !</option>
         @foreach ($cdc as $c)
