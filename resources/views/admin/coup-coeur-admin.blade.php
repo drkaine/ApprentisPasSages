@@ -35,7 +35,8 @@
                                         </button>
                                     </form>
                                     <a href="{{route('TemplateController.editCoup-Coeur', ['idCC'=>$cc->id,'idC'=>$c->id])}}" class="fas fa-edit"></a>
-                                    <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"> {{$c->nom}}</a>
+                                    <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"><i class="fa fa-heart"></i> {{$c->nom}}</a>
+                                    
                                 </li>
                             </ul>
                         @endif

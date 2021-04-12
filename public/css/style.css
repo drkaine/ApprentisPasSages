@@ -547,14 +547,14 @@ nav ul li.btn span.show:before {
     margin-top: 1px;
   }
   
-  /* .contact
+  .contact
   {
       display: inline-flex;
       justify-content: space-around;
       flex-flow: wrap;
-      width : 100%;
+      width : 57%;
       align-items: center;
-  /* } */
+  }
   
   footer .social-media-links {
     background: #41046f;
@@ -610,8 +610,8 @@ nav ul li.btn span.show:before {
   /*Contact Modal*/
   .modal-dialog{
       min-width: 300px !important;
-      max-width: 60% !important;
-      width: 60% !important;
+      max-width: 90% !important;
+      width: 70% !important;
   
   }
   .modal-body section div{
