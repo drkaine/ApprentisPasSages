@@ -86,6 +86,7 @@ class UserController extends Controller
             $user->password = $mdp;
             $user->expiration = date("Y-m-d", strtotime("+3 days"));
             $user->save();
+            
             return redirect("admin");
         }
     }

@@ -83,75 +83,44 @@
                     </div>
 
                     <div>
-                        
-                        @foreach($teams as $membr)
+                      
+                      @foreach($teams as $membr)
+                        @php
+                          $increment=0;
+                          $valide=0;
+                        @endphp
+                        @foreach($membreStatut as $mstatut)
+                          
+                          @if($mstatut->membre_id == $membr->id AND ($mstatut->statut_id ==1 OR $mstatut->statut_id ==5 OR $mstatut->statut_id ==6 OR $mstatut->statut_id ==7))
+                  
                             @php
-                            $increment=0;
-                            $valide=0;
+                              $valide=1;
                             @endphp
-                            @foreach($membreStatut as $mstatut)
-                            
-                                @if($mstatut->membre_id == $membr->id AND ($mstatut->statut_id ==1 OR $mstatut->statut_id ==5 OR $mstatut->statut_id ==6 OR $mstatut->statut_id ==7))
-                        
-                                    @php
-                                        $valide=1;
-                                    @endphp
+                          @endif
+                        @endforeach
+                        @if($valide==1)
+                          <div>
+                            @foreach($statu as $stat)
+                              @foreach($membreStatut as $mstatut)
+                                
+                                @if($stat->id==$mstatut->statut_id AND $membr->id==$mstatut->membre_id)
+                                  @php
+                                      $increment++;
+                                  @endphp
+                                  @if($increment>1),&nbsp;
+                                  @endif{{$stat->nom}}
                                 @endif
+                              @endforeach
                             @endforeach
-                            @if($valide==1)
-                                <div>
-                                    @foreach($statu as $stat)
-                                        @foreach($membreStatut as $mstatut)
-                                       
-                                        @if($stat->id==$mstatut->statut_id AND $membr->id==$mstatut->membre_id)
-                                            @php
-                                                $increment++;
-                                            @endphp
-                                            @if($increment>1),&nbsp;
-                                            @endif{{$stat->nom}}
-                                        @endif
-                                        @endforeach
-                                    @endforeach
-                                    &nbsp;:<br>
-                                    {!!($membr->prenom)!!}&nbsp;{!!($membr->nom)!!}
-                                    </div>
-                                    <div>{!!($membr->telephone)!!}
-                                    </div>
-                                    <br>
-                                    <br>
-                                @endif
-                            @endforeach
-                        
-<!--
-                        Presidente: 
-                          Laetitia DICKA DICKA</div>
-                        <div>06.59.88.45.45</div>
-                    </div>
-
-                    <div>
-                      <div>Trésorier, Coordinateur/trice : <br>
-                        Rémi LANNEY RICCI</div>
-                      <div>06.20.82.70.88</div>
-                    </div>
-
-                    <div>
-                      <div>Secrétaire : <br>
-                        Claire Michelet</div>
-                      <div>06.22.34.33.85</div>
-                    </div>
-
-                    <div>
-                      <div>Secrétaire : <br>
-                      Bouzidi Gharoual</div>
-                      <div>06.28.33.58.56</div>
-                    </div>
-
-                    <div>
-                      <div>Coordinateur/trice :
-                      <br>
-                        Samantha LANNEY RICCI</div>
-                      <div>06.52.25.17.66</div>
--->
+                            &nbsp;:<br>
+                            {!!($membr->prenom)!!}&nbsp;{!!($membr->nom)!!}
+                          </div>
+                          <div>{!!($membr->telephone)!!}
+                          </div>
+                          <br>
+                          <br>
+                        @endif
+                      @endforeach
                     </div>
                   </div>
                 </div>

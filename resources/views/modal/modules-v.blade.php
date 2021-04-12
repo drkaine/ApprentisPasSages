@@ -6,31 +6,33 @@
   </div>
 
   <div class="modal-body">
-    @if ($module->img == null)
-      <img src="{{asset("storage/images/apprentispassages_logo_renard.png ")}}">
-    @else
-      <img src="{{asset("storage/images/module/$module->nom.png")}}">
-    @endif
-
+    <section class = "modal-module">
+      @if ($module->img == null)
+        <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="logo_m">
+      @else
+        <img src="{{asset("storage/images/module/$module->nom.png")}}">
+      @endif
+      <ul class="precision">
+        <li><h4>Durée du module : {{ $module->temps }}<br></h4></li>
+        <li><h4>Materiel utilisé : {{ $module->materiel }}<br></h4><li>
+        <li><h4>But pedagogique : {{ $module->projetPeda }}<br></h4><li>
+        <li><h4>Lieu : {{ $module->lieu }}<br></h4><li>
+        <li><h4>Format : {{ $module->format }}<br></h4><li>
+      </ul>
+    </section>
+  </div>
+  <section class='etiquette'>
     @foreach ($etiquettes as $etiquette)
       @foreach ($etiquettemodules as $etiquettemodule )
         @if ($etiquette->id == $etiquettemodule->etiquette_id and $etiquettemodule->module_id == $module->id)
-          <p style="background-color:{{ $etiquette->couleur }}" >{{ $etiquette->nom }} </p>
+          <p style="background-color:{{ $etiquette->couleur }}" class ="et">{{ $etiquette->nom }} </p>
         @endif
       @endforeach
     @endforeach
-  </div>
+  </section>
 
   <div>
     {{ $module->description }}
-  </div>
-    
-  <div>
-    Durée du module : {{ $module->temps }}<br>
-    Materiel utilisé : {{ $module->materiel }}<br>
-    But pedagogique : {{ $module->projetPeda }}<br>
-    Lieu : {{ $module->lieu }}<br>
-    Format : {{ $module->format }}<br>
   </div>
 
   <div class="modal-footer">
