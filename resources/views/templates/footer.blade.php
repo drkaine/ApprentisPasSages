@@ -1,3 +1,4 @@
+
 <!-- footer -->
   <footer class="footer">
     <ul class="partenaires">
