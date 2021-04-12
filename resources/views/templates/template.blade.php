@@ -30,10 +30,6 @@
     <link rel="stylesheet" href="/js/jQCloud/dist/jqcloud.min.css">
 
     <!--Base-->
-    <link href="{{ asset('css/accueil.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/about.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/contact.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/galerie.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css')}}"/>
   </head>
 
@@ -74,9 +70,7 @@
             <a data-toggle="modal" data-target="#ContactModal" href="">Contact</a>
           </li>
 
-          @foreach ($page as $contact)
-            {!!(str_replace("<!-- csrf_field()-->", csrf_field(),$contact->contenu )) !!}
-          @endforeach
+          @include("modal/contact")
 
           <li>
             <a href="prestations" class="dropdown-toogle" data-toggle="dropdown" aria-expanded="true">Prestations</a>

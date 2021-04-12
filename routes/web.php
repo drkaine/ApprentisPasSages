@@ -51,7 +51,7 @@ Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')
 Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
 
 
-// Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
 // ->middleware('auth.basic')
 
