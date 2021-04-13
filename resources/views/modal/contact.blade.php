@@ -45,32 +45,19 @@
                     <input type="hidden" name="contactCacher" value="1">
                   </form>
                 </div>
-              </div>
-
-              <div class="contact-info">
-                <h1>Nos coordonnées</h1>
-                <div class="adresse">
-                  <div id="icon">
-                    <i class="fas fa-map-marked-alt" style="font-size:30px;color:#41046f;"></i>
-                  </div>
-
-                  <div id="info-adress"><h4>Apprentis Pas Sages</h4>
+                <article class = "coord">
+                  <h1 class = 'titre-coord'>Nos coordonnées</h1>
+                  <div id="info-adress">
+                    <h4>Apprentis Pas Sages</h4>
                     <h5>Chalet les Carlines</h5>
                     <h5>Quartier les blancons</h5>
                     <h5>06450 Belvédère</h5>
-                  </div>
-                </div>
+                  </div><br/><br>
+                  <a href="mailto:contact@apprentispassages.com" target="_blank"><h4>contact@apprentispassages.com</h4></a>
+                </article>
+              </div>
 
-                <div class="email-adresse">
-                  <div id="icon">
-                    <i class="fas fa-envelope" style="font-size:30px;color:#41046f;"></i>
-                  </div>
-
-                  <div id="mail-adress">
-                    <a href="mailto:contact@apprentispassages.com" target="_blank"><h4>contact@apprentispassages.com</h4></a>
-                  </div>
-                </div>
-
+              <div class="contact-info">
                 <div class="info-general">
                   <div id="icon">
                     <i class="fas fa-phone-alt" style="font-size:30px;color:#41046f;"></i>
@@ -79,12 +66,10 @@
                   <div class="inf-gen-pers">
                     <div id="info-pers">
                       <div>
-                        <div>Général:</div>
-                        <div>+33 (0)6.52.25.17.66</div>
+                        <h4>Général:</h4>
+                        <div>+33 (0)6.52.25.17.66</div><br></br>
                       </div>
-
                       <div>
-                        
                         @foreach($teams as $membr)
                           @php
                             $increment=0;
@@ -103,7 +88,6 @@
                             <div>
                               @foreach($statu as $stat)
                                 @foreach($membreStatut as $mstatut)
-                                  
                                   @if($stat->id==$mstatut->statut_id AND $membr->id==$mstatut->membre_id)
                                     @php
                                         $increment++;

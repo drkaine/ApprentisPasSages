@@ -72,7 +72,7 @@ input[type="submit"]:hover {
  {
    min-width: 50px !important;
    max-width: 90% !important;
-   width: 70% !important;
+   width: 80% !important;
  }
  
    /* modal lien-mort */
@@ -107,7 +107,7 @@ input[type="submit"]:hover {
  /* gestion etiquettes */
  .etiquette
  {
-     max-width:350px;
+     max-width:550px;
      display: flex;
      justify-content: center;
      align-items: baseline;
@@ -859,6 +859,24 @@ font-weight: 900;
     color:#41046f !important;
   }
 
+  .contact-global
+  {
+    display: flex;
+  }
+
+  .titre-coord
+{
+  color:  #fffb00e0;
+}
+
+.coord
+  {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+
   /* formulaire a remplir */
   .contact-form {
     min-width: 50%;
@@ -868,6 +886,7 @@ font-weight: 900;
     padding: 10px;
     margin: 10px;
     color: #fffb00e0;
+    width:50%;
   }
   
   #formulaire {
@@ -897,6 +916,7 @@ font-weight: 900;
     height: auto;
     background: #41046f;
     color: #fffb00e0;
+    width:50%;
   }
   
   
