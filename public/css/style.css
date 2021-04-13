@@ -153,8 +153,7 @@ input[type="submit"]:hover
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #41046f;
-  min-width: 300px;
-  max-width: 400px;
+  width: 300px;
 }
 
 /* gestion etiquettes */
@@ -164,12 +163,14 @@ input[type="submit"]:hover
   display: flex;
   justify-content: center;
   align-items: baseline;
+  flex-flow: wrap;
 }
 
 .etiquettes 
 {
   display:flex;
   padding-left: 10px;
+  flex-flow: wrap;
 }
 
 .et
