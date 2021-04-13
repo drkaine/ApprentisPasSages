@@ -138,6 +138,7 @@ input[type="submit"]:hover
 {
   max-width: 100px;
   max-height: 100px;
+  display: flex;
 }
 
 .card-module
@@ -149,11 +150,13 @@ input[type="submit"]:hover
 
 .module
 {
-  margin: 10px;
-  padding: 10px;
+  margin:5px;
+  padding:5px;
   border-radius: 10px;
   border: 1px solid #41046f;
   width: 300px;
+  height: 130px;
+  text-align: center;
 }
 
 /* gestion etiquettes */

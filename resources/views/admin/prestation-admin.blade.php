@@ -30,15 +30,15 @@
                             @php $compte++;@endphp
                             @if($moduleac->action_id == $action->id)
                                 @if($moduleac->module_id == $module->id)
-                                    <a href="{{route('TemplateController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
-                                    <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                                     <li class = "module">
-                                    @if ($module->img == null)
-                                        <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="miniature-module"  data-toggle="modal" data-target="#myModal{{$compte}}">
-                                    @else
-                                        <img src="{{asset("storage/images/module/$module->nom.png")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
-                                    @endif
-                                    {{ $module->nom }}
+                                        @if ($module->img == null)
+                                            <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="miniature-module"  data-toggle="modal" data-target="#myModal{{$compte}}">
+                                        @else
+                                            <img src="{{asset("storage/images/module/$module->nom.png")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
+                                        @endif
+                                        {{ $module->nom }}
+                                        <a href="{{route('TemplateController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
+                                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                                     </li>
                                     <!-- Modal -->
                                     <div id="myModal{{$compte}}" class="modal fade" role="dialog">
