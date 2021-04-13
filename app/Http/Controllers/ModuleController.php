@@ -35,6 +35,7 @@ class ModuleController extends Controller
         $module->projetPeda=$request->projetPeda;
         $module->lieu=$request->lieu;
         $module->format=$request->format;
+        $module->description= $request->description;
         $module->save();
         
         $arrayA=array();

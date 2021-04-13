@@ -23,13 +23,18 @@
                         </button>
                     </form><br>
                 </li>
-                <ul>
+                <ul class="card-module">
                     <a href="{{route('TemplateController.ajoutModule',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a><br>
                     @foreach ($modulesac as $moduleac)
                         @foreach ($modules as $module)
                             @php $compte++;@endphp
                             @if($moduleac->action_id == $action->id)
                                 @if($moduleac->module_id == $module->id)
+                                    @if ($module->img == null)
+                                        <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="miniature-module">
+                                    @else
+                                        <img src="{{asset("storage/images/module/$module->nom.png")}}">
+                                    @endif
                                     <a href="{{route('TemplateController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
                                     <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                                     <li> <button type="button"  data-toggle="modal" data-target="#myModal{{$compte}}">{{ $module->nom }}</button></li>

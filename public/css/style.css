@@ -82,7 +82,7 @@ input[type="submit"]:hover
 .modal-p
 {
   width: 90%;
-  height: 45vw;
+  height: 47vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,6 +134,29 @@ input[type="submit"]:hover
   max-height:600px;
 }
 
+.miniature-module
+{
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.card-module
+{
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.module
+{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #41046f;
+  min-width: 300px;
+  max-width: 400px;
+}
+
 /* gestion etiquettes */
 .etiquette
 {
@@ -147,7 +170,6 @@ input[type="submit"]:hover
 {
   display:flex;
   padding-left: 10px;
-  flex-flow: column;
 }
 
 .et

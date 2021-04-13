@@ -30,6 +30,11 @@
                     $compte++;
                 @endphp
                 <li>
+                    @if ($module->img == null)
+                        <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="miniature-module">
+                    @else
+                        <img src="{{asset("storage/images/module/$module->nom.png")}}">
+                    @endif
                     <a href="{{route('TemplateController.editModule',['prestation'=>'tout','moduleId'=>$module->id])}}" class="fas fa-edit"></a>
                     <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                     <button type="button"  data-toggle="modal" data-target="#myModal{{$compte}}">{{ $module->nom }}</button>
