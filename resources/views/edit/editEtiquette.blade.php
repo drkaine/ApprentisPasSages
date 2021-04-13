@@ -13,7 +13,7 @@
         <input type="text"  id="nomEdit" name ="nom" value="{{$eti->nom}}"required>
 
         <label for="couleurEdit">couleur</label>
-        <input type="text" id="couleurEdit" name ="couleur" value="{{$eti->couleur}}" required>
+        <input type="color" id="couleurEdit" name ="couleur" value="{{$eti->couleur}}" required>
     @endforeach
     <input type="submit" value="Editer" name ="edito" >
     <a href="{{route('TemplateController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>

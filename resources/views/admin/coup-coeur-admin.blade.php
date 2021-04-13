@@ -28,12 +28,7 @@
                         @if($c->categoriecoupsdecoeur_id==$cc->id)
                             <ul>
                                 <li>
-                                    <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"cdc" ,'id1'=>$c->id,"id2"=>""]) }}" method="post">
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-danger">
-                                            <i class="fas fa-minus-circle"></i>
-                                        </button>
-                                    </form>
+                                    <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"cdc" ,'id1'=>$c->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
                                     <a href="{{route('TemplateController.editCoup-Coeur', ['idCC'=>$cc->id,'idC'=>$c->id])}}" class="fas fa-edit"></a>
                                     <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"><i class="fa fa-heart"></i> {{$c->nom}}</a>
                                     

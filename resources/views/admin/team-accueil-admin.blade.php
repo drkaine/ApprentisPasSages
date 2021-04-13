@@ -5,12 +5,7 @@
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
             </form>
-            <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"membre" ,'id1'=>$membre->id,"id2"=>""]) }}" method="post">
-                {{ csrf_field() }}
-                <button class="btn btn-danger">
-                    <i class="fas fa-minus-circle"></i>
-                </button>
-            </form>
+            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"membre" ,'id1'=>$membre->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
             <a href="{{route('TemplateController.getOneteamAdmin', ['id'=>$membre->id])}}">
                 @foreach($membre->getStatus()->get() as $statut)
                     @php $statuts[] = $statut->description;@endphp

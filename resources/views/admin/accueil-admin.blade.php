@@ -8,13 +8,7 @@
     @foreach ($catalogues as $catalogue)
       <div class="formation">
         <div class="wrapper">
-          <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catalogue" ,'id1'=>$catalogue->id,"id2"=>""]) }}" method="post">
-            {{ csrf_field() }}
-            <button class="btn btn-danger">
-              <i class="fas fa-minus-circle"></i>
-            </button>
-          </form>
-
+          <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catalogue" ,'id1'=>$catalogue->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
           <a class="cta" href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
             <span>{{ $catalogue->nom}}</span>
             <span>

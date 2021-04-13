@@ -25,12 +25,7 @@
 
 @foreach($programmation as $prog)
     @if($prog->id==$cProg->programmation_id)
-        <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"evenement" ,'id1'=>$prog->id,"id2"=>""]) }}" method="post">
-            {{ csrf_field() }}
-            <button class="btn btn-danger">
-                <i class="fas fa-minus-circle"></i>
-            </button>
-        </form>
+        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"evenement" ,'id1'=>$prog->id,"id2"=>""]) }}"  class="fas fa-minus-circle"></a>
         <div>
             Date de Debut :{{$prog->dateDebut}}
         </div>

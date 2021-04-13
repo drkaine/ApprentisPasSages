@@ -12,12 +12,7 @@
             @foreach ($photos as $photo)
                 @foreach ($photo as $p) 
                     @if ($p->deleted_at == null)
-                        <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"photo" ,'id1'=>$p->id,"id2"=>"$nom"]) }}" method="post">
-                        {{ csrf_field() }}
-                            <button class="btn btn-danger">
-                                <i class="fas fa-minus-circle"></i>
-                            </button>
-                        </form>
+                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"photo" ,'id1'=>$p->id,"id2"=>"$nom"]) }}" class="fas fa-minus-circle"></a>
                         <div class="image">
                             <img src="{{asset("storage/images/$p->chemin ")}}" alt="{{ $nom }}" class = "image">
                         </div>

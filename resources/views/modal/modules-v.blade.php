@@ -31,7 +31,7 @@
     @endforeach
   </section>
 
-  <div>
+  <div class="desc">
     {{ $module->description }}
   </div>
 

@@ -31,12 +31,7 @@
                             @if($moduleac->action_id == $action->id)
                                 @if($moduleac->module_id == $module->id)
                                     <a href="{{route('TemplateController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
-                                    <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" method="post">
-                                        {{ csrf_field() }}
-                                        <button class="btn btn-danger">
-                                            <i class="fas fa-minus-circle"></i>
-                                        </button>
-                                    </form>
+                                    <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                                     <li> <button type="button"  data-toggle="modal" data-target="#myModal{{$compte}}">{{ $module->nom }}</button></li>
                                     <!-- Modal -->
                                     <div id="myModal{{$compte}}" class="modal fade" role="dialog">

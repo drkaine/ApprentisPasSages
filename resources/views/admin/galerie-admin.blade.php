@@ -12,12 +12,7 @@
     <a href="{{route('TemplateController.ajoutAlbum')}}" class="fas fa-plus-circle"></a>
       @foreach ($albums as $album)
         @php $nom = $album->nom;@endphp
-        <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}" method="post">
-          {{ csrf_field() }}
-          <button class="btn btn-danger">
-            <i class="fas fa-minus-circle"></i>
-          </button>
-        </form>
+        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}"  class="fas fa-minus-circle"></a>
 
         <div class="item">
           <div class="galerie-title">{{ $album->nom }}</div>            

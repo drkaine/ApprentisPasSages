@@ -25,12 +25,8 @@
     @foreach ($etiquettes as $etiquette)
           @foreach ($etiquettemodules as $etiquettemodule )
             @if ($etiquette->id == $etiquettemodule->etiquette_id and $etiquettemodule->module_id == $module->id)
-              <p style="background-color:{{ $etiquette->couleur }}" class ="etiquette" >
-                <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}" method="post">
-                  {{ csrf_field() }}
-                  <button class="fas fa-minus-circle">
-                  </button>
-                </form><br>
+              <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}"  class="fas fa-minus-circle"></a>
+              <p style="background-color:{{ $etiquette->couleur }}" class ="et" >
                 {{ $etiquette->nom }} 
               </p>
               
@@ -38,7 +34,7 @@
           @endforeach
         @endforeach
   </section>
-  <div>
+  <div class = "desc">
     {{ $module->description }}
   </div>
   <div class="modal-footer">
