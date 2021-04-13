@@ -4,10 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    // public function Affiche_Login(){
+    //     Auth::logout();
+    //     return view('admin/login');
+    //  }
+
+    public function authenticate(Request $request)
+    {
+        if(!empty($request->email))
+        {
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials)) 
+            {
+                $request->session()->regenerate();
+                return redirect()->intended('admin/accueil-admin');
+            }
+            return back()->withErrors([
+                'email' => 'Mauvais ID',
+            ]);
+        }
+    }
     /**
      * Display a listing of the resource.
      *

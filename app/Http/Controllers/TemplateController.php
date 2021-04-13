@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
     namespace App\Http\Controllers;
     use App\Models\Page;
     use App\Models\Album;
@@ -22,6 +24,7 @@
     use Illuminate\Support\Facades\DB;
     use App\Models\Categoriecoupsdecoeur;
     use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Validator;
 
     class TemplateController extends Controller
@@ -323,6 +326,7 @@
 
         function admin()
         {
+            Auth::logout();
             return view("admin/admin", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue()]);
         }
 

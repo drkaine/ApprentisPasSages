@@ -29,16 +29,16 @@
       @php
         $compte=0;
       @endphp
-      @foreach($statut as $statu)
+      @foreach($statut as $stattu)
         @php
           $compte++;
         @endphp
         <div>
          
           <input type="checkbox" id="statt" name="statt{{$compte}}">
-          <label for="scales">{{$statu->nom}}</label>
+          <label for="scales">{{$stattu->nom}}</label>
          
-          <input type="hidden" name="statutId{{$compte}}" value="{{$statu->id}}">
+          <input type="hidden" name="statutId{{$compte}}" value="{{$stattu->id}}">
         </div>
       @endforeach
       <input type="hidden" name="compte" value="{{$compte}}">

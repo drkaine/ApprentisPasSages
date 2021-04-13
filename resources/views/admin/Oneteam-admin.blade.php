@@ -68,7 +68,7 @@
       @php
           $compte=0;
       @endphp
-      @foreach($statut as $statu)
+      @foreach($statut as $stattu)
         @php
           $compte++;
         @endphp
@@ -76,14 +76,14 @@
 
           <input type="checkbox" id="statt" name="statt{{$compte}}"
           @foreach($membreStatut as $mStatut)
-            @if($statu->id==$mStatut->statut_id and $membre->id==$mStatut->membre_id )
+            @if($stattu->id==$mStatut->statut_id and $membre->id==$mStatut->membre_id )
               checked
             @endif
           @endforeach
           >
-          <label for="scales">{{$statu->nom}}</label>
+          <label for="scales">{{$stattu->nom}}</label>
 
-          <input type="hidden" name="statutId{{$compte}}" value="{{$statu->id}}">
+          <input type="hidden" name="statutId{{$compte}}" value="{{$stattu->id}}">
           <input type="hidden" name="membreId" value="{{ $membre->id }}">
         </div>
       @endforeach

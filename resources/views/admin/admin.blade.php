@@ -8,12 +8,12 @@
     </div>
     <div class='co_admin'>
       <h2>Connectez-vous</h2>
-        <form method="POST" action="accueil-admin">
+        <form method="POST" action="">{{-- {{ Route('UserController.authenticate') }} --}}
           {{ csrf_field() }}
           <label for="Mail">Votre mail:</label><br>
-          <input type="email" id="mail" name="mail" placeholder="Mail" required autofocus ><br>
+          <input type="email" id="email" name="mail" placeholder="Mail" required autofocus ><br>
           <label for="Password">Votre mot de passe:</label><br>
-          <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required><br><br>
+          <input type="password" id="password" name="mdp" placeholder="Mot de passe" required><br><br>
           <button> Se connecter</button>
         </form>
         <a href="mdp-oublie">Mot de passe oublié ?</a>
