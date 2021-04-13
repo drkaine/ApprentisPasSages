@@ -1,4 +1,3 @@
-
 @extends('templates/barre-admin')
 
 @section("content")

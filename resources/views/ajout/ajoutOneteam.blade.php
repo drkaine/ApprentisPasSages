@@ -1,4 +1,3 @@
-
 @extends('templates/barre-admin')
 
 @section("content")
@@ -47,33 +46,20 @@
     <input type="submit" value="Ajouter" name ="ajouter" >
   </form>
 
-
-
- 
- 
-  
-  
-  
-<a href="{{route('Accueil-Admin')}}"><h1>Revenir à Accueil</h1></a>
+  <a href="{{route('Accueil-Admin')}}"><h1>Revenir à Accueil</h1></a>
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-
-<script>
-CKEDITOR.replace( 'descriptionEdit', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});
-</script>
- 
-
-<script>
-CKEDITOR.replace( 'photoEdit', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});
-</script>
-
-<section id="coupDeCoeur" class ="cdc">
-    <div class="m-t-1 ban2">
-    </div>
-</section>
+  <script>
+    CKEDITOR.replace( 'descriptionEdit', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+  </script>
+  
+  <script>
+    CKEDITOR.replace( 'photoEdit', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    });
+  </script>
+  <div class="m-t-1 ban2"></div>
 @endsection

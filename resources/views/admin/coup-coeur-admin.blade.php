@@ -13,15 +13,7 @@
             <ul class="CategorieCoupDeCoeur">
                 <li>
                     <a href="{{route('TemplateController.editCategorieCoup-Coeur', ['idCC'=>$cc->id])}}" class="fas fa-edit"></a>
-                    <a href="{{ url('delete/'.$cc->id) }}" class="fas fa-minus-circle"></a>
-                    
-                    <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catcdc" ,'id1'=>$cc->id,"id2"=>""]) }}" method="post">
-                        {{ csrf_field() }}
-                        <button class="btn btn-danger">
-                            <i class="fas fa-minus-circle"></i>
-                        </button>
-                    </form>
-                    
+                    <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catcdc" ,'id1'=>$cc->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
                     <h2>{{$cc->nom}} :</h2>
                     <a href="{{route('TemplateController.ajoutCoup-Coeur', ['id'=>$cc->id])}}" class="fas fa-plus-circle"></a>
                     @foreach ($cdc as $c)
@@ -31,12 +23,10 @@
                                     <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"cdc" ,'id1'=>$c->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
                                     <a href="{{route('TemplateController.editCoup-Coeur', ['idCC'=>$cc->id,'idC'=>$c->id])}}" class="fas fa-edit"></a>
                                     <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"><i class="fa fa-heart"></i> {{$c->nom}}</a>
-                                    
                                 </li>
                             </ul>
                         @endif
                     @endforeach
-
                 </li>
             </ul>
         @endforeach

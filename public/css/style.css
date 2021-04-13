@@ -37,6 +37,96 @@ body
 	background-color:whitesmoke;
 }
 
+input[type="text"],
+[type="email"],
+[type="tel"],
+[type="password"],
+[type="color"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  border-radius: 5px;
+}
+input[type="submit"] {
+  margin: 5px;
+  background-color: #41046f;
+  color: #fffb00e0;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 45%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+ /* Modal*/
+ .modal-dialog
+ {
+   min-width: 50px !important;
+   max-width: 90% !important;
+   width: 70% !important;
+ }
+ 
+   /* modal lien-mort */
+   .modal-lien
+   {
+     display : flex;
+     align-items: center;
+     justify-content: space-between;
+     flex-flow: column;
+   }
+   
+   /* modal module */
+ .modal-module
+ {
+     display : flex;
+     align-items: center;
+     width: 100%;
+     height: 100%;
+     justify-content: space-around;
+ }
+ .desc
+ {
+     margin-left:15px;
+ }
+ 
+ .logo_m
+ {
+     max-width:400px;
+     max-height:600px;
+ }
+ 
+ /* gestion etiquettes */
+ .etiquette
+ {
+     max-width:350px;
+     display: flex;
+     justify-content: center;
+     align-items: baseline;
+ }
+ 
+ .etiquettes 
+ {
+   display:flex;
+   padding-left: 10px;
+   flex-flow: column;
+ }
+ 
+ .et
+ {
+     margin-left:10px;
+     border-radius: 7px;
+ }
+ 
+
 /* barre navigation */
 
 nav 
@@ -244,57 +334,6 @@ nav ul .search-icon .icon span {
     margin-left: 10px;
   }
 
-  /* modal lien-mort */
-  .modal-lien
-  {
-    display : flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-flow: column;
-  }
-  
-  /* modal module */
-.modal-module
-{
-    display : flex;
-    align-items: center;
-    width: 70%;
-    height: 100%;
-    justify-content: space-around;
-}
-.desc
-{
-    margin-left:15px;
-}
-
-.logo_m
-{
-    max-width:400px;
-    max-height:600px;
-}
-
-/* gestion etiquettes */
-.etiquette
-{
-    max-width:350px;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-}
-
-.etiquettes 
-{
-  display:flex;
-  padding-left: 10px;
-  flex-flow: column;
-}
-
-.et
-{
-    margin-left:10px;
-    border-radius: 7px;
-}
-
   /* Photo album  */
   .photo
   {
@@ -332,14 +371,6 @@ nav ul .search-icon .icon span {
       justify-content:center;
   }
 
-/* Modal*/
-.modal-dialog
-{
-  min-width: 30px !important;
-  max-width: 90% !important;
-  width: 90% !important;
-}
-
 /*CategorieCoupDeCoeur*/
 .cdc
 {
@@ -365,7 +396,7 @@ nav ul .search-icon .icon span {
     color:black;
 }
 
-   /* bouton prestation */
+   /* boutton prestation */
    .prestation
    {
      background: whitesmoke;
@@ -548,7 +579,7 @@ nav ul .search-icon .icon span {
     fill: #c7b40e;
   } 
 
-  /* buton */
+  /* boutton */
 .btn-contact {
 
     padding-top: 30px;
@@ -821,7 +852,13 @@ font-weight: 900;
       display: block;
     }
   }
-  
+
+  .bouton-contact
+  {
+    background-color:#fffb00e0 !important;
+    color:#41046f !important;
+  }
+
   /* formulaire a remplir */
   .contact-form {
     min-width: 50%;
@@ -837,37 +874,6 @@ font-weight: 900;
     line-height: 10px;
     font-weight: 700;
   }
-  
-  input[type="text"],
-  [type="email"],
-  [type="tel"],
-  textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-    border-radius: 5px;
-  }
-  
-  input[type="submit"] {
-    margin: 5px;
-    background-color: #fffb00e0;
-    color: #41046f;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    min-width: 45%;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  
-  
   
   .btn-form-contact {
     display: flex;
