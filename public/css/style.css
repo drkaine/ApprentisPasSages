@@ -214,8 +214,13 @@ input[type="submit"]:hover
 
 .crud
 {
-  margin-left: 15px;
-  color:#41046f;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.crud a
+{
+  color:#41046f !important;
 }
 
 /* gestion etiquettes */
@@ -525,12 +530,14 @@ nav ul .search-icon .icon span
   justify-content: space-around;
 }
 
+.cdc-card
+{
+  display: -webkit-box;
+}
+
 .CategorieCoupDeCoeur li
 {
-  display: flex !important;
   flex-flow: column;
-  width: inherit;
-  height: auto;
 }
 .CategorieCoupDeCoeur h2
 {

@@ -4,7 +4,9 @@
 
   <!--Prestations-->
   <section class="prestation">
-    <a href="{{route('TemplateController.ajoutCatalogue')}}"-  class="fas fa-plus-circle"></a>
+    <div class="crud">
+      <a href="{{route('TemplateController.ajoutCatalogue')}}"-  class="fas fa-plus-circle"></a>
+    </div>
     @foreach ($catalogues as $catalogue)
       <div class="formation">
         <div class="wrapper">
@@ -71,7 +73,9 @@
           <button type="button" class="btn border rounded buttonTeam" id="teamCs">Conseil scientifique</button>
       </li>
     </ul>
-    <a href="{{route('TemplateController.ajoutOneteamAdmin')}}" class="fas fa-plus-circle"></a>
+    <div class="crud">
+      <a href="{{route('TemplateController.ajoutOneteamAdmin')}}" class="fas fa-plus-circle"></a>
+    </div>
   </div>
 
   <section class = "team">

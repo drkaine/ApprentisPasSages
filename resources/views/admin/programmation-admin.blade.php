@@ -37,10 +37,10 @@
 @foreach($programmation as $prog)
     @if($prog->id==$cProg->programmation_id)
         <div>
-            Date de Debut :{!! $prog->dateDebut!!}
+            Date de Debut : {!! $prog->dateDebut!!}
         </div>
         <div>
-            Date de Fin :{!! $prog->dateFin!!}
+            Date de Fin : {!! $prog->dateFin!!}
         </div>
         <div>
             Nombre de personne prévues : {!! $prog->nbPersonnesPrevues!!}

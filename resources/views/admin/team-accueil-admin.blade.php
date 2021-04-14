@@ -5,12 +5,13 @@
                 {{ csrf_field() }}
                 {!! method_field('DELETE') !!}
             </form>
-            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"membre" ,'id1'=>$membre->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
+            <div class="crud">
+                <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"membre" ,'id1'=>$membre->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
+            </div>
             <a href="{{route('TemplateController.getOneteamAdmin', ['id'=>$membre->id])}}">
                 @foreach($membre->getStatus()->get() as $statut)
                     @php $statuts[] = $statut->description;@endphp
 				@endforeach
-
                 <img class="imageThrombi m-auto {{  implode(" ", $statuts) }}"
 				@if($membre->photo == null)
 					src="{{ asset("storage/images/team/apprentispassages_logo_renard.png") }}" alt="photo d'avatar">
