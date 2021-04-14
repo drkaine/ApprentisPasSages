@@ -8,23 +8,25 @@
             <h1 id="titreAssociation" >{{ $p->nom }}</h1>
     </div>
 
-    <div class="action">
-        <ul></br>
+    <div class="prestation-card">
+        <div class="crud">
             <a href="{{route('TemplateController.ajoutAction',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a>
+        </div>
+        <ul class ="listing-prestation">
             @php $compte=0;@endphp
         @endforeach
         
             @foreach ($actions as $action)
-                <li><h4>{{ $action->nom }}</h4>
-                    <form action="{{ Route('TemplateController.demandeSuppression', ["choix"=>"action" ,'id1'=>$id,"id2"=>$action->id]) }}" method="post">
-                        {{ csrf_field() }}
-                        <button class="btn btn-danger">
-                            <i class="fas fa-minus-circle"></i>
-                        </button>
-                    </form><br>
+                <li class="titre">
+                    <h4 class ="nom-action">{{ $action->nom }}</h4>
+                    <div class="crud">
+                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"action" ,'id1'=>$id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
+                    </div>
                 </li>
-                <ul class="card-module">
+                <div class="crud">
                     <a href="{{route('TemplateController.ajoutModule',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a><br>
+                </div>
+                <ul class="card-module">
                     @foreach ($modulesac as $moduleac)
                         @foreach ($modules as $module)
                             @php $compte++;@endphp
@@ -36,9 +38,13 @@
                                         @else
                                             <img src="{{asset("storage/images/module/$module->nom.png")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
                                         @endif
-                                        {{ $module->nom }}
-                                        <a href="{{route('TemplateController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
-                                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
+                                        <div class="nom-modal">
+                                            {{ $module->nom }}
+                                        </div>
+                                        <div class="crud">
+                                            <a href="{{route('TemplateController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
+                                            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
+                                        </div>
                                     </li>
                                     <!-- Modal -->
                                     <div id="myModal{{$compte}}" class="modal fade" role="dialog">

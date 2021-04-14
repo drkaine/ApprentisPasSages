@@ -7,11 +7,11 @@
     </div>
 
     <div class="action">
-        <ul></br>
+        <ul class ="listing-prestation">
             @php $compte=0; @endphp
             @foreach ($actions as $action)
-                <li><h4>{{ $action->nom }}</h4>
-                </li></br>
+                <li><h4 class ="nom-action">{{ $action->nom }}</h4>
+                </li>
                 <ul class='card-module'>
                     @foreach ($modulesac as $moduleac)
                         @foreach ($modules as $module)
@@ -25,8 +25,10 @@
                                         @else
                                             <img src="{{asset("storage/images/module/$module->nom.png")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
                                         @endif
-                                        {{ $module->nom }}
-                                    </li></br></br>
+                                        <div class="nom-modal">
+                                            {{ $module->nom }}
+                                        </div>
+                                    </li>
                                     <!-- Modal -->
                                     <div id="myModal{{$compte}}" class="modal fade" role="dialog">
                                         <div class="modal-dialog">

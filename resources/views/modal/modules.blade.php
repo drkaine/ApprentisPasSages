@@ -25,11 +25,12 @@
     @foreach ($etiquettes as $etiquette)
           @foreach ($etiquettemodules as $etiquettemodule )
             @if ($etiquette->id == $etiquettemodule->etiquette_id and $etiquettemodule->module_id == $module->id)
-              <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}"  class="fas fa-minus-circle"></a>
               <p style="background-color:{{ $etiquette->couleur }}" class ="et" >
                 {{ $etiquette->nom }} 
               </p>
-              
+              <div class="crud">
+                <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}"  class="fas fa-minus-circle"></a>
+              </div>
             @endif
           @endforeach
         @endforeach
