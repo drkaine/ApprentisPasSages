@@ -60,10 +60,10 @@ use Illuminate\Support\Facades\Auth;
             $photo =  [];
             $partenaires = DB::select('select photo_id from tagalbums JOIN albums ON (albums.nom = tagalbums.nom_album) where albums.nom = ?', [$nom]);
 
-        foreach ($partenaires as $partenaire) {
-            $photo[] = DB::select(' select * from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where photos.id = ?', [$partenaire->photo_id]) ;
-        }
-
+            foreach ($partenaires as $partenaire) 
+            {
+                $photo[] = DB::select(' select * from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where photos.id = ?', [$partenaire->photo_id]) ;
+            }
         //    $photo = DB::select(' select chemin from photos JOIN tagalbums ON (photos.id = tagalbums.photo_id) where tagalbums.nom_album = ?', [$nom]) ;
         return $photo;
         }
@@ -127,8 +127,7 @@ use Illuminate\Support\Facades\Auth;
                         } 
                     }
             }
-            return $couv;
-            
+            return $couv;    
         }
 
         //ajout
@@ -234,7 +233,7 @@ use Illuminate\Support\Facades\Auth;
 
         function deleteEvenement(Request $request)
         {
-            ContentProg::where("programmation_id", $request->id1)->delete();
+            ContentProg::where("programmation_id", $request->id1)->where( "module_id", $request->id2)->where( "action_id", $request->id2)->delete();
             Programmation::where('id', $request->id1)->delete();
         }
 
@@ -256,10 +255,22 @@ use Illuminate\Support\Facades\Auth;
             // DB::delete('delete from modules where id = ?',[$request->id]);
         }
 
+        function deleteModuleA(Request $request)
+        {
+            DB::delete('delete from moduleactions  where module_id = ? and action_id = ?',[$request->id1,$request->id2]);
+            DB::delete('delete from modules where id = ?',[$request->id]);
+        }
+
         function deleteAction(Request $request)
         {
             DB::delete('delete from actioncatalogues where catalogue_id = ? and action_id = ?',[$request->id1, $request->id2]);
             // DB::delete('delete from actions where id = ?',[$request->id]);
+        }
+
+        function deleteActionA(Request $request)
+        {
+            DB::delete('delete from actioncatalogues where catalogue_id = ? and action_id = ?',[$request->id1, $request->id2]);
+            DB::delete('delete from actions where id = ?',[$request->id]);
         }
 
         function deleteCategorieCoupCoeur(Request $request)
@@ -278,9 +289,13 @@ use Illuminate\Support\Facades\Auth;
             DB::delete('delete from etiquettemodules where module_id = ? and etiquette_id = ?',[$request->id2, $request->id1]);
         }
 
+        function deleteEtiquetteA(Request $request)
+        {
+            DB::delete('delete from etiquettemodules where module_id = ? and etiquette_id = ?',[$request->id2, $request->id1]);
+            DB::delete('delete from etiquettes where id = ?',[$request->id1]);
+        }
 
         // affichage view visiteur
-
         function getOneTeam( Request $request)
         {
         return view('visiteur/team', ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
@@ -289,12 +304,6 @@ use Illuminate\Support\Facades\Auth;
         function accueil(){
             return view('visiteur/accueil',["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),'page'=>$this->getPageByNom("contact")]);
         }
-
-        function evenement()
-        {
-            return view("visiteur/evenements", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'Event'=> $this->Programmation::with('getProg')->get(),'page'=>$this->getPageByNom("contact")]);
-        }
-
 
         function association()
         {
@@ -321,9 +330,7 @@ use Illuminate\Support\Facades\Auth;
             return view("visiteur/album", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"photos"=>$this->getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact")]);
         }
 
-
         // affichage view admin
-
         function admin()
         {
             Auth::logout();
@@ -336,15 +343,8 @@ use Illuminate\Support\Facades\Auth;
         }
 
         function accueilAdmin(){
-            return view('admin/accueil-admin',["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),'page'=>$this->getPageByNom("contact")]);
-
+            return view('admin/accueil-admin',["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(),"etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),'page'=>$this->getPageByNom("contact")]);
         }
-
-        function evenementAdmin()
-        {
-            return view("admin/evenements-admin", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'Event'=> $this->Programmation::with('getProg')->get(),'page'=>$this->getPageByNom("contact")]);
-        }
-
 
         function associationAdmin()
         {
@@ -404,6 +404,7 @@ use Illuminate\Support\Facades\Auth;
 
                 case 'photo':
                     return redirect("album-admin/$request->id2");
+
                 case 'catcdc':
                     return redirect("coup-coeur-admin");
 
@@ -414,7 +415,7 @@ use Illuminate\Support\Facades\Auth;
 
         function demandeSuppression(Request $request)
         {
-            return view("confirmation-suppression", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), "id"=>$request->id,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"), "choix"=>$request->choix, "id1"=>$request->id1, "id2"=>$request->id2]);
+            return view("confirmation-suppression", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), "id"=>$request->id,"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"), "choix"=>$request->choix, "id1"=>$request->id1, "id2"=>$request->id2, "id"=>$request->id3]);
         }
 
         function confirmationSuppression(Request $request)
@@ -426,18 +427,30 @@ use Illuminate\Support\Facades\Auth;
                     return redirect("accueil-admin");
 
                 case 'membre':
-                    $this->deleteMembre($request);
+                    $this->deleteMembreP($request);
                     return redirect("accueil-admin");
                     
                 case 'action':
-                    $this->deleteAction($request);
+                    $this->deleteActionA($request);
                     return redirect("all-prestation-admin");
 
                 case "module":
-                    $this->deleteModule($request);
+                    $this->deleteModuleA($request);
                     return redirect("all-prestation-admin");
 
                 case "etiquette":
+                    $this->deleteEtiquetteA($request);
+                    return redirect("all-prestation-admin");
+
+                case 'actionP':
+                    $this->deleteAction($request);
+                    return redirect("all-prestation-admin");
+
+                case "moduleP":
+                    $this->deleteModule($request);
+                    return redirect("all-prestation-admin");
+
+                case "etiquetteP":
                     $this->deleteEtiquette($request);
                     return redirect("all-prestation-admin");
 

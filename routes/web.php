@@ -35,10 +35,9 @@ if(isset($_POST['contactCacher'])){
  // liens morts
  if(isset($_POST['liensCacher'])){
     Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
-    }
+}
     
-    Route::get('/association', "App\Http\Controllers\TemplateController@association")->name('Association');
-
+Route::get('/association', "App\Http\Controllers\TemplateController@association")->name('Association');
 
 Route::get('/galerie', 'App\Http\Controllers\TemplateController@galerie')->name('Galerie');
 
@@ -52,8 +51,6 @@ Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->na
 
 
 Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
-
-// ->middleware('auth.basic')
 
 //ADMIN
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
@@ -85,7 +82,6 @@ Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
     Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
 
     //AJOUT
-
     Route::get('/ajoutCatalogue', 'App\Http\Controllers\TemplateController@CatalogueAjout')->name("TemplateController.ajoutCatalogue");
 
     if(isset($_POST['ajoutCatalogue'])){
@@ -146,7 +142,6 @@ Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
     }
 
     //EDIT
-
     Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOneteamAdmin')->name('TemplateController.getOneteamAdmin');
 
     if(isset($_POST['membres'])){
@@ -196,7 +191,6 @@ Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
     }
 
     // supression
-
     Route::post("/retour/{choix}", "App\Http\Controllers\TemplateController@retour")->name("TemplateController.retour");
 
     Route::get("/demande-suppression/{choix}","App\Http\Controllers\TemplateController@demandeSuppression")->name("TemplateController.demandeSuppression");

@@ -35,7 +35,7 @@
     <h1 id="titreAssociation" style="box-sizing:border-box;">Evénement de l'association</h1>
   </div>
 
-  <section class="prestation-card">
+  <section class="event-card">
     <div class="crud">
       <a href="{{route('TemplateController.ajoutEvenement')}}" class="fas fa-plus-circle"></a>
     </div>
@@ -43,8 +43,9 @@
       @foreach($contentProgs as $cProg)
         <div clas="programme">
           @include('admin/programmation-admin', compact($cProg))
+        </div>
       @endforeach
-   </div>
+    </div>
   </section>
 
   <!--Equipe-->

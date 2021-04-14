@@ -934,26 +934,11 @@ footer .social-media-links a:hover svg circle
 }
 
 /*Programmation et calendrier*/
-.zoneProg>div, .zoneProg>div>div, .zoneProg>div>div>div,.zoneProg
+.event-card
 {
   display: flex;
-  flex-wrap: wrap;
-}
+  margin: 10px;
 
-.zoneProg > div > div > div,.zoneProg > div
-{
-  flex-direction: column;
-}
-.zoneProg > div > div
-{
-  flex-direction: row;
-}
-
-.zoneProg h4  
-{
-  color: #41046f;
-  font-family: "Concert One", cursive;
-  font-weight: 900;
 }
 
 /* Qui sommes nous ? */
@@ -1036,11 +1021,6 @@ footer .social-media-links a:hover svg circle
   0 8px 8px 6px rgba(236, 112, 11, 0.25),
   0 3px 4px 0px rgba(245, 150, 8, 0.95);
   text-shadow: 1px 1px 10px #41046f;
-}
-
-.elem 
-{
-
 }
 
 .couv

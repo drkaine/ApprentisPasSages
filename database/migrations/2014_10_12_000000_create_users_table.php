@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->date('expiration')->nullable();
+            $table->softDeletes();
         });
     }
 
