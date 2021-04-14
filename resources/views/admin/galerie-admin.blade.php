@@ -14,10 +14,12 @@
     @foreach ($albums as $album)
       @php $nom = $album->nom;@endphp
       <div class="item">
-        <div class="galerie-title">{!! $album->nom !!}</div>            
-        <a href="{{route('TemplateController.albumAdmin', ['nom'=>$album->nom])}}" class="elem">
-            <img src={{ asset("storage/images/$couv[$nom]") }} >
-        </a>
+        <div class="galerie-title">{!! $album->nom !!}</div>
+        <div class="couv">        
+          <a href="{{route('TemplateController.albumAdmin', ['nom'=>$album->nom])}}" class="elem">
+            <img src={{ asset("storage/images/$couv[$nom]") }}>
+          </a>
+        </div>
       </div>
       <div class="crud">
         <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}"  class="fas fa-minus-circle"></a>
