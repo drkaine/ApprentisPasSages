@@ -6,14 +6,14 @@
     {{ csrf_field() }}
     <input type="hidden" name="editModule" value="Yes">
      
-    <input type="hidden" name="prestationId" value="{{$prestation}}">
+    <input type="hidden" name="prestationId" value="{!! $prestation!!}">
      
     @foreach($module as $mod)
      
-      <input type="hidden" name="id" value="{{$mod->id}}">
+      <input type="hidden" name="id" value="{!! $mod->id!!}">
      
       <label for="nomEdit">Nom</label>
-      <input type="text" id="nomEdit" name ="nom" value="{{$mod->nom}}" required>
+      <input type="text" id="nomEdit" name ="nom" value="{!! $mod->nom!!}" required>
 
       <label for="descriptionEdit">description</label>   
       <textarea id="descriptionEdit" name ="description">
@@ -22,29 +22,29 @@
       
       
       <label for="imgEdit">Image</label>
-      <input type="text" id="imgEdit" name ="img" value="{{$mod->img}}" >
+      <input type="text" id="imgEdit" name ="img" value="{!! $mod->img!!}" >
       
       <label for="tempsEdit">Temps</label>
-      <input type="time" id="tempsEdit" name ="temps" value="{{$mod->temps}}">
+      <input type="time" id="tempsEdit" name ="temps" value="{!! $mod->temps!!}">
       <br>
       <label for="materielEdit">Materiel</label>
       <textarea id="materielEdit" name ="materiel">
-        {{$mod->materiel}}
+        {!! $mod->materiel!!}
       </textarea>
       
       <label for="projetPedaEdit">Projet pédagogique</label>
       <textarea id="projetPedaEdit" name ="projetPeda" >
-        {{$mod->projetPeda}}
+        {!! $mod->projetPeda !!}
       </textarea>
         
       <label for="lieuEdit">Lieu</label>
       <textarea id="lieuEdit" name ="lieu">
-        {{$mod->lieu}}
+        {!! $mod->lieu !!}
       </textarea>
       
       <label for="formatEdit">Format</label>
       <textarea id="formatEdit" name ="format">
-        {{$mod->format}}
+        {!! $mod->format !!}
       </textarea>
       
       <div class="col-4 m-auto">
@@ -65,9 +65,9 @@
               @endif
             @endforeach
             >
-            <label for="scales">{{$et->nom}}</label>
+            <label for="scales">{!! $et->nom !!}</label>
             
-            <input type="hidden" name="etiquetteId{{$compteE}}" value="{{$et->id}}">
+            <input type="hidden" name="etiquetteId{{$compteE}}" value="{!! $et->id !!}">
           </div>
         @endforeach
         <input type="hidden" name="compteE" value="{{$compteE}}">
@@ -90,9 +90,9 @@
                   checked
                 @endif
               @endforeach >
-              <label for="scales">{{$act->nom}}</label>
+              <label for="scales">{!! $act->nom!!}</label>
             
-              <input type="hidden" name="actionId{{$compteA}}" value="{{$act->id}}">
+              <input type="hidden" name="actionId{{$compteA}}" value="{!! $act->id!!}">
             </div>
           @endforeach
           <input type="hidden" name="compteA" value="{{$compteA}}">

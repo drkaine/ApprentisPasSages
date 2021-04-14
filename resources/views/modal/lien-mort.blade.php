@@ -9,7 +9,7 @@
       <select size=1 >
         <option selected disabled>Veuillez choisir le lien mort !</option>
         @foreach ($cdc as $c)
-          <option value="{{ $c->id }}" >{{ $c->nom }}</option>
+          <option value="{!! $c->id !!}" >{!! $c->nom !!}</option>
         @endforeach
       </select><br />
 

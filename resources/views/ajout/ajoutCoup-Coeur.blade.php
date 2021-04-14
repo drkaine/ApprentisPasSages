@@ -5,8 +5,8 @@
     {{ csrf_field() }}
     <input type="hidden" name="ajoutCC" value="Yes">
     @foreach($ccdc as $cc)
-      <input type="hidden" name="categorieId" value="{{$cc->id}}">
-      <h1>Categorie : {{$cc->nom}}</h1>
+      <input type="hidden" name="categorieId" value="{!! $cc->id !!}">
+      <h1>Categorie : {!! $cc->nom!!}</h1>
     @endforeach
      
     <label for="lienEdit">Lien</label>

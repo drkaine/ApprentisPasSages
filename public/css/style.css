@@ -173,6 +173,7 @@ input[type="submit"]:hover
   display: flex;
   flex-flow: wrap;
   justify-content:space-between;
+  margin-right: 20px;
 }
 
 .module
@@ -208,11 +209,12 @@ input[type="submit"]:hover
 .titre
 {
   display: flex;
+  align-items: center;
 }
 
 .crud
 {
-  margin-left: 10px;
+  margin-left: 15px;
   color:#41046f;
 }
 

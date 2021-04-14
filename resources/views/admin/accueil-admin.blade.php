@@ -8,9 +8,8 @@
     @foreach ($catalogues as $catalogue)
       <div class="formation">
         <div class="wrapper">
-          <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catalogue" ,'id1'=>$catalogue->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
           <a class="cta" href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
-            <span>{{ $catalogue->nom}}</span>
+            <span>{!! $catalogue->nom!!}</span>
             <span>
               <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -21,6 +20,9 @@
               </svg>
             </span>
           </a>
+          <div class="crud">
+            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catalogue" ,'id1'=>$catalogue->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
+          </div>
         </div>
       </div>
     @endforeach
@@ -31,14 +33,14 @@
     <h1 id="titreAssociation" style="box-sizing:border-box;">Evénement de l'association</h1>
   </div>
 
-  <section id="sectionAssociation" class="container">
-    <a href="{{route('TemplateController.ajoutEvenement')}}" class="fas fa-plus-circle"></a>
+  <section class="prestation-card">
+    <div class="crud">
+      <a href="{{route('TemplateController.ajoutEvenement')}}" class="fas fa-plus-circle"></a>
+    </div>
     <div class="zoneProg">
       @foreach($contentProgs as $cProg)
         <div clas="programme">
-          <a href="{{route('TemplateController.editEvenement', ['pid'=>$cProg->programmation_id,'aid'=>$cProg->action_id,'mid'=>$cProg->module_id])}}" class="fas fa-edit"></a>
           @include('admin/programmation-admin', compact($cProg))
-        </div>
       @endforeach
    </div>
   </section>
@@ -91,8 +93,8 @@
     <script>
       var words = [
         @foreach($cdc as $c)
-        @php $rand = rand(1,7) @endphp
-        {text: "{!!$c->nom!!}",weight:{{$rand}},link:"{{$c->lien}}"},
+          @php $rand = rand(1,7) @endphp
+          {text: "{!!$c->nom!!}",weight:{{$rand}},link:"{{$c->lien}}"},
         @endforeach
       ];
     </script>

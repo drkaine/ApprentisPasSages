@@ -7,10 +7,10 @@
             {{ csrf_field() }}
             
             <input type="hidden" name="editCategorieCC" value="Yes">
-            <input type="hidden" name="id" value="{{$cc->id}}">
+            <input type="hidden" name="id" value="{!! $cc->id!!}">
         
             <label for="nomEdit">Nom</label>
-            <input type="text" id="nomEdit" name ="nom" value="{{$cc->nom}}"required>
+            <input type="text" id="nomEdit" name ="nom" value="{!! $cc->nom!!}"required>
  
             <input type="submit" value="Editer" name ="edito" >
         </form>

@@ -20,7 +20,7 @@
                 @foreach ($actions as $action)
                     <li class="all-action">
                         <div>
-                            <h4  class ="nom-action">{{ $action->nom }}</h4>
+                            <h4  class ="nom-action">{!! $action->nom !!}</h4>
                         </div>
                         <div class="crud">
                             <a href="{{route('TemplateController.editAction',['prestation'=>'tout','aid'=>$action->id])}}" class="fas fa-edit"></a> 
@@ -50,7 +50,7 @@
                         <img src="{{asset("storage/images/module/$module->nom.png")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
                     @endif
                     <div class="nom-modal">
-                        {{ $module->nom }}
+                        {!! $module->nom !!}
                     </div>
                     <div class="crud">
                         <a href="{{route('TemplateController.editModule',['prestation'=>'tout','moduleId'=>$module->id])}}" class="fas fa-edit"></a>
@@ -75,7 +75,7 @@
         </div>
         <article class='etiquettes'>
             @foreach ($etiquettes as $etiquette)
-                <p style="background-color:{{ $etiquette->couleur }}" class ="et">{{ $etiquette->nom }} </p>
+                <p style="background-color:{!! $etiquette->couleur !!}" class ="et">{!! $etiquette->nom !!} </p>
                 <div class="crud">
                     <a href="{{Route('TemplateController.editEtiquette',['eid'=>$etiquette->id])}}" class="fas fa-edit"></a>
                     <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}" class="fas fa-minus-circle"></a>

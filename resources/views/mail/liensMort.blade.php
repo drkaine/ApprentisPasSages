@@ -1,1 +1,1 @@
-<p>Le lien :{{ $data['lienMort'] }} est mort !</p>
+<p>Le lien :{!! $data['lienMort'] !!} est mort !</p>

@@ -3,14 +3,14 @@
 @section("content")
 
     <div id="ban" class="container-fluid m-t-1 ban">
-        <h1 id="titreAssociation" >{{ $prestation }}</h1>
+        <h1 id="titreAssociation" >{!! $prestation !!}</h1>
     </div>
 
     <div class="action">
         <ul class ="listing-prestation">
             @php $compte=0; @endphp
             @foreach ($actions as $action)
-                <li><h4 class ="nom-action">{{ $action->nom }}</h4>
+                <li><h4 class ="nom-action">{!! $action->nom !!}</h4>
                 </li>
                 <ul class='card-module'>
                     @foreach ($modulesac as $moduleac)
@@ -26,7 +26,7 @@
                                             <img src="{{asset("storage/images/module/$module->nom.png")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
                                         @endif
                                         <div class="nom-modal">
-                                            {{ $module->nom }}
+                                            {!! $module->nom !!}
                                         </div>
                                     </li>
                                     <!-- Modal -->

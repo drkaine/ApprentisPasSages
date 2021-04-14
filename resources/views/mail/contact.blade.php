@@ -1,7 +1,7 @@
-Nom : {{ $data['name'] }}
-Email :{{ $data['mail'] }}
+Nom : {!! $data['name'] !!}
+Email :{!! $data['mail'] !!}
     @if(isset($data['telephone']))
-        Téléphone :{{ $data['telephone'] }}
+        Téléphone :{!! $data['telephone'] !!}
     @endif
-Sujet : {{ $data['subject'] }}.
+Sujet : {!! $data['subject'] !!}.
 <p>{{ $data['message'] }}</p>

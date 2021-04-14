@@ -4,7 +4,7 @@
     <form action="" method="post">
         {{ csrf_field() }}    
         <input type="hidden" name="ajoutAction" value="Yes">     
-        <input type="hidden" name="prestationId" value="{{$prestation}}">
+        <input type="hidden" name="prestationId" value="{!! $prestation!!}">
     
         <label for="nomEdit">Nom</label>
         <input type="text"  id="nomEdit" name ="nom" required>
@@ -26,13 +26,13 @@
                 @endphp
                 <div>
             
-                    <input type="checkbox" id="catt" name="catt{{$compte}}">
-                    <label for="scales">{{$cat->nom}}</label>
+                    <input type="checkbox" id="catt" name="catt{!! $compte!!}">
+                    <label for="scales">{!! $cat->nom!!}</label>
                     
-                    <input type="hidden" name="catalogueId{{$compte}}" value="{{$cat->id}}">
+                    <input type="hidden" name="catalogueId{!! $compte!!}" value="{!! $cat->id!!}">
                 </div>
         @endforeach
-        <input type="hidden" name="compte" value="{{$compte}}">
+        <input type="hidden" name="compte" value="{!! $compte!!}">
         </div>
         
         <input type="submit" value="Ajouter" name ="ajouter" >
@@ -41,7 +41,7 @@
     @if($prestation=='tout')
         <a href="{{route('TemplateController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>
     @else
-        <a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$prestation])}}"><h1>Revenir à {{$prestation}}</h1></a>
+        <a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$prestation])}}"><h1>Revenir à {!! $prestation !!}</h1></a>
     @endif
 
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>

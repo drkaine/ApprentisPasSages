@@ -93,7 +93,7 @@
                                         $increment++;
                                     @endphp
                                     @if($increment>1),&nbsp;
-                                    @endif{{$stat->nom}}
+                                    @endif{!! $stat->nom!!}
                                   @endif
                                 @endforeach
                               @endforeach

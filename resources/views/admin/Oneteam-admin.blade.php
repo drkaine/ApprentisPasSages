@@ -81,10 +81,10 @@
             @endif
           @endforeach
           >
-          <label for="scales">{{$stattu->nom}}</label>
+          <label for="scales">{!! $stattu->nom !!}</label>
 
-          <input type="hidden" name="statutId{{$compte}}" value="{{$stattu->id}}">
-          <input type="hidden" name="membreId" value="{{ $membre->id }}">
+          <input type="hidden" name="statutId{{$compte}}" value="{!! $stattu->id!!}">
+          <input type="hidden" name="membreId" value="{!! $membre->id !!}">
         </div>
       @endforeach
       <input type="hidden" name="compte" value="{{$compte}}">

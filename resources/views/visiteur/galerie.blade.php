@@ -11,7 +11,7 @@
         @php $nom = $album->nom;@endphp
         @if ($album->nom != "partenaires" and $album->nom != "team")
         <div class="item">
-          <h2 class="galerie-title">{{ $album->nom }}</h2>
+          <h2 class="galerie-title">{!! $album->nom !!}</h2>
             <a href="{{route('TemplateController.album', ['nom'=>$album->nom])}}" class="elem">
               <img src={{ asset("storage/images/$couv[$nom]")}} >
             </a>

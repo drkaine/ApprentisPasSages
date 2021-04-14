@@ -59,13 +59,13 @@
           $compteA++;
         @endphp
         <div> 
-          <input type="checkbox" id="actt" name="actt{{$compteA}}">
-          <label for="scales">{{$act->nom}}</label>
+          <input type="checkbox" id="actt" name="actt{!! $compteA!!}">
+          <label for="scales">{!! $act->nom!!}</label>
           
-          <input type="hidden" name="actionId{{$compteA}}" value="{{$act->id}}">
+          <input type="hidden" name="actionId{!! $compteA!!}" value="{!! $act->id!!}">
         </div>
       @endforeach
-      <input type="hidden" name="compteA" value="{{$compteA}}">
+      <input type="hidden" name="compteA" value="{!! $compteA!!}">
     </div>
     <input type="submit" value="Ajouter" name ="ajouter" >
   </form>
@@ -73,7 +73,7 @@
   @if($prestation=='tout')
     <a href="{{route('TemplateController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>
   @else
-    <a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$prestation])}}"><h1>Revenir à {{$prestation}}</h1></a>
+    <a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$prestation])}}"><h1>Revenir à {!! $prestation!!}</h1></a>
   @endif
 
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>

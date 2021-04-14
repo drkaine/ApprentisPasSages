@@ -16,7 +16,7 @@
             @if($c->categoriecoupsdecoeur_id==$cc->id)
               <ul>
                 <li>
-                  <a href="{{$c->lien}}" taget="_blank" title="{{$c->description}}"><i class="fa fa-heart"></i> {!! $c->nom !!}</a>
+                  <a href="{!! $c->lien !!}" taget="_blank" title="{!! $c->description !!}"><i class="fa fa-heart"></i> {!! $c->nom !!}</a>
                 </li>
               </ul>
               @endif

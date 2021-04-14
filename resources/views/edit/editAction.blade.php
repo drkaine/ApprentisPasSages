@@ -6,18 +6,18 @@
   <form action="" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="editAction" value="Yes">
-    <input type="hidden" name="prestationId" value="{{$prestation}}">
+    <input type="hidden" name="prestationId" value="{!! $prestation!!}">
     @foreach($action as $act)
-      <input type="hidden" name="id" value="{{$act->id}}">
+      <input type="hidden" name="id" value="{!! $act->id!!}">
       <label for="nomEdit">Nom</label>
-      <input type="text"  id="nomEdit" name ="nom" value="{{$act->nom}}" required>
+      <input type="text"  id="nomEdit" name ="nom" value="{!! $act->nom!!}" required>
 
       <label for="photoEdit">img</label>
-      <input type="text" id="photoEdit" name ="img" value="{{$act->img}}" >
+      <input type="text" id="photoEdit" name ="img" value="{!! $act->img!!}" >
 
       <label for="descriptionEdit">description</label>   
       <textarea id="descriptionEdit" name ="description"  required>
-        {{$act->description}}
+        {!! $act->description!!}
       </textarea>
 
       <div class="col-4 m-auto">
@@ -37,9 +37,9 @@
                 checked
               @endif
             @endforeach>
-            <label for="scales">{{$cat->nom}}</label>
+            <label for="scales">{!! $cat->nom!!}</label>
               
-            <input type="hidden" name="catalogueId{{$compte}}" value="{{$cat->id}}">
+            <input type="hidden" name="catalogueId{{$compte}}" value="{!! $cat->id!!}">
           </div>
         @endforeach
         <input type="hidden" name="compte" value="{{$compte}}">

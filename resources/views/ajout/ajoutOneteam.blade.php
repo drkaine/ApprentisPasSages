@@ -35,13 +35,13 @@
         @endphp
         <div>
          
-          <input type="checkbox" id="statt" name="statt{{$compte}}">
-          <label for="scales">{{$stattu->nom}}</label>
+          <input type="checkbox" id="statt" name="statt{!! $compte!!}">
+          <label for="scales">{!! $stattu->nom!!}</label>
          
-          <input type="hidden" name="statutId{{$compte}}" value="{{$stattu->id}}">
+          <input type="hidden" name="statutId{!! $compte!!}" value="{!! $stattu->id!!}">
         </div>
       @endforeach
-      <input type="hidden" name="compte" value="{{$compte}}">
+      <input type="hidden" name="compte" value="{!! $compte!!}">
     </div>
     <input type="submit" value="Ajouter" name ="ajouter" >
   </form>

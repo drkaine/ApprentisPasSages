@@ -4,7 +4,7 @@
 @section("content")
 
     <div id="ban" class="container-fluid m-t-1 ban">
-        <h1 id="titreAssociation" style="box-sizing:border-box;">{{$nom}} </h1>
+        <h1 id="titreAssociation" style="box-sizing:border-box;">{!! $nom!!} </h1>
     </div>
 
     <!-- galerie -->

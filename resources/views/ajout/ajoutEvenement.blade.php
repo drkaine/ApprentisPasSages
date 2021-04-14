@@ -18,13 +18,13 @@
         <select name="Module"  size=1 >
             <option disabled>Veuillez choisir un module</option>
             @foreach ($module as $mod)
-                <option value="{{ $mod->id }}" >{{ $mod->nom }}</option>
+                <option value="{!! $mod->id !!}" >{!! $mod->nom !!}</option>
             @endforeach
         </select>
         <select name="Action"  size=1 >
             <option disabled>Veuillez choisir un module</option>
             @foreach ($action as $act)
-                <option value="{{ $act->id }}" >{{ $act->nom }}</option>
+                <option value="{!! $act->id !!}" >{!! $act->nom !!}</option>
             @endforeach
         </select>
         
