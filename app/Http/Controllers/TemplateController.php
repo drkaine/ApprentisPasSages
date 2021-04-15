@@ -180,6 +180,11 @@ use Illuminate\Support\Facades\Auth;
             return view("ajout/ajoutEvenement", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'Photo'=> $this->affichePartenaires(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),'page'=>$this->getPageByNom("contact"),"module"=>$this->getModule(),"action"=>$this->getAction()]);
         }
 
+        function adminAjout()
+        {
+            return view("ajout/ajoutAdmin",['partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(),"statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get()]);
+        }
+
         //edit
         public function coups_de_coeurEdit(Request $request)
             {

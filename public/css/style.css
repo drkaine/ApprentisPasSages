@@ -863,6 +863,38 @@ footer .social-media-links a:hover svg circle
   box-shadow: 8px 0px 15px whitesmoke;
 }
 
+.image-membre
+{
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
+
+.one-membre
+{
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.membre
+{
+  display: flex;
+  flex-flow: column;
+  margin-left: 30px;
+  justify-content: space-around;
+}
+
+.membre h2
+{
+  margin:0;
+  font-size: 1.5em;
+}
+
+.membre-ecrit
+{
+  font-size: 1em;
+}
+
 /*Programmation et calendrier*/
 .event-card
 {
@@ -1057,6 +1089,11 @@ footer .social-media-links a:hover svg circle
   width:50%;
 }
 
+.lien
+{
+  width:30%;
+}
+
 /* responsive */
 /* media screen for header e burger */
 @media screen and (max-width: 1700px) 
@@ -1230,8 +1267,13 @@ footer .social-media-links a:hover svg circle
   }
 }
 
-@media only screen and (max-width: 410px) 
+@media only screen and (max-width: 450px) 
 {
+  .lien
+  {
+    width:110%;
+  }
+
   .ban h1
   {
     font-size: 3em;

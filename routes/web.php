@@ -77,6 +77,13 @@ Route::get('/mdp-changement', 'App\Http\Controllers\TemplateController@changemen
 //
 Route::get("/accueil-admin", 'App\Http\Controllers\TemplateController@accueilAdmin')->name('Accueil-Admin');
 
+Route::get('/ajoutAdmin', 'App\Http\Controllers\TemplateController@adminAjout')->name("TemplateController.ajoutAdmin");
+
+if(isset($_POST['ajoutAdmin']))
+{
+    Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
+}
+
 Route::get('/association-admin', "App\Http\Controllers\TemplateController@associationAdmin")->name('Association-Admin');
 
 Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');

@@ -91,18 +91,17 @@
               </li>
             </ul>
           </li>
-
+          <li>
+            <a href="{{route('TemplateController.ajoutAdmin')}}">Ajout Admin</a>
+          </li>
+          <li>
+            <form action="" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="deconnection" value="yes">
+                <button type="submit" value="Se connecter" name ="testconnection">Déconnexion</button>
+            </form>
+          </li>
         </div>
-        <li>
-          <form action="" method="post">
-              {{ csrf_field() }}
-              <input type="hidden" name="deconnection" value="yes">
-              <button type="submit" value="Se connecter" name ="testconnection">Déconnexion</button>
-          </form>
-        </li>
-        <li>
-          <a href="{{route('TemplateController.ajoutAdmin')}}">Ajout Admin</a>
-        </li>
       </ul>
     </nav>
 
