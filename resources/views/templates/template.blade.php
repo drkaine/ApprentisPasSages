@@ -40,9 +40,9 @@
           <img class="logo-apprentis" src="{{asset("storage/images/apprentis_pas_sages_banniere.png")}}" alt="logo"/>
         </li>
 
-        {{-- <li class="btn">
+        <li class="btn">
           <span class="fas fa-bars"></span>
-        </li> --}}
+        </li>
 
         <div class="items">
           <li>

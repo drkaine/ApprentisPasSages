@@ -53,6 +53,8 @@ Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')
 
 Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
 
+Route::get("/plan-site", "App\Http\Controllers\TemplateController@planSite")->name('TemplateController.planSite');
+
 //ADMIN
 //Modifié
 Route::get('/admin', 'App\Http\Controllers\TemplateController@admin')->name("login");
@@ -83,6 +85,8 @@ if(isset($_POST['ajoutAdmin']))
 {
     Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
 }
+
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
 Route::get('/association-admin', "App\Http\Controllers\TemplateController@associationAdmin")->name('Association-Admin');
 

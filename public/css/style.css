@@ -744,6 +744,7 @@ footer .social-media-links a:hover svg circle
   color: #fffb00e0;
   font-family: 'Caveat Brush', cursive;
   font-size: 5em;
+  margin-left: 10px;
 }
 
 /* nuage coups de coeur */
@@ -1257,6 +1258,11 @@ footer .social-media-links a:hover svg circle
     justify-content: space-around;
     flex-flow: wrap;
   }
+
+  .ban h1
+  {
+    font-size: 3em;
+  }
 }
 
 @media only screen and (max-width:650px)
@@ -1276,8 +1282,9 @@ footer .social-media-links a:hover svg circle
 
   .ban h1
   {
-    font-size: 3em;
+    font-size: 2em;
   }
+
   nav ul 
   {
     flex-wrap: nowrap;
