@@ -33,8 +33,8 @@
       <h1 id="titreAssociation" style="box-sizing:border-box;">Evénement de l'association</h1>
     </div>
 
-    <section id="sectionAssociation" class="container">
-      <div class="zoneProg">
+    <section class="event-card">
+      <div class="event">
        @foreach($contentProgs as $cProg)
           <div clas="programme">
             @include('visiteur/programmation', compact($cProg))

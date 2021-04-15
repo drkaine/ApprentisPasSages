@@ -2,34 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\controllers\mailController;
+
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
-    // public function Affiche_Login(){
-    //     Auth::logout();
-    //     return view('admin/login');
-    //  }
-
-    public function authenticate(Request $request)
-    {
-        if(!empty($request->email))
-        {
-            $credentials = $request->only('email', 'password');
-            if (Auth::attempt($credentials)) 
-            {
-                $request->session()->regenerate();
-                return redirect()->intended('admin/accueil-admin');
-            }
-            return back()->withErrors([
-                'email' => 'Mauvais ID',
-            ]);
-        }
-    }
     /**
      * Display a listing of the resource.
      *
@@ -57,10 +40,34 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+     function create(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            
+            'name' => 'required',
+            'email' => 'required'
+            
+            
+        ]);
+
+        if($validator->fails() or $request->password!=$request->password2){
+            return back()->withInput($request->except('key'))
+            ->withErrors($validator);
+        }
+         $mdp=$this->generationMDP();
+        $user = new User();
+        $user->name = $request->name;
+        $user->password=$mdp;
+        $user->email=$request->email;
+        $user->expiration = date("Y-m-d", strtotime("+3 days"));
+        $email = new mailController();
+        $email->sendNewMDP($user);
+        $user->password=Hash::make($mdp);
+        $user->save();
+        
+        return redirect("accueil-admin");
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -68,7 +75,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     function store(Request $request)
     {
         //
     }
@@ -79,10 +86,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+     function show($id)
     {
         //
     }
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -90,29 +105,104 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
-    {
+    function edit(Request $request)
+    {   
+        
         if($request->mdp)
         {
+            
             $mdp = $this->generationMDP();
             $validator = Validator::make($request->all(), [
                 'mail' => 'required',
                 'mail2' => 'required',
             ]);
-    
+            
             if($validator->fails() or $request->mail != $request->mail2 ){
                 return back()->withInput($request->except('key'))
                 ->withErrors($validator);
             }
             $user = User::where('email', $request->mail)->first();
+            if($user==NULL)
+                return back();
             $user->password = $mdp;
             $user->expiration = date("Y-m-d", strtotime("+3 days"));
+            $email = new mailController();
+            $email->sendMDP($user);
+            
+            $user->password=Hash::make($mdp);
             $user->save();
+            
             
             return redirect("admin");
         }
+    
+    }
+    
+    
+    
+   function change(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+                'mdp1' => 'required',
+                'mdp2' => 'required'
+            ]);
+            
+            if($validator->fails() ){
+                
+                return back()->withInput($request->except('key'))
+                ->withErrors($validator);
+            }
+
+        $user = User::where('email', $request->session()->get("email"))->first();
+        
+        if($request->mdp1!=$request->mdp2)
+            return back();
+        
+        $user->password=Hash::make($request->mdp1);
+        $user->expiration=NULL;
+        Auth::logout();
+        $user->save();   
+       return redirect("admin");
+    }
+    
+    function authenticate(Request $request)
+  {
+        
+      if(!empty($request->email)){
+          
+            $credentials = $request->only('email','password');
+          
+            $exp = User::where('email', $request->email)->select('expiration')->first();
+            if($exp!=NULL){
+                $today=date("Y-m-d", strtotime("now"));
+          
+                if($today>$exp->expiration and $exp->expiration!=NULL  )
+                {
+                    return redirect("mdp-oublie");
+                }
+          
+                if (Auth::attempt($credentials) and $today<=$exp->expiration and $exp->expiration!=NULL) {
+                    Auth::logout();
+                    $request->session()->regenerate();
+                    $request->session()->put('email',$request->email);
+                    return redirect()->intended('mdp-changement');
+                }
+          
+                if (Auth::attempt($credentials) and $exp->expiration==NULL ) {
+                    Auth::logout();
+                    $request->session()->regenerate();
+
+                    return redirect()->intended('accueil-admin');
+                }
+            }
+        }
+        return back()->withErrors([
+            'email' => "yes",
+        ]);
     }
 
+    
+    
     /**
      * Update the specified resource in storage.
      *
@@ -120,7 +210,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+     function update(Request $request, $id)
     {
         //
     }
@@ -131,8 +221,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+     function destroy($id)
     {
         //
     }
+    
+ function deconnection(Request $request)
+  {
+        $request->session()->forget('email');
+        Auth::logout();
+        return redirect('admin');
+    
+
+    }
 }
+    
+    
+

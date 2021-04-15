@@ -4,21 +4,21 @@
 
   <body>
     <div id="ban" class="container-fluid m-t-1 ban">
-      <h1 id="titreAssociation" style="box-sizing:border-box;">Mot de passe oublié ?</h1>
+      <h1 id="titreAssociation" style="box-sizing:border-box;">Mot de passe à changer !</h1>
     </div>
     <div class='co_admin'>
         <h2>Identifiez-vous</h2>
-        <form method="POST" action="/accueil-admin">
+        <form method="post" action="">
             {{ csrf_field() }}
-            <label for="Password">Votre mot de passe:</label><br>
-            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required><br><br>
-            <label for="Password">Votre mot de passe:</label><br>
-            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required><br><br>
-            <button>Envoi</button>
+            <input type="hidden" name="email" value="">
+            <label for="mdp1">Votre mot de passe:</label><br>
+            <input type="password" id="mdp1" name="mdp1" placeholder="Mot de passe" required><br><br>
+            <label for="mdp2">Confirmation de mot de passe:</label><br>
+            <input type="password" id="mdp2" name="mdp2" placeholder="Mot de passe vérification" required><br><br>
+            <button type="submit">Envoi</button>
         </form>
     </div>
   </body>
   <div class="m-t-1 ban2"></div>
-
 @include("templates/footer")
 @endsection

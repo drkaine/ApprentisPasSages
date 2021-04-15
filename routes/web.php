@@ -26,18 +26,22 @@ use App\Http\Controllers\TemplateController;
 // accueil
 Route::get('/', 'App\Http\Controllers\TemplateController@accueil')->name('Accueil');
 
-//contact
+//Mail
 if(isset($_POST['contactCacher'])){
     Route::post('{catchall}', 'App\Http\Controllers\mailController@send')->name('envoiMail')->where('catchall', '.*');
      }
 
+if(isset($_POST['mdp'])){
+    Route::post('{catchall}', 'App\Http\Controllers\UserController@edit')->name('envoiMDP');
+     }
 
  // liens morts
  if(isset($_POST['liensCacher'])){
     Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
-}
+    }
     
-Route::get('/association', "App\Http\Controllers\TemplateController@association")->name('Association');
+    Route::get('/association', "App\Http\Controllers\TemplateController@association")->name('Association');
+
 
 Route::get('/galerie', 'App\Http\Controllers\TemplateController@galerie')->name('Galerie');
 
@@ -49,151 +53,178 @@ Route::get('/Oneteam/{id}','App\Http\Controllers\TemplateController@getOneteam')
 
 Route::get("/album/{nom}" , "App\Http\Controllers\TemplateController@album")->name("TemplateController.album");
 
-
-Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
-
 //ADMIN
-Route::get('/admin', 'App\Http\Controllers\TemplateController@admin');
+//Modifié
+Route::get('/admin', 'App\Http\Controllers\TemplateController@admin')->name("login");
+//Modifié
+if(isset($_POST['confirmeCompte'])){
+    Route::post('/admin', 'App\Http\Controllers\UserController@authenticate')->name("verifCon");
+}
+// Route::resource('User', UserController::class);
+//Modifié
+Route::post('/mdp-oublie', "App\Http\Controllers\UserController@edit")->name('UserController.edit');
+//Modifié
+Route::get('/mdp-oublie', 'App\Http\Controllers\TemplateController@mdpOublie')->name('TemplateController.editAdmin');
 
-// Route::group(['middleware' => 'auth'], function () 
-// {
-    Route::post('/accueil-admin', "App\Http\Controllers\UserController@authenticate");
+//Admin Groupe Authentifié !!
+
+//Route::group(['middleware' => 'auth'], function () {
     
-    // Route::resource('User', UserController::class);
+//Modifié    
+Route::post('/mdp-changement', "App\Http\Controllers\UserController@change")->name('UserController.change');
+//Modifié
+Route::get('/mdp-changement', 'App\Http\Controllers\TemplateController@changement_mdp')->name('TemplateController.changeAdmin');
+//
+Route::get("/accueil-admin", 'App\Http\Controllers\TemplateController@accueilAdmin')->name('Accueil-Admin');
 
-    Route::post('/mdp-oublie', "App\Http\Controllers\UserController@edit")->name('UserController.edit');
+Route::get('/association-admin', "App\Http\Controllers\TemplateController@associationAdmin")->name('Association-Admin');
 
-    Route::get('/mdp-oublie', 'App\Http\Controllers\TemplateController@mdpOublie');
+Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
 
-    Route::get("/accueil-admin", 'App\Http\Controllers\TemplateController@accueilAdmin')->name('Accueil-Admin');
+Route::get('/all-prestation-admin', 'App\Http\Controllers\TemplateController@allPrestationsAdmin')->name('TemplateController.allPrestationsAdmin');
 
-    Route::get('/association-admin', "App\Http\Controllers\TemplateController@associationAdmin")->name('Association-Admin');
+Route::get('/galerie-admin', 'App\Http\Controllers\TemplateController@galerieAdmin')->name('Galerie-Admin');
 
-    Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
+Route::get('/coup-coeur-admin', 'App\Http\Controllers\TemplateController@coups_de_coeurAdmin')->name('coupDeCoeur-Admin');
 
-    Route::get('/all-prestation-admin', 'App\Http\Controllers\TemplateController@allPrestationsAdmin')->name('TemplateController.allPrestationsAdmin');
+Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
 
-    Route::get('/galerie-admin', 'App\Http\Controllers\TemplateController@galerieAdmin')->name('Galerie-Admin');
+Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
+    
+if(isset($_POST['deconnection'])){
+    Route::post('{catchall}', 'App\Http\Controllers\userController@deconnection')->name('deconnect')->where('catchall', '.*');
+     }
 
-    Route::get('/coup-coeur-admin', 'App\Http\Controllers\TemplateController@coups_de_coeurAdmin')->name('coupDeCoeur-Admin');
+//AJOUT
+Route::get('/ajoutCatalogue', 'App\Http\Controllers\TemplateController@CatalogueAjout')->name("TemplateController.ajoutCatalogue");
 
-    Route::get('/prestation-admin/{prestation}', 'App\Http\Controllers\TemplateController@prestationsAdmin')->name('TemplateController.prestationsAdmin');
+if(isset($_POST['ajoutCatalogue'])){
+Route::post('/ajoutCatalogue', 'App\Http\Controllers\CatalogueController@add');
+}
 
-    Route::get("/album-admin/{nom}" , "App\Http\Controllers\TemplateController@albumAdmin")->name("TemplateController.albumAdmin");
+Route::get('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\TemplateController@coups_de_coeurAjout')->name("TemplateController.ajoutCoup-Coeur");
 
-    //AJOUT
-    Route::get('/ajoutCatalogue', 'App\Http\Controllers\TemplateController@CatalogueAjout')->name("TemplateController.ajoutCatalogue");
+if(isset($_POST['ajoutCC'])){
+Route::post('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\CoupDeCoeurController@add');
+}
 
-    if(isset($_POST['ajoutCatalogue'])){
-    Route::post('/ajoutCatalogue', 'App\Http\Controllers\CatalogueController@add');
-    }
+Route::get('/ajoutAlbum', 'App\Http\Controllers\TemplateController@albumAjout')->name("TemplateController.ajoutAlbum");
 
-    Route::get('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\TemplateController@coups_de_coeurAjout')->name("TemplateController.ajoutCoup-Coeur");
+if(isset($_POST['ajoutAlbum'])){
+Route::post('/ajoutAlbum', 'App\Http\Controllers\AlbumController@add');
+}
 
-    if(isset($_POST['ajoutCC'])){
-    Route::post('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\CoupDeCoeurController@add');
-    }
+Route::get('/ajoutPhoto', 'App\Http\Controllers\TemplateController@photoAjout')->name("TemplateController.ajoutPhoto");
 
-    Route::get('/ajoutAlbum', 'App\Http\Controllers\TemplateController@albumAjout')->name("TemplateController.ajoutAlbum");
+if(isset($_POST['ajoutPhoto'])){
+Route::post('/ajoutPhoto', 'App\Http\Controllers\PhotoController@add');
+}
 
-    if(isset($_POST['ajoutAlbum'])){
-    Route::post('/ajoutAlbum', 'App\Http\Controllers\AlbumController@add');
-    }
+Route::get('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\TemplateController@categorie_coups_de_coeurAjout')->name("TemplateController.ajoutCategorieCoup-Coeur");
 
-    Route::get('/ajoutPhoto', 'App\Http\Controllers\TemplateController@photoAjout')->name("TemplateController.ajoutPhoto");
+if(isset($_POST['ajoutCategorieCC'])){
+Route::post('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\CategorieCoupDeCoeurController@add');
+}
 
-    if(isset($_POST['ajoutPhoto'])){
-    Route::post('/ajoutPhoto', 'App\Http\Controllers\PhotoController@add');
-    }
 
-    Route::get('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\TemplateController@categorie_coups_de_coeurAjout')->name("TemplateController.ajoutCategorieCoup-Coeur");
 
-    if(isset($_POST['ajoutCategorieCC'])){
-    Route::post('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\CategorieCoupDeCoeurController@add');
-    }
+Route::get('/ajoutOneteam', 'App\Http\Controllers\TemplateController@ajoutOneteamAdmin')->name('TemplateController.ajoutOneteamAdmin');
+if(isset($_POST['ajoutMembres'])){
+Route::post('/ajoutOneteam', 'App\Http\Controllers\MembreController@add');
+}
 
-    Route::get('/ajoutOneteam', 'App\Http\Controllers\TemplateController@ajoutOneteamAdmin')->name('TemplateController.ajoutOneteamAdmin');
-    if(isset($_POST['ajoutMembres'])){
-    Route::post('/ajoutOneteam', 'App\Http\Controllers\MembreController@add');
-    }
 
-    Route::get('/ajoutEvenement', 'App\Http\Controllers\TemplateController@EvenementAjout')->name("TemplateController.ajoutEvenement");
 
-    if(isset($_POST['ajoutEV'])){
-    Route::post('/ajoutEvenement', 'App\Http\Controllers\ProgrammationController@add');
-    }
+Route::get('/ajoutEvenement', 'App\Http\Controllers\TemplateController@EvenementAjout')->name("TemplateController.ajoutEvenement");
 
-    Route::get('/ajoutAction/{prestation}', 'App\Http\Controllers\TemplateController@ActionAjout')->name("TemplateController.ajoutAction");
+if(isset($_POST['ajoutEV'])){
+Route::post('/ajoutEvenement', 'App\Http\Controllers\ProgrammationController@add');
+}
 
-    if(isset($_POST['ajoutAction'])){
-    Route::post('/ajoutAction/{prestation}', 'App\Http\Controllers\ActionController@add');
-    }
+Route::get('/ajoutAction/{prestation}', 'App\Http\Controllers\TemplateController@ActionAjout')->name("TemplateController.ajoutAction");
 
-    Route::get('/ajoutModule/{prestation}', 'App\Http\Controllers\TemplateController@ModuleAjout')->name("TemplateController.ajoutModule");
+if(isset($_POST['ajoutAction'])){
+Route::post('/ajoutAction/{prestation}', 'App\Http\Controllers\ActionController@add');
+}
 
-    if(isset($_POST['ajoutModule'])){
-    Route::post('/ajoutModule/{prestation}', 'App\Http\Controllers\ModuleController@add');
-    }
+Route::get('/ajoutModule/{prestation}', 'App\Http\Controllers\TemplateController@ModuleAjout')->name("TemplateController.ajoutModule");
 
-    Route::get('/ajoutEtiquette', 'App\Http\Controllers\TemplateController@EtiquetteAjout')->name("TemplateController.ajoutEtiquette");
+if(isset($_POST['ajoutModule'])){
+Route::post('/ajoutModule/{prestation}', 'App\Http\Controllers\ModuleController@add');
+}
 
-    if(isset($_POST['ajoutEtiquette'])){
-    Route::post('/ajoutEtiquette', 'App\Http\Controllers\EtiquetteController@add');
-    }
+Route::get('/ajoutEtiquette', 'App\Http\Controllers\TemplateController@EtiquetteAjout')->name("TemplateController.ajoutEtiquette");
 
-    //EDIT
-    Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOneteamAdmin')->name('TemplateController.getOneteamAdmin');
+if(isset($_POST['ajoutEtiquette'])){
+Route::post('/ajoutEtiquette', 'App\Http\Controllers\EtiquetteController@add');
+}
 
-    if(isset($_POST['membres'])){
-    Route::put('/Oneteam-admin/{id}', 'App\Http\Controllers\MembreController@saveEdit');
-    }
+Route::get('/ajoutAdmin', 'App\Http\Controllers\TemplateController@adminAjout')->name("TemplateController.ajoutAdmin");
 
-    if(isset($_POST['membresStatuts'])){
-    Route::put('/Oneteam-admin/{id}', 'App\Http\Controllers\MembreStatutController@saveEdit');
-    }
+if(isset($_POST['ajoutAdmin'])){
+Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
+}
+//EDIT
 
-    Route::put('/association-admin', 'App\Http\Controllers\PagesController@saveEdit');
+Route::get('/Oneteam-admin/{id}','App\Http\Controllers\TemplateController@getOneteamAdmin')->name('TemplateController.getOneteamAdmin');
 
-    Route::get('/editCoup-Coeur/{idCC}/{idC}', 'App\Http\Controllers\TemplateController@coups_de_coeurEdit')->name("TemplateController.editCoup-Coeur");
+if(isset($_POST['membres'])){
+Route::put('/Oneteam-admin/{id}', 'App\Http\Controllers\MembreController@saveEdit');
+}
 
-    if(isset($_POST['editCC'])){
-    Route::post('/editCoup-Coeur/{idCC}/{idC}', 'App\Http\Controllers\CoupDeCoeurController@saveEdit');
-    }
+if(isset($_POST['membresStatuts'])){
+Route::put('/Oneteam-admin/{id}', 'App\Http\Controllers\MembreStatutController@saveEdit');
+}
 
-    Route::get('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\TemplateController@categorie_coups_de_coeurEdit')->name("TemplateController.editCategorieCoup-Coeur");
 
-    if(isset($_POST['editCategorieCC'])){
-    Route::post('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\CategorieCoupDeCoeurController@saveEdit');
-    }
+Route::put('/association-admin', 'App\Http\Controllers\PagesController@saveEdit');
 
-    Route::get('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\TemplateController@EvenementEdit')->name("TemplateController.editEvenement");
 
-    if(isset($_POST['editEV'])){
-    Route::post('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\ProgrammationController@saveEdit');
-    }
 
-    Route::get('/editModule/{prestation}/{moduleId}', 'App\Http\Controllers\TemplateController@ModuleEdit')->name("TemplateController.editModule");
+Route::get('/editCoup-Coeur/{idCC}/{idC}', 'App\Http\Controllers\TemplateController@coups_de_coeurEdit')->name("TemplateController.editCoup-Coeur");
 
-    if(isset($_POST['editModule'])){
-    Route::post('/editModule/{prestation}/{moduleId}', 'App\Http\Controllers\ModuleController@saveEdit');
-    }
+if(isset($_POST['editCC'])){
+Route::post('/editCoup-Coeur/{idCC}/{idC}', 'App\Http\Controllers\CoupDeCoeurController@saveEdit');
+}
 
-    Route::get('/editEtiquette/{eid}', 'App\Http\Controllers\TemplateController@EtiquetteEdit')->name("TemplateController.editEtiquette");
+Route::get('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\TemplateController@categorie_coups_de_coeurEdit')->name("TemplateController.editCategorieCoup-Coeur");
 
-    if(isset($_POST['editEtiquette'])){
-    Route::post('/editEtiquette/{eid}', 'App\Http\Controllers\EtiquetteController@saveEdit');
-    }
+if(isset($_POST['editCategorieCC'])){
+Route::post('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\CategorieCoupDeCoeurController@saveEdit');
+}
 
-    Route::get('/editAction/{prestation}/{aid}', 'App\Http\Controllers\TemplateController@ActionEdit')->name("TemplateController.editAction");
 
-    if(isset($_POST['editAction'])){
-    Route::post('/editAction/{prestation}/{aid}', 'App\Http\Controllers\ActionController@saveEdit');
-    }
+Route::get('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\TemplateController@EvenementEdit')->name("TemplateController.editEvenement");
 
-    // supression
-    Route::post("/retour/{choix}", "App\Http\Controllers\TemplateController@retour")->name("TemplateController.retour");
+if(isset($_POST['editEV'])){
+Route::post('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\ProgrammationController@saveEdit');
+}
 
-    Route::get("/demande-suppression/{choix}","App\Http\Controllers\TemplateController@demandeSuppression")->name("TemplateController.demandeSuppression");
+Route::get('/editModule/{prestation}/{moduleId}', 'App\Http\Controllers\TemplateController@ModuleEdit')->name("TemplateController.editModule");
 
-    Route::delete("/confirmation-suppression/{choix}","App\Http\Controllers\TemplateController@confirmationSuppression")->name("TemplateController.confirmationSuppression");
-// });
+if(isset($_POST['editModule'])){
+Route::post('/editModule/{prestation}/{moduleId}', 'App\Http\Controllers\ModuleController@saveEdit');
+}
+
+Route::get('/editEtiquette/{eid}', 'App\Http\Controllers\TemplateController@EtiquetteEdit')->name("TemplateController.editEtiquette");
+
+if(isset($_POST['editEtiquette'])){
+Route::post('/editEtiquette/{eid}', 'App\Http\Controllers\EtiquetteController@saveEdit');
+}
+
+Route::get('/editAction/{prestation}/{aid}', 'App\Http\Controllers\TemplateController@ActionEdit')->name("TemplateController.editAction");
+
+if(isset($_POST['editAction'])){
+Route::post('/editAction/{prestation}/{aid}', 'App\Http\Controllers\ActionController@saveEdit');
+}
+
+
+// supression
+
+Route::post("/retour/{choix}", "App\Http\Controllers\TemplateController@retour")->name("TemplateController.retour");
+
+Route::post("/demande-suppression/{choix}","App\Http\Controllers\TemplateController@demandeSuppression")->name("TemplateController.demandeSuppression");
+
+Route::delete("/confirmation-suppression/{choix}","App\Http\Controllers\TemplateController@confirmationSuppression")->name("TemplateController.confirmationSuppression");
+//});
+

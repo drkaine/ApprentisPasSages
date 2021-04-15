@@ -39,7 +39,7 @@
     <div class="crud">
       <a href="{{route('TemplateController.ajoutEvenement')}}" class="fas fa-plus-circle"></a>
     </div>
-    <div class="zoneProg">
+    <div class="event">
       @foreach($contentProgs as $cProg)
         <div clas="programme">
           @include('admin/programmation-admin', compact($cProg))

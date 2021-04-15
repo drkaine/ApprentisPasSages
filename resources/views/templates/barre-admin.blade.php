@@ -3,11 +3,12 @@
   <head>
 
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Apprentis Pas Sages</title>
+    
     
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     {{-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> --}}
@@ -92,11 +93,15 @@
           </li>
 
         </div>
-        <li class="search-icon">
-          <input type="search" placeholder="Search" />
-          <label class="icon">
-            <span class="fas fa-search"></span>
-          </label>
+        <li>
+          <form action="" method="post">
+              {{ csrf_field() }}
+              <input type="hidden" name="deconnection" value="yes">
+              <button type="submit" value="Se connecter" name ="testconnection">Déconnexion</button>
+          </form>
+        </li>
+        <li>
+          <a href="{{route('TemplateController.ajoutAdmin')}}">Ajout Admin</a>
         </li>
       </ul>
     </nav>

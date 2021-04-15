@@ -13,11 +13,11 @@
         <img src="{{asset("storage/images/module/$module->nom.png")}}">
       @endif
       <ul class="precision">
-        <li><h4>Durée du module :<br></h4> {!! $module->temps !!}</li>
-        <li><h4>Materiel utilisé : <br></h4>{!! $module->materiel !!}<li>
-        <li><h4>But pedagogique :<br></h4> {!! $module->projetPeda !!}<li>
-        <li><h4>Lieu : <br></h4>{!! $module->lieu !!}<li>
-        <li><h4>Format : <br></h4>{!! $module->format !!}<li>
+        <li><h4 class="titre-precision">Durée du module :<br></h4> {!! $module->temps !!}</li>
+        <li><h4 class="titre-precision">Materiel utilisé : <br></h4>{!! $module->materiel !!}<li>
+        <li><h4 class="titre-precision">But pedagogique :<br></h4> {!! $module->projetPeda !!}<li>
+        <li><h4 class="titre-precision">Lieu : <br></h4>{!! $module->lieu !!}<li>
+        <li><h4 class="titre-precision">Format : <br></h4>{!! $module->format !!}<li>
       </ul>
     </section>
   </div>

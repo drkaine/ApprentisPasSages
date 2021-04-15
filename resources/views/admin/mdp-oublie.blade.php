@@ -2,7 +2,6 @@
 
 @section("body")
 
-
   <body>
     <div id="ban" class="container-fluid m-t-1 ban">
       <h1 id="titreAssociation" style="box-sizing:border-box;">Mot de passe oublié ?</h1>
@@ -17,11 +16,9 @@
           <label for="Mail">Vérification mail :</label><br>
           <input type="email" id="mail2" name="mail2" placeholder="Mail" required><br><br>
           <input type="submit" value="Envoyer" name ="edito" >
-          
         </form>
     </div>
   </body>
   <div class="m-t-1 ban2"></div>
-
 @include("templates/footer")
 @endsection

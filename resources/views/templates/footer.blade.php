@@ -5,7 +5,7 @@
       @foreach ($partenaires as $photo)
         @foreach ($photo as $p)
           @if ($p->deleted_at == null)
-            <li>
+            <li class='image-part'>
               <img  src="{{asset("storage/images/$p->chemin")}}" class="part">
             </li>
           @endif

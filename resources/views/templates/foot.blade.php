@@ -1,9 +1,11 @@
 <!-- footer -->
 <footer class="footer">
+  <section class="logo-contact">
     <img class="img-logo" src="{{ asset("storage/images/apprentis_pas_sages_banniere.png") }}"  alt="">
     <div class="contact">
       <button class="contact-m" type="button" data-toggle="modal" data-target="#ContactModal">Contactez-nous</button>
     </div>
+  </section>
     <ul  class="social-media-links">
       <li>
         <!-- twitter -->
@@ -53,7 +55,7 @@
     <ul class="partenaires">
       @foreach ($partenaires as $photo)
         @foreach ($photo as $p)
-          <li>
+          <li class='image-part'>
             <img  src="{{asset("storage/images/$p->chemin")}}" class="part">
           </li>
         @endforeach

@@ -101,7 +101,7 @@ input[type="submit"]:hover
 .modal-photo
 {
   max-width:100%;
-  max-height: 700px;
+  max-height: 100%;
 }
 
 /* modal lien-mort */
@@ -135,6 +135,11 @@ input[type="submit"]:hover
   max-height:600px;
 }
 
+.titre-precision
+{
+  font-size: 1.5em;
+}
+
 .nom-action
 {
   margin: 10px;
@@ -151,8 +156,11 @@ input[type="submit"]:hover
 .all-action
 {
   display: flex;
-  margin-left: 10px;
-  margin-right: 10px;
+}
+
+.precision
+{
+  font-size: 1em;
 }
 
 .miniature-module
@@ -168,6 +176,7 @@ input[type="submit"]:hover
   flex-flow: wrap;
   justify-content:space-between;
   margin-right: 20px;
+  margin-left: 20px;
 }
 
 .module
@@ -350,103 +359,17 @@ nav ul .search-icon .icon span
   transform: none;
 }
 
-@media screen and (max-width: 1210px) 
-{
-  nav 
-  {
-    padding: 50px 40px 0 0;
-  }
-  nav ul li.logo .logo-fox 
-  {
-    display: none;
-  }
-  nav ul div.items  
-  {
-    flex: 4;
-  }
-  nav ul .search-icon 
-  {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 800px)  
-{
-  nav ul li.btn 
-  {
-    display: block;
-  }
-  nav 
-  {
-    z-index: 1;
-    padding: 30px 40px 0 0;
-  }
-  nav ul div.items 
-  {
-    z-index: -1;
-    position: fixed;
-    top: -400px;
-    right: 0;
-    width: 100%;
-    background: #222222;
-    display: inline-block;
-    transition: 0.4s;
-  }
-
-  nav ul div.items.show 
-  {
-    top: 50px;
-  }
-
-  nav ul li.btn span 
-  {
-    transform: none;
-  }
-
-  nav ul div.items li 
-  {
-    text-align: center;
-    line-height: 30px;
-    margin: 30px 0;
-  }
-
-  nav ul div.items li a 
-  {
-    font-size: 19px;
-  }
-}
-
-@media screen and (max-width: 405px) 
-{
-  nav ul 
-  {
-    flex-wrap: nowrap;
-  }
-  nav ul li .search 
-  {
-    width: 50vmin;
-  }
-  nav ul li input 
-  {
-    width: 40vmin;
-  }
-}
-
-/* media screen for header e burger */
-@media screen and (max-width: 1700px) 
-{
-  .header 
-  {
-    justify-content: space-between;
-  }
-}
-
 /* image footer partenaire */
 .partenaires 
 {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.image-part
+{
+  margin:5px;
 }
 
 .partenaires li
@@ -492,6 +415,7 @@ nav ul .search-icon .icon span
 {
   max-width: 300px;
   max-height: 300px;
+  margin: 5px;
 }
 
 /* logo */
@@ -671,6 +595,14 @@ margin-top: 1px;
 background-color:#41046f;
 }
 
+.logo-contact
+{
+  display: flex;
+  justify-content:space-around;
+  align-items:center;
+  flex-flow: wrap;
+}
+
 /* boutton contact */
 .contact-m
 {
@@ -683,11 +615,9 @@ background-color:#41046f;
 }
 .contact
 {
-  display: inline-flex;
-  justify-content: space-around;
-  flex-flow: wrap;
   width : 57%;
-  align-items: center;
+  
+  margin-top: 10px;
 }
 
 footer .social-media-links 
@@ -803,7 +733,7 @@ footer .social-media-links a:hover svg circle
   padding-top: 76px !important;
   color: #41046f;
   font-family: 'Caveat Brush', cursive;
-  font-size: 5rem;
+  font-size: 5em;
   margin-right:30px;
 }
 
@@ -813,7 +743,7 @@ footer .social-media-links a:hover svg circle
   padding-top: 166px !important;
   color: #fffb00e0;
   font-family: 'Caveat Brush', cursive;
-  font-size: 5rem;
+  font-size: 5em;
 }
 
 /* nuage coups de coeur */
@@ -938,7 +868,11 @@ footer .social-media-links a:hover svg circle
 {
   display: flex;
   margin: 10px;
+}
 
+.programme
+{
+  display: flex;
 }
 
 /* Qui sommes nous ? */
@@ -1050,19 +984,15 @@ footer .social-media-links a:hover svg circle
 }
 
 /* contact */
-
-@media (max-width: 1100px) 
-{
-  .ctc-zone 
-  {
-    display: block;
-  }
-}
-
 .bouton-contact
 {
   background-color:#fffb00e0 !important;
   color:#41046f !important;
+}
+
+.mail
+{
+  font-size: 5em;
 }
 
 .contact-global
@@ -1125,4 +1055,229 @@ footer .social-media-links a:hover svg circle
   background: #41046f;
   color: #fffb00e0;
   width:50%;
+}
+
+/* responsive */
+/* media screen for header e burger */
+@media screen and (max-width: 1700px) 
+{
+  .header 
+  {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1210px) 
+{
+  nav 
+  {
+    padding: 50px 40px 0 0;
+  }
+  nav ul li.logo .logo-fox 
+  {
+    display: none;
+  }
+  nav ul div.items  
+  {
+    flex: 4;
+  }
+  nav ul .search-icon 
+  {
+    display: none;
+  }
+}
+
+@media screen and (max-width:1040px)
+{
+  .contact-global
+  {
+    flex-flow: wrap;
+  }
+
+  .contact-form
+  {
+    width:100%;
+  }
+
+  .coord
+  {
+    display:block;
+  }
+
+  .contact-info
+  {
+    width:100%;
+  }
+
+  #send-message
+  {
+    font-size: 2em;
+  }
+
+  .titre-coord
+  {
+    font-size: 2em;
+  }
+
+  #info-address
+  {
+    font-size:2em;
+  }
+
+  .mail
+  {
+    font-size: 1em;
+  }
+
+  .logo_m
+  {
+    max-width:250px;
+    max-height: 250px;
+  }
+
+  .precision
+  {
+    font-size: 0.8em;
+  }
+
+  .titre-precision
+  {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 900px)
+{
+  .ban2
+  {
+    background-image: none;
+  }
+  .ban2 h1
+  {
+    color:#fffb00e0;
+    font-size: 4em;
+    padding-top: 0px!important;
+    margin-left: 80px;
+  }
+}  
+
+@media screen and (max-width: 800px)  
+{
+  nav ul li.btn 
+  {
+    display: block;
+  }
+  nav 
+  {
+    z-index: 1;
+    padding: 30px 40px 0 0;
+  }
+  nav ul div.items 
+  {
+    z-index: -1;
+    position: fixed;
+    top: -400px;
+    right: 0;
+    width: 100%;
+    background: #222222;
+    display: inline-block;
+    transition: 0.4s;
+  }
+
+  nav ul div.items.show 
+  {
+    top: 50px;
+  }
+
+  nav ul li.btn span 
+  {
+    transform: none;
+  }
+
+  nav ul div.items li 
+  {
+    text-align: center;
+    line-height: 30px;
+    margin: 30px 0;
+  }
+
+  nav ul div.items li a 
+  {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-width: 672px) 
+{
+  .prestation
+  {
+    display: none;
+  }
+
+  .one
+  {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+  }
+}
+
+@media only screen and (max-width:650px)
+{
+  .logo_m
+  {
+    display:none;
+  }
+}
+
+@media only screen and (max-width: 410px) 
+{
+  .ban h1
+  {
+    font-size: 3em;
+  }
+  nav ul 
+  {
+    flex-wrap: nowrap;
+  }
+  nav ul li .search 
+  {
+    width: 50vmin;
+  }
+  nav ul li input 
+  {
+    width: 40vmin;
+  }
+}
+
+@media (max-width: 350px)
+{
+  .event
+  {
+    width:250px;
+  }
+  
+  .nom-action
+  {
+    width:250px;
+  }
+
+  .img-logo 
+  {
+    width : 250px;
+    padding-bottom: 10px;
+    margin: 1px;
+  }
+
+  nav ul li.logo .logo-apprentis
+  {
+    width : 200px;
+    padding-bottom: 10px;
+  }
+
+  .image
+  {
+    max-width: 250px;
+    max-height: 250px;
+  }
 }
