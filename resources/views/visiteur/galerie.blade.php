@@ -13,7 +13,11 @@
           <div class="galerie-title">{!! $album->nom !!}</div>
           <div class="couv">
             <a href="{{route('TemplateController.album', ['nom'=>$album->nom])}}" class="elem">
-              <img src={{ asset("storage/images/$couv[$nom]")}} >
+              @if($couv[$nom] == null)
+                <img src={{ asset("storage/images/apprentispassages_logo_renard2.png")}} alt="logo">
+              @else
+                <img src={{ asset("storage/images/$couv[$nom]")}} alt="{!! $nom !!}">
+              @endif
             </a>
           </div>
         </div>

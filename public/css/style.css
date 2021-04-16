@@ -72,7 +72,19 @@ input[type="submit"]
 
 input[type="submit"]:hover 
 {
-  background-color: #45a049;
+  background-color: #00c4f5;
+}
+
+/* menu burger */
+nav ul li.btn 
+{
+  display: none;
+}
+
+.deco
+{
+  color:#41046f;
+  background-color: #fffb00e0;
 }
 
 /* Modal*/
@@ -303,10 +315,10 @@ nav ul div.items a
 nav ul div.items a:hover 
 {
   color: #41046f;
-  background: #fbc638;
+  background: #fffb00e0;
   box-shadow:
   0 2px 2px 3px rgba(236, 112, 11, 0.25),
-  1px 1px 4px #fbc638;
+  1px 1px 4px #fffb00e0;
   border-radius: 5px;
   font-weight: 600;
   transition: 0.2s ease-in;
@@ -393,7 +405,7 @@ nav ul .search-icon .icon span
 {
   margin-bottom: 10px;
   color: #41046f;
-  background-color:#ede484;
+  background-color:#fffb00e0;
   width: 200px;
   height: 30px;
   padding: 1px;
@@ -508,8 +520,8 @@ nav ul .search-icon .icon span
 .cta:hover 
 {
   transition: 0.5s;
-  box-shadow: 10px 10px 5px #fbc638;
-  color: #fbc638;
+  box-shadow: 10px 10px 5px #fffb00e0;
+  color: #fffb00e0;
 }
 
 .cta span:nth-child(2) 
@@ -557,7 +569,7 @@ path.two
     fill: white;
   }
   50% {
-    fill: #fbc638;
+    fill: #fffb00e0;
   }
   100% {
     fill: white;
@@ -608,7 +620,7 @@ background-color:#41046f;
 .contact-m
 {
   color: #41046f;
-  background-color:#ede484;
+  background-color:#fffb00e0;
   width: 170px;
   height: 50px;
   padding: 1px;
@@ -684,7 +696,7 @@ footer .social-media-links a:hover svg.glow circle
 footer .social-media-links a:hover svg path,
 footer .social-media-links a:hover svg circle 
 {
-  fill: #c7b40e;
+  fill: #fffb00e0;
 } 
 
 /* boutton */
@@ -696,7 +708,7 @@ footer .social-media-links a:hover svg circle
 
 .btn-contact .btn-contact-us 
 {
-  background: #fbc638;
+  background: #fffb00e0;
   font-size: 15px;
   font-weight: 600;
   border-radius: 5px;

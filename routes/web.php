@@ -234,7 +234,7 @@ Route::post('/editAction/{prestation}/{aid}', 'App\Http\Controllers\ActionContro
 
 Route::post("/retour/{choix}", "App\Http\Controllers\TemplateController@retour")->name("TemplateController.retour");
 
-Route::post("/demande-suppression/{choix}","App\Http\Controllers\TemplateController@demandeSuppression")->name("TemplateController.demandeSuppression");
+Route::get("/demande-suppression/{choix}","App\Http\Controllers\TemplateController@demandeSuppression")->name("TemplateController.demandeSuppression");
 
 Route::delete("/confirmation-suppression/{choix}","App\Http\Controllers\TemplateController@confirmationSuppression")->name("TemplateController.confirmationSuppression");
 //});

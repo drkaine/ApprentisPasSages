@@ -20,11 +20,11 @@
                     <!-- csrf_field()-->       
                     <label for="fname">Nom *</label>
 
-                    <input type="text" id="fname" name="name" placeholder="Votre nom *">
+                    <input type="text" id="fname" name="name" placeholder="Votre nom *" required>
 
                     <label for="email">Email *</label>
 
-                    <input type="email" id="email" name="email" placeholder="Votre email *">
+                    <input type="email" id="email" name="email" placeholder="Votre email *" required>
 
                     <label for="phone">Numéros de téléphone</label>
 
@@ -32,11 +32,11 @@
 
                     <label for="message">Sujet du message *</label>
 
-                    <input type="text" name="subject" id="message" placeholder="Sujet du message *">
+                    <input type="text" name="subject" id="message" placeholder="Sujet du message *" required>
 
                     <label for="ctc-message">Votre message *</label>
 
-                    <textarea id="subject" name="message" placeholder="Votre message.." style="height:100%; width:100%"></textarea><br>
+                    <textarea id="subject" name="message" placeholder="Votre message.." style="height:100%; width:100%" required></textarea><br>
 
                     <div class="btn-form-contact">
                       <input type="submit" value="Envoyer votre message" class = "bouton-contact">

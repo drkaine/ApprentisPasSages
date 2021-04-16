@@ -98,7 +98,7 @@
             <form action="" method="post">
                 {{ csrf_field() }}
                 <input type="hidden" name="deconnection" value="yes">
-                <button type="submit" value="Se connecter" name ="testconnection">Déconnexion</button>
+                <button type="submit" value="Se connecter" name ="testconnection" class="deco">Déconnexion</button>
             </form>
           </li>
         </div>
