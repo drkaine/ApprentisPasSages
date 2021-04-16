@@ -54,7 +54,7 @@
                     </div>
                     <div class="crud">
                         <a href="{{route('TemplateController.editModule',['prestation'=>'tout','moduleId'=>$module->id])}}" class="fas fa-edit"></a>
-                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle" ></a>
+                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id]) }}" class="fas fa-minus-circle" ></a>
                     </div>
                 </li>
                 <!-- Modal -->

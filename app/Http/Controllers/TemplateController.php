@@ -262,8 +262,9 @@ use Illuminate\Support\Facades\Auth;
 
         function deleteModuleA(Request $request)
         {
-            DB::delete('delete from moduleactions  where module_id = ? and action_id = ?',[$request->id1,$request->id2]);
-            DB::delete('delete from modules where id = ?',[$request->id]);
+            DB::delete('delete from moduleactions  where module_id = ?',[$request->id1]);
+            DB::delete('delete from etiquettemodules where module_id = ?',[$request->id1]);
+            Module::where('id',$request->id1)->delete();
         }
 
         function deleteAction(Request $request)
@@ -274,8 +275,8 @@ use Illuminate\Support\Facades\Auth;
 
         function deleteActionA(Request $request)
         {
-            DB::delete('delete from actioncatalogues where catalogue_id = ? and action_id = ?',[$request->id1, $request->id2]);
-            DB::delete('delete from actions where id = ?',[$request->id]);
+            DB::delete('delete from actioncatalogues where action_id = ?',[$request->id2]);
+            Action::where('id',$request->id2)->delete();
         }
 
         function deleteCategorieCoupCoeur(Request $request)
@@ -297,7 +298,7 @@ use Illuminate\Support\Facades\Auth;
         function deleteEtiquetteA(Request $request)
         {
             DB::delete('delete from etiquettemodules where module_id = ? and etiquette_id = ?',[$request->id2, $request->id1]);
-            DB::delete('delete from etiquettes where id = ?',[$request->id1]);
+            Etiquette::where('id',$request->id1)->delete();
         }
 
         // affichage view visiteur
