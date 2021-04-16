@@ -7,24 +7,53 @@
       <h1 id="titreAssociation" style="box-sizing:border-box;">Plan du site</h1>
     </div>
     <div>
-        <a href="/">Accueil</a>
-        <a href="/association">Qui sommes-nous ?</a>
-        <a href="/coup-coeur">Coups de coeur</a>
-        <a href="/">oneTeam</a>
-        @foreach ($team as $membre)
-            <a href="{{route('TemplateController.getOneteam', ['id'=>$membre->id])}}">{!! $membre->nom !!} {!!$membre->prenom !!}</a>
-        @endforeach
-        <a href="/galerie">Galerie</a>
-        <a href="/galerie">Album</a>
-        @foreach ($albums as $album)
-            @if ($album->nom != "partenaires" and $album->nom != "team")
-                <a href="{{route('TemplateController.album', ['nom'=>$album->nom])}}">{!! $album->nom !!}</a>
-            @endif
-        @endforeach
-        <a href="/">Prestation</a>
-        @foreach ($catalogues as $catalogue)
-          <a href="{{route('TemplateController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
-      @endforeach
+      <a href="/">Accueil</a>
+      <ul class="plan-site">
+        <li>
+          <a href="/association">Qui sommes-nous ?</a>
+        </li>
+        <li>
+          <a href="/coup-coeur">Coups de coeur</a>
+        </li>
+        <li>
+          <a href="/">oneTeam</a>
+          <ul class="plan-site">
+            @foreach ($team as $membre)
+              <li>
+                <a href="{{route('TemplateController.getOneteam', ['id'=>$membre->id])}}">{!! $membre->nom !!} {!!$membre->prenom !!}</a>
+              </li>
+            @endforeach
+          </ul>
+        </li>
+        <li>
+          <a href="/galerie">Galerie</a>
+          <ul class="plan-site">
+            <li>
+              <a href="/galerie">Album</a>
+              <ul class="plan-site">
+                @foreach ($albums as $album)
+                    @if ($album->nom != "partenaires" and $album->nom != "team")
+                      <li>
+                        <a href="{{route('TemplateController.album', ['nom'=>$album->nom])}}">{!! $album->nom !!}</a>
+                      </li>
+                    @endif
+                @endforeach
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/">Prestation</a>
+          <ul class="plan-site">
+            @foreach ($catalogues as $catalogue)
+              <li>
+                <a href="{{route('TemplateController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
+              </li>
+            @endforeach
+          </ul>
+        </li>
+      </ul>
+    </div>
   </body>
   <div class="m-t-1 ban2"></div>
 @include("templates/footer")

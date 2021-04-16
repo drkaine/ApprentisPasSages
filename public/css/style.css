@@ -1096,6 +1096,18 @@ footer .social-media-links a:hover svg circle
   width:30%;
 }
 
+.plan-site
+{
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column;
+}
+
+.plan-site li
+{
+  margin-left: 10px;
+}
+
 /* responsive */
 /* media screen for header e burger */
 @media screen and (max-width: 1700px) 
