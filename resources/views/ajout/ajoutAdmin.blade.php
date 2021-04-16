@@ -16,6 +16,6 @@
     <input type="submit" value="Ajouter" name ="ajouter" >
 </form>
 
-<a href="{{route('Accueil-Admin')}}"><h1>Revenir à Accueil</h1></a>
+<a href="/user-gestion"><h1>Revenir au gestionnaire utilisateur</h1></a>
 
 @endsection

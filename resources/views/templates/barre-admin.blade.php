@@ -92,7 +92,7 @@
             </ul>
           </li>
           <li>
-            <a href="{{route('AjoutController.ajoutAdmin')}}">Ajout Admin</a>
+            <a href="user-gestion">Utilisateur</a>
           </li>
           <li>
             <form action="" method="post">

@@ -12,9 +12,26 @@
       <label for="nomEdit">Nom</label>
       <input type="text"  id="nomEdit" name ="nom" value="{!! $act->nom!!}" required>
 
-      <label for="photoEdit">img</label>
-      <input type="text" id="photoEdit" name ="img" value="{!! $act->img!!}" >
-
+      <div>
+        @php
+              $compte=0;
+          @endphp
+        @foreach ($photos as $p)
+          @php
+              $compte++;
+          @endphp
+            <input type="checkbox" id="catt{!! $compte !!}" name="img">
+            <label for="scales">
+                <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
+                <!-- Modal -->
+                <div id="myModal{{$compte}}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        @include("modal/photo")
+                    </div>
+                </div>
+            </label>
+        @endforeach
+      </div>
       <label for="descriptionEdit">description</label>   
       <textarea id="descriptionEdit" name ="description"  required>
         {!! $act->description!!}

@@ -25,6 +25,7 @@ class AdminController extends Controller
         {
             return view("admin/mdp-oublie", ['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
         }
+
         function changement_mdp()
         {
             return view("admin/changement_mdp", ['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"email" => session()->get( 'email' )]);
@@ -62,6 +63,11 @@ class AdminController extends Controller
         function allPrestationsAdmin(Request $request)
         {
             return view("admin/all-prestation-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>Action::get(),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(), "etiquettes"=>GetController::getEtiquette(), "etiquettemodules"=>GetController::getEtiquetteModule(),"catalogues"=>GetController::afficheCatalogue()]);
+        }
+
+        function userGestion()
+        {
+            return view("admin/user-gestion", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
         }
 
         function retour(Request $request)

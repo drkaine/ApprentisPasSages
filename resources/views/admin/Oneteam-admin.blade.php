@@ -17,9 +17,28 @@
       <div class="row">
         <div class="col-3 p-auto">
           @if($membre->photo == null)
-            <img class="imageOneTeam" src="/public/img/team/apprentispassages_logo_renard.png" alt="photo de l'avatar de l'association ApprentiPasSage">
+            <div>
+              @php
+                    $compte=0;
+                @endphp
+              @foreach ($photos as $p)
+                @php
+                    $compte++;
+                @endphp
+                  <input type="checkbox" id="catt{!! $compte !!}" name="img">
+                  <label for="scales">
+                      <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
+                      <!-- Modal -->
+                      <div id="myModal{{$compte}}" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                              @include("modal/photo")
+                          </div>
+                      </div>
+                  </label>
+              @endforeach
+            </div>
           @else
-            <img class="imageOneTeam" src="/img/team/{{$membre->photo}}" alt="photo de {{$membre->nom}} {{$membre->prenom}} de l'association ApprentiPasSage">
+            <img class="imageOneTeam" src="{{asset("storage/images/team/$membre->photo")}}" alt="photo de {{$membre->nom}} {{$membre->prenom}} de l'association ApprentiPasSage">
           @endif
         </div>
       </div>

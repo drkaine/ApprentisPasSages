@@ -74,12 +74,7 @@ Route::get('/mdp-changement', 'App\Http\Controllers\AdminController@changement_m
 //
 Route::get("/accueil-admin", 'App\Http\Controllers\AdminController@accueilAdmin')->name('Accueil-Admin');
 
-Route::get('/ajoutAdmin', 'App\Http\Controllers\AdminController@adminAjout')->name("AdminController.ajoutAdmin");
-
-if(isset($_POST['ajoutAdmin']))
-{
-    Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
-}
+Route::get('/user-gestion', 'App\Http\Controllers\AdminController@userGestion');
 
 Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
@@ -102,6 +97,13 @@ if(isset($_POST['deconnection'])){
      }
 
 //AJOUT
+Route::get('/ajoutAdmin', 'App\Http\Controllers\AjoutController@adminAjout')->name("AdminController.ajoutAdmin");
+
+if(isset($_POST['ajoutAdmin']))
+{
+   Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
+}
+
 Route::get('/ajoutCatalogue', 'App\Http\Controllers\AjoutController@CatalogueAjout')->name("AjoutController.ajoutCatalogue");
 
 if(isset($_POST['ajoutCatalogue'])){
@@ -132,14 +134,10 @@ if(isset($_POST['ajoutCategorieCC'])){
 Route::post('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\CategorieCoupDeCoeurController@add');
 }
 
-
-
 Route::get('/ajoutOneteam', 'App\Http\Controllers\AjoutController@ajoutOneteamAdmin')->name('AjoutController.ajoutOneteamAdmin');
 if(isset($_POST['ajoutMembres'])){
 Route::post('/ajoutOneteam', 'App\Http\Controllers\MembreController@add');
 }
-
-
 
 Route::get('/ajoutEvenement', 'App\Http\Controllers\AjoutController@EvenementAjout')->name("AjoutController.ajoutEvenement");
 
@@ -170,7 +168,9 @@ Route::get('/ajoutAdmin', 'App\Http\Controllers\AjoutController@adminAjout')->na
 if(isset($_POST['ajoutAdmin'])){
 Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
 }
+
 //EDIT
+Route::get("edit-user", 'App\Http\Controllers\EditController@editAdmin')->name("EditController.editAdmin");
 
 Route::get('/Oneteam-admin/{id}','App\Http\Controllers\EditController@getOneteamAdmin')->name('EditController.getOneteamAdmin');
 
@@ -182,10 +182,7 @@ if(isset($_POST['membresStatuts'])){
 Route::put('/Oneteam-admin/{id}', 'App\Http\Controllers\MembreStatutController@saveEdit');
 }
 
-
 Route::put('/association-admin', 'App\Http\Controllers\PagesController@saveEdit');
-
-
 
 Route::get('/editCoup-Coeur/{idCC}/{idC}', 'App\Http\Controllers\EditController@coups_de_coeurEdit')->name("EditController.editCoup-Coeur");
 
@@ -224,13 +221,11 @@ if(isset($_POST['editAction'])){
 Route::post('/editAction/{prestation}/{aid}', 'App\Http\Controllers\ActionController@saveEdit');
 }
 
-
 // supression
-
 Route::post("/retour/{choix}", "App\Http\Controllers\AdminController@retour")->name("AdminController.retour");
 
 Route::get("/demande-suppression/{choix}","App\Http\Controllers\AdminController@demandeSuppression")->name("AdminController.demandeSuppression");
 
-Route::delete("/confirmation-suppression/{choix}","App\Http\Controllers\DeleteController@confirmationSuppression")->name("DeleteController.confirmationSuppression");
+Route::delete("/confirmation-suppression/{choix}","App\Http\Controllers\AdminController@confirmationSuppression")->name("AdminController.confirmationSuppression");
 //});
 
