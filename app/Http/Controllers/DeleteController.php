@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Action;
@@ -96,5 +97,10 @@ class DeleteController extends Controller
     {
         DB::delete('delete from etiquettemodules where module_id = ? and etiquette_id = ?',[$request->id2, $request->id1]);
         Etiquette::where('id',$request->id1)->delete();
+    }
+
+    static function deleteUser(Request $request)
+    {
+        User::where("id",$request->id1)->delete();
     }
 }

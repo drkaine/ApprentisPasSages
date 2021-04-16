@@ -11,18 +11,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class CoupDeCoeurController extends Controller
-{
-    
-    
-    
-    
+{    
     public function add(Request $request){
 
         $validator = Validator::make($request->all(), [
             'lien' => 'required',
             'nom' => 'required',
             'description' => 'required'
-            
         ]);
 
         if($validator->fails()){
@@ -37,7 +32,6 @@ class CoupDeCoeurController extends Controller
         $coupCoeur->save();
         return redirect("coup-coeur-admin");
     }
-    
     
     public function saveEdit(Request $request){
 

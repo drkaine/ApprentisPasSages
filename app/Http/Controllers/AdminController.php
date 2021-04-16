@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Action;
 use App\Models\Membre;
 use App\Models\Module;
@@ -67,13 +68,16 @@ class AdminController extends Controller
 
         function userGestion()
         {
-            return view("admin/user-gestion", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
+            return view("admin/user-gestion", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(), "users"=>User::get()]);
         }
 
         function retour(Request $request)
         {
             switch ($request->choix)
             {
+                case "user":
+                    return redirect("user-gestion");
+
                 case 'catalogue':
                     return redirect("accueil-admin");
 
@@ -115,6 +119,10 @@ class AdminController extends Controller
         {
             switch ($request->choix)
             {
+                case "user":
+                    DeleteController::deleteUser($request);
+                    return redirect("user-gestion");
+
                 case 'catalogue':
                     DeleteController::deleteCatalogue($request);
                     return redirect("accueil-admin");

@@ -20,7 +20,7 @@ class EditController extends Controller
 {
     function editAdmin()
     {
-
+        return redirect("user-gestion");
     }
     
     function coups_de_coeurEdit(Request $request)

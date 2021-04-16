@@ -8,10 +8,12 @@
     <div class="crud">
         <a href="{{route('AjoutController.ajoutAdmin')}}" class="fas fa-plus-circle"></a>
     </div>
-    <div class="crud">        
-        <a href="{{route('EditController.editAdmin')}}" class="fas fa-edit"></a>
-        <a href="{{route('AdminController.demandeSuppression', ["choix"=>"user"])}}" class="fas fa-minus-circle"></a>
-    </div>
-    
+    @foreach ($users as $user)
+        {!! $user->email !!} {!! $user->nom !!}
+        <div class="crud">        
+            <a href="{{route('EditController.editAdmin')}}" class="fas fa-edit"></a>
+            <a href="{{route('AdminController.demandeSuppression', ["choix"=>"user"])}}" class="fas fa-minus-circle"></a>
+        </div>
+    @endforeach    
     <div class="m-t-1 ban2"></div>
 @endsection
