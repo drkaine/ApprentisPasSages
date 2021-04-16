@@ -26,7 +26,7 @@
 
                     <input type="email" id="email" name="email" placeholder="Votre email *">
 
-                    <label for="phone">Numérot de téléphone</label>
+                    <label for="phone">Numéros de téléphone</label>
 
                     <input type="tel" name="phone" id="phone" placeholder="Votre téléphone">
 
@@ -67,7 +67,9 @@
                     <div id="info-pers">
                       <div>
                         <h4>Général:</h4>
-                        <div>+33 (0)6.52.25.17.66</div><br></br>
+                        <div>
+                          <a href="tel:+33652251766">+33 (0)6.52.25.17.66</a>
+                        </div><br></br>
                       </div>
                       <div>
                         @foreach($teams as $membr)
@@ -100,7 +102,8 @@
                               &nbsp;:<br>
                               {!!($membr->prenom)!!}&nbsp;{!!($membr->nom)!!}
                             </div>
-                            <div>{!!($membr->telephone)!!}
+                            <div>
+                              <a href="tel:{!!($membr->telephone)!!}">{!!($membr->telephone)!!}</a>
                             </div>
                             <br>
                             <br>

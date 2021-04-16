@@ -598,9 +598,10 @@ background-color:#41046f;
 .logo-contact
 {
   display: flex;
-  justify-content:space-around;
+  justify-content:space-between;
   align-items:center;
   flex-flow: wrap;
+  margin-left: 10px;
 }
 
 /* boutton contact */
@@ -1197,6 +1198,10 @@ footer .social-media-links a:hover svg circle
     padding-top: 0px!important;
     margin-left: 80px;
   }
+  .send-message
+  {
+    font-size:1em;
+  }
 }  
 
 @media screen and (max-width: 800px)  
@@ -1205,26 +1210,28 @@ footer .social-media-links a:hover svg circle
   {
     display: block;
   }
+
   nav 
   {
     z-index: 1;
     padding: 30px 40px 0 0;
   }
+
   nav ul div.items 
   {
-    z-index: -1;
-    position: fixed;
-    top: -400px;
+    flex-flow: column;
+    z-index: 1;
+    position: absolute;
     right: 0;
     width: 100%;
     background: #222222;
-    display: inline-block;
     transition: 0.4s;
+    top: -740px;
   }
 
   nav ul div.items.show 
   {
-    top: 50px;
+    top: 100px;
   }
 
   nav ul li.btn span 
@@ -1242,6 +1249,16 @@ footer .social-media-links a:hover svg circle
   nav ul div.items li a 
   {
     font-size: 19px;
+  }
+
+  .modal-backdrop
+  {
+    position: unset;
+  }
+
+  .modal-body
+  {
+    padding:0;
   }
 }
 
@@ -1270,6 +1287,11 @@ footer .social-media-links a:hover svg circle
   .logo_m
   {
     display:none;
+  }
+
+  .mail h4
+  {
+    font-size:1em;
   }
 }
 
@@ -1328,5 +1350,10 @@ footer .social-media-links a:hover svg circle
   {
     max-width: 250px;
     max-height: 250px;
+  }
+
+  .mail h4
+  {
+    font-size:0.8em;
   }
 }
