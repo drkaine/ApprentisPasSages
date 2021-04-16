@@ -33,7 +33,7 @@ class PhotoController extends Controller
     public function add(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'nom' => 'required',            
+            'nom' => 'required',         
         ]);
 
         if($validator->fails()){

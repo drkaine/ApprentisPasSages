@@ -8,6 +8,26 @@
         <input type="hidden" name="ajoutAlbum" value="Yes">
         <label for="nomEdit">Nom</label>
         <textarea id="nomEdit" name ="nom" ></textarea>
+        <div>
+            @php
+                  $compte=0;
+              @endphp
+            @foreach ($photos as $p)
+              @php
+                  $compte++;
+              @endphp
+                <input type="checkbox" id="catt{!! $compte !!}" name="img">
+                <label for="scales">
+                    <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
+                    <!-- Modal -->
+                    <div id="myModal{{$compte}}" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            @include("modal/photo")
+                        </div>
+                    </div>
+                </label>
+            @endforeach
+          </div>
         <input type="submit" value="Ajouter" name ="ajouter" >
     </form>
 

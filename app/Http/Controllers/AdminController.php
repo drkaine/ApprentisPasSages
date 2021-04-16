@@ -64,7 +64,6 @@ class AdminController extends Controller
             return view("admin/all-prestation-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>Action::get(),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(), "etiquettes"=>GetController::getEtiquette(), "etiquettemodules"=>GetController::getEtiquetteModule(),"catalogues"=>GetController::afficheCatalogue()]);
         }
 
-
         function retour(Request $request)
         {
             switch ($request->choix)

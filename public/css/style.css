@@ -87,6 +87,19 @@ nav ul li.btn
   background-color: #fffb00e0;
 }
 
+/* miniature photo */
+.ajout-photo
+{
+  max-width: 75px;
+  max-height: 75px;
+}
+
+.ajout 
+{
+  display: flex;
+  flex-flow: wrap;
+}
+
 /* Modal*/
 .modal-dialog
 {
@@ -1226,14 +1239,10 @@ footer .social-media-links a:hover svg circle
   {
     font-size:1em;
   }
-}  
-
-@media screen and (max-width: 800px)  
-{
   nav ul li.btn 
   {
     display: block;
-    color: #fffb00e0;
+    color: #fffb00e0!important;
   }
 
   nav 
@@ -1285,7 +1294,7 @@ footer .social-media-links a:hover svg circle
   {
     padding:0;
   }
-}
+}  
 
 @media only screen and (max-width: 672px) 
 {

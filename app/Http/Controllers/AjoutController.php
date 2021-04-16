@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
 use App\Models\Membre;
 use App\Models\Statut;
 use App\Models\Membrestatut;
@@ -27,27 +28,27 @@ class AjoutController extends Controller
 
     function actionAjout(Request $request)
     {
-        return view("ajout/ajoutAction",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"prestation"=>$request->prestation]);
+        return view("ajout/ajoutAction",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"prestation"=>$request->prestation,"photos"=>Photo::get()]);
     }
 
     function albumAjout()
     {
-        return view("ajout/ajoutAlbum",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
+        return view("ajout/ajoutAlbum",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"photos"=>Photo::get()]);
     }
 
     function photoAjout(Request $request)
     {
-        return view("ajout/ajoutPhoto",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"nom"=>$request->nom]);
+        return view("ajout/ajoutPhoto",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"nom"=>$request->nom,"photos"=>Photo::get()]);
     }
 
     function moduleAjout(Request $request)
     {
-        return view("ajout/ajoutModule",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"prestation"=>$request->prestation,"etiquette"=>GetController::getEtiquette(),"action"=>GetController::getAction()]);
+        return view("ajout/ajoutModule",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"prestation"=>$request->prestation,"etiquette"=>GetController::getEtiquette(),"action"=>GetController::getAction(),"photos"=>Photo::get()]);
     }
 
     function ajoutOneTeamAdmin( Request $request)
     {
-    return view('ajout/ajoutOneteam', ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>GetController::afficheCategorieCoupsDecoeurs(),"cdc"=>GetController::afficheCoupsDecoeurs(),"catalogues"=>GetController::afficheCatalogue(),"statut"=>Statut::with('getStatut')->get()]);
+    return view('ajout/ajoutOneteam', ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"team"=>Membre::where('id','=',$request->id)->get(),"ccdc"=>GetController::afficheCategorieCoupsDecoeurs(),"cdc"=>GetController::afficheCoupsDecoeurs(),"catalogues"=>GetController::afficheCatalogue(),"statut"=>Statut::with('getStatut')->get(),"photos"=>Photo::get()]);
     }
 
     function etiquetteAjout(Request $request)

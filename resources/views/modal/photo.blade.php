@@ -1,3 +1,3 @@
 <div class="modal-p">
-  <img src="{{ asset("storage/images/$p->chemin")}}" alt = {{ $nom }} class="modal-photo">
+  <img src="{{ asset("storage/images/$p->chemin")}}" alt = "" class="modal-photo">
 </div>
