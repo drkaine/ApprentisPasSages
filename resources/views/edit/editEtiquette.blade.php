@@ -16,6 +16,6 @@
         <input type="color" id="couleurEdit" name ="couleur" value="{!! $eti->couleur !!}" required>
     @endforeach
     <input type="submit" value="Editer" name ="edito" >
-    <a href="{{route('TemplateController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>
+    <a href="{{route('AdminController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>
     <div class="m-t-1 ban2"></div>
 @endsection

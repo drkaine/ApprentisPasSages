@@ -12,55 +12,56 @@ use App\Models\Moduleaction;
 use Illuminate\Http\Request;
 use App\Models\Programmation;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\GetController;
 
 class AdminController extends Controller
 {
     function admin()
         {
-            return view("admin/admin", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue()]);
+            return view("admin/admin", ['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
         }
 
         function mdpOublie()
         {
-            return view("admin/mdp-oublie", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue()]);
+            return view("admin/mdp-oublie", ['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
         }
         function changement_mdp()
         {
-            return view("admin/changement_mdp", ['partenaires'=> $this->getPhotoByAlbum("partenaires"),"catalogues"=>$this->afficheCatalogue(),"email" => session()->get( 'email' )]);
+            return view("admin/changement_mdp", ['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"email" => session()->get( 'email' )]);
         } 
 
         function accueilAdmin(){
-            return view('admin/accueil-admin',["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), 'cdc'=>$this->afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>$this->afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(),"etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule()]);
+            return view('admin/accueil-admin',["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), 'cdc'=>GetController::afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>GetController::afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(),"etiquettes"=>GetController::getEtiquette(), "etiquettemodules"=>GetController::getEtiquetteModule()]);
         }
 
         function associationAdmin()
         {
-            return view("admin/association-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(),'asso'=>$this->getPageByNom("association"),"info"=>$this->getPageByNom("Information")]);
+            return view("admin/association-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "catalogues"=>GetController::afficheCatalogue(),'asso'=>GetController::getPageByNom("association"),"info"=>GetController::getPageByNom("Information")]);
         }
 
         function galerieAdmin()
         {
-            return view("admin/galerie-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"albums"=>$this->afficheAlbum(),"catalogues"=>$this->afficheCatalogue(), "couv"=>$this->getcouv()]);
+            return view("admin/galerie-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"albums"=>GetController::afficheAlbum(),"catalogues"=>GetController::afficheCatalogue(), "couv"=>GetController::getcouv()]);
         }
 
         function coups_de_coeurAdmin()
         {
-            return view("admin/coup-coeur-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), "ccdc"=>$this->afficheCategorieCoupsDecoeurs(),"cdc"=>$this->afficheCoupsDecoeurs(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("admin/coup-coeur-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "ccdc"=>GetController::afficheCategorieCoupsDecoeurs(),"cdc"=>GetController::afficheCoupsDecoeurs(),"catalogues"=>GetController::afficheCatalogue()]);
         }
 
         function prestationsAdmin(Request $request)
         {
-            return view("admin/prestation-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), "catalogues"=>$this->afficheCatalogue(), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>$this->getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule()]);
+            return view("admin/prestation-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "catalogues"=>GetController::afficheCatalogue(), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>GetController::getActionC($request->prestation),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(), "etiquettes"=>GetController::getEtiquette(), "etiquettemodules"=>GetController::getEtiquetteModule()]);
         }
 
         function albumAdmin(Request $request)
         {
-            return view("admin/album-admin", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"),"photos"=>$this->getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>$this->afficheCatalogue()]);
+            return view("admin/album-admin", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"photos"=>GetController::getPhotoByAlbum($request->nom), "nom"=>$request->nom,"catalogues"=>GetController::afficheCatalogue()]);
         }
 
         function allPrestationsAdmin(Request $request)
         {
-            return view("admin/all-prestation-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>Action::get(),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(), "etiquettes"=>$this->getEtiquette(), "etiquettemodules"=>$this->getEtiquetteModule(),"catalogues"=>$this->afficheCatalogue()]);
+            return view("admin/all-prestation-admin",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "prestation"=>DB::select('select * from catalogues where nom = ?',[$request->prestation]),"actions"=>Action::get(),'modules'=>Module::get(),'modulesac'=>Moduleaction::get(), "etiquettes"=>GetController::getEtiquette(), "etiquettemodules"=>GetController::getEtiquetteModule(),"catalogues"=>GetController::afficheCatalogue()]);
         }
 
 
@@ -102,7 +103,7 @@ class AdminController extends Controller
 
         function demandeSuppression(Request $request)
         {
-            return view("confirmation-suppression", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> $this->getPhotoByAlbum("partenaires"), "id"=>$request->id,"catalogues"=>$this->afficheCatalogue(), "choix"=>$request->choix, "id1"=>$request->id1, "id2"=>$request->id2, "id"=>$request->id3]);
+            return view("confirmation-suppression", ["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "id"=>$request->id,"catalogues"=>GetController::afficheCatalogue(), "choix"=>$request->choix, "id1"=>$request->id1, "id2"=>$request->id2, "id"=>$request->id3]);
         }
 
         function confirmationSuppression(Request $request)
@@ -110,54 +111,54 @@ class AdminController extends Controller
             switch ($request->choix)
             {
                 case 'catalogue':
-                    $this->deleteCatalogue($request);
+                    DeleteController::deleteCatalogue($request);
                     return redirect("accueil-admin");
 
                 case 'membre':
-                    $this->deleteMembreP($request);
+                    DeleteController::deleteMembre($request);
                     return redirect("accueil-admin");
                     
                 case 'action':
-                    $this->deleteActionA($request);
+                    DeleteController::deleteActionA($request);
                     return redirect("all-prestation-admin");
 
                 case "module":
-                    $this->deleteModuleA($request);
+                    DeleteController::deleteModuleA($request);
                     return redirect("all-prestation-admin");
 
                 case "etiquette":
-                    $this->deleteEtiquetteA($request);
+                    DeleteController::deleteEtiquetteA($request);
                     return redirect("all-prestation-admin");
 
                 case 'actionP':
-                    $this->deleteAction($request);
+                    DeleteController::deleteAction($request);
                     return redirect("all-prestation-admin");
 
                 case "moduleP":
-                    $this->deleteModule($request);
+                    DeleteController::deleteModule($request);
                     return redirect("all-prestation-admin");
 
                 case "etiquetteP":
-                    $this->deleteEtiquette($request);
+                    DeleteController::deleteEtiquette($request);
                     return redirect("all-prestation-admin");
 
                 case 'evenement':
-                    $this->deleteEvenement($request);
+                    DeleteController::deleteEvenement($request);
                     return redirect("accueil-admin");
 
                 case 'album':
-                    $this->deleteAlbum($request);
+                    DeleteController::deleteAlbum($request);
                     return redirect("galerie-admin");
 
                 case 'photo':
-                    $this->deletephoto($request);
+                    DeleteController::deletephoto($request);
                     return redirect("album-admin/$request->id2");
                 case 'catcdc':
-                    $this->deleteCategorieCoupCoeur($request);
+                    DeleteController::deleteCategorieCoupCoeur($request);
                     return redirect("coup-coeur-admin");
 
                 case "cdc":
-                    $this->deleteCoupCoeur($request);
+                    DeleteController::deleteCoupCoeur($request);
                     return redirect("coup-coeur-admin");
             }
         }

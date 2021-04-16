@@ -6,7 +6,7 @@
         <h1 id="titreAssociation" style="box-sizing:border-box;">{{$nom}} </h1>
     </div>
     <div class="crud">
-        <a href="{{route('TemplateController.ajoutPhoto', ["nom"=>$nom])}}" class="fas fa-plus-circle"></a>
+        <a href="{{route('AjoutController.ajoutPhoto', ["nom"=>$nom])}}" class="fas fa-plus-circle"></a>
     </div>
     <section class="album">
         <div class="photo">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="crud">
-                            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"photo" ,'id1'=>$p->id,"id2"=>"$nom"]) }}" class="fas fa-minus-circle"></a>
+                            <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"photo" ,'id1'=>$p->id,"id2"=>"$nom"]) }}" class="fas fa-minus-circle"></a>
                         </div>
                     @endif
                 @endforeach

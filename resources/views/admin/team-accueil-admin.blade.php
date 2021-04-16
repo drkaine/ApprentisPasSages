@@ -1,14 +1,10 @@
 <div class="col-12 col-sm-6 col-lg-3">
 	<div style="width: 18rem; height: 18rem;">
         <div class="d-flex flex-column">
-            <form action="{{ url('/deleteMembre'.$membre->id) }}" method="post">
-                {{ csrf_field() }}
-                {!! method_field('DELETE') !!}
-            </form>
             <div class="crud">
-                <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"membre" ,'id1'=>$membre->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
+                <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"membre" ,'id1'=>$membre->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
             </div>
-            <a href="{{route('TemplateController.getOneteamAdmin', ['id'=>$membre->id])}}">
+            <a href="{{route('EditController.getOneteamAdmin', ['id'=>$membre->id])}}">
                 @foreach($membre->getStatus()->get() as $statut)
                     @php $statuts[] = $statut->description;@endphp
 				@endforeach

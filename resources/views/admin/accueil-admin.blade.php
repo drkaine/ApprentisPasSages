@@ -5,12 +5,12 @@
   <!--Prestations-->
   <section class="prestation">
     <div class="crud">
-      <a href="{{route('TemplateController.ajoutCatalogue')}}"-  class="fas fa-plus-circle"></a>
+      <a href="{{route('AjoutController.ajoutCatalogue')}}"-  class="fas fa-plus-circle"></a>
     </div>
     @foreach ($catalogues as $catalogue)
       <div class="formation">
         <div class="wrapper">
-          <a class="cta" href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
+          <a class="cta" href="{{route('AdminController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">
             <span>{!! $catalogue->nom!!}</span>
             <span>
               <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -23,7 +23,7 @@
             </span>
           </a>
           <div class="crud">
-            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"catalogue" ,'id1'=>$catalogue->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
+            <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"catalogue" ,'id1'=>$catalogue->id,"id2"=>""]) }}" class="fas fa-minus-circle"></a>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
 
   <section class="event-card">
     <div class="crud">
-      <a href="{{route('TemplateController.ajoutEvenement')}}" class="fas fa-plus-circle"></a>
+      <a href="{{route('AjoutController.ajoutEvenement')}}" class="fas fa-plus-circle"></a>
     </div>
     <div class="event">
       @foreach($contentProgs as $cProg)
@@ -75,7 +75,7 @@
       </li>
     </ul>
     <div class="crud">
-      <a href="{{route('TemplateController.ajoutOneteamAdmin')}}" class="fas fa-plus-circle"></a>
+      <a href="{{route('AjoutController.ajoutOneteamAdmin')}}" class="fas fa-plus-circle"></a>
     </div>
   </div>
 

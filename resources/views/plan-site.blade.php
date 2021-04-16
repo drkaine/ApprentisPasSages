@@ -20,7 +20,7 @@
           <ul class="plan-site">
             @foreach ($team as $membre)
               <li>
-                <a href="{{route('TemplateController.getOneteam', ['id'=>$membre->id])}}">{!! $membre->nom !!} {!!$membre->prenom !!}</a>
+                <a href="{{route('VisiteurController.getOneteam', ['id'=>$membre->id])}}">{!! $membre->nom !!} {!!$membre->prenom !!}</a>
               </li>
             @endforeach
           </ul>
@@ -34,7 +34,7 @@
                 @foreach ($albums as $album)
                     @if ($album->nom != "partenaires" and $album->nom != "team")
                       <li>
-                        <a href="{{route('TemplateController.album', ['nom'=>$album->nom])}}">{!! $album->nom !!}</a>
+                        <a href="{{route('VisiteurController.album', ['nom'=>$album->nom])}}">{!! $album->nom !!}</a>
                       </li>
                     @endif
                 @endforeach
@@ -47,7 +47,7 @@
           <ul class="plan-site">
             @foreach ($catalogues as $catalogue)
               <li>
-                <a href="{{route('TemplateController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
+                <a href="{{route('VisiteurController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
               </li>
             @endforeach
           </ul>

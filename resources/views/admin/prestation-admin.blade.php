@@ -10,7 +10,7 @@
 
     <div class="prestation-card">
         <div class="crud">
-            <a href="{{route('TemplateController.ajoutAction',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a>
+            <a href="{{route('AjoutController.ajoutAction',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a>
         </div>
         <ul class ="listing-prestation">
             @php $compte=0;@endphp
@@ -20,11 +20,11 @@
                 <li class="titre">
                     <h4 class ="nom-action">{!! $action->nom !!}</h4>
                     <div class="crud">
-                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"action" ,'id1'=>$id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
+                        <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"action" ,'id1'=>$id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                     </div>
                 </li>
                 <div class="crud">
-                    <a href="{{route('TemplateController.ajoutModule',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a><br>
+                    <a href="{{route('AjoutController.ajoutModule',['prestation'=>$p->nom])}}" class="fas fa-plus-circle"></a><br>
                 </div>
                 <ul class="card-module">
                     @foreach ($modulesac as $moduleac)
@@ -42,8 +42,8 @@
                                             {!! $module->nom !!}
                                         </div>
                                         <div class="crud">
-                                            <a href="{{route('TemplateController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
-                                            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
+                                            <a href="{{route('EditController.editModule',['prestation'=>$p->nom,'moduleId'=>$module->id])}}" class="fas fa-edit"></a>
+                                            <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                                         </div>
                                     </li>
                                     <!-- Modal -->

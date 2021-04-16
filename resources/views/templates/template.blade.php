@@ -72,7 +72,7 @@
             <ul class="dropdown-menu">
                 @foreach ($catalogues as $catalogue)
                   <li>
-                    <a href="{{route('TemplateController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
+                    <a href="{{route('VisiteurController.prestations', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
                   </li></br>
                 @endforeach
             </ul>

@@ -25,8 +25,8 @@
                         </div>
                         <div>
                             <div class="crud">
-                                <a href="{{route('TemplateController.editEvenement', ['pid'=>$cProg->programmation_id,'aid'=>$cProg->action_id,'mid'=>$cProg->module_id])}}" class="fas fa-edit"></a>
-                                <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"evenement" ,'id1'=>$prog->id,"id2"=>$cProg->module_id, "id3"=>$cProg->action_id]) }}"  class="fas fa-minus-circle"></a>
+                                <a href="{{route('EditController.editEvenement', ['pid'=>$cProg->programmation_id,'aid'=>$cProg->action_id,'mid'=>$cProg->module_id])}}" class="fas fa-edit"></a>
+                                <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"evenement" ,'id1'=>$prog->id,"id2"=>$cProg->module_id, "id3"=>$cProg->action_id]) }}"  class="fas fa-minus-circle"></a>
                             </div>
                             <div>
                                 Date de Debut : {!! $prog->dateDebut!!}

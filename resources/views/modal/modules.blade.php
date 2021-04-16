@@ -29,7 +29,7 @@
                 {!! $etiquette->nom !!} 
               </p>
               <div class="crud">
-                <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}"  class="fas fa-minus-circle"></a>
+                <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}"  class="fas fa-minus-circle"></a>
               </div>
             @endif
           @endforeach

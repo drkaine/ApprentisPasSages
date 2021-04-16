@@ -82,17 +82,17 @@
             <ul class="dropdown-menu">
               @foreach ($catalogues as $catalogue)
                 <li>
-                  <a href="{{route('TemplateController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
+                  <a href="{{route('AdminController.prestationsAdmin', ['prestation'=>$catalogue->nom])}}">{{ $catalogue->nom}}</a>
                 </li></br>
               @endforeach
 
               <li>
-                <a href="{{route('TemplateController.allPrestationsAdmin')}}">Tout les catalogues</a>
+                <a href="{{route('AdminController.allPrestationsAdmin')}}">Tout les catalogues</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="{{route('TemplateController.ajoutAdmin')}}">Ajout Admin</a>
+            <a href="{{route('AjoutController.ajoutAdmin')}}">Ajout Admin</a>
           </li>
           <li>
             <form action="" method="post">

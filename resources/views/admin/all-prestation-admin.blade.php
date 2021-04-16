@@ -13,7 +13,7 @@
             <div class="titre">
                 <h2>Actions </h2>
                 <div class="crud">
-                    <a href="{{route('TemplateController.ajoutAction',['prestation'=>'tout'])}}" class="fas fa-plus-circle"></a>
+                    <a href="{{route('AjoutController.ajoutAction',['prestation'=>'tout'])}}" class="fas fa-plus-circle"></a>
                 </div>
             </div>
             <ul class="action">
@@ -23,8 +23,8 @@
                             <h4  class ="nom-action">{!! $action->nom !!}</h4>
                         </div>
                         <div class="crud">
-                            <a href="{{route('TemplateController.editAction',['prestation'=>'tout','aid'=>$action->id])}}" class="fas fa-edit"></a> 
-                            <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"action" ,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
+                            <a href="{{route('EditController.editAction',['prestation'=>'tout','aid'=>$action->id])}}" class="fas fa-edit"></a> 
+                            <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"action" ,"id2"=>$action->id]) }}" class="fas fa-minus-circle"></a>
                         </div>
                     </li>            
                 @endforeach
@@ -35,7 +35,7 @@
         <div class="titre">
             <h2>Modules </h2>
             <div class="crud">
-                <a href="{{route('TemplateController.ajoutModule',['prestation'=>'tout'])}}" class="fas fa-plus-circle"></a>
+                <a href="{{route('AjoutController.ajoutModule',['prestation'=>'tout'])}}" class="fas fa-plus-circle"></a>
             </div>
         </div>
         <ul class='card-module'>
@@ -53,8 +53,8 @@
                         {!! $module->nom !!}
                     </div>
                     <div class="crud">
-                        <a href="{{route('TemplateController.editModule',['prestation'=>'tout','moduleId'=>$module->id])}}" class="fas fa-edit"></a>
-                        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id]) }}" class="fas fa-minus-circle" ></a>
+                        <a href="{{route('EditController.editModule',['prestation'=>'tout','moduleId'=>$module->id])}}" class="fas fa-edit"></a>
+                        <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"module" ,'id1'=>$module->id]) }}" class="fas fa-minus-circle" ></a>
                     </div>
                 </li>
                 <!-- Modal -->
@@ -70,15 +70,15 @@
         <div class="titre">
             <h2>Etiquettes </h2>
             <div class="crud">
-                <a href="{{Route('TemplateController.ajoutEtiquette')}}" class="fas fa-plus-circle"></a>
+                <a href="{{Route('AjoutController.ajoutEtiquette')}}" class="fas fa-plus-circle"></a>
             </div>
         </div>
         <article class='etiquettes'>
             @foreach ($etiquettes as $etiquette)
                 <p style="background-color:{!! $etiquette->couleur !!}" class ="et">{!! $etiquette->nom !!} </p>
                 <div class="crud">
-                    <a href="{{Route('TemplateController.editEtiquette',['eid'=>$etiquette->id])}}" class="fas fa-edit"></a>
-                    <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}" class="fas fa-minus-circle"></a>
+                    <a href="{{Route('EditController.editEtiquette',['eid'=>$etiquette->id])}}" class="fas fa-edit"></a>
+                    <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"etiquette" ,'id1'=>$etiquette->id,"id2"=>$module->id]) }}" class="fas fa-minus-circle"></a>
                 </div>
             @endforeach
         </article>

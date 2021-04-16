@@ -19,32 +19,32 @@ use Illuminate\Support\Facades\Storage;
 
 class GetController extends Controller
 {
-    function affichePartenaires()
+    static function affichePartenaires()
     {
         return Storage::allFiles("partenaires");
     }
 
-    function afficheCoupsDecoeurs()
+    static function afficheCoupsDecoeurs()
     {
         return Coupsdecoeur::with('getCdc')->inRandomOrder()->get();
     }
 
-    function afficheCategorieCoupsDecoeurs()
+    static function afficheCategorieCoupsDecoeurs()
     {
         return Categoriecoupsdecoeur::with('getCCdc')->get();
     }
 
-    function afficheCatalogue()
+    static function afficheCatalogue()
     {
         return Catalogue::get();
     }
 
-    function afficheAlbum()
+    static function afficheAlbum()
     {
         return Album::get();
     }
 
-    function getPhotoByAlbum($nom)
+    static function getPhotoByAlbum($nom)
     {
         $photo =  [];
         $partenaires = DB::select('select photo_id from tagalbums JOIN albums ON (albums.nom = tagalbums.nom_album) where albums.nom = ?', [$nom]);
@@ -57,49 +57,49 @@ class GetController extends Controller
     return $photo;
     }
 
-    function getPageByNom($page)
+    static function getPageByNom($page)
     {
         return Page::where("nom",$page)->get();
     }
 
-    function getAction()
+    static function getAction()
     {
         return Action::get();
     }
 
-    function getCatalogueByNom($catalogues)
+    static function getCatalogueByNom($catalogues)
     {
         return DB::select(' select id from catalogues where nom = ?', [$catalogues]);
     }
 
-    function getEtiquette()
+    static function getEtiquette()
     {
         return Etiquette::get();
     }
 
-    function getModule()
+    static function getModule()
     {
         return Module::get();
     }
 
-    function getEtiquetteModule()
+    static function getEtiquetteModule()
     {
         return Etiquettemodule::get();
     }
 
-    function getActionC($catalogues)
+    static function getActionC($catalogues)
     {
-        $catalogue =  DB::select(' select * from actions JOIN actioncatalogues ON (actions.id = actioncatalogues.action_id) where actioncatalogues.catalogue_id = ?',[$this->getCatalogueByNom($catalogues)[0]->id]);
+        $catalogue =  DB::select(' select * from actions JOIN actioncatalogues ON (actions.id = actioncatalogues.action_id) where actioncatalogues.catalogue_id = ?',[GetController::getCatalogueByNom($catalogues)[0]->id]);
         return $catalogue;
     }
 
-    function getModuleByIdAction($id)
+    static function getModuleByIdAction($id)
     {
         $module = DB::select("select * from modules JOIN moduleactions ON (modules.id = moduleactions.module_id) where action_id = ?",[$id]);
         return $module;
     }
 
-    function getCouv()
+    static function getCouv()
     {
         $couv = [];
         $albums = Album::get();

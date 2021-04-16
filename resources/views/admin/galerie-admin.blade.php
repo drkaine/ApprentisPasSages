@@ -8,7 +8,7 @@
     <h1 id="titreAssociation" >Notre Galerie</h1>
   </div>
   <div class="crud">
-    <a href="{{route('TemplateController.ajoutAlbum')}}" class="fas fa-plus-circle"></a>
+    <a href="{{route('AjoutController.ajoutAlbum')}}" class="fas fa-plus-circle"></a>
   </div>
   <section class="galerie">
     @foreach ($albums as $album)
@@ -16,7 +16,7 @@
       <div class="item">
         <div class="galerie-title">{!! $album->nom !!}</div>
         <div class="couv">        
-          <a href="{{route('TemplateController.albumAdmin', ['nom'=>$album->nom])}}" class="elem">
+          <a href="{{route('AdminController.albumAdmin', ['nom'=>$album->nom])}}" class="elem">
             @if($couv[$nom] == null)
                 <img src={{ asset("storage/images/apprentispassages_logo_renard2.png")}} alt="logo">
             @else
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="crud">
-        <a href="{{ Route('TemplateController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}"  class="fas fa-minus-circle"></a>
+        <a href="{{ Route('AdminController.demandeSuppression', ["choix"=>"album" ,'id1'=>$album->nom,"id2"=>""]) }}"  class="fas fa-minus-circle"></a>
       </div>
     @endforeach
   </section>
