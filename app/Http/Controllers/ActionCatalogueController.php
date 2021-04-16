@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ActioncatalogueController extends Controller
 {
-    
-    
     public function add($catalogue){
         
         $actionId=DB::table('Actions')->select('id')->orderByDesc('id')

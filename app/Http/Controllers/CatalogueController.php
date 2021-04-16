@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class CatalogueController extends Controller
 {
-    
-    
-    
-    
     public function add(Request $request){
 
         $validator = Validator::make($request->all(), [

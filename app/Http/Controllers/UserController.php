@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Http\controllers\mailController;
-
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
@@ -60,9 +58,9 @@ class UserController extends Controller
         $user->password=$mdp;
         $user->email=$request->email;
         $user->expiration = date("Y-m-d", strtotime("+3 days"));
-        $email = new mailController();
-        $email->sendNewMDP($user);
-        $user->password=Hash::make($mdp);
+//        $email = new mailController();
+//        $email->sendNewMDP($user);
+        $user->password=Hash::make("fom");
         $user->save();
         
         return redirect("accueil-admin");
@@ -126,10 +124,10 @@ class UserController extends Controller
                 return back();
             $user->password = $mdp;
             $user->expiration = date("Y-m-d", strtotime("+3 days"));
-            $email = new mailController();
-            $email->sendMDP($user);
+//            $email = new mailController();
+//            $email->sendMDP($user);
             
-            $user->password=Hash::make($mdp);
+            $user->password=Hash::make("fom");
             $user->save();
             
             
@@ -190,6 +188,15 @@ class UserController extends Controller
           
                 if (Auth::attempt($credentials) and $exp->expiration==NULL ) {
                     Auth::logout();
+                    Cookie::queue(Cookie::forget('souvenir'));
+                    Cookie::queue(Cookie::forget('email'));
+                    Cookie::queue(Cookie::forget('password'));
+                    if($request->souvenir!=NULL)
+                    {
+                        Cookie::queue(Cookie::forever('souvenir',1)); 
+                        Cookie::queue(Cookie::forever('email',$request->email));
+                        Cookie::queue(Cookie::forever('password',$request->password));
+                    }
                     $request->session()->regenerate();
 
                     return redirect()->intended('accueil-admin');
