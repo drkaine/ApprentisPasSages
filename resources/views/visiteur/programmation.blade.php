@@ -37,7 +37,7 @@
                         <!-- Modal -->
                         <div id="myModal{{$compte}}" class="modal fade" role="dialog">
                             <div class="modal-dialog">
-                                @include("modal/modules");
+                                @include("modal/modules-v");
                             </div>
                         </div>
                     @endif
