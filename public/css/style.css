@@ -87,6 +87,20 @@ nav ul li.btn
   background-color: #fffb00e0;
 }
 
+/* gestionnaire user */
+.user
+{
+  margin-left: 10px;
+  display: flex;
+  flex-flow: column;
+}
+
+.user2
+{
+  display: flex;
+  flex-flow: wrap;
+}
+
 /* miniature photo */
 .ajout-photo
 {
