@@ -11,8 +11,8 @@
     @foreach ($users as $user)
         {!! $user->email !!} {!! $user->nom !!}
         <div class="crud">        
-            <a href="{{route('EditController.editAdmin')}}" class="fas fa-edit"></a>
-            <a href="{{route('AdminController.demandeSuppression', ["choix"=>"user"])}}" class="fas fa-minus-circle"></a>
+            <a href="{{route('EditController.editAdmin', ["eid"=>$user->id])}}" class="fas fa-edit"></a>
+            <a href="{{route('AdminController.demandeSuppression', ["choix"=>"user", "id1"=>$user->id])}}" class="fas fa-minus-circle"></a>
         </div>
     @endforeach    
     <div class="m-t-1 ban2"></div>

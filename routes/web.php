@@ -170,7 +170,7 @@ Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
 }
 
 //EDIT
-Route::get("edit-user", 'App\Http\Controllers\EditController@editAdmin')->name("EditController.editAdmin");
+Route::get("/user-edit/{eid}", 'App\Http\Controllers\EditController@editAdmin')->name("EditController.editAdmin");
 
 Route::get('/Oneteam-admin/{id}','App\Http\Controllers\EditController@getOneteamAdmin')->name('EditController.getOneteamAdmin');
 
@@ -195,7 +195,6 @@ Route::get('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\EditControll
 if(isset($_POST['editCategorieCC'])){
 Route::post('/editCategorieCoup-Coeur/{idCC}', 'App\Http\Controllers\CategorieCoupDeCoeurController@saveEdit');
 }
-
 
 Route::get('/editEvenement/{pid}/{aid}/{mid}', 'App\Http\Controllers\EditController@EvenementEdit')->name("EditController.editEvenement");
 

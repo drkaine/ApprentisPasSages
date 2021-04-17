@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Photo;
 use App\Models\Action;
 use App\Models\Membre;
@@ -18,9 +19,9 @@ use App\Models\Categoriecoupsdecoeur;
 
 class EditController extends Controller
 {
-    function editAdmin()
+    function editAdmin(Request $request)
     {
-        return redirect("user-gestion");
+        return view("edit/user-edit",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "teams"=> Membre::get(),"catalogues"=>GetController::afficheCatalogue(),"user"=>User::where('id','=',$request->eid)->get()]);
     }
     
     function coups_de_coeurEdit(Request $request)

@@ -41,11 +41,8 @@ class UserController extends Controller
      function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            
             'name' => 'required',
             'email' => 'required'
-            
-            
         ]);
 
         if($validator->fails() or $request->password!=$request->password2){
@@ -55,7 +52,8 @@ class UserController extends Controller
          $mdp=$this->generationMDP();
         $user = new User();
         $user->name = $request->name;
-        $user->password=$mdp;
+        // $user->password=$mdp;
+        $user->password="hello";
         $user->email=$request->email;
         $user->expiration = date("Y-m-d", strtotime("+3 days"));
 //        $email = new mailController();
@@ -63,7 +61,7 @@ class UserController extends Controller
         $user->password=Hash::make("fom");
         $user->save();
         
-        return redirect("accueil-admin");
+        return redirect("user-gestion");
     }
     
 
