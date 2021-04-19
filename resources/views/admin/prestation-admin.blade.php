@@ -60,5 +60,8 @@
             @endforeach
         </ul>
     </div>
+    <div class="pdf">
+        <h2><a href="{{ asset("storage/files/Catalogue2021.pdf") }}" class="fas fa-file-pdf"></a></h2>
+    </div>
     <div class="m-t-1 ban2"></div>
 @endsection
