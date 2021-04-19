@@ -101,6 +101,18 @@ nav ul li.btn
   flex-flow: wrap;
 }
 
+/* pdf */
+.pdf
+{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fas
+{
+  color:#41046f;
+}
+
 /* miniature photo */
 .ajout-photo
 {
