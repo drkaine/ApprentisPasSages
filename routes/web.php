@@ -51,27 +51,26 @@ Route::get("/album/{nom}" , "App\Http\Controllers\VisiteurController@album")->na
 Route::get("/plan-site", "App\Http\Controllers\VisiteurController@planSite")->name('VisiteurController.planSite');
 
 //ADMIN
-//Modifié
+
 Route::get('/admin', 'App\Http\Controllers\AdminController@admin')->name("login");
-//Modifié
+
 if(isset($_POST['confirmeCompte'])){
     Route::post('/admin', 'App\Http\Controllers\UserController@authenticate')->name("verifCon");
 }
 // Route::resource('User', UserController::class);
-//Modifié
+
 Route::post('/mdp-oublie', "App\Http\Controllers\UserController@edit")->name('UserController.edit');
-//Modifié
+
 Route::get('/mdp-oublie', 'App\Http\Controllers\AdminController@mdpOublie')->name('AdminController.editAdmin');
 
 //Admin Groupe Authentifié !!
 
 //Route::group(['middleware' => 'auth'], function () {
-    
-//Modifié    
+ 
 Route::post('/mdp-changement', "App\Http\Controllers\UserController@change")->name('UserController.change');
-//Modifié
+
 Route::get('/mdp-changement', 'App\Http\Controllers\AdminController@changement_mdp')->name('AdminController.changeAdmin');
-//
+
 Route::get("/accueil-admin", 'App\Http\Controllers\AdminController@accueilAdmin')->name('Accueil-Admin');
 
 Route::get('/user-gestion', 'App\Http\Controllers\AdminController@userGestion');
@@ -106,71 +105,87 @@ if(isset($_POST['ajoutAdmin']))
 
 Route::get('/ajoutCatalogue', 'App\Http\Controllers\AjoutController@CatalogueAjout')->name("AjoutController.ajoutCatalogue");
 
-if(isset($_POST['ajoutCatalogue'])){
-Route::post('/ajoutCatalogue', 'App\Http\Controllers\CatalogueController@add');
+if(isset($_POST['ajoutCatalogue']))
+{
+    Route::post('/ajoutCatalogue', 'App\Http\Controllers\CatalogueController@add');
 }
 
 Route::get('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\AjoutController@coups_de_coeurAjout')->name("AjoutController.ajoutCoup-Coeur");
 
-if(isset($_POST['ajoutCC'])){
-Route::post('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\CoupDeCoeurController@add');
+if(isset($_POST['ajoutCC']))
+{
+    Route::post('/ajoutCoup-Coeur/{id}', 'App\Http\Controllers\CoupDeCoeurController@add');
 }
 
 Route::get('/ajoutAlbum', 'App\Http\Controllers\AjoutController@albumAjout')->name("AjoutController.ajoutAlbum");
 
-if(isset($_POST['ajoutAlbum'])){
-Route::post('/ajoutAlbum', 'App\Http\Controllers\AlbumController@add');
+if(isset($_POST['ajoutAlbum']))
+{
+    Route::post('/ajoutAlbum', 'App\Http\Controllers\AlbumController@add');
 }
 
 Route::get('/ajoutPhoto', 'App\Http\Controllers\AjoutController@photoAjout')->name("AjoutController.ajoutPhoto");
 
-if(isset($_POST['ajoutPhoto'])){
-Route::post('/ajoutPhoto', 'App\Http\Controllers\PhotoController@add');
+if(isset($_POST['ajoutPhoto']))
+{
+    Route::post('/ajoutPhoto', 'App\Http\Controllers\PhotoController@add');
 }
 
 Route::get('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\AjoutController@categorie_coups_de_coeurAjout')->name("AjoutController.ajoutCategorieCoup-Coeur");
 
-if(isset($_POST['ajoutCategorieCC'])){
-Route::post('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\CategorieCoupDeCoeurController@add');
+if(isset($_POST['ajoutCategorieCC']))
+{
+    Route::post('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\CategorieCoupDeCoeurController@add');
 }
 
 Route::get('/ajoutOneteam', 'App\Http\Controllers\AjoutController@ajoutOneteamAdmin')->name('AjoutController.ajoutOneteamAdmin');
-if(isset($_POST['ajoutMembres'])){
-Route::post('/ajoutOneteam', 'App\Http\Controllers\MembreController@add');
+
+if(isset($_POST['ajoutMembres']))
+{
+    Route::post('/ajoutOneteam', 'App\Http\Controllers\MembreController@add');
 }
 
 Route::get('/ajoutEvenement', 'App\Http\Controllers\AjoutController@EvenementAjout')->name("AjoutController.ajoutEvenement");
 
-if(isset($_POST['ajoutEV'])){
-Route::post('/ajoutEvenement', 'App\Http\Controllers\ProgrammationController@add');
+if(isset($_POST['ajoutEV']))
+{
+    Route::post('/ajoutEvenement', 'App\Http\Controllers\ProgrammationController@add');
 }
 
 Route::get('/ajoutAction/{prestation}', 'App\Http\Controllers\AjoutController@ActionAjout')->name("AjoutController.ajoutAction");
 
-if(isset($_POST['ajoutAction'])){
-Route::post('/ajoutAction/{prestation}', 'App\Http\Controllers\ActionController@add');
+if(isset($_POST['ajoutAction']))
+{
+    Route::post('/ajoutAction/{prestation}', 'App\Http\Controllers\ActionController@add');
 }
 
 Route::get('/ajoutModule/{prestation}', 'App\Http\Controllers\AjoutController@ModuleAjout')->name("AjoutController.ajoutModule");
 
-if(isset($_POST['ajoutModule'])){
-Route::post('/ajoutModule/{prestation}', 'App\Http\Controllers\ModuleController@add');
+if(isset($_POST['ajoutModule']))
+{
+    Route::post('/ajoutModule/{prestation}', 'App\Http\Controllers\ModuleController@add');
 }
 
 Route::get('/ajoutEtiquette', 'App\Http\Controllers\AjoutController@EtiquetteAjout')->name("AjoutController.ajoutEtiquette");
 
-if(isset($_POST['ajoutEtiquette'])){
-Route::post('/ajoutEtiquette', 'App\Http\Controllers\EtiquetteController@add');
+if(isset($_POST['ajoutEtiquette']))
+{
+    Route::post('/ajoutEtiquette', 'App\Http\Controllers\EtiquetteController@add');
 }
 
 Route::get('/ajoutAdmin', 'App\Http\Controllers\AjoutController@adminAjout')->name("AjoutController.ajoutAdmin");
 
-if(isset($_POST['ajoutAdmin'])){
-Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
+if(isset($_POST['ajoutAdmin']))
+{
+    Route::post('/ajoutAdmin', 'App\Http\Controllers\UserController@create');
 }
 
 //EDIT
-Route::get("/user-edit/{eid}", 'App\Http\Controllers\EditController@editAdmin')->name("EditController.editAdmin");
+Route::get("/user-edit", 'App\Http\Controllers\EditController@editAdmin')->name("EditController.editAdmin");
+if(isset($_POST["editUser"]))
+{
+    Route::put("/editUser/{eid}", "App\Http\Controllers\UserController@edit")->name("UserController.edit");
+}
 
 Route::get('/Oneteam-admin/{id}','App\Http\Controllers\EditController@getOneteamAdmin')->name('EditController.getOneteamAdmin');
 

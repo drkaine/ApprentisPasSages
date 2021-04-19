@@ -44,23 +44,21 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required'
         ]);
-
-        if($validator->fails() or $request->password!=$request->password2){
+        if($validator->fails() or $request->password!=$request->password2)
+        {
             return back()->withInput($request->except('key'))
             ->withErrors($validator);
         }
          $mdp=$this->generationMDP();
         $user = new User();
         $user->name = $request->name;
-        // $user->password=$mdp;
-        $user->password="hello";
+        $user->password=$mdp;
         $user->email=$request->email;
         $user->expiration = date("Y-m-d", strtotime("+3 days"));
 //        $email = new mailController();
 //        $email->sendNewMDP($user);
         $user->password=Hash::make("fom");
         $user->save();
-        
         return redirect("user-gestion");
     }
     
@@ -106,13 +104,11 @@ class UserController extends Controller
         
         if($request->mdp)
         {
-            
             $mdp = $this->generationMDP();
             $validator = Validator::make($request->all(), [
                 'mail' => 'required',
                 'mail2' => 'required',
             ]);
-            
             if($validator->fails() or $request->mail != $request->mail2 ){
                 return back()->withInput($request->except('key'))
                 ->withErrors($validator);
@@ -124,17 +120,29 @@ class UserController extends Controller
             $user->expiration = date("Y-m-d", strtotime("+3 days"));
 //            $email = new mailController();
 //            $email->sendMDP($user);
-            
             $user->password=Hash::make("fom");
             $user->save();
-            
-            
             return redirect("admin");
         }
+        else
+        {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                "email" => "required",
+            ]);
     
+            if($validator->fails())
+            {
+                return back()->withInput($request->except('key'))
+                ->withErrors($validator);
+            }
+            $user = User::where('id', $request->id)->first();
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->save();
+            return redirect("user-gestion");
+        }
     }
-    
-    
     
    function change(Request $request)
     {
@@ -230,14 +238,12 @@ class UserController extends Controller
     {
         //
     }
-    
- function deconnection(Request $request)
-  {
+        
+    function deconnection(Request $request)
+    {
         $request->session()->forget('email');
         Auth::logout();
         return redirect('admin');
-    
-
     }
 }
     
