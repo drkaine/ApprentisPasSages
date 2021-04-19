@@ -41,7 +41,7 @@ class PhotoController extends Controller
             ->withErrors($validator);
         }
         $photo = new Photo();
-        $photo->chemin = $request->nom;
+        $photo->chemin = "ajout";
         $photo->save();
         $tag = new Tagalbum();
         $tag->photo_id = $photo->id;

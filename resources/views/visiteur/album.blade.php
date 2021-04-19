@@ -16,7 +16,7 @@
                     @php $compte++; @endphp
                     @if ($p->deleted_at == null)
                         <div class="image">
-                            <img src="{{asset("storage/images/$p->chemin ")}}" data-toggle="modal" data-target="#myModal{{$compte}}" alt="{{$nom}}" class = "image">
+                            <img src="{{asset("storage/images/$p->chemin ")}}" data-toggle="modal" data-target="#myModal{{$compte}}" alt="{{$nom}}" id = {{ $compte }} class = "image">
                         </div>
                         <!-- Modal -->
                         <div id="myModal{{$compte}}" class="modal fade" role="dialog">

@@ -16,7 +16,7 @@
           <a href="/coup-coeur">Coups de coeur</a>
         </li>
         <li>
-          <a href="/">oneTeam</a>
+          oneTeam
           <ul class="plan-site">
             @foreach ($team as $membre)
               <li>
@@ -29,7 +29,7 @@
           <a href="/galerie">Galerie</a>
           <ul class="plan-site">
             <li>
-              <a href="/galerie">Album</a>
+              Album
               <ul class="plan-site">
                 @foreach ($albums as $album)
                     @if ($album->nom != "partenaires" and $album->nom != "team")
@@ -43,7 +43,7 @@
           </ul>
         </li>
         <li>
-          <a href="/">Prestation</a>
+          Prestation
           <ul class="plan-site">
             @foreach ($catalogues as $catalogue)
               <li>

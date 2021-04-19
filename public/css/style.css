@@ -149,6 +149,13 @@ nav ul li.btn
   margin-right: auto;
 }
 
+.carroussel
+{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .modal-photo
 {
   max-width:100%;
@@ -898,15 +905,6 @@ footer .social-media-links a:hover svg circle
 }
 
 /* Template default CSS oneteam*/
-#banOneTeam
-{
-  width:100%;
-  background-image: url('../img/banTeam.png');
-  background-repeat: no-repeat;
-  background-size:cover;
-  height: 250px;
-}
-
 .imageOneTeam
 {
   width:200px !important;
@@ -926,7 +924,7 @@ footer .social-media-links a:hover svg circle
 {
   display: flex;
   justify-content: space-around;
-  flex-flow: wrap;
+  flex-flow: nowrap;
 }
 
 .membre
@@ -1352,6 +1350,11 @@ footer .social-media-links a:hover svg circle
   .mail h4
   {
     font-size:1em;
+  }
+
+  .one-membre
+  {
+    flex-flow: wrap;
   }
 }
 
