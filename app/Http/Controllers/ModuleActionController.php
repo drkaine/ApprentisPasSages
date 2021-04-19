@@ -22,31 +22,22 @@ class ModuleactionController extends Controller
         
         foreach($action as $acti)
         {
-            
             $modAct= new Moduleaction();
             $modAct->module_id = $moduleId[0]->id;
             $modAct->action_id =$acti;
             $modAct->save();
         }
-    
     }
     
     public function saveEdit($action,$moduleId){
-        
-        
-        
         DB::table('moduleactions')->where('module_id', '=', $moduleId)->delete();
-        
-        
         foreach($action as $acti)
         {
-            
             $modAct= new Moduleaction();
             $modAct->module_id = $moduleId;
             $modAct->action_id =$acti;
             $modAct->save();
         }
-           
     }
 }
 

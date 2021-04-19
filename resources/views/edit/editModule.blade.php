@@ -22,22 +22,23 @@
       
       <div>
         @php
-              $compte=0;
-          @endphp
+          $compte=0;
+        @endphp
         @foreach ($photos as $p)
           @php
-              $compte++;
+            $compte++;
           @endphp
-            <input type="checkbox" id="catt{!! $compte !!}" name="img">
-            <label for="scales">
-                <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
-                <!-- Modal -->
-                <div id="myModal{{$compte}}" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        @include("modal/photo")
-                    </div>
+          <input type="checkbox" id="photo{!! $compte !!}" name="img">
+          <label for="scales">
+              <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
+              <!-- Modal -->
+              <div id="myModal{{$compte}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  @include("modal/photo")
                 </div>
-            </label>
+              </div>
+              <input type="hidden" name="chemin" value="{{$p->chemin}}">
+          </label>
         @endforeach
       </div>
       

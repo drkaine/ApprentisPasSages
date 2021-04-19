@@ -52,6 +52,8 @@
                     <h5>Chalet les Carlines</h5>
                     <h5>Quartier les blancons</h5>
                     <h5>06450 Belvédère</h5>
+                    <h5>87 route des herbes</h5> 
+                    <h5>06450 Belvédére</h5>
                   </div><br/><br>
                   <a href="mailto:contact@apprentispassages.com" target="_blank" class="mail"><h4>contact@apprentispassages.com</h4></a>
                 </article>

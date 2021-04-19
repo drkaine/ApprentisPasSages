@@ -13,17 +13,19 @@
             @php
                 $compte++;
             @endphp
-                <input type="checkbox" id="catt{!! $compte !!}" name="img">
-                <label for="scales">
-                    <img src={{ asset("storage/images/$p->chemin") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
-                    <!-- Modal -->
-                    <div id="myModal{{$compte}}" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-                            @include("modal/photo")
-                        </div>
+            <input type="checkbox" id="photo" name="img{!! $compte !!}">
+            <label for="scales">
+                <img src={{ asset("storage/images/$p->chemin") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
+                <!-- Modal -->
+                <div id="myModal{{$compte}}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        @include("modal/photo")
                     </div>
-                </label>
+                </div>
+                <input type="hidden" name="{{$compte}}" value="{{$p->id}}">
+            </label>
             @endforeach
+            <input type="hidden" name="compte" value="{{$compte}}">
             <input type="submit" value="Ajouter" name ="ajouter">
         </form>
         <a href="{{route('AdminController.albumAdmin', ['nom'=>$nom])}}"><h1>Revenir à l'album {!! $nom!!}</h1></a>

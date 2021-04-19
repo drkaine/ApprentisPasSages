@@ -17,8 +17,6 @@ class actionController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'description' => 'required'
-
-
         ]);
 
         if($validator->fails()){
@@ -27,7 +25,7 @@ class actionController extends Controller
         }
         $action = new Action();
         $action->nom = $request->nom;
-        $action->img=$request->img;
+        $action->img=$request->chemin;
         $action->description=$request->description;
         $action->save();
         
@@ -36,8 +34,6 @@ class actionController extends Controller
         {
             $s="catt".$i;
             if($request->$s!=null){
-                
-                
                 $caId="catalogueId".$i;
                array_push($array,$request->$caId);
             }
@@ -46,11 +42,14 @@ class actionController extends Controller
         $acc->add($array);
         
         if($request->prestationId=="tout")
+        {
             return redirect('all-prestation-admin');
+        }
         else
+        {
             return redirect('/prestation-admin/'.$request->prestationId);
+        }
     }
-
 
     public function saveEdit(Request $request){
 
@@ -58,8 +57,6 @@ class actionController extends Controller
             'id' => 'required',
             'nom' => 'required',
             'description' => 'required'
-
-
         ]);
 
         if($validator->fails()){
@@ -68,7 +65,7 @@ class actionController extends Controller
         }
         $action = Action::find($request->id);
         $action->nom = $request->nom;
-        $action->img=$request->img;
+        $action->img=$request->chemin;
         $action->description=$request->description;
         $action->save();
         
@@ -76,18 +73,13 @@ class actionController extends Controller
         for($i=1; $i<$request->compte+1; $i++)
         {
             $s="catt".$i;
-            if($request->$s!=null){
-                
-                
+            if($request->$s!=null){                
                 $caId="catalogueId".$i;
                array_push($array,$request->$caId);
             }
         }
         $acc=new ActioncatalogueController();
         $acc->saveEdit($array,$request->id);
-        
-        
-        
         return back();
     }
 

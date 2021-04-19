@@ -24,6 +24,8 @@ class AlbumController extends Controller
         $Album = new Album();
         $Album->nom = $request->nom;
         $Album->save();
+        $photo = new PhotoController();
+        $photo->add($request);
         return redirect("galerie-admin");
     }
 }

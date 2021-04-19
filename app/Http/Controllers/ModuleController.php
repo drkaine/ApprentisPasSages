@@ -18,9 +18,6 @@ class ModuleController extends Controller
         $validator = Validator::make($request->all(), [
             'nom' => 'required',
             'description' => 'required',
-            
-
-
         ]);
 
         if($validator->fails()){
@@ -29,7 +26,7 @@ class ModuleController extends Controller
         }
         $module = new Module();
         $module->nom = $request->nom;
-        $module->img=$request->img;
+        $module->img=$request->chemin;
         $module->temps=$request->temps;
         $module->materiel=$request->materiel;
         $module->projetPeda=$request->projetPeda;
@@ -58,9 +55,8 @@ class ModuleController extends Controller
             $s="ett".$i;
             if($request->$s!=null){
                 
-                
                 $meId="etiquetteId".$i;
-               array_push($arrayE,$request->$meId);
+                array_push($arrayE,$request->$meId);
             }
         }
         $mac=new ModuleetiquetteController();
@@ -86,23 +82,21 @@ class ModuleController extends Controller
         $module = Module::find($request->id);
         $module->nom = $request->nom;
         $module->description = $request->description;
-        $module->img=$request->img;
+        $module->img=$request->chemin;
         $module->temps=$request->temps;
         $module->materiel=$request->materiel;
         $module->projetPeda=$request->projetPeda;
         $module->lieu=$request->lieu;
         $module->format=$request->format;
         $module->save();
-        
         $arrayA=array();
         for($i=1; $i<=$request->compteA; $i++)
         {
             $s="actt".$i;
-            if($request->$s!=null){
-                
-                
+            if($request->$s!=null)
+            {
                 $maId="actionId".$i;
-               array_push($arrayA,$request->$maId);
+                array_push($arrayA,$request->$maId);
             }
         }
         $mac=new ModuleactionController();
@@ -112,17 +106,14 @@ class ModuleController extends Controller
         for($i=1; $i<=$request->compteE; $i++)
         {
             $s="ett".$i;
-            if($request->$s!=null){
-                
-                
+            if($request->$s!=null)
+            {
                 $meId="etiquetteId".$i;
-               array_push($arrayE,$request->$meId);
+                array_push($arrayE,$request->$meId);
             }
         }
         $mac=new ModuleetiquetteController();
         $mac->saveEdit($arrayE,$request->id);
-        
         return back();
-
-}
+    }
 }

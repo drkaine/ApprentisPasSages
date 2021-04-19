@@ -20,15 +20,15 @@
         @php
             $compte++;
         @endphp
-          <input type="checkbox" id="catt{!! $compte !!}" name="img">
+          <input type="checkbox" id="photo{!! $compte !!}" name="chemin" value="{{$p->chemin}}">
           <label for="scales">
-              <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
-              <!-- Modal -->
-              <div id="myModal{{$compte}}" class="modal fade" role="dialog">
-                  <div class="modal-dialog">
-                      @include("modal/photo")
-                  </div>
+            <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
+            <!-- Modal -->
+            <div id="myModal{{$compte}}" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                @include("modal/photo")
               </div>
+            </div>
           </label>
       @endforeach
     </div>
@@ -52,7 +52,6 @@
           $compte++;
         @endphp
         <div>
-         
           <input type="checkbox" id="statt" name="statt{!! $compte!!}">
           <label for="scales">{!! $stattu->nom!!}</label>
          
@@ -68,13 +67,6 @@
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
   <script>
     CKEDITOR.replace( 'descriptionEdit', {
-        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-        filebrowserUploadMethod: 'form'
-    });
-  </script>
-  
-  <script>
-    CKEDITOR.replace( 'photoEdit', {
         filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });

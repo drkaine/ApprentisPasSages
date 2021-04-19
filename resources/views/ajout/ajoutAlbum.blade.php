@@ -16,7 +16,7 @@
               @php
                   $compte++;
               @endphp
-                <input type="checkbox" id="catt{!! $compte !!}" name="img">
+                <input type="checkbox" id="photo{!! $compte !!}" name="img">
                 <label for="scales">
                     <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
                     <!-- Modal -->
@@ -25,8 +25,10 @@
                             @include("modal/photo")
                         </div>
                     </div>
+                    <input type="hidden" name="{{$compte}}" value="{{$p->id}}">
                 </label>
             @endforeach
+            <input type="hidden" name="compte" value="{{$compte}}">
           </div>
         <input type="submit" value="Ajouter" name ="ajouter" >
     </form>

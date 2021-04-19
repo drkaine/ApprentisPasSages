@@ -20,14 +20,10 @@ class MembreController extends Controller
        return view('pages.team', compact('oneTeam'));
     }
     
-    
-    
     public function saveEdit(Request $request){
 
         $validator = Validator::make($request->all(), [
             'id' => 'required'
-            
-            
         ]);
 
         if($validator->fails()){
@@ -39,27 +35,21 @@ class MembreController extends Controller
         $membre->prenom=$request->prenom;
         $membre->telephone=$request->telephone;
         $membre->email=$request->email;
-        $membre->photo=$request->photo;
+        $membre->photo=$request->chemin;
         $membre->description=$request->description;
         $membre->save();
         return back();
     }
 
-    
-    
-    
-    public function add(Request $request){
-
+    public function add(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'prenom' => 'required',
             'nom' => 'required',
             'description' => 'required',
             'email' => 'required',
             'telephone' => 'required',
-            
-            
         ]);
-
         if($validator->fails()){
             return back()->withInput($request->except('key'))
             ->withErrors($validator);
@@ -69,7 +59,7 @@ class MembreController extends Controller
         $membre->prenom=$request->prenom;
         $membre->telephone=$request->telephone;
         $membre->email=$request->email;
-        $membre->photo=$request->photo;
+        $membre->photo=$request->chemin;
         $membre->description=$request->description;
         $membre->save();
         
@@ -81,11 +71,7 @@ class MembreController extends Controller
                 $ms=new MembreStatutController();
                 $ms->add($request->$stId);
             }
-        
         }
-        
-        
-        
         return redirect("accueil-admin");
     }
 }
