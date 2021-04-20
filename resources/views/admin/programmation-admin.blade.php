@@ -15,9 +15,9 @@
                     @if($module->id==$cProg->module_id)
                         <div class = "module"> 
                             @if ($module->img == null)
-                                <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
+                                <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}" alt="miniature module">
                             @else
-                                <img src="{{asset("storage/images/$module->img")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}">
+                                <img src="{{asset("storage/images/$module->img")}}" class="miniature-module" data-toggle="modal" data-target="#myModal{{$compte}}" alt="{!! $module->nom !!}">
                             @endif
                             <div class="nom-modal">
                                 {!! $module->nom !!}

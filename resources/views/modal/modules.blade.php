@@ -8,9 +8,9 @@
   <div class="modal-body">
     <section class = "modal-module">
       @if ($module->img == null)
-        <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="logo_m">
+        <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="logo_m" alt='logo module'>
       @else
-        <img src="{{asset("storage/images/$module->img")}}">
+        <img src="{{asset("storage/images/$module->img")}}" class="logo_m" alt="{!! $module->nom !!}">
       @endif
       <ul class="precision">
         <li><h4>Durée du module :<br></h4> {!! $module->temps !!}</li>
