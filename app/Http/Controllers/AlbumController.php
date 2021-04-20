@@ -6,8 +6,7 @@ use App\Models\Album;
 //Illuminate
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
-
+use App\Http\Controllers\TagAlbumController;
 
 class AlbumController extends Controller
 {
@@ -24,8 +23,12 @@ class AlbumController extends Controller
         $Album = new Album();
         $Album->nom = $request->nom;
         $Album->save();
-        $photo = new PhotoController();
-        $photo->add($request);
+        // for($i = 0; $i<$request->compte-1; $i++)
+        // {
+        //     $r=$request->$i;
+            $tag = new TagAlbumController();
+            $tag->add($request);
+        // }
         return redirect("galerie-admin");
     }
 }

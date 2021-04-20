@@ -473,7 +473,7 @@ nav ul .search-icon .icon span
 {
   max-width: 300px;
   max-height: 300px;
-  pointer-events: auto;
+  margin-bottom: 10px;
 }
 
 /* logo */

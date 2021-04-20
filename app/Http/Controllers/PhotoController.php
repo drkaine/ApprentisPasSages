@@ -30,8 +30,8 @@ class PhotoController extends Controller
         //
     }
 
-    public function add(Request $request){
-
+    public function add(Request $request, $r)
+    {
         $validator = Validator::make($request->all(), [
             'nom' => 'required',         
         ]);
@@ -44,7 +44,7 @@ class PhotoController extends Controller
         $photo->chemin = "ajout";
         $photo->save();
         $tag = new Tagalbum();
-        $tag->photo_id = $photo->id;
+        $tag->photo_id = $r;
         $tag->nom_album = $request->nom;
         $tag->save();
         return redirect("galerie-admin");

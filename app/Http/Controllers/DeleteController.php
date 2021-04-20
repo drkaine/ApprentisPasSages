@@ -49,7 +49,7 @@ class DeleteController extends Controller
     static function deletePhoto(Request $request)
     {
         Tagalbum::where("photo_id", $request->id1)->delete();
-        Photo::where('id', $request->id1)->delete();
+        // Photo::where('id', $request->id1)->delete();
     }
 
     static function deleteModule(Request $request)
