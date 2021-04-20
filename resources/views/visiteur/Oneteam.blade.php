@@ -12,7 +12,7 @@
         @if($membre->photo == null)
           <img src="{{ asset("storage/images/team/apprentispassages_logo_renard.png") }}" class="imageOneTeam" alt="photo d'avatar">
         @else
-          <img src="{{  asset("storage/images/team/$membre->photo")}} " class="imageOneTeam" alt="photo de {!! $membre->nom !!}">
+          <img src="{{  asset("storage/images/$membre->photo")}} " class="imageOneTeam" alt="photo de {!! $membre->nom !!}">
         @endif
       </div>
       <div >

@@ -39,7 +39,7 @@
               @endforeach 
             </div>
           @else
-            <img class="imageOneTeam" src="{{asset("storage/images/team/$membre->photo")}}" alt="photo de {{$membre->nom}} {{$membre->prenom}} de l'association ApprentiPasSage">
+            <img class="imageOneTeam" src="{{asset("storage/images/$membre->photo")}}" alt="photo de {{$membre->nom}} {{$membre->prenom}} de l'association ApprentiPasSage">
           @endif
         </div>
       </div>

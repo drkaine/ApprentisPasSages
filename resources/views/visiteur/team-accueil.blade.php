@@ -10,7 +10,7 @@
 					@if($membre->photo == null)
 						src="{{ asset("storage/images/team/apprentispassages_logo_renard.png") }}" alt="photo d'avatar">
 					@else
-						src="{{  asset("storage/images/team/$membre->photo")}} " alt="photo de {!! $membre->nom !!}">
+						src="{{  asset("storage/images/$membre->photo")}} " alt="photo de {!! $membre->nom !!}">
 					@endif
 			</a>
 			

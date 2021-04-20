@@ -473,6 +473,7 @@ nav ul .search-icon .icon span
 {
   max-width: 300px;
   max-height: 300px;
+  pointer-events: auto;
 }
 
 /* logo */
@@ -1265,7 +1266,7 @@ footer .social-media-links a:hover svg circle
   nav ul li.btn 
   {
     display: block;
-    color: #fffb00e0!important;
+    background-color: #fffb00e0!important;
   }
 
   nav 
@@ -1334,6 +1335,16 @@ footer .social-media-links a:hover svg circle
   }
 
   .ban h1
+  {
+    font-size: 3em;
+  }
+
+  .ban2 h1
+  {
+    font-size: 3em;
+  }
+
+  #titreTeam
   {
     font-size: 3em;
   }
