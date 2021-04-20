@@ -6,6 +6,8 @@ use App\Models\Action;
 use App\Models\Membre;
 use App\Models\Module;
 use App\Models\Statut;
+use App\Models\Catalogue;
+use App\Models\Etiquette;
 use App\Models\ContentProg;
 use App\Models\Membrestatut;
 use App\Models\Moduleaction;
@@ -51,5 +53,23 @@ class VisiteurController extends Controller
         function planSite()
         {
             return view("plan-site", ['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue(),"statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),"team"=> Membre::inRandomOrder()->get(),"albums"=>GetController::afficheAlbum()]);
+        }
+
+        function recherche(Request $request)
+        {
+            $recherche =$request->recherche ;
+            $objet=array();
+            $objet['membre'] = Membre::where('nom','LIKE','%'.$recherche.'%')->orWhere('email','LIKE','%'.$recherche.'%')->orWhere('prenom','LIKE','%'.$recherche.'%')->orWhere('description','LIKE','%'.$recherche.'%')->get();
+            $objet['action'] = Action::where('nom','LIKE','%'.$recherche.'%')->orWhere('description','LIKE','%'.$recherche.'%')->get();
+            $objet['module'] = Module::where('nom','LIKE','%'.$recherche.'%')->orWhere('description','LIKE','%'.$recherche.'%')->get();
+            $objet['etiquette'] = Etiquette::where('nom','LIKE','%'.$recherche.'%')->get();
+            foreach($objet as $obj)
+            {
+                if(count($obj) > 0 and $recherche!=NULL )
+                {
+                    return view('visiteur/recherche', ['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogue"=>GetController::afficheCatalogue(),"statu"=>Statut::get(),"teams"=> Membre::get(),"team"=> Membre::get(),"albums"=>GetController::afficheAlbum(),"etiquettes"=>GetController::getEtiquette(),"actions"=>GetController::getAction(),"modules"=>GetController::getModule(),"statut"=>Statut::get(),"membreStatut"=>Membrestatut::get(), "etiquettemodules"=>GetController::getEtiquetteModule(),'moduleAction'=>Moduleaction::get(), "prestation"=>Catalogue::get(),"catalogues"=>GetController::afficheCatalogue(),"requete"=>$recherche])->withDetails($objet)->withQuery ( $recherche );
+                }
+            }
+            return view ('visiteur/recherche',['partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogue"=>GetController::afficheCatalogue(),"statu"=>Statut::get(),"teams"=> Membre::get(),"membreStatut"=>Membrestatut::get(),"catalogues"=>GetController::afficheCatalogue()]);
         }
 }

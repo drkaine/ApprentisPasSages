@@ -30,12 +30,12 @@ if(isset($_POST['mdp'])){
     Route::post('{catchall}', 'App\Http\Controllers\UserController@edit')->name('envoiMDP');
      }
 
- // liens morts
- if(isset($_POST['liensCacher'])){
+// liens morts
+if(isset($_POST['liensCacher'])){
     Route::post('/', 'App\Http\Controllers\mailController@liensMortsSend')->name('envoiLiensMort');
-    }
-    
-    Route::get('/association', "App\Http\Controllers\VisiteurController@association")->name('Association');
+}
+
+Route::get('/association', "App\Http\Controllers\VisiteurController@association")->name('Association');
 
 
 Route::get('/galerie', 'App\Http\Controllers\VisiteurController@galerie')->name('Galerie');
@@ -49,6 +49,10 @@ Route::get('/Oneteam/{id}','App\Http\Controllers\VisiteurController@getOneteam')
 Route::get("/album/{nom}" , "App\Http\Controllers\VisiteurController@album")->name("VisiteurController.album");
 
 Route::get("/plan-site", "App\Http\Controllers\VisiteurController@planSite")->name('VisiteurController.planSite');
+
+// Search
+Route::any('/recherche',
+"App\Http\Controllers\VisiteurController@recherche")->name('VisiteurController.recherche');
 
 //ADMIN
 

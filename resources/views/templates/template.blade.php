@@ -78,14 +78,23 @@
             </ul>
           </li>
         </div>
+        <form action="recherche" method="post">
+          {{ csrf_field() }}
+          <li class="search-icon">
+              <input type="search" placeholder="Recherche" name="recherche" />
+              <button type="submit" class="icon">
+                <span class="fas fa-search"></span>
+              </button>
+          </li>
+        </form>
 
-        <li class="search-icon">
+        {{-- <li class="search-icon">
           <input type="search" placeholder="Search"/>
           <label class="icon">
             <span class="fas fa-search"></span>
           </label>
         </li>
-      </ul>
+      </ul> --}}
   </nav>
 
   <script>
