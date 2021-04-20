@@ -10,7 +10,7 @@
       @if ($module->img == null)
         <img src="{{asset("storage/images/apprentispassages_logo_renard2.png ")}}" class="logo_m">
       @else
-        <img src="{{asset("storage/images/module/$module->nom.png")}}">
+        <img src="{{asset("storage/images/$module->img")}}">
       @endif
       <ul class="precision">
         <li><h4>Durée du module :<br></h4> {!! $module->temps !!}</li>

@@ -5,7 +5,7 @@
   <form action="" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="ajoutModule" value="Yes">    
-    <input type="hidden" name="prestationId" value="{{$prestation}}">
+    <input type="hidden" name="prestationId" value="{!! $prestation!!}">
      
     <label for="nomEdit">Nom</label>
     <input type="text" id="nomEdit" name ="nom" required>
@@ -21,7 +21,7 @@
         @php
           $compte++;
         @endphp
-        <input type="checkbox" id="photo{!! $compte !!}" name="img">
+        <input type="checkbox" id="photo{!! $compte !!}" name="chemin" value="{{$p->chemin}}">
         <label for="scales">
             <img src={{ asset("storage/images/$p->chemin") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
             <!-- Modal -->
@@ -30,7 +30,6 @@
                     @include("modal/photo")
                 </div>
             </div>
-            <input type="hidden" name="chemin" value="{{$p->chemin}}">
         </label>
       @endforeach
     </div>
@@ -60,9 +59,9 @@
         @endphp
         <div> 
           <input type="checkbox" id="ett" name="ett{{$compteE}}">
-          <label for="scales">{{$et->nom}}</label>
+          <label for="scales">{!! $et->nom!!}</label>
          
-          <input type="hidden" name="etiquetteId{{$compteE}}" value="{{$et->id}}">
+          <input type="hidden" name="etiquetteId{{$compteE}}" value="{!! $et->id!!}">
         </div>
       @endforeach
       <input type="hidden" name="compteE" value="{{$compteE}}">

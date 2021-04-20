@@ -62,7 +62,6 @@ class MembreController extends Controller
         $membre->photo=$request->chemin;
         $membre->description=$request->description;
         $membre->save();
-        
         for($i=1; $i<$request->compte+1; $i++)
         {
             $s="statt".$i;
