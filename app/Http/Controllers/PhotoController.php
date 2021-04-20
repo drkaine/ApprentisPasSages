@@ -47,6 +47,8 @@ class PhotoController extends Controller
         $photo->save();
         $tag = new TagAlbumController();
         $tag->addPhoto($photo->id, $request->nomA);
+        $tag = new TagAlbumController();
+        $tag->addPhoto($request->img, $request->nomA);
         return redirect("galerie-admin");
     }
 
