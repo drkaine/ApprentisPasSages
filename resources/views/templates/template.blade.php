@@ -87,15 +87,8 @@
               </button>
           </li>
         </form>
-
-        {{-- <li class="search-icon">
-          <input type="search" placeholder="Search"/>
-          <label class="icon">
-            <span class="fas fa-search"></span>
-          </label>
-        </li>
-      </ul> --}}
-  </nav>
+      </ul>
+    </nav>
 
   <script>
       $("nav ul li.btn span").click(function () {
