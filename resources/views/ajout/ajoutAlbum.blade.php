@@ -2,7 +2,6 @@
 
 @section("content")
 
-
     <form action="" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="ajoutAlbum" value="Yes">
@@ -13,7 +12,7 @@
                   $compte=0;
               @endphp
             @foreach ($photos as $p)
-                <input type="checkbox" id="photo{!! $compte !!}" name="id" value="{{$p->id}}">
+                <input type="checkbox" id="photo" name="id" value="{{$p->id}}">
                 <label for="scales">
                     <img src={{ asset("storage/images/$p->chemin ") }}  class="ajout-photo" data-toggle="modal" data-target="#myModal{{$compte}}">
                     <!-- Modal -->

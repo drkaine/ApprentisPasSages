@@ -12,17 +12,17 @@ class TagAlbumController extends Controller
 {
     public function add(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nom' => 'required',         
-        ]);
-
-        if($validator->fails()){
-            return back()->withInput($request->except('key'))
-            ->withErrors($validator);
-        }
         $tag = new Tagalbum();
         $tag->photo_id = $request->id;
         $tag->nom_album = $request->nom;
+        $tag->save();
+    }
+
+    function addPhoto($id,$nom)
+    {
+        $tag = new Tagalbum();
+        $tag->photo_id = $id;
+        $tag->nom_album = $nom;
         $tag->save();
     }
 }

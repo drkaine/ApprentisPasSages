@@ -2,13 +2,15 @@
 
 @section("content")
     <section class="ajout">
-        <input type="hidden" name="nom_album" value="{!! $nom!!}">
         @php
             $compte=0;
         @endphp
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <input type="file" name="ajoutPhoto" >
+            <input type="hidden" name="nomA" value="{{ $nom}}">
+            <label for="nomEdit">Nom</label>
+            <textarea id="nomEdit" name ="nom" ></textarea>
+            <input type="file" name="photo">
             @foreach ($photos as $p)
             @php
                 $compte++;

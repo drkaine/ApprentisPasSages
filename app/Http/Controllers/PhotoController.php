@@ -30,7 +30,7 @@ class PhotoController extends Controller
         //
     }
 
-    public function add(Request $request, $r)
+    public function add(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nom' => 'required',         
@@ -40,13 +40,13 @@ class PhotoController extends Controller
             return back()->withInput($request->except('key'))
             ->withErrors($validator);
         }
+        $extension = $request->file('photo')->extension();
+        $path = $request->file('photo')->storePubliclyAs("public/images","$request->nom.$extension");
         $photo = new Photo();
-        $photo->chemin = "ajout";
+        $photo->chemin =  $request->nom ."." .$extension;
         $photo->save();
-        $tag = new Tagalbum();
-        $tag->photo_id = $r;
-        $tag->nom_album = $request->nom;
-        $tag->save();
+        $tag = new TagAlbumController();
+        $tag->addPhoto($photo->id, $request->nomA);
         return redirect("galerie-admin");
     }
 

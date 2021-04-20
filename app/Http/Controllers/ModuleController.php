@@ -34,16 +34,14 @@ class ModuleController extends Controller
         $module->format=$request->format;
         $module->description= $request->description;
         $module->save();
-        
         $arrayA=array();
         for($i=1; $i<=$request->compteA; $i++)
         {
             $s="actt".$i;
-            if($request->$s!=null){
-                
-                
+            if($request->$s!=null)
+            {
                 $maId="actionId".$i;
-               array_push($arrayA,$request->$maId);
+                array_push($arrayA,$request->$maId);
             }
         }
         $mac=new ModuleactionController();
@@ -62,9 +60,13 @@ class ModuleController extends Controller
         $mac=new ModuleetiquetteController();
         $mac->add($arrayE);
         if($request->prestationId=="tout")
-        return redirect('all-prestation-admin');
+        {
+            return redirect('all-prestation-admin');
+        }
         else
-        return redirect('/prestation-admin/'.$request->prestationId);
+        {
+            return redirect('/prestation-admin/'.$request->prestationId);
+        }
     }
 
 

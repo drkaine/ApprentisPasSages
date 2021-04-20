@@ -130,10 +130,7 @@ if(isset($_POST['ajoutAlbum']))
 
 Route::get('/ajoutPhoto', 'App\Http\Controllers\AjoutController@photoAjout')->name("AjoutController.ajoutPhoto");
 
-if(isset($_POST['ajoutPhoto']))
-{
-    Route::post('/ajoutPhoto', 'App\Http\Controllers\PhotoController@add');
-}
+Route::post('/ajoutPhoto', 'App\Http\Controllers\PhotoController@add');
 
 Route::get('/ajoutCategorieCoup-Coeur', 'App\Http\Controllers\AjoutController@categorie_coups_de_coeurAjout')->name("AjoutController.ajoutCategorieCoup-Coeur");
 
