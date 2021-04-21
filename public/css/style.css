@@ -947,6 +947,13 @@ footer .social-media-links a:hover svg circle
 }
 
 /*Programmation et calendrier*/
+.evenement
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .event-card
 {
   display: flex;
@@ -956,6 +963,88 @@ footer .social-media-links a:hover svg circle
 .programme
 {
   display: flex;
+}
+
+/*Calendrier*/
+.calendar
+{
+  align-self: center;
+}
+
+.autreMois
+{
+  opacity: 0.33;
+}
+
+.Calendrier 
+{
+  border-radius: 10px;
+  border: 10px solid #41046f;
+  width: 100%;
+}
+
+.CalendrierNav 
+{ 
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  border-bottom: 3px solid #fffb00; 
+  align-items: center;
+}
+
+.CalendrierBody 
+{
+  display: grid;
+  grid-template-columns: 0.2fr 1.8fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". Jours"
+    "Semaines Date";
+  grid-area: CalendrierBody;
+}
+
+.Jours 
+{
+  border-radius: 10px;
+  border-bottom: 3px solid #fffb00;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . . . . .";
+  grid-area: Jours;
+  align-items: center;
+}
+
+.Semaines {
+  border-radius: 10px;
+  border-top: 3px solid #fffb00;
+  border-right: 3px solid #fffb00;
+  display: flex;
+  flex-flow:column;
+  grid-area: Semaines;
+  align-items: center;
+  height: 200px;
+  justify-content: space-around;
+}
+
+.Date 
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . . . . ."
+    ". . . . . . ."
+    ". . . . . . ."
+    ". . . . . . ."
+    ". . . . . . .";
+  grid-area: Date;
+  align-items: center;
+  margin-left: 20px;
 }
 
 /* Qui sommes nous ? */
@@ -1167,6 +1256,13 @@ footer .social-media-links a:hover svg circle
   }
 }
 
+@media screen and (max-width:1360px)
+{
+  .evenement
+  {
+    flex-flow: column-reverse;
+  }
+}
 @media screen and (max-width: 1210px) 
 {
   nav 
@@ -1365,6 +1461,14 @@ footer .social-media-links a:hover svg circle
   .one-membre
   {
     flex-flow: wrap;
+  }
+}
+
+@media only screen and (max-width:550px)
+{
+  .calendar
+  {
+    display:none;
   }
 }
 

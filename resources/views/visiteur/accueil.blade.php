@@ -32,17 +32,20 @@
     <div id="ban" class="container-fluid m-t-1 ban">
       <h1 id="titreAssociation" style="box-sizing:border-box;">Evénement de l'association</h1>
     </div>
-
-    <section class="event-card">
-      <div class="event">
-       @foreach($contentProgs as $cProg)
-          <div clas="programme">
-            @include('visiteur/programmation', compact($cProg))
-          </div>
-        @endforeach
-      </div>
+    <section class = "evenement">
+      <section class="event-card">
+        <div class="event">
+        @foreach($contentProgs as $cProg)
+            <div clas="programme">
+              @include('visiteur/programmation', compact($cProg))
+            </div>
+          @endforeach
+        </div>
+      </section>
+      <section class="calendar">
+        @include("visiteur/calendrier")
+      </section>
     </section>
-
     <!--Equipe-->
     <div id="banTeam" class="container-fluid">
       <h1 id="titreTeam" style="box-sizing:border-box;">Notre équipe</h1>
