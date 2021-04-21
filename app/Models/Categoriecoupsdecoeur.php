@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Coupsdecoeur;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,6 +21,6 @@ class Categoriecoupsdecoeur extends Model
     ];
 
     function getCCdc(){
-    	return $this->belongsTo('App\models\Categoriecoupsdecoeur', 'id', 'id');
+    	return $this->belongsTo('App\models\Coupsdecoeur', 'id', 'id');
     }
 }

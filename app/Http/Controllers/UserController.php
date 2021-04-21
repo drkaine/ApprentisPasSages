@@ -55,8 +55,8 @@ class UserController extends Controller
         $user->password=$mdp;
         $user->email=$request->email;
         $user->expiration = date("Y-m-d", strtotime("+3 days"));
-//        $email = new mailController();
-//        $email->sendNewMDP($user);
+       $email = new mailController();
+       $email->sendNewMDP($user);
         $user->password=Hash::make("fom");
         $user->save();
         return redirect("user-gestion");
@@ -118,8 +118,8 @@ class UserController extends Controller
                 return back();
             $user->password = $mdp;
             $user->expiration = date("Y-m-d", strtotime("+3 days"));
-//            $email = new mailController();
-//            $email->sendMDP($user);
+           $email = new mailController();
+           $email->sendMDP($user);
             $user->password=Hash::make("fom");
             $user->save();
             return redirect("admin");
@@ -180,19 +180,21 @@ class UserController extends Controller
             if($exp!=NULL){
                 $today=date("Y-m-d", strtotime("now"));
           
-                if($today>$exp->expiration and $exp->expiration!=NULL  )
+                if($today>$exp->expiration and $exp->expiration!=NULL)
                 {
                     return redirect("mdp-oublie");
                 }
           
-                if (Auth::attempt($credentials) and $today<=$exp->expiration and $exp->expiration!=NULL) {
+                if (Auth::attempt($credentials) and $today<=$exp->expiration and $exp->expiration!=NULL) 
+                {
                     Auth::logout();
                     $request->session()->regenerate();
                     $request->session()->put('email',$request->email);
                     return redirect()->intended('mdp-changement');
                 }
           
-                if (Auth::attempt($credentials) and $exp->expiration==NULL ) {
+                if (Auth::attempt($credentials) and $exp->expiration==NULL ) 
+                {
                     Auth::logout();
                     Cookie::queue(Cookie::forget('souvenir'));
                     Cookie::queue(Cookie::forget('email'));

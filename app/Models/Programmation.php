@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use App\Models\Action;
+use App\Models\Module;
 
 class Programmation extends Model
 {
@@ -23,9 +26,9 @@ class Programmation extends Model
 //    	return $this->belongToMany('App\models\ContentProg', 'id', 'programmation_id');
 //    }
     function getModules(){
-    	return $this->belongsToMany('App\models\Module', 'contentprogs' , 'module_id','module_id');
+    	return $this->belongsToMany('App\Models\Module', 'contentprogs' , 'module_id','module_id');
     }
     function getActions(){
-    	return $this->belongsToMany('App\models\Action', 'contentprogs','action_id','action_id' );
+    	return $this->belongsToMany('App\Models\Action', 'contentprogs','action_id','action_id' );
     }
 }
