@@ -17,7 +17,7 @@
               <div class="contact-form">
                 <div>
                   <form id="formulaire" method="POST">
-                    <!-- csrf_field()-->       
+                    {{ csrf_field()}}    
                     <label for="fname">Nom *</label>
 
                     <input type="text" id="fname" name="name" placeholder="Votre nom *" required>

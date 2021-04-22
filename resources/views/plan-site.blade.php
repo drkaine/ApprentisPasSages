@@ -56,5 +56,4 @@
     </div>
   </body>
   <div class="m-t-1 ban2"></div>
-@include("templates/footer")
 @endsection

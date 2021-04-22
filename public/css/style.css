@@ -226,6 +226,7 @@ nav ul li.btn
   max-width: 100px;
   max-height: 100px;
   display: flex;
+  cursor:pointer;
 }
 
 .card-module
@@ -303,6 +304,7 @@ nav ul li.btn
 
 .et
 {
+  padding:5px;
   margin-left:10px;
   border-radius: 7px;
 }
@@ -474,6 +476,7 @@ nav ul .search-icon .icon span
   max-width: 300px;
   max-height: 300px;
   margin-bottom: 10px;
+  cursor:pointer;
 }
 
 /* logo */
