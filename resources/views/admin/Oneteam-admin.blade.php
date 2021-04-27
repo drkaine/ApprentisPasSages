@@ -59,7 +59,9 @@
 
     <label for="emailEdit">email</label>
     <input type="email" id="emailEdit" name ="email" value="{!!$membre->email!!}">
-
+    @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
     <input type="submit" value="Editer" name ="edito" >
   </form>
 

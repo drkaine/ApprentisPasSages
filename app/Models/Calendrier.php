@@ -9,9 +9,9 @@ class Calendrier extends Model
 {
     
 
-   public $listeJour=array("Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche");
+   public $listeJour=array();
     
-   public $listeMois=array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
+   public $listeMois=array();
     
     public $mois;
     
@@ -22,9 +22,11 @@ class Calendrier extends Model
     public $semaine=array();
     
  
+    public $flecheMois;
     
+    public $flecheAnnee;
 
-    function __construct($annee=null,$mois=null)
+    function __construct($annee=null,$mois=null,$flecheMois=0,$flecheAnnee=0,$aujourdhui=NULL)
     {
         if($mois ==null)
         {
@@ -33,21 +35,56 @@ class Calendrier extends Model
         
         if($annee ==null)
         {
-           $annee=intval(date('Y')); 
+           $annee=intval(date('Y'));
         }
         
-        $mois=$mois%12;
+        if($flecheMois ==null)
+        {
+           $flecheMois=0;
+        }
+        
+        if($flecheAnnee ==null)
+        {
+           $flecheAnnee=0;
+        }
+        
+        if($aujourdhui ==null)
+        {
+           $aujourdhui=0;
+        }
         
         $this->mois=$mois;
+        
         $this->annee=$annee;
+        
+        
+        
+        $this->flecheMois=$flecheMois;
+        
+        $this->flecheAnnee=$flecheAnnee;
+        
+        if($this->flecheAnnee!=0 or $this->flecheMois!=0)
+            {
+                $ma=$this->changeDate();
+                $this->mois=$ma[0];
+                $this->annee=$ma[1];
+                
+            }
+        
+        if($aujourdhui==1)
+        {
+            $this->mois=intval(date('m'));
+            $this->annee=intval(date('Y'));
+        }
+        
+        $this->listeJour=array("Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche");
         
         $this->dates=$this->dates();
         
         $this->semaine=$this->semaine();
         
-        $this->listeJour=array("Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche");
-        
         $this->listeMois=array("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
+        
     }
     
     function getPremierJour()
@@ -55,23 +92,8 @@ class Calendrier extends Model
         return new \DateTime("$this->annee-$this->mois-01");
     }
 
-    
-        
-    
-   function getSemaine(){
-    $commence= $this->getPremierJour();
-    $fini= $commence->modify('+1 month -1 day');
-    $semaine=intval($fini->format('W'))-intval($commence->format('W')) +1;
-    
-    if($semaine < 0)
-    {
-        $semaine=intval($fini->format('W'));
-    }
-    
-    return $semaine;
-   }
 
-function  verifMois($request)
+    function  verifMois($request)
     {
        return $this->getPremierJour()->format('Y-m')===$request->format('Y-m');
     }
@@ -84,7 +106,7 @@ function  verifMois($request)
         for ($j = 0; $j < 5; $j++)
         {
             
-            foreach ($this->listeJour as $k=>$i)
+            for ($k=0;$k <7 ; $k++)
             {
                 $dates["date"][$k.$j]=$this->getPremierJour()->modify('last Monday')->modify("+".($k + $j * 7). "days");
                 
@@ -92,9 +114,6 @@ function  verifMois($request)
                     
                         
             }
-            
-                
-           
         }
             return $dates;
     }
@@ -108,8 +127,23 @@ function  verifMois($request)
         return $semaine;
     }
     
-    
-    
+    function changeDate()
+    {
+        $change=array();
+        $m=$this->mois+$this->flecheMois;
+        $a=$this->annee+$this->flecheAnnee;
+        if($m>12)
+        {
+            $m=1;
+            $a++;
+        }
+        else if($m<1)
+            {
+                $m=12;
+                $a--;
+            }
+        return $change=array($m,$a);
+    }
     
     
     

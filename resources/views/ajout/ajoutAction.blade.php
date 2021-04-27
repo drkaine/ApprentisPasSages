@@ -51,7 +51,9 @@
             @endforeach
             <input type="hidden" name="compte" value="{!! $compte!!}">
         </div>
-        
+        @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
         <input type="submit" value="Ajouter" name ="ajouter" >
     </form>
   

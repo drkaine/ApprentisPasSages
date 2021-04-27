@@ -23,7 +23,7 @@ class VisiteurController extends Controller
         }
 
         function accueil(Request $request){
-            return view('visiteur/accueil',["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), 'cdc'=>GetController::afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>GetController::afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(), "etiquettes"=>GetController::getEtiquette(), "etiquettemodules"=>GetController::getEtiquetteModule(),"calendrier"=>new Calendrier($request->annee,$request->mois)]);
+            return view('visiteur/accueil',["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), 'cdc'=>GetController::afficheCoupsDecoeurs(),"team"=> Membre::inRandomOrder()->get(), "catalogues"=>GetController::afficheCatalogue(),'programmation'=>Programmation::with('getModules','getActions')->get(),'action'=>Action::with('getProgs', 'getModules')->get(),'modules'=>Module::with('getProgs','getActions')->get(),'contentProgs'=>ContentProg::with('getModules','getActions','getProgs')->get(), "etiquettes"=>GetController::getEtiquette(), "etiquettemodules"=>GetController::getEtiquetteModule(),"calendrier"=>new Calendrier($request->selectAnnee,$request->selectMois,$request->flecheMois,$request->flecheAnnee,$request->aujourdhui)]);
         }
 
         function association()

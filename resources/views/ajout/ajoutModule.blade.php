@@ -11,7 +11,7 @@
     <input type="text" id="nomEdit" name ="nom" required>
 
     <label for="descriptionEdit">description</label>   
-    <textarea id="descriptionEdit" name ="description"></textarea>
+    <textarea id="descriptionEdit" name ="description" required></textarea>
 
     <div>
       @php
@@ -83,6 +83,9 @@
           <input type="hidden" name="actionId{!! $compteA!!}" value="{!! $act->id!!}">
         </div>
       @endforeach
+      @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
       <input type="hidden" name="compteA" value="{!! $compteA!!}">
     </div>
     <input type="submit" value="Ajouter" name ="ajouter" >

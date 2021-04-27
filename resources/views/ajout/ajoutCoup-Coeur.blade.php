@@ -17,7 +17,9 @@
 
     <label for="descriptionEdit">description</label>   
     <textarea id="descriptionEdit" name ="description"></textarea>
-
+    @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
     <input type="submit" value="Ajouter" name ="ajouter" >
   </form>
   <a href="{{route('coupDeCoeur-Admin')}}"><h1>Revenir à Coups de Coeur</h1></a>

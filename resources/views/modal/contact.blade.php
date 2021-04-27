@@ -41,6 +41,9 @@
                     <div class="btn-form-contact">
                       <input type="submit" value="Envoyer votre message" class = "bouton-contact">
                     </div>
+                    @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
 
                     <input type="hidden" name="contactCacher" value="1">
                   </form>

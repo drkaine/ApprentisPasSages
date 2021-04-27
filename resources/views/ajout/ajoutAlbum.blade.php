@@ -6,7 +6,7 @@
         {{ csrf_field() }}
         <input type="hidden" name="ajoutAlbum" value="Yes">
         <label for="nomEdit">Nom</label>
-        <textarea id="nomEdit" name ="nom" ></textarea>
+        <textarea id="nomEdit" name ="nom" required></textarea>
         <div>
             @php
                   $compte=0;
@@ -28,6 +28,9 @@
             @endforeach
             <input type="hidden" name="compte" value={{ $compte }}>
           </div>
+          @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
         <input type="submit" value="Ajouter" name ="ajouter" >
     </form>
 

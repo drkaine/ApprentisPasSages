@@ -7,8 +7,10 @@
         <input type="hidden" name="ajoutCatalogue" value="Yes">
    
         <label for="nomEdit">Nom</label>
-        <input type="text" id="nomEdit" name ="nom" >
-
+        <input type="text" id="nomEdit" name ="nom" required>
+        @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
         <input type="submit" value="Ajouter" name ="ajouter" >
     </form>
 

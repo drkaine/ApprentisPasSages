@@ -23,6 +23,9 @@
         <textarea id="descriptionEdit" name ="description">
           {!! $c->description!!}
         </textarea>
+        @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
 
         <input type="submit" value="Editer" name ="editer" >
     </form>

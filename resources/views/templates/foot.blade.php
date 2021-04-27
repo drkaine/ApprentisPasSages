@@ -66,4 +66,5 @@
       <li><a href="/plan-site" class="plan">   Plan du site</a></li>
     </ul>
   </footer>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </html>

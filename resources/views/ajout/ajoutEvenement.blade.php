@@ -7,13 +7,13 @@
         <input type="hidden" name="ajoutEV" value="Yes">
         
         <label for="dateDebutEdit">date de debut</label>
-        <input id="dateDebutEdit" type="datetime-local" step="1" value="YYYY-MM-DD hh:mm:ss" name="dateDebut">
+        <input id="dateDebutEdit" type="datetime-local" step="1" value="YYYY-MM-DD hh:mm" name="dateDebut" required>
 
         <label for="dateFinEdit">date de fin</label>
-        <input id="dateFinEdit" type="datetime-local" step="1" value="YYYY-MM-DD hh:mm:ss" name="dateFin">
+        <input id="dateFinEdit" type="datetime-local" step="1" value="YYYY-MM-DD hh:mm" name="dateFin" required>
 
         <label for="photoEdit">Nombre de personne</label>
-        <input id="nbPersonnesPrevuesEdit" name ="nbPersonnesPrevues" type="number" >
+        <input id="nbPersonnesPrevuesEdit" name ="nbPersonnesPrevues" type="number" required>
 
         <select name="Module"  size=1 >
             <option disabled>Veuillez choisir un module</option>
@@ -27,7 +27,9 @@
                 <option value="{!! $act->id !!}" >{!! $act->nom !!}</option>
             @endforeach
         </select>
-        
+        @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
         <input type="submit" value="Ajouter" name ="ajouter" >
     </form>
 

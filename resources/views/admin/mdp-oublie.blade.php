@@ -16,6 +16,9 @@
           <label for="Mail">Vérification mail :</label><br>
           <input type="email" id="mail2" name="mail2" placeholder="Mail" required><br><br>
           <input type="submit" value="Envoyer" name ="edito" >
+          @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
         </form>
     </div>
   </body>

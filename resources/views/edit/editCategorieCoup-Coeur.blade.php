@@ -11,7 +11,9 @@
         
             <label for="nomEdit">Nom</label>
             <input type="text" id="nomEdit" name ="nom" value="{!! $cc->nom!!}"required>
- 
+            @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
             <input type="submit" value="Editer" name ="edito" >
         </form>
         <a href="{{route('coupDeCoeur-Admin')}}"><h1>Revenir à Coups de Coeur</h1></a>

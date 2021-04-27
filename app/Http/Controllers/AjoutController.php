@@ -18,12 +18,12 @@ class AjoutController extends Controller
 
     function coups_de_coeurAjout(Request $request)
     {
-        return view("ajout/ajoutCoup-coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->id)->get(),"catalogues"=>GetController::afficheCatalogue()]);
+        return view("ajout/ajoutCoup-Coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->id)->get(),"catalogues"=>GetController::afficheCatalogue()]);
     }
 
     function categorie_coups_de_coeurAjout()
     {
-        return view("ajout/ajoutCategorieCoup-coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
+        return view("ajout/ajoutCategorieCoup-Coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"),"catalogues"=>GetController::afficheCatalogue()]);
     }
 
     function actionAjout(Request $request)

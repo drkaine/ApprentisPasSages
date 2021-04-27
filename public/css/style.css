@@ -81,10 +81,16 @@ nav ul li.btn
   display: none;
 }
 
+.Error{
+  color: red;
+}
+
 .deco
 {
   color:#41046f;
   background-color: #fffb00e0;
+  border-radius: 5px;
+  padding:5px;
 }
 
 /* gestionnaire user */
@@ -460,6 +466,7 @@ nav ul .search-icon .icon span
   font-weight:bold;
   margin-right: 30px;
   margin-left: 10px;
+  border-radius: 5px;
 }
 
 /* Photo album  */
@@ -673,7 +680,8 @@ background-color:#41046f;
   width: 170px;
   height: 50px;
   padding: 1px;
-  font-weight:bold
+  font-weight:bold;
+  border-radius:5px;
 }
 .contact
 {
@@ -818,6 +826,7 @@ footer .social-media-links a:hover svg circle
 #coupDeCoeur
 {
   background-color: #41046f;
+  margin: 0px;
 }
 
 /* trombinoscope */
@@ -993,6 +1002,14 @@ footer .social-media-links a:hover svg circle
   border-radius: 10px;
   border-bottom: 3px solid #fffb00; 
   align-items: center;
+}
+
+.CalendrierNav>div, .Selectionneur{ 
+  display: flex;
+  justify-content: space-around;
+  }
+.calendrierEvent{
+  color: red;
 }
 
 .CalendrierBody 
@@ -1350,7 +1367,9 @@ footer .social-media-links a:hover svg circle
   .ban2
   {
     background-image: none;
+    height: 60px;
   }
+
   .ban2 h1
   {
     color:#fffb00e0;
@@ -1465,6 +1484,12 @@ footer .social-media-links a:hover svg circle
   {
     flex-flow: wrap;
   }
+
+  .cdc
+  {
+    justify-content: space-between;
+    margin-left: 30px;
+  }
 }
 
 @media only screen and (max-width:550px)
@@ -1506,6 +1531,13 @@ footer .social-media-links a:hover svg circle
     padding-bottom: 10px;
     margin: 1px;
   }
+
+  nav ul li.logo .logo-apprentis
+  {
+    width : 200px;
+    padding-bottom: 10px;
+    height:100%;
+  }
 }
 
 @media (max-width: 350px)
@@ -1518,12 +1550,6 @@ footer .social-media-links a:hover svg circle
   .nom-action
   {
     width:250px;
-  }
-
-  nav ul li.logo .logo-apprentis
-  {
-    width : 200px;
-    padding-bottom: 10px;
   }
 
   .image

@@ -12,7 +12,9 @@
 
     <label for="nameEdit">Nom</label>
     <input type="text" id="nameEdit" name ="name" required>
-
+    @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
     <input type="submit" value="Ajouter" name ="ajouter" >
 </form>
 

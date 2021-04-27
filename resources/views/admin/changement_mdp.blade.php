@@ -15,6 +15,9 @@
             <input type="password" id="mdp1" name="mdp1" placeholder="Mot de passe" required><br><br>
             <label for="mdp2">Confirmation de mot de passe:</label><br>
             <input type="password" id="mdp2" name="mdp2" placeholder="Mot de passe vérification" required><br><br>
+            @foreach ($errors->all() as $error)
+              <div class="Error">{{ $error }}</div>
+            @endforeach
             <button type="submit">Envoi</button>
         </form>
     </div>

@@ -9,7 +9,7 @@
             {{ csrf_field() }}
             <input type="hidden" name="nomA" value="{{ $nom}}">
             <label for="nomEdit">Nom</label>
-            <textarea id="nomEdit" name ="nom" ></textarea>
+            <textarea id="nomEdit" name ="nom" required></textarea>
             <input type="file" name="photo">
             @foreach ($photos as $p)
             @php
@@ -26,6 +26,9 @@
                 </div>
             </label>
             @endforeach
+            @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
             <input type="hidden" name="compte" value="{{$compte}}">
             <input type="submit" value="Ajouter" name ="ajouter">
         </form>

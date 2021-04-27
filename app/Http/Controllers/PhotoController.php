@@ -40,16 +40,22 @@ class PhotoController extends Controller
             return back()->withInput($request->except('key'))
             ->withErrors($validator);
         }
-        $extension = $request->file('photo')->extension();
-        $path = $request->file('photo')->storePubliclyAs("public/images","$request->nom.$extension");
-        $photo = new Photo();
-        $photo->chemin =  $request->nom ."." .$extension;
-        $photo->save();
-        $tag = new TagAlbumController();
-        $tag->addPhoto($photo->id, $request->nomA);
-        $tag = new TagAlbumController();
-        $tag->addPhoto($request->img, $request->nomA);
-        return redirect("galerie-admin");
+        if($request->file("photo") != null)
+        {
+            $extension = $request->file('photo')->extension();
+            $path = $request->file('photo')->storePubliclyAs("public/images","$request->nom.$extension");
+            $photo = new Photo();
+            $photo->chemin =  $request->nom ."." .$extension;
+            $photo->save();
+            $tag = new TagAlbumController();
+            $tag->addPhoto($photo->id, $request->nomA);
+        }
+        if($request->img!=null)
+        {
+            $tag = new TagAlbumController();
+            $tag->addPhoto($request->img, $request->nomA);
+        }
+        return redirect("album-admin/{$request->nomA}");
     }
 
     /**

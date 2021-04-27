@@ -7,10 +7,10 @@
     <input type="hidden" name="ajoutMembres" value="Yes">
     
     <label for="prenomEdit">Prenom</label>
-    <input type="text" id="prenomEdit" name ="prenom">
+    <input type="text" id="prenomEdit" name ="prenom" required>
 
     <label for="nomEdit">Nom</label>
-    <input type="text" id="nomEdit" name ="nom" >
+    <input type="text" id="nomEdit" name ="nom" required>
 
     <div>
       @php
@@ -60,6 +60,9 @@
       @endforeach
       <input type="hidden" name="compte" value="{!! $compte!!}">
     </div>
+    @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
     <input type="submit" value="Ajouter" name ="ajouter" >
   </form>
 

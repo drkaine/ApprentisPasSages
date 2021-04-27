@@ -37,7 +37,7 @@ use App\Http\Controllers\CategorieCoupDeCoeurController;
 // });
 
 // accueil
-Route::get('/', 'App\Http\Controllers\VisiteurController@accueil')->name('Accueil');
+Route::any('/', 'App\Http\Controllers\VisiteurController@accueil')->name('Accueil');
 
 //Mail
 if(isset($_POST['contactCacher'])){
@@ -86,7 +86,7 @@ Route::get('/mdp-oublie', 'App\Http\Controllers\AdminController@mdpOublie')->nam
 
 //Admin Groupe Authentifié !!
 
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
  
     Route::post('/mdp-changement', "App\Http\Controllers\UserController@change")->name('UserController.change');
 
@@ -259,5 +259,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/demande-suppression/{choix}","App\Http\Controllers\AdminController@demandeSuppression")->name("AdminController.demandeSuppression");
 
     Route::delete("/confirmation-suppression/{choix}","App\Http\Controllers\AdminController@confirmationSuppression")->name("AdminController.confirmationSuppression");
-});
+// });
 

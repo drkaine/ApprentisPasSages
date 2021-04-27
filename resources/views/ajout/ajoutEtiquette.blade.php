@@ -10,7 +10,9 @@
 
     <label for="couleurEdit">couleur</label>
     <input type="color" id="couleurEdit" name ="couleur" required>
-
+    @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
     <input type="submit" value="Ajouter" name ="ajouter" >
   </form>
   <a href="{{route('AdminController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>

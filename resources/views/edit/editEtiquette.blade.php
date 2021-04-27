@@ -15,6 +15,9 @@
         <label for="couleurEdit">couleur</label>
         <input type="color" id="couleurEdit" name ="couleur" value="{!! $eti->couleur !!}" required>
     @endforeach
+    @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
     <input type="submit" value="Editer" name ="edito" >
     <a href="{{route('AdminController.allPrestationsAdmin')}}"><h1>Revenir à toute les prestations</h1></a>
     <div class="m-t-1 ban2"></div>

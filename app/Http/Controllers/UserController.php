@@ -172,11 +172,11 @@ class UserController extends Controller
     function authenticate(Request $request)
   {
         
-      if(!empty($request->email)){
+    //   if(!empty($request->email)){
           
             $credentials = $request->only('email','password');
           
-            $exp = User::where('email', $request->email)->select('expiration')->first();
+            $exp = User::where('email', '=', $request->email)->first();
             if($exp!=NULL){
                 $today=date("Y-m-d", strtotime("now"));
           
@@ -185,13 +185,13 @@ class UserController extends Controller
                     return redirect("mdp-oublie");
                 }
           
-                if (Auth::attempt($credentials) and $today<=$exp->expiration and $exp->expiration!=NULL) 
-                {
-                    Auth::logout();
-                    $request->session()->regenerate();
-                    $request->session()->put('email',$request->email);
-                    return redirect()->intended('mdp-changement');
-                }
+                // if (Auth::attempt($credentials) and $today<=$exp->expiration and $exp->expiration!=NULL) 
+                // {
+                //     Auth::logout();
+                //     $request->session()->regenerate();
+                //     $request->session()->put('email',$request->email);
+                //     return redirect('changement_mdp');
+                // }
           
                 if (Auth::attempt($credentials) and $exp->expiration==NULL ) 
                 {
@@ -210,10 +210,10 @@ class UserController extends Controller
                     return redirect()->intended('accueil-admin');
                 }
             }
-        }
-        return back()->withErrors([
-            'email' => "yes",
-        ]);
+        // }
+        // return back()->withErrors([
+        //     'email' => "yes",
+        // ]);
     }
 
     

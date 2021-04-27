@@ -26,12 +26,12 @@ class EditController extends Controller
     
     function coups_de_coeurEdit(Request $request)
     {
-        return view("edit/editCoup-coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>GetController::afficheCatalogue(),"cdc"=>Coupsdecoeur::where('id','=',$request->idC)->get()]);
+        return view("edit/editCoup-Coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>GetController::afficheCatalogue(),"cdc"=>Coupsdecoeur::where('id','=',$request->idC)->get()]);
     }
 
     function categorie_coups_de_coeurEdit(Request $request)
     {
-        return view("edit/editCategorieCoup-coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>GetController::afficheCatalogue()]);
+        return view("edit/editCategorieCoup-Coeur",["statu"=>Statut::get(),"membreStatut"=>Membrestatut::get(),"teams"=> Membre::get(),'partenaires'=> GetController::getPhotoByAlbum("partenaires"), "ccdc"=>Categoriecoupsdecoeur::where('id','=',$request->idCC)->get(),"catalogues"=>GetController::afficheCatalogue()]);
     }
 
     function getOneTeamAdmin( Request $request)

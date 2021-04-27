@@ -27,6 +27,9 @@
                             checked
                      @endif>
               <br><br>
+              @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
               
               <button type="submit" value="Se connecter" name ="testconnection">Se connecter</button>
               </form>

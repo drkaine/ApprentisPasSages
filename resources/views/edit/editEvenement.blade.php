@@ -42,6 +42,9 @@
                 @endforeach
             </select>
         @endforeach
+        @foreach ($errors->all() as $error)
+            <div class="Error">{{ $error }}</div>
+        @endforeach
         
         <input type="submit" value="éditer" name ="edito" >
     </form>
