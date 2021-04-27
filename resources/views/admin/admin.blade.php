@@ -4,7 +4,7 @@
     
        <body>
        <div id="ban" class="container-fluid m-t-1 ban">
-              <h1 id="titreAssociation" style="box-sizing:border-box;">Pannel d'administration</h1>
+              <h1 id="titreAssociation" style="box-sizing:border-box;">Panel d'administration</h1>
        </div>
        <div class='co_admin'>
        <h2>Connectez-vous</h2>

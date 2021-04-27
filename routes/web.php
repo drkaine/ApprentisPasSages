@@ -86,7 +86,7 @@ Route::get('/mdp-oublie', 'App\Http\Controllers\AdminController@mdpOublie')->nam
 
 //Admin Groupe Authentifié !!
 
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
  
     Route::post('/mdp-changement', "App\Http\Controllers\UserController@change")->name('UserController.change');
 
@@ -259,5 +259,5 @@ Route::get('/mdp-oublie', 'App\Http\Controllers\AdminController@mdpOublie')->nam
     Route::get("/demande-suppression/{choix}","App\Http\Controllers\AdminController@demandeSuppression")->name("AdminController.demandeSuppression");
 
     Route::delete("/confirmation-suppression/{choix}","App\Http\Controllers\AdminController@confirmationSuppression")->name("AdminController.confirmationSuppression");
-// });
+});
 

@@ -57,7 +57,7 @@ class UserController extends Controller
         $user->expiration = date("Y-m-d", strtotime("+3 days"));
        $email = new mailController();
        $email->sendNewMDP($user);
-        $user->password=Hash::make("fom");
+        $user->password=Hash::make($mdp);
         $user->save();
         return redirect("user-gestion");
     }
@@ -109,18 +109,20 @@ class UserController extends Controller
                 'mail' => 'required',
                 'mail2' => 'required',
             ]);
-            if($validator->fails() or $request->mail != $request->mail2 ){
+            if($validator->fails()){
                 return back()->withInput($request->except('key'))
                 ->withErrors($validator);
             }
             $user = User::where('email', $request->mail)->first();
             if($user==NULL)
-                return back();
+                return back()->withErrors("emailFaux"=>'Ce mail ne correspond pas à un Admin';
+            if($request->mail != $request->mail2)
+                return back()->withErrors("emailNon"=>'Ces deux mails ne sont pas les mêmes';
             $user->password = $mdp;
             $user->expiration = date("Y-m-d", strtotime("+3 days"));
            $email = new mailController();
            $email->sendMDP($user);
-            $user->password=Hash::make("fom");
+            $user->password=Hash::make($mdp);
             $user->save();
             return redirect("admin");
         }
@@ -160,7 +162,9 @@ class UserController extends Controller
         $user = User::where('email', $request->session()->get("email"))->first();
         
         if($request->mdp1!=$request->mdp2)
-            return back();
+            return back()->withErrors([
+            'mdp' => "Les mot de passes ne sont pas les mêmes",
+        ]);
         
         $user->password=Hash::make($request->mdp1);
         $user->expiration=NULL;
@@ -172,11 +176,11 @@ class UserController extends Controller
     function authenticate(Request $request)
   {
         
-    //   if(!empty($request->email)){
+      if(!empty($request->email)){
           
             $credentials = $request->only('email','password');
           
-            $exp = User::where('email', '=', $request->email)->first();
+            $exp = User::where('email', $request->email)->select('expiration')->first();
             if($exp!=NULL){
                 $today=date("Y-m-d", strtotime("now"));
           
@@ -185,17 +189,17 @@ class UserController extends Controller
                     return redirect("mdp-oublie");
                 }
           
-                // if (Auth::attempt($credentials) and $today<=$exp->expiration and $exp->expiration!=NULL) 
-                // {
-                //     Auth::logout();
-                //     $request->session()->regenerate();
-                //     $request->session()->put('email',$request->email);
-                //     return redirect('changement_mdp');
-                // }
+                if (Auth::attempt($credentials) and $today<=$exp->expiration and $exp->expiration!=NULL) 
+                {
+                    
+                    $request->session()->regenerate();
+                    $request->session()->put('email',$request->email);
+                    return redirect()->intended('mdp-changement');
+                }
           
                 if (Auth::attempt($credentials) and $exp->expiration==NULL ) 
                 {
-                    Auth::logout();
+                    
                     Cookie::queue(Cookie::forget('souvenir'));
                     Cookie::queue(Cookie::forget('email'));
                     Cookie::queue(Cookie::forget('password'));
@@ -210,10 +214,10 @@ class UserController extends Controller
                     return redirect()->intended('accueil-admin');
                 }
             }
-        // }
-        // return back()->withErrors([
-        //     'email' => "yes",
-        // ]);
+        }
+        return back()->withErrors([
+            'email' => "Le mail et/ou le mot de passe est/sont faux",
+        ]);
     }
 
     
